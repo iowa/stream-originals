@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    // Output settings
+    "outDir": "dist",           // Directory for compiled JS files
+    "rootDir": "src",           // Root directory of source files
+
+    // Language and module settings
+    "target": "ESNext",         // ECMAScript target version
+    "module": "NodeNext",       // Module system for Node.js ESM
+    "moduleResolution": "NodeNext", // Module resolution strategy
+
+    // Type checking
+    "strict": true,             // Enable all strict type-checking options
+    "skipLibCheck": true,       // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Ensure file name casing consistency
+
+    // Declarations
+    "declaration": true,        // Generate .d.ts files
+    "declarationMap": true,     // Generate source maps for .d.ts files
+
+    // Interop and module features
+    "esModuleInterop": true,    // Enable default interoperability between CommonJS and ES Modules
+    "resolveJsonModule": true,  // Allow importing .json files
+
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
