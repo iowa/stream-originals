@@ -1,5 +1,5 @@
 {
-  "name": "with-solid",
+  "name": "stream-originals",
   "private": true,
   "scripts": {
     "build": "turbo run build",
