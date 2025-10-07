@@ -25,7 +25,7 @@ RUN npx turbo run build
 WORKDIR /usr/src/app/apps/api
 
 # Expose Cloud Run port
-EXPOSE 3000
+EXPOSE 8080
 
 # Start the server
 CMD ["node", "dist/index.js"]
