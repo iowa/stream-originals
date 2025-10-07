@@ -1,19 +1,29 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
-import { TitlesPatchResponse } from "@repo/common";
+import { Scalar } from "@scalar/hono-api-reference";
+import { openAPIRouteHandler } from "hono-openapi";
+import titles from "./titles/index.js";
 
 const app = new Hono()
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+app.get("/", Scalar({ url: "/openapi" }));
+app.get(
+  "/openapi",
+  openAPIRouteHandler(app, {
+    documentation: {
+      info: {
+        title: "Stream Originals Crawlee API",
+        version: "1.0.0",
+        description: "API for managing Stream Originals resources.",
+      },
+      servers: [{ url: "http://localhost:3000", description: "Local Server" }],
+    },
+    includeEmptyPaths: true,
+    exclude: ["/", "/openapi"],
+  }),
+);
 
-app.get('/common', (c) => {
-  const response: TitlesPatchResponse = {
-    items: []
-  } as TitlesPatchResponse
-  return c.json(response)
-})
+app.route("/titles", titles);
 
 serve({
   fetch: app.fetch,
