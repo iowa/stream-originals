@@ -1,0 +1,2321 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`WikiTitlesScraper > findTitles > applePlus_titles.html 1`] = `
+[
+  {
+    "name": "For All Mankind",
+    "premiere": "2019-11-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Morning Show",
+    "premiere": "2019-11-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Foundation",
+    "premiere": "2021-09-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Invasion",
+    "premiere": "2021-10-22",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Severance",
+    "premiere": "2022-02-18",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Pachinko",
+    "premiere": "2022-03-25",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Slow Horses",
+    "premiere": "2022-04-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Surface",
+    "premiere": "2022-07-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Bad Sisters",
+    "premiere": "2022-08-19",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Last Thing He Told Me",
+    "premiere": "2023-04-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Silo",
+    "premiere": "2023-05-05",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Hijack",
+    "premiere": "2023-06-28",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Buccaneers",
+    "premiere": "2023-11-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Monarch: Legacy of Monsters",
+    "premiere": "2023-11-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Criminal Record",
+    "premiere": "2024-01-10",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The New Look",
+    "premiere": "2024-02-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Sugar",
+    "premiere": "2024-04-05",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Dark Matter",
+    "premiere": "2024-05-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Presumed Innocent",
+    "premiere": "2024-06-12",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Your Friends & Neighbors",
+    "premiere": "2025-04-11",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Chief of War",
+    "premiere": "2025-08-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Savant",
+    "premiere": "2025-09-26",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Last Frontier",
+    "premiere": "2025-10-10",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Down Cemetery Road",
+    "premiere": "2025-10-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Pluribus",
+    "premiere": "2025-11-07",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Trying",
+    "premiere": "2020-05-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Ted Lasso",
+    "premiere": "2020-08-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Loot",
+    "premiere": "2022-06-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Shrinking",
+    "premiere": "2023-01-27",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Platonic",
+    "premiere": "2023-05-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Palm Royale",
+    "premiere": "2024-03-20",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Bad Monkey",
+    "premiere": "2024-08-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Studio",
+    "premiere": "2025-03-26",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Government Cheese",
+    "premiere": "2025-04-16",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Murderbot",
+    "premiere": "2025-05-16",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Stick",
+    "premiere": "2025-06-04",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Yo Gabba GabbaLand!",
+    "premiere": "2024-08-09",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Stillwater",
+    "premiere": "2020-12-04",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Sago Mini Friends",
+    "premiere": "2022-09-16",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Shape Island",
+    "premiere": "2023-01-20",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Eva the Owlet",
+    "premiere": "2023-03-31",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Curses!",
+    "premiere": "2023-10-27",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Camp Snoopy",
+    "premiere": "2024-06-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "WondLa",
+    "premiere": "2024-06-28",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Wonder Pets: In the City",
+    "premiere": "2024-12-13",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Goldie",
+    "premiere": "2025-02-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Bearbrick",
+    "premiere": "2025-03-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Not a Box",
+    "premiere": "2025-06-13",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Sisters Grimm",
+    "premiere": "2025-10-03",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Women in Blue",
+    "premiere": "2024-07-31",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "La Maison",
+    "premiere": "2024-09-20",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Midnight Family",
+    "premiere": "2024-09-25",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Where's Wanda?",
+    "premiere": "2024-10-02",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "You Would Do It Too",
+    "premiere": "2024-10-30",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Love You to Death",
+    "premiere": "2025-02-05",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Carême",
+    "premiere": "2025-04-30",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Prehistoric Planet",
+    "premiere": "2022-05-23",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Reluctant Traveler",
+    "premiere": "2023-02-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Wild Ones",
+    "premiere": "2025-07-11",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Mr. Scorsese",
+    "premiere": "2025-10-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "KPopped",
+    "premiere": "2025-08-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Countdown to First Pitch",
+    "premiere": "2022-04-07",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "MLB Daily Recap",
+    "premiere": "2022-04-07",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Friday Night Baseball",
+    "premiere": "2022-04-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Margo's Got Money Troubles",
+    "premiere": "2026-01-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Lucky",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "12 12 12",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Cape Fear",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Dispatcher",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Imperfect Women",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Neuromancer",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Star City",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Wanted Man",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Berlin Noir",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Dealer",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Off Weeks",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Untitled Joona Linna series",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Wild Things",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Brothers",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Widow's Bay",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Choir",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Husbands",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "I'm Glad My Mom Died",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Maximum Pleasure Guaranteed",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Prodigies",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "À L'ombre des Forêts",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Endangered Planet",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Knife Edge: Chasing Michelin Stars",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Untitled UConn Huskies women's basketball docuseries",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "See",
+    "premiere": "2019-11-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Servant",
+    "premiere": "2019-11-28",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Truth Be Told",
+    "premiere": "2019-12-06",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Amazing Stories",
+    "premiere": "2020-03-06",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Home Before Dark",
+    "premiere": "2020-04-03",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Defending Jacob",
+    "premiere": "2020-04-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Little Voice",
+    "premiere": "2020-07-10",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Mosquito Coast",
+    "premiere": "2021-04-30",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Lisey's Story",
+    "premiere": "2021-06-04",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Swagger",
+    "premiere": "2021-10-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Shrink Next Door",
+    "premiere": "2021-11-12",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Suspicion",
+    "premiere": "2022-02-04",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Last Days of Ptolemy Grey",
+    "premiere": "2022-03-11",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "WeCrashed",
+    "premiere": "2022-03-18",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Roar",
+    "premiere": "2022-04-15",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Shining Girls",
+    "premiere": "2022-04-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Essex Serpent",
+    "premiere": "2022-05-13",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Black Bird",
+    "premiere": "2022-07-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Five Days at Memorial",
+    "premiere": "2022-08-12",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Shantaram",
+    "premiere": "2022-10-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Echo 3",
+    "premiere": "2022-11-23",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Dear Edward",
+    "premiere": "2023-02-03",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Hello Tomorrow!",
+    "premiere": "2023-02-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Extrapolations",
+    "premiere": "2023-03-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "City on Fire",
+    "premiere": "2023-05-12",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Crowded Room",
+    "premiere": "2023-06-09",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Changeling",
+    "premiere": "2023-09-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Lessons in Chemistry",
+    "premiere": "2023-10-13",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Masters of the Air",
+    "premiere": "2024-01-26",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Constellation",
+    "premiere": "2024-02-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Manhunt",
+    "premiere": "2024-03-15",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Franklin",
+    "premiere": "2024-04-12",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Big Cigar",
+    "premiere": "2024-05-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Lady in the Lake",
+    "premiere": "2024-07-19",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Disclaimer",
+    "premiere": "2024-10-11",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Before",
+    "premiere": "2024-10-25",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Prime Target",
+    "premiere": "2025-01-22",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Dope Thief",
+    "premiere": "2025-03-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Smoke",
+    "premiere": "2025-06-27",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Dickinson",
+    "premiere": "2019-11-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Little America",
+    "premiere": "2020-01-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Mythic Quest",
+    "premiere": "2020-02-07",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Physical",
+    "premiere": "2021-06-18",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Schmigadoon!",
+    "premiere": "2021-07-16",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Mr. Corman",
+    "premiere": "2021-08-06",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Acapulco",
+    "premiere": "2021-10-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Afterparty",
+    "premiere": "2022-01-28",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Big Door Prize",
+    "premiere": "2023-03-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "High Desert",
+    "premiere": "2023-05-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Still Up",
+    "premiere": "2023-09-22",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Completely Made-Up Adventures of Dick Turpin",
+    "premiere": "2024-03-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Land of Women",
+    "premiere": "2024-06-26",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Sunny",
+    "premiere": "2024-07-10",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Time Bandits",
+    "premiere": "2024-07-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Side Quest",
+    "premiere": "2025-03-26",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Ghostwriter",
+    "premiere": "2019-11-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Helpsters",
+    "premiere": "2019-11-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Fraggle Rock: Rock On!",
+    "premiere": "2020-04-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Helpsters Help You",
+    "premiere": "2020-04-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Puppy Place",
+    "premiere": "2021-10-15",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Hello, Jack! The Kindness Show",
+    "premiere": "2021-11-05",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Fraggle Rock: Back to the Rock",
+    "premiere": "2022-01-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Lovely Little Farm",
+    "premiere": "2022-06-10",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Best Foot Forward",
+    "premiere": "2022-07-22",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Amber Brown",
+    "premiere": "2022-07-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Surfside Girls",
+    "premiere": "2022-08-19",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Life by Ella",
+    "premiere": "2022-09-02",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Slumberkins",
+    "premiere": "2022-11-04",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Circuit Breakers",
+    "premiere": "2022-11-11",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Jane",
+    "premiere": "2023-04-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Me",
+    "premiere": "2024-07-12",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Central Park",
+    "premiere": "2020-05-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Strange Planet",
+    "premiere": "2023-08-09",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Snoopy in Space",
+    "premiere": "2019-11-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Doug Unplugs",
+    "premiere": "2020-11-13",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Snoopy Show",
+    "premiere": "2021-02-05",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Wolfboy and the Everything Factory",
+    "premiere": "2021-09-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Get Rolling with Otis",
+    "premiere": "2021-10-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Harriet the Spy",
+    "premiere": "2021-11-19",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "El Deafo",
+    "premiere": "2022-01-07",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Pretzel and the Puppies",
+    "premiere": "2022-02-11",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Pinecone & Pony",
+    "premiere": "2022-04-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Duck & Goose",
+    "premiere": "2022-07-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Interrupting Chicken",
+    "premiere": "2022-11-18",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Frog and Toad",
+    "premiere": "2023-04-28",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Dr. Brain",
+    "premiere": "2021-11-03",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Now and Then",
+    "premiere": "2022-05-20",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Liaison",
+    "premiere": "2023-02-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Visible: Out on Television",
+    "premiere": "2020-02-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Home",
+    "premiere": "2020-04-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Dear...",
+    "premiere": "2020-06-05",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Greatness Code",
+    "premiere": "2020-07-10",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Long Way Up",
+    "premiere": "2020-09-18",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Tiny World",
+    "premiere": "2020-10-02",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Becoming You",
+    "premiere": "2020-11-13",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Earth at Night in Color",
+    "premiere": "2020-12-04",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "1971: The Year That Music Changed Everything",
+    "premiere": "2021-05-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Me You Can't See",
+    "premiere": "2021-05-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Watch the Sound with Mark Ronson",
+    "premiere": "2021-07-30",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Line",
+    "premiere": "2021-11-19",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Lincoln's Dilemma",
+    "premiere": "2022-02-18",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Long Game: Bigger Than Basketball",
+    "premiere": "2022-04-22",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "They Call Me Magic",
+    "premiere": "2022-04-22",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Make or Break",
+    "premiere": "2022-04-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Big Conn",
+    "premiere": "2022-05-06",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Gutsy",
+    "premiere": "2022-09-09",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Super League: The War for Football",
+    "premiere": "2023-01-13",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Real Madrid: Until the End",
+    "premiere": "2023-03-10",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Monster Factory",
+    "premiere": "2023-03-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Boom! Boom! The World vs. Boris Becker",
+    "premiere": "2023-04-07",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Big Beasts",
+    "premiere": "2023-04-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Wanted: The Escape of Carlos Ghosn",
+    "premiere": "2023-08-25",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Super Models",
+    "premiere": "2023-09-20",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Messi Meets America",
+    "premiere": "2023-10-11",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Enfield Poltergeist",
+    "premiere": "2023-10-27",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "John Lennon: Murder Without a Trial",
+    "premiere": "2023-12-06",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Dynasty: New England Patriots",
+    "premiere": "2024-02-16",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Messi's World Cup: The Rise of a Legend",
+    "premiere": "2024-02-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Earthsounds",
+    "premiere": "2024-02-23",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "STEVE! (martin) a documentary in 2 pieces",
+    "premiere": "2024-03-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Hollywood Con Queen",
+    "premiere": "2024-05-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Omnivore",
+    "premiere": "2024-07-19",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Cowboy Cartel",
+    "premiere": "2024-08-02",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "K-Pop Idols",
+    "premiere": "2024-08-30",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Vietnam: The War That Changed America",
+    "premiere": "2025-01-31",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Onside: Major League Soccer",
+    "premiere": "2025-02-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Fight for Glory: 2024 World Series",
+    "premiere": "2025-03-28",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Number One on the Call Sheet",
+    "premiere": "2025-03-28",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Long Way Home",
+    "premiere": "2025-05-09",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "My Kind of Country",
+    "premiere": "2023-03-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Oprah's Book Club",
+    "premiere": "2019-11-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Oprah Talks COVID-19",
+    "premiere": "2020-03-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Oprah Conversation",
+    "premiere": "2020-07-30",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Problem with Jon Stewart",
+    "premiere": "2021-09-30",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Snoopy Presents: For Auld Lang Syne",
+    "premiere": "2021-12-10",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Snoopy Presents: It's the Small Things, Charlie Brown",
+    "premiere": "2022-04-15",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Snoopy Presents: To Mom (and Dad), With Love",
+    "premiere": "2022-05-06",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Snoopy Presents: Lucy's School",
+    "premiere": "2022-08-12",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Snoopy Presents: One-of-a-Kind Marcie",
+    "premiere": "2023-08-18",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Snoopy Presents: Welcome Home, Franklin",
+    "premiere": "2024-02-16",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "A Carpool Karaoke Christmas",
+    "premiere": "2024-12-16",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Snoopy Presents: A Summer Musical",
+    "premiere": "2025-08-15",
+    "streamer": "APPLE_PLUS",
+  },
+]
+`;
+
+exports[`WikiTitlesScraper findTitles: applePlus_titles.html 1`] = `
+[
+  {
+    "name": "For All Mankind",
+    "premiere": "2019-11-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Morning Show",
+    "premiere": "2019-11-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Foundation",
+    "premiere": "2021-09-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Invasion",
+    "premiere": "2021-10-22",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Severance",
+    "premiere": "2022-02-18",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Pachinko",
+    "premiere": "2022-03-25",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Slow Horses",
+    "premiere": "2022-04-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Surface",
+    "premiere": "2022-07-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Bad Sisters",
+    "premiere": "2022-08-19",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Last Thing He Told Me",
+    "premiere": "2023-04-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Silo",
+    "premiere": "2023-05-05",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Hijack",
+    "premiere": "2023-06-28",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Buccaneers",
+    "premiere": "2023-11-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Monarch: Legacy of Monsters",
+    "premiere": "2023-11-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Criminal Record",
+    "premiere": "2024-01-10",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The New Look",
+    "premiere": "2024-02-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Sugar",
+    "premiere": "2024-04-05",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Dark Matter",
+    "premiere": "2024-05-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Presumed Innocent",
+    "premiere": "2024-06-12",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Your Friends & Neighbors",
+    "premiere": "2025-04-11",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Chief of War",
+    "premiere": "2025-08-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Savant",
+    "premiere": "2025-09-26",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Last Frontier",
+    "premiere": "2025-10-10",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Down Cemetery Road",
+    "premiere": "2025-10-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Pluribus",
+    "premiere": "2025-11-07",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Trying",
+    "premiere": "2020-05-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Ted Lasso",
+    "premiere": "2020-08-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Loot",
+    "premiere": "2022-06-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Shrinking",
+    "premiere": "2023-01-27",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Platonic",
+    "premiere": "2023-05-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Palm Royale",
+    "premiere": "2024-03-20",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Bad Monkey",
+    "premiere": "2024-08-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Studio",
+    "premiere": "2025-03-26",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Government Cheese",
+    "premiere": "2025-04-16",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Murderbot",
+    "premiere": "2025-05-16",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Stick",
+    "premiere": "2025-06-04",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Yo Gabba GabbaLand!",
+    "premiere": "2024-08-09",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Stillwater",
+    "premiere": "2020-12-04",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Sago Mini Friends",
+    "premiere": "2022-09-16",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Shape Island",
+    "premiere": "2023-01-20",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Eva the Owlet",
+    "premiere": "2023-03-31",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Curses!",
+    "premiere": "2023-10-27",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Camp Snoopy",
+    "premiere": "2024-06-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "WondLa",
+    "premiere": "2024-06-28",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Wonder Pets: In the City",
+    "premiere": "2024-12-13",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Goldie",
+    "premiere": "2025-02-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Bearbrick",
+    "premiere": "2025-03-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Not a Box",
+    "premiere": "2025-06-13",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Sisters Grimm",
+    "premiere": "2025-10-03",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Women in Blue",
+    "premiere": "2024-07-31",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "La Maison",
+    "premiere": "2024-09-20",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Midnight Family",
+    "premiere": "2024-09-25",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Where's Wanda?",
+    "premiere": "2024-10-02",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "You Would Do It Too",
+    "premiere": "2024-10-30",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Love You to Death",
+    "premiere": "2025-02-05",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Carême",
+    "premiere": "2025-04-30",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Prehistoric Planet",
+    "premiere": "2022-05-23",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Reluctant Traveler",
+    "premiere": "2023-02-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Wild Ones",
+    "premiere": "2025-07-11",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Mr. Scorsese",
+    "premiere": "2025-10-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "KPopped",
+    "premiere": "2025-08-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Countdown to First Pitch",
+    "premiere": "2022-04-07",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "MLB Daily Recap",
+    "premiere": "2022-04-07",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Friday Night Baseball",
+    "premiere": "2022-04-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Margo's Got Money Troubles",
+    "premiere": "2026-01-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Lucky",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "12 12 12",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Cape Fear",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Dispatcher",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Imperfect Women",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Neuromancer",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Star City",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Wanted Man",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Berlin Noir",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Dealer",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Off Weeks",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Untitled Joona Linna series",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Wild Things",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Brothers",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Widow's Bay",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Choir",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Husbands",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "I'm Glad My Mom Died",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Maximum Pleasure Guaranteed",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Prodigies",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "À L'ombre des Forêts",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Endangered Planet",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Knife Edge: Chasing Michelin Stars",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Untitled UConn Huskies women's basketball docuseries",
+    "premiere": undefined,
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "See",
+    "premiere": "2019-11-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Servant",
+    "premiere": "2019-11-28",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Truth Be Told",
+    "premiere": "2019-12-06",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Amazing Stories",
+    "premiere": "2020-03-06",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Home Before Dark",
+    "premiere": "2020-04-03",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Defending Jacob",
+    "premiere": "2020-04-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Little Voice",
+    "premiere": "2020-07-10",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Mosquito Coast",
+    "premiere": "2021-04-30",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Lisey's Story",
+    "premiere": "2021-06-04",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Swagger",
+    "premiere": "2021-10-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Shrink Next Door",
+    "premiere": "2021-11-12",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Suspicion",
+    "premiere": "2022-02-04",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Last Days of Ptolemy Grey",
+    "premiere": "2022-03-11",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "WeCrashed",
+    "premiere": "2022-03-18",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Roar",
+    "premiere": "2022-04-15",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Shining Girls",
+    "premiere": "2022-04-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Essex Serpent",
+    "premiere": "2022-05-13",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Black Bird",
+    "premiere": "2022-07-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Five Days at Memorial",
+    "premiere": "2022-08-12",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Shantaram",
+    "premiere": "2022-10-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Echo 3",
+    "premiere": "2022-11-23",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Dear Edward",
+    "premiere": "2023-02-03",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Hello Tomorrow!",
+    "premiere": "2023-02-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Extrapolations",
+    "premiere": "2023-03-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "City on Fire",
+    "premiere": "2023-05-12",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Crowded Room",
+    "premiere": "2023-06-09",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Changeling",
+    "premiere": "2023-09-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Lessons in Chemistry",
+    "premiere": "2023-10-13",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Masters of the Air",
+    "premiere": "2024-01-26",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Constellation",
+    "premiere": "2024-02-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Manhunt",
+    "premiere": "2024-03-15",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Franklin",
+    "premiere": "2024-04-12",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Big Cigar",
+    "premiere": "2024-05-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Lady in the Lake",
+    "premiere": "2024-07-19",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Disclaimer",
+    "premiere": "2024-10-11",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Before",
+    "premiere": "2024-10-25",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Prime Target",
+    "premiere": "2025-01-22",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Dope Thief",
+    "premiere": "2025-03-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Smoke",
+    "premiere": "2025-06-27",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Dickinson",
+    "premiere": "2019-11-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Little America",
+    "premiere": "2020-01-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Mythic Quest",
+    "premiere": "2020-02-07",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Physical",
+    "premiere": "2021-06-18",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Schmigadoon!",
+    "premiere": "2021-07-16",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Mr. Corman",
+    "premiere": "2021-08-06",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Acapulco",
+    "premiere": "2021-10-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Afterparty",
+    "premiere": "2022-01-28",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Big Door Prize",
+    "premiere": "2023-03-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "High Desert",
+    "premiere": "2023-05-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Still Up",
+    "premiere": "2023-09-22",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Completely Made-Up Adventures of Dick Turpin",
+    "premiere": "2024-03-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Land of Women",
+    "premiere": "2024-06-26",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Sunny",
+    "premiere": "2024-07-10",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Time Bandits",
+    "premiere": "2024-07-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Side Quest",
+    "premiere": "2025-03-26",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Ghostwriter",
+    "premiere": "2019-11-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Helpsters",
+    "premiere": "2019-11-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Fraggle Rock: Rock On!",
+    "premiere": "2020-04-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Helpsters Help You",
+    "premiere": "2020-04-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Puppy Place",
+    "premiere": "2021-10-15",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Hello, Jack! The Kindness Show",
+    "premiere": "2021-11-05",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Fraggle Rock: Back to the Rock",
+    "premiere": "2022-01-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Lovely Little Farm",
+    "premiere": "2022-06-10",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Best Foot Forward",
+    "premiere": "2022-07-22",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Amber Brown",
+    "premiere": "2022-07-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Surfside Girls",
+    "premiere": "2022-08-19",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Life by Ella",
+    "premiere": "2022-09-02",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Slumberkins",
+    "premiere": "2022-11-04",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Circuit Breakers",
+    "premiere": "2022-11-11",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Jane",
+    "premiere": "2023-04-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Me",
+    "premiere": "2024-07-12",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Central Park",
+    "premiere": "2020-05-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Strange Planet",
+    "premiere": "2023-08-09",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Snoopy in Space",
+    "premiere": "2019-11-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Doug Unplugs",
+    "premiere": "2020-11-13",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Snoopy Show",
+    "premiere": "2021-02-05",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Wolfboy and the Everything Factory",
+    "premiere": "2021-09-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Get Rolling with Otis",
+    "premiere": "2021-10-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Harriet the Spy",
+    "premiere": "2021-11-19",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "El Deafo",
+    "premiere": "2022-01-07",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Pretzel and the Puppies",
+    "premiere": "2022-02-11",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Pinecone & Pony",
+    "premiere": "2022-04-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Duck & Goose",
+    "premiere": "2022-07-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Interrupting Chicken",
+    "premiere": "2022-11-18",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Frog and Toad",
+    "premiere": "2023-04-28",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Dr. Brain",
+    "premiere": "2021-11-03",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Now and Then",
+    "premiere": "2022-05-20",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Liaison",
+    "premiere": "2023-02-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Visible: Out on Television",
+    "premiere": "2020-02-14",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Home",
+    "premiere": "2020-04-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Dear...",
+    "premiere": "2020-06-05",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Greatness Code",
+    "premiere": "2020-07-10",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Long Way Up",
+    "premiere": "2020-09-18",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Tiny World",
+    "premiere": "2020-10-02",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Becoming You",
+    "premiere": "2020-11-13",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Earth at Night in Color",
+    "premiere": "2020-12-04",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "1971: The Year That Music Changed Everything",
+    "premiere": "2021-05-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Me You Can't See",
+    "premiere": "2021-05-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Watch the Sound with Mark Ronson",
+    "premiere": "2021-07-30",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Line",
+    "premiere": "2021-11-19",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Lincoln's Dilemma",
+    "premiere": "2022-02-18",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Long Game: Bigger Than Basketball",
+    "premiere": "2022-04-22",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "They Call Me Magic",
+    "premiere": "2022-04-22",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Make or Break",
+    "premiere": "2022-04-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Big Conn",
+    "premiere": "2022-05-06",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Gutsy",
+    "premiere": "2022-09-09",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Super League: The War for Football",
+    "premiere": "2023-01-13",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Real Madrid: Until the End",
+    "premiere": "2023-03-10",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Monster Factory",
+    "premiere": "2023-03-17",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Boom! Boom! The World vs. Boris Becker",
+    "premiere": "2023-04-07",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Big Beasts",
+    "premiere": "2023-04-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Wanted: The Escape of Carlos Ghosn",
+    "premiere": "2023-08-25",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Super Models",
+    "premiere": "2023-09-20",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Messi Meets America",
+    "premiere": "2023-10-11",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Enfield Poltergeist",
+    "premiere": "2023-10-27",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "John Lennon: Murder Without a Trial",
+    "premiere": "2023-12-06",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Dynasty: New England Patriots",
+    "premiere": "2024-02-16",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Messi's World Cup: The Rise of a Legend",
+    "premiere": "2024-02-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Earthsounds",
+    "premiere": "2024-02-23",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "STEVE! (martin) a documentary in 2 pieces",
+    "premiere": "2024-03-29",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Hollywood Con Queen",
+    "premiere": "2024-05-08",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Omnivore",
+    "premiere": "2024-07-19",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Cowboy Cartel",
+    "premiere": "2024-08-02",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "K-Pop Idols",
+    "premiere": "2024-08-30",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Vietnam: The War That Changed America",
+    "premiere": "2025-01-31",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Onside: Major League Soccer",
+    "premiere": "2025-02-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Fight for Glory: 2024 World Series",
+    "premiere": "2025-03-28",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Number One on the Call Sheet",
+    "premiere": "2025-03-28",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Long Way Home",
+    "premiere": "2025-05-09",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "My Kind of Country",
+    "premiere": "2023-03-24",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Oprah's Book Club",
+    "premiere": "2019-11-01",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Oprah Talks COVID-19",
+    "premiere": "2020-03-21",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Oprah Conversation",
+    "premiere": "2020-07-30",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "The Problem with Jon Stewart",
+    "premiere": "2021-09-30",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Snoopy Presents: For Auld Lang Syne",
+    "premiere": "2021-12-10",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Snoopy Presents: It's the Small Things, Charlie Brown",
+    "premiere": "2022-04-15",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Snoopy Presents: To Mom (and Dad), With Love",
+    "premiere": "2022-05-06",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Snoopy Presents: Lucy's School",
+    "premiere": "2022-08-12",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Snoopy Presents: One-of-a-Kind Marcie",
+    "premiere": "2023-08-18",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Snoopy Presents: Welcome Home, Franklin",
+    "premiere": "2024-02-16",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "A Carpool Karaoke Christmas",
+    "premiere": "2024-12-16",
+    "streamer": "APPLE_PLUS",
+  },
+  {
+    "name": "Snoopy Presents: A Summer Musical",
+    "premiere": "2025-08-15",
+    "streamer": "APPLE_PLUS",
+  },
+]
+`;
