@@ -15,15 +15,19 @@ docker compose down -v --rmi local
 
 BUILD
 ```bash
-docker build -t iowa/stream-originals-api:latest .
+docker build -t stream-originals-api .
 ```
 
 START
 ```bash
-docker rm -f stream-originals-api || true && docker run --name stream-originals-api -p 3000:3000 iowa/stream-originals-api
+docker rm -f stream-originals-api || true && docker run --name stream-originals-api -p 3000:3000 stream-originals-api
 ```
 
-PUSH
 ```bash
-docker push iowa/stream-originals-api:latest
+docker tag stream-originals-api gcr.io/stream-originals-api/stream-originals-api
+```
+
+
+```bash
+docker push gcr.io/stream-originals-api/stream-originals-api
 ```
