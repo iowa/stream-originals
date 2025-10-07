@@ -1,0 +1,186 @@
+{
+  "id": "ae79045f-ec99-45b6-b0cd-5ed74e3a9bc5",
+  "prevId": "f3646a7b-7bc0-4826-9c3d-c784de7593fa",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "stream_originals.titles_media": {
+      "name": "titles_media",
+      "schema": "stream_originals",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "title_id": {
+          "name": "title_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "url": {
+          "name": "url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "height": {
+          "name": "height",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "width": {
+          "name": "width",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "titles_media_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "titles_media_title_id_titles_id_fk": {
+          "name": "titles_media_title_id_titles_id_fk",
+          "tableFrom": "titles_media",
+          "tableTo": "titles",
+          "schemaTo": "stream_originals",
+          "columnsFrom": [
+            "title_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "titles_media_url_unique": {
+          "name": "titles_media_url_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "url"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "stream_originals.titles": {
+      "name": "titles",
+      "schema": "stream_originals",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "premiere": {
+          "name": "premiere",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "streamer": {
+          "name": "streamer",
+          "type": "streamers",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "imdbId": {
+          "name": "imdbId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "imdbType": {
+          "name": "imdbType",
+          "type": "titles_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "titles_name_streamer_unique": {
+          "name": "titles_name_streamer_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "name",
+            "streamer"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.streamers": {
+      "name": "streamers",
+      "schema": "public",
+      "values": [
+        "APPLE_PLUS",
+        "NETFLIX"
+      ]
+    },
+    "public.titles_media_type": {
+      "name": "titles_media_type",
+      "schema": "public",
+      "values": [
+        "MAIN"
+      ]
+    },
+    "public.titles_type": {
+      "name": "titles_type",
+      "schema": "public",
+      "values": [
+        "MOVIE",
+        "TV_SERIES",
+        "TV_MINI_SERIES",
+        "TV_SPECIAL",
+        "TV_MOVIE",
+        "SHORT",
+        "VIDEO",
+        "VIDEO_GAME"
+      ]
+    }
+  },
+  "schemas": {
+    "stream_originals": "stream_originals"
+  },
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

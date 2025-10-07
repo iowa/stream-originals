@@ -1,0 +1,18 @@
+services:
+  stream-originals-database:
+    image: postgres:17-alpine3.22
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: stream_originals
+    ports:
+      - '5433:5432'
+    volumes:
+      - stream-originals-db-data:/var/lib/postgresql/data # persist data even if container shuts down
+    networks:
+      - stream-originals-network
+volumes:
+  stream-originals-db-data:
+networks:
+  stream-originals-network:
+    name: stream-originals-network
