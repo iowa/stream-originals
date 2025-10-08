@@ -1,47 +1,57 @@
-FROM node:24-alpine3.22 AS base
-
-# The web Dockerfile is copy-pasted into our main docs at /docs/handbook/deploying-with-docker.
-# Make sure you update this Dockerfile, the Dockerfile in the web workspace and copy that over to Dockerfile in the docs.
-
-FROM base AS builder
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+# Alpine image
+FROM node:24-alpine AS alpine
 RUN apk update
 RUN apk add --no-cache libc6-compat
-# Set working directory
+
+# Setup pnpm and turbo on the alpine base
+FROM alpine AS base
+RUN npm install pnpm turbo --global
+RUN pnpm config set store-dir ~/.pnpm-store
+
+# Prune projects
+FROM base AS pruner
+ARG PROJECT
+
 WORKDIR /app
-RUN npm install -g turbo
 COPY . .
-RUN turbo prune api --docker
+RUN turbo prune --scope=${PROJECT} --docker
 
-# Add lockfile and package.json's of isolated subworkspace
-FROM base AS installer
-RUN apk update
-RUN apk add --no-cache libc6-compat
+# Build the project
+FROM base AS builder
+ARG PROJECT=api
+
 WORKDIR /app
 
-# First install dependencies (as they change less often)
-COPY --from=builder /app/out/json/ .
-RUN npm install
+# Copy lockfile and package.json's of isolated subworkspace
+COPY --from=pruner /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
+COPY --from=pruner /app/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
+COPY --from=pruner /app/out/json/ .
 
-# Build the project and its dependencies
-COPY --from=builder /app/out/full/ .
+# First install the dependencies (as they change less often)
+RUN --mount=type=cache,id=pnpm,target=~/.pnpm-store pnpm install --frozen-lockfile
 
-# Uncomment and use build args to enable remote caching
-# ARG TURBO_TEAM
-# ENV TURBO_TEAM=$TURBO_TEAM
+# Copy source code of isolated subworkspace
+COPY --from=pruner /app/out/full/ .
 
-# ARG TURBO_TOKEN
-# ENV TURBO_TOKEN=$TURBO_TOKEN
+RUN turbo build --filter=${PROJECT}
+RUN --mount=type=cache,id=pnpm,target=~/.pnpm-store pnpm prune --prod --no-optional
+RUN rm -rf ./**/*/src
 
-RUN npm turbo build
+# Final image
+FROM alpine AS runner
+ARG PROJECT
 
-FROM base AS runner
-WORKDIR /app
-
-# Don't run production as root
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nodejs
 USER nodejs
-COPY --from=installer /app .
+
+WORKDIR /app
+COPY --from=builder --chown=nodejs:nodejs /app .
+WORKDIR /app/apps/${PROJECT}
+
+ARG PORT=8080
+ENV PORT=${PORT}
+ENV NODE_ENV=production
+EXPOSE ${PORT}
 
 CMD ["node", "apps/api/dist/index.js"]

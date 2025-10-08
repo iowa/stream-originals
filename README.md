@@ -15,7 +15,7 @@ docker compose down -v --rmi local
 
 BUILD
 ```bash
-docker build -f apps/api/Dockerfile -t stream-originals-api .
+docker build -f apps/api/Dockerfile -t stream-originals-api --no-cache --platform=linux/amd64 . 
 ```
 
 START
