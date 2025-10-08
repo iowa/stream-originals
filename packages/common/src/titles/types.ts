@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { streamerValues } from "../db/dbTypes";
+import { streamerValues } from "../db/dbTypes.js";
 
 export const TitlesCrawleeResponseSchema = z.object({
   totalOnWebsite: z.number(),

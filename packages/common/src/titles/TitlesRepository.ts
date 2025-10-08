@@ -1,5 +1,7 @@
 import { and, count, eq, isNotNull } from "drizzle-orm";
-import { db, type Streamer, type Title, titlesTable } from "@repo/common";
+import { Streamer, Title } from "../db/dbTypes.js";
+import { db } from "../db/db.js";
+import { titlesTable } from "../db/schema.js";
 
 export class TitlesRepository {
   static async getTitles(): Promise<Title[]> {

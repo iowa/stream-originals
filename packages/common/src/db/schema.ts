@@ -1,5 +1,5 @@
 import * as p from "drizzle-orm/pg-core";
-import { streamerValues, titlesMediaType, titleTypeValues } from "./dbTypes";
+import { streamerValues, titlesMediaType, titleTypeValues } from "./dbTypes.js";
 
 export const schema = p.pgSchema("stream_originals");
 

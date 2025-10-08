@@ -1,7 +1,7 @@
 import { Pool } from "pg";
 import { drizzle } from "drizzle-orm/node-postgres";
-import { titlesMediaTable, titlesTable } from "./schema";
 import "dotenv/config";
+import { titlesMediaTable, titlesTable } from "./schema.js";
 
 export const db = drizzle({
   client: new Pool({

@@ -1,4 +1,7 @@
 import { A } from "@solidjs/router";
+import { For } from "solid-js";
+import { streamerValues } from "@repo/common";
+import Paths from "~/ui/layout/Paths";
 
 export default function AppHeader() {
   return (
@@ -8,7 +11,13 @@ export default function AppHeader() {
       </div>
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
-          <li><A href={"/streamer/NETFLIX"}>NETFLIX</A></li>
+          <For each={streamerValues}>
+            {streamer => (
+              <li>
+                <A href={Paths.streamer(streamer)}>{streamer}</A>
+              </li>
+            )}
+          </For>
         </ul>
       </div>
       <div class="navbar-end">
