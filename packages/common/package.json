@@ -7,7 +7,8 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "db:generate": "npx drizzle-kit generate",
-    "db:migrate": "npx drizzle-kit migrate"
+    "db:migrate": "npx drizzle-kit migrate",
+    "upgrade-dependencies": "ncu -u"
   },
   "exports": {
     ".": {
@@ -29,6 +30,7 @@
     "@types/node": "^22.10.7",
     "@types/pg": "^8.15.5",
     "drizzle-kit": "^0.31.5",
+    "npm-check-updates": "^19.0.0",
     "typescript": "5.8.2"
   }
 }
