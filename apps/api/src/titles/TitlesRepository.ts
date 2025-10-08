@@ -4,7 +4,7 @@ import { db, Streamer, Title, titlesTable } from "@repo/common";
 
 export class TitlesRepository {
   static async getTitles(): Promise<Title[]> {
-    return db.query.titlesTable.findMany();
+    return db.select().from(titlesTable).limit(10);
   }
 
   static async getTitlesCount(
