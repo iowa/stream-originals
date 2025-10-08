@@ -15,7 +15,7 @@ docker compose down -v --rmi local
 
 BUILD
 ```bash
-docker build -t stream-originals-api .
+docker build -f apps/api/Dockerfile -t stream-originals-api .
 ```
 
 START
@@ -31,10 +31,10 @@ gcloud auth login
 ```
 
 ```bash
-docker tag stream-originals-api gcr.io/stream-originals-api/stream-originals-api
+docker tag stream-originals-api gcr.io/stream-originals/stream-originals-api
 ```
 
 PUSH
 ```bash
-docker push gcr.io/stream-originals-api/stream-originals-api
+docker push gcr.io/stream-originals/stream-originals-api
 ```

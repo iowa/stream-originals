@@ -6,21 +6,15 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types",
-    "api:vercel:start": "vercel dev",
-    "api:vercel:deploy": "vercel deploy"
+    "check-types": "turbo run check-types"
   },
   "devDependencies": {
     "prettier": "^3.5.3",
     "turbo": "^2.5.8",
     "typescript": "5.8.2"
   },
+  "packageManager": "pnpm@9.0.0",
   "engines": {
     "node": ">=18"
-  },
-  "packageManager": "npm@11.4.2",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  }
 }

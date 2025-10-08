@@ -16,7 +16,7 @@ app.get(
         version: "1.0.0",
         description: "API for managing Stream Originals resources.",
       },
-      servers: [{ url: "http://localhost:3000", description: "Local Server" }],
+      servers: [{ url: "http://localhost:8080", description: "Local Server" }],
     },
     includeEmptyPaths: true,
     exclude: ["/", "/openapi"],

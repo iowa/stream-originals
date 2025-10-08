@@ -9,7 +9,7 @@
     "upgrade-dependencies": "ncu -u"
   },
   "dependencies": {
-    "@repo/common": "*",
+    "@repo/common": "workspace:*",
     "@hono/node-server": "^1.19.5",
     "hono": "^4.9.10",
     "hono-openapi": "^1.1.0",
