@@ -10,7 +10,7 @@ RUN pnpm config set store-dir ~/.pnpm-store
 
 # Prune projects
 FROM base AS pruner
-ARG PROJECT
+ARG PROJECT=api
 
 WORKDIR /app
 COPY . .
