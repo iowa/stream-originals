@@ -38,3 +38,13 @@ PUSH
 ```bash
 docker push gcr.io/stream-originals/stream-originals-api
 ```
+
+After deploying Cloud Run
+add Cloud SQL connections
+
+with
+POSTGRES_URL=postgres://myuser:mypassword@/mydatabase?host=/cloudsql/my-project:us-central1:my-instance
+eg: postgres://postgres:password@/postgres?host=/cloudsql/stream-originals:us-central1:stream-originals-postgres
+
+localy to connect to remote database
+POSTGRES_URL="postgres://postgres:password@104.197.84.134:5432"
