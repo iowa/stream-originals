@@ -1,5 +1,5 @@
 {
-  "name": "example-with-tailwindcss",
+  "name": "web",
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",
@@ -8,6 +8,7 @@
     "upgrade-dependencies": "ncu -u"
   },
   "dependencies": {
+    "@repo/common": "workspace:*",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.3",
     "@solidjs/start": "^1.2.0",
