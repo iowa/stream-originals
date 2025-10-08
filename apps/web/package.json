@@ -2,9 +2,9 @@
   "name": "web",
   "type": "module",
   "scripts": {
-    "dev": "vinxi dev",
+    "dev": "vinxi dev --port 8080",
     "build": "vinxi build",
-    "start": "vinxi start",
+    "start": "vinxi start --port 8080",
     "upgrade-dependencies": "ncu -u"
   },
   "dependencies": {

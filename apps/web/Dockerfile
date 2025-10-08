@@ -37,7 +37,7 @@ WORKDIR /app
 COPY --from=builder /app .
 
 USER nodejs
-ARG PROJECT=api
+ARG PROJECT=web
 WORKDIR /app/apps/${PROJECT}
 
 ENV NODE_ENV=production
@@ -45,4 +45,4 @@ ARG PORT=8080
 ENV PORT=${PORT}
 EXPOSE ${PORT}
 
-ENTRYPOINT ["node", "dist/index.js"]
+CMD ["npm", "start"]
