@@ -6,6 +6,7 @@ RUN apk add --no-cache libc6-compat
 # Setup pnpm and turbo on the alpine base
 FROM alpine AS base
 RUN npm install pnpm turbo --global
+ENV CI=true
 RUN pnpm config set store-dir ~/.pnpm-store
 
 # Prune projects
@@ -34,8 +35,7 @@ RUN --mount=type=cache,id=pnpm,target=~/.pnpm-store pnpm install --frozen-lockfi
 COPY --from=pruner /app/out/full/ .
 
 RUN turbo build --filter=${PROJECT}
-RUN --mount=type=cache,id=pnpm,target=~/.pnpm-store pnpm prune --prod --no-optional
-RUN rm -rf ./**/*/src
+RUN pnpm install
 
 # Final image
 FROM alpine AS runner
@@ -54,4 +54,4 @@ ENV PORT=${PORT}
 ENV NODE_ENV=production
 EXPOSE ${PORT}
 
-CMD ["node", "apps/api/dist/index.js"]
+CMD ["node", "api/dist/index.js"]
