@@ -1,6 +1,4 @@
-import { db } from "../db/db.js";
-import { TitleMedia } from "../db/dbTypes.js";
-import { titlesMediaTable } from "../db/schema.js";
+import { db, TitleMedia, titlesMediaTable } from "@repo/common";
 
 export class TitlesMediaRepository {
 

@@ -1,6 +1,6 @@
 import type { Title, TitlesPatchResponse } from "@repo/common";
-import { TitlesRepository } from "@repo/common/titles/TitlesRepository";
 import { TitlesCrawlee } from "./TitlesCrawlee.js";
+import { TitlesRepository } from "./TitlesRepository.js";
 
 export class TitlesService {
   static async getTitles(): Promise<Title[]> {

@@ -3,14 +3,15 @@ import {
   Streamer,
   Title,
   TitleMedia,
-  TitlesCrawleeResponse, TitlesMediaRepository,
+  TitlesCrawleeResponse,
   TitlesPatchResponse,
 } from "@repo/common";
 import { WikiTitlesScraper } from "../lib/source/wikipedia/WikiTitlesScraper.js";
 import { ImdbMediaTitles } from "../lib/source/imdbmedia/ImdbMediaTitles.js";
 import { ImdbMapper } from "../lib/source/imdb/ImdbMapper.js";
-import { TitlesRepository } from "@repo/common/titles/TitlesRepository";
 import { gotScraping } from "crawlee";
+import { TitlesMediaRepository } from "./TitlesMediaRepository.js";
+import { TitlesRepository } from "./TitlesRepository.js";
 
 export class TitlesCrawlee {
   private static readonly APPLE_PLUS_URL =
