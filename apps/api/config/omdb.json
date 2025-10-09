@@ -1,0 +1,5 @@
+{
+  "generatorName": "typescript-axios",
+  "inputSpec": "https://www.omdbapi.com/swagger.json",
+  "outputDir": "./src/lib/source/omdb/generated"
+}
