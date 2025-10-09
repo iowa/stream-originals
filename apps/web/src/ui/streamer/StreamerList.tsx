@@ -3,7 +3,7 @@ import { For, Suspense } from "solid-js";
 import { Eye, Info, Star } from "lucide-solid";
 import { TitlesList } from "~/lib/titles/types";
 import { Image } from "@unpic/solid";
-import { Times } from "@repo/common/utils/time/Times";
+import { Times } from "@repo/common";
 
 interface StreamerListProps {
   titles: AccessorWithLatest<TitlesList[] | undefined>

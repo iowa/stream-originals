@@ -1,7 +1,6 @@
 import axios, { type AxiosResponse } from "axios";
-import type { Title } from "@repo/common";
+import { Times, Title } from "@repo/common";
 import { ImdbMediaResponse } from "./ImdbMediaTypes.js";
-import { Times } from "@repo/common/utils/time/Times";
 
 export class ImdbMediaTitles {
   static async findTitle(title: Title) {

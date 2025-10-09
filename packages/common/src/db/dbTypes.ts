@@ -6,14 +6,14 @@ export const streamerValues = ["APPLE_PLUS", "NETFLIX"] as const;
 export type Streamer = (typeof streamerValues)[number];
 
 export const titleTypeValues = [
-  "MOVIE",
-  "TV_SERIES",
-  "TV_MINI_SERIES",
-  "TV_SPECIAL",
-  "TV_MOVIE",
-  "SHORT",
-  "VIDEO",
-  "VIDEO_GAME",
+  "movie",
+  "tvSeries",
+  "tvMiniSeries",
+  "tvSpecial",
+  "tvMovie",
+  "short",
+  "video",
+  "videoGame",
 ] as const;
 export type TitleType = (typeof titleTypeValues)[number];
 

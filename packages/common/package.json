@@ -8,8 +8,8 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "test": "vitest",
-    "db:generate": "npx drizzle-kit generate",
-    "db:migrate": "npx drizzle-kit migrate",
+    "db:generate": "pnpm drizzle-kit generate",
+    "db:migrate": "pnpm drizzle-kit migrate",
     "upgrade-dependencies": "ncu -u"
   },
   "exports": {

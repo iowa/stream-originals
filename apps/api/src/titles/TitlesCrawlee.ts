@@ -5,10 +5,10 @@ import {
   TitleMedia,
   TitlesCrawleeResponse,
   TitlesPatchResponse,
+  TitleType,
 } from "@repo/common";
 import { WikiTitlesScraper } from "../lib/source/wikipedia/WikiTitlesScraper.js";
 import { ImdbMediaTitles } from "../lib/source/imdbmedia/ImdbMediaTitles.js";
-import { ImdbMapper } from "../lib/source/imdb/ImdbMapper.js";
 import { gotScraping } from "crawlee";
 import { TitlesMediaRepository } from "./TitlesMediaRepository.js";
 import { TitlesRepository } from "./TitlesRepository.js";
@@ -79,7 +79,7 @@ export class TitlesCrawlee {
       return undefined;
     }
     title.imdbId = r.id ?? null;
-    title.imdbType = ImdbMapper.mapType(r.qid) ?? null;
+    title.imdbType = r.qid as TitleType ?? null;
     return r;
   }
 }

@@ -1,5 +1,5 @@
 {
-  "id": "f3646a7b-7bc0-4826-9c3d-c784de7593fa",
+  "id": "e6c3bdb6-33e0-499a-8b44-693885d0d0bd",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -65,7 +65,15 @@
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
+      "uniqueConstraints": {
+        "titles_media_url_unique": {
+          "name": "titles_media_url_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "url"
+          ]
+        }
+      },
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
@@ -152,14 +160,14 @@
       "name": "titles_type",
       "schema": "public",
       "values": [
-        "MOVIE",
-        "TV_SERIES",
-        "TV_MINI_SERIES",
-        "TV_SPECIAL",
-        "TV_MOVIE",
-        "SHORT",
-        "VIDEO",
-        "VIDEO_GAME"
+        "movie",
+        "tvSeries",
+        "tvMiniSeries",
+        "tvSpecial",
+        "tvMovie",
+        "short",
+        "video",
+        "videoGame"
       ]
     }
   },

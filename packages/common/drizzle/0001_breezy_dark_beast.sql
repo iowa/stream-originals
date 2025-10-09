@@ -1,1 +1,0 @@
-ALTER TABLE "stream_originals"."titles_media" ADD CONSTRAINT "titles_media_url_unique" UNIQUE("url");

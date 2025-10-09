@@ -2,14 +2,15 @@ CREATE SCHEMA "stream_originals";
 --> statement-breakpoint
 CREATE TYPE "public"."streamers" AS ENUM('APPLE_PLUS', 'NETFLIX');--> statement-breakpoint
 CREATE TYPE "public"."titles_media_type" AS ENUM('MAIN');--> statement-breakpoint
-CREATE TYPE "public"."titles_type" AS ENUM('MOVIE', 'TV_SERIES', 'TV_MINI_SERIES', 'TV_SPECIAL', 'TV_MOVIE', 'SHORT', 'VIDEO', 'VIDEO_GAME');--> statement-breakpoint
+CREATE TYPE "public"."titles_type" AS ENUM('movie', 'tvSeries', 'tvMiniSeries', 'tvSpecial', 'tvMovie', 'short', 'video', 'videoGame');--> statement-breakpoint
 CREATE TABLE "stream_originals"."titles_media" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"title_id" uuid NOT NULL,
 	"url" text NOT NULL,
 	"height" integer NOT NULL,
 	"width" integer NOT NULL,
-	"type" "titles_media_type"
+	"type" "titles_media_type",
+	CONSTRAINT "titles_media_url_unique" UNIQUE("url")
 );
 --> statement-breakpoint
 CREATE TABLE "stream_originals"."titles" (
