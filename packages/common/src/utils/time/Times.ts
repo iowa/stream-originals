@@ -8,4 +8,9 @@ export class Times {
     if (!date.isValid()) return undefined;
     return date.format(format);
   }
+
+  static asDayjs(s: string | null): dayjs.Dayjs {
+    return dayjs(s);
+  }
+
 }

@@ -1,6 +1,6 @@
 import * as cheerio from "cheerio";
 import type { Title } from "@repo/common";
-import { Times } from "../../utils/time/Times.js";
+import { Times } from "@repo/common/utils/time/Times";
 
 export class WikiTitlesTable {
   static parseRow(html: string) {

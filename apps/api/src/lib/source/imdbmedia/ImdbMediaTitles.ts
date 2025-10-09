@@ -1,7 +1,7 @@
 import axios, { type AxiosResponse } from "axios";
-import dayjs from "dayjs";
 import type { Title } from "@repo/common";
 import { ImdbMediaResponse } from "./ImdbMediaTypes.js";
+import { Times } from "@repo/common/utils/time/Times";
 
 export class ImdbMediaTitles {
   static async findTitle(title: Title) {
@@ -23,7 +23,7 @@ export class ImdbMediaTitles {
     title: Title,
   ) {
     const matches = response.data.d?.filter(
-      (t) => dayjs(title.premiere).year() === t.y,
+      (t) => Times.asDayjs(title.premiere).year() === t.y,
     );
 
     return matches?.[0];

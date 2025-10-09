@@ -1,10 +1,12 @@
 import { AccessorWithLatest } from "@solidjs/router";
-import { Title } from "@repo/common";
 import { For, Suspense } from "solid-js";
-import { Info, Star, Eye } from "lucide-solid";
+import { Eye, Info, Star } from "lucide-solid";
+import { TitlesList } from "~/lib/titles/types";
+import { Image } from "@unpic/solid";
+import { Times } from "@repo/common/utils/time/Times";
 
 interface StreamerListProps {
-  titles: AccessorWithLatest<Title[] | undefined>
+  titles: AccessorWithLatest<TitlesList[] | undefined>
 }
 
 export default function StreamerList({ titles }: StreamerListProps) {
@@ -20,15 +22,13 @@ export default function StreamerList({ titles }: StreamerListProps) {
                     <div class="flex gap-6">
                       {/* Poster Image */}
                       <div class="flex-shrink-0">
-                        {/*
                         <Image
-                          src="/house-of-cards-tv-show-poster-with-dark-political-.jpg"
-                          alt="House of Cards poster"
+                          src={title?.titles_media?.url || ""}
+                          alt={`${title.titles.name}_cover`}
                           width={120}
                           height={180}
-                          class="rounded-lg object-cover"
+                          class={"w-auto h-[80px]"}
                         />
-                        */}
                       </div>
 
                       {/* Content */}
@@ -36,19 +36,18 @@ export default function StreamerList({ titles }: StreamerListProps) {
                         {/* Header with title and info icon */}
                         <div class="flex items-start justify-between gap-4">
                           <div class="flex-1">
-                            <h2 class="text-xl font-semibold text-foreground mb-2">1. House of
-                              Cards</h2>
-
+                            <h2
+                              class="text-xl font-semibold text-foreground mb-2">{title.titles.name}</h2>
                             {/* Metadata */}
                             <div
                               class="flex items-center gap-2 text-sm text-muted-foreground flex-wrap">
-                              <span>2013–2018</span>
+                              <span>{Times.asDayjs(title.titles.premiere).year()}–2018</span>
                               <span>•</span>
                               <span>73 eps</span>
                               <span>•</span>
                               <span class="badge badge-sm badge-outline">TV-MA</span>
                               <span>•</span>
-                              <span>TV Series</span>
+                              <span>{title.titles.imdbType}</span>
                             </div>
                           </div>
 
