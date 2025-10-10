@@ -2,7 +2,8 @@ import axios, { type AxiosResponse } from "axios";
 import { Times, Title } from "@repo/common";
 import { ImdbMediaResponse } from "./ImdbMediaTypes.js";
 
-export class ImdbMediaTitles {
+export class ImdbMediaRestClient {
+
   static async findTitle(title: Title) {
     const axiosInstance = axios.create({
       baseURL: "https://v3.sg.media-imdb.com",
@@ -36,4 +37,5 @@ export class ImdbMediaTitles {
 
     return matches?.[0];
   }
+
 }

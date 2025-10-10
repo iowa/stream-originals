@@ -8,7 +8,7 @@ import {
   TitleType,
 } from "@repo/common";
 import { WikiTitlesScraper } from "../lib/source/wikipedia/WikiTitlesScraper.js";
-import { ImdbMediaTitles } from "../lib/source/imdbmedia/ImdbMediaTitles.js";
+import { ImdbMediaRestClient } from "../lib/source/imdbmedia/ImdbMediaRestClient.js";
 import { gotScraping } from "crawlee";
 import { TitlesMediaRepository } from "./TitlesMediaRepository.js";
 import { TitlesRepository } from "./TitlesRepository.js";
@@ -74,7 +74,7 @@ export class TitlesCrawlee {
   }
 
   private static async mapImdbData(title: Title) {
-    const r = await ImdbMediaTitles.findTitle(title);
+    const r = await ImdbMediaRestClient.findTitle(title);
     if (!r) {
       return undefined;
     }

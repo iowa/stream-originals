@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { OmdbApiClient } from "../OmdbApiClient.js";
+import { OmdbApiRestClient } from "../OmdbApiRestClient.js";
 
-describe("ImdbApiDevTitles", () => {
+describe("OmdbApiRestClient", () => {
 
   it("findTitle tt13745850", async () => {
 
-    const result = await OmdbApiClient.findTitle();
+    const result = await OmdbApiRestClient.findTitle('tt3896198');
 
     expect(result).toMatchInlineSnapshot(`
       {

@@ -1,14 +1,15 @@
 import axios, { type AxiosResponse } from "axios";
 import { ImdbMediaResponse } from "../imdbmedia/ImdbMediaTypes.js";
+import "dotenv/config";
 
-export class OmdbApiClient {
+export class OmdbApiRestClient {
 
-  static async findTitle() {
+  static async findTitle(imdbId: string) {
     const axiosInstance = axios.create({
       baseURL: "https://www.omdbapi.com/",
     });
     const response: AxiosResponse<ImdbMediaResponse> = await axiosInstance.get(
-      `/?i=tt3896198&apikey=3ced4b59`,
+      `/?i=${imdbId}&apikey=` + process.env.OMDB_API_KEY,
     );
     return response.data
   }

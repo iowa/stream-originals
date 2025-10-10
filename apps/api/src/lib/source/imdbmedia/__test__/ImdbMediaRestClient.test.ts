@@ -1,15 +1,15 @@
 import { describe, expect, it } from "vitest";
 import type { Title } from "@repo/common";
-import { ImdbMediaTitles } from "../ImdbMediaTitles.js";
+import { ImdbMediaRestClient } from "../ImdbMediaRestClient.js";
 
-describe("ImdbMediaTitles", () => {
+describe("ImdbMediaRestClient", () => {
   it("findTitle The Last Thing He Told Me", async () => {
     const title = {
       name: "The Last Thing He Told Me",
       premiere: "2023-04-14",
       streamer: "APPLE_PLUS",
     } as Title;
-    const result = await ImdbMediaTitles.findTitle(title);
+    const result = await ImdbMediaRestClient.findTitle(title);
     expect(result?.l).equals("The Last Thing He Told Me");
     expect(result?.y).equals(2023);
   });
@@ -20,7 +20,7 @@ describe("ImdbMediaTitles", () => {
       premiere: "2024-10-30",
       streamer: "APPLE_PLUS",
     } as Title;
-    const result = await ImdbMediaTitles.findTitle(title);
+    const result = await ImdbMediaRestClient.findTitle(title);
     expect(result?.l).equals("You Would Do It Too");
     expect(result?.y).equals(2023);
   });
@@ -31,7 +31,7 @@ describe("ImdbMediaTitles", () => {
       premiere: "2024-10-02",
       streamer: "APPLE_PLUS",
     } as Title;
-    const result = await ImdbMediaTitles.findTitle(title);
+    const result = await ImdbMediaRestClient.findTitle(title);
     expect(result?.l).equals("Where's Wanda?");
     expect(result?.y).equals(2024);
   });
