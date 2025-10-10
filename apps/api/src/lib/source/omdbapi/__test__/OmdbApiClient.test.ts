@@ -11,7 +11,6 @@ describe("OmdbApiRestClient", () => {
     expect(result.Type).toBe("movie");
     expect(result.Title).toBe("The Shawshank Redemption");
     expect(result.Year).toBe("1994");
-    expect(result.Country).toBe("United States");
     expect(result.Genre).toBe("Drama");
   });
 

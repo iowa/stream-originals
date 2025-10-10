@@ -1,0 +1,9 @@
+{
+  "generatorName": "typescript-axios",
+  "inputSpec": "https://imdbapi.dev/imdbapi.swagger.yaml",
+  "outputDir": "./src/lib/source/imdbapidev/generated",
+  "apiPackage": "apis",
+  "modelPackage": "models",
+  "importFileExtension": ".js",
+  "withSeparateModelsAndApi": true
+}
