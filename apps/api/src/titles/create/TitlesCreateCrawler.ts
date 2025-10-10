@@ -15,15 +15,14 @@ export class TitlesCreateCrawler {
     this.streamers.set('netflix', "https://en.wikipedia.org/wiki/List_of_Netflix_original_programming");
   }
 
-  static async create(): Promise<TitlesPatchResponse> {
-    const response: TitlesPatchResponse = {
-      items: [],
-    };
-    for (const streamer of ['appleTV+'] as Streamer[]) {
-      response.items.push(
-        await this.patchStreamer(streamer),
-      );
+  static async create(streamer?: Streamer): Promise<TitlesPatchResponse> {
+    const response: TitlesPatchResponse = { items: [] };
+    const streamers = streamer ? [streamer] : ['appleTV+'] as Streamer[];
+
+    for (const s of streamers) {
+      response.items.push(await this.patchStreamer(s));
     }
+
     return response;
   }
 
