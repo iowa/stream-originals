@@ -19,13 +19,13 @@ app.get(
     },
   }),
   async (c) => {
-    const titles = await TitlesService.getTitles();
+    const titles = await TitlesService.getTitles('appleTV+');
     return c.json(titles);
   },
 );
 
-app.patch(
-  "/crawlee",
+app.post(
+  "/init/crawler",
   describeRoute({
     responses: {
       200: {
@@ -37,7 +37,7 @@ app.patch(
     },
   }),
   async (c) => {
-    const response = await TitlesService.crawleeTitles();
+    const response = await TitlesService.create();
     return c.json(response);
   },
 );

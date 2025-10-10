@@ -1,13 +1,13 @@
-import type { Title, TitlesPatchResponse } from "@repo/common";
-import { TitlesCrawlee } from "./TitlesCrawlee.js";
-import { TitlesRepository } from "./TitlesRepository.js";
+import { Streamer, Title, TitlesPatchResponse } from "@repo/common";
+import { TitlesRepository } from "./repository/TitlesRepository.js";
+import { TitlesCreateCrawler } from "./create/TitlesCreateCrawler.js";
 
 export class TitlesService {
-  static async getTitles(): Promise<Title[]> {
-    return TitlesRepository.getTitles();
+  static async getTitles(streamer: Streamer): Promise<Title[]> {
+    return TitlesRepository.getTitles(streamer);
   }
 
-  static async crawleeTitles(): Promise<TitlesPatchResponse> {
-    return TitlesCrawlee.patch();
+  static async create(): Promise<TitlesPatchResponse> {
+    return TitlesCreateCrawler.create();
   }
 }

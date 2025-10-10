@@ -1,10 +1,13 @@
 import { and, count, eq, isNotNull } from "drizzle-orm";
-import { db, Streamer, Title, titlesTable } from "@repo/common";
+import { db, Streamer, Title, titlesMediaTable, titlesTable } from "@repo/common";
 
 
 export class TitlesRepository {
-  static async getTitles(): Promise<Title[]> {
-    return db.select().from(titlesTable).limit(10);
+  static async getTitles(streamer: Streamer): Promise<Title[]> {
+    return db
+    .select()
+    .from(titlesTable)
+    .where(eq(titlesTable.streamer, streamer));
   }
 
   static async getTitlesCount(
@@ -23,19 +26,6 @@ export class TitlesRepository {
     });
 
     return result[0]?.count ?? 0;
-  }
-
-  static async findUnique(
-    name: string,
-    streamer: Streamer,
-  ): Promise<Title | undefined> {
-    const result = await db
-    .select()
-    .from(titlesTable)
-    .where(and(eq(titlesTable.name, name), eq(titlesTable.streamer, streamer)))
-    .limit(1);
-
-    return result[0];
   }
 
   static async insertTitle(title: Title) {

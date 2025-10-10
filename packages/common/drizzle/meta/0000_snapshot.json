@@ -1,5 +1,5 @@
 {
-  "id": "e6c3bdb6-33e0-499a-8b44-693885d0d0bd",
+  "id": "0e02c295-73b6-4f7a-936b-a013d11c34da",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -145,15 +145,15 @@
       "name": "streamers",
       "schema": "public",
       "values": [
-        "APPLE_PLUS",
-        "NETFLIX"
+        "appleTV+",
+        "netflix"
       ]
     },
     "public.titles_media_type": {
       "name": "titles_media_type",
       "schema": "public",
       "values": [
-        "MAIN"
+        "poster"
       ]
     },
     "public.titles_type": {

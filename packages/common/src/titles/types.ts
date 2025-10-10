@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { streamerValues } from "../db/dbTypes.js";
 
-export const TitlesCrawleeResponseSchema = z.object({
+export const TitlesStreamerResponseSchema = z.object({
   totalOnWebsite: z.number(),
   totalInDatabase: z.number(),
   totalWithImdbId: z.number(),
@@ -9,9 +9,10 @@ export const TitlesCrawleeResponseSchema = z.object({
 });
 
 export const TitlesPatchResponseSchema = z.object({
-  items: z.array(TitlesCrawleeResponseSchema),
+  items: z.array(TitlesStreamerResponseSchema),
 });
 
-export type TitlesCrawleeResponse = z.infer<typeof TitlesCrawleeResponseSchema>;
+export type TitlesStreamerResponse = z.infer<typeof TitlesStreamerResponseSchema>;
 
 export type TitlesPatchResponse = z.infer<typeof TitlesPatchResponseSchema>;
+
