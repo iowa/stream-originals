@@ -37,7 +37,7 @@ export class TitlesCreateCrawler {
       const titleFound = this.findInTitles(wikipediaTitle, dbTitles);
       if (!titleFound?.imdbId) {
         const imdbMediaTitle = await ImdbMediaRestClient.findTitle(wikipediaTitle);
-        const newTitle = await ImdbMediaMapper.mapTitle(wikipediaTitle, imdbMediaTitle);
+        const newTitle = ImdbMediaMapper.mapTitle(wikipediaTitle, imdbMediaTitle);
         const insertedId = await TitlesRepository.insertTitle(newTitle);
         if (imdbMediaTitle?.i) {
           const titleMedia = ImdbMediaMapper.mapPoster(insertedId[0].insertedId, imdbMediaTitle.i);

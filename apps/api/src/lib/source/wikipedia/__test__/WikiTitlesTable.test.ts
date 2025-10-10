@@ -7,7 +7,7 @@ import { WikiTitlesTable } from "../WikiTitlesTable.js";
 describe("WikiTitlesTable", () => {
   it("parseRow For All Mankind", () => {
     const html = TestFiles.load(
-      dirname(fileURLToPath(import.meta.url)),
+      __dirname,
       "/data/tr_For_All_Mankind.html",
     );
 
@@ -22,7 +22,7 @@ describe("WikiTitlesTable", () => {
 
   it("parseRow The Savant", () => {
     const html = TestFiles.load(
-      dirname(fileURLToPath(import.meta.url)),
+      __dirname,
       "/data/tr_The_Savant.html",
     );
 
@@ -37,7 +37,7 @@ describe("WikiTitlesTable", () => {
 
   it("parseRow Eva the Owlet", () => {
     const html = TestFiles.load(
-      dirname(fileURLToPath(import.meta.url)),
+      __dirname,
       "/data/tr_Eva_the_Owlet.html",
     );
 
@@ -52,7 +52,7 @@ describe("WikiTitlesTable", () => {
 
   it("parseRow Neuromancer", () => {
     const html = TestFiles.load(
-      dirname(fileURLToPath(import.meta.url)),
+      __dirname,
       "/data/tr_Neuromancer.html",
     );
 

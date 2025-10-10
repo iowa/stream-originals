@@ -3,7 +3,7 @@ import { ImdbMediaTitle, ImdbMediaTitleImage } from "./ImdbMediaTypes.js";
 
 export class ImdbMediaMapper {
 
-  static async mapTitle(title: Title, imdbTitle?: ImdbMediaTitle): Promise<Title> {
+  static mapTitle(title: Title, imdbTitle?: ImdbMediaTitle): Title {
     if (!imdbTitle) {
       return title
     }
