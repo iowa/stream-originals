@@ -1,6 +1,4 @@
 import { describe, expect, it } from "vitest";
-import { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
 import { TestFiles } from "../../../utils/files/TestFiles.js";
 import { WikiTitlesTable } from "../WikiTitlesTable.js";
 

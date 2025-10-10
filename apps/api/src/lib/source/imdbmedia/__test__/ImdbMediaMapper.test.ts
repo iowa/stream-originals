@@ -1,20 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { Title } from "@repo/common";
 import { ImdbMediaMapper } from "../ImdbMediaMapper.js";
-import { TestFiles } from "../../../utils/files/TestFiles.js";
-import { ImdbMediaTitle } from "../ImdbMediaTypes.js";
+import { Datas } from "../../../utils/data/Datas.js";
 
 describe("ImdbMediaMapper", () => {
   it("mapTitle", () => {
-    const imdbMediaTitleText = TestFiles.load(__dirname, '/data/imdbMedia_tt1856010.json');
-    const result = ImdbMediaMapper.mapTitle({
-      name: "House of Cards",
-      premiere: "2013-02-01",
-      streamer: "netflix",
-    } as Title, JSON.parse(imdbMediaTitleText) as ImdbMediaTitle)
+    const result = ImdbMediaMapper.mapTitle(Datas.Title_HouseOfCards, Datas.ImdbMediaTitle_HouseOfCards)
 
     expect(result).toMatchInlineSnapshot(`
       {
+        "id": "",
         "imdbId": "tt1856010",
         "imdbType": "tvSeries",
         "name": "House of Cards",
@@ -23,4 +17,18 @@ describe("ImdbMediaMapper", () => {
       }
     `);
   });
+
+  it("mapTitle", () => {
+    const result = ImdbMediaMapper.mapPoster('tt1856010', Datas.ImdbMediaTitleImage_HouseOfCards)
+    expect(result).toMatchInlineSnapshot(`
+      {
+        "height": 2048,
+        "titleId": "tt1856010",
+        "type": "poster",
+        "url": "https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg",
+        "width": 1382,
+      }
+    `);
+  });
+
 });
