@@ -3,7 +3,7 @@ import "dotenv/config";
 
 export class OmdbApiRestClient {
 
-  static async findTitle(imdbId: string) {
+   async findTitle(imdbId: string) {
     const axiosInstance = axios.create({
       baseURL: "https://www.omdbapi.com/",
     });

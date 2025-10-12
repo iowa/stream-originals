@@ -4,7 +4,7 @@ import { ImdbMediaResponse, ImdbMediaTitle } from "./ImdbMediaTypes.js";
 
 export class ImdbMediaRestClient {
 
-  static async findTitle(title: Title): Promise<ImdbMediaTitle | undefined> {
+  async findTitle(title: Title): Promise<ImdbMediaTitle | undefined> {
     const axiosInstance = axios.create({
       baseURL: "https://v3.sg.media-imdb.com",
     });
@@ -18,7 +18,7 @@ export class ImdbMediaRestClient {
     return this.isMatchWithName(response, title);
   }
 
-  private static isMatchWithStartYear(
+  private isMatchWithStartYear(
     response: AxiosResponse<ImdbMediaResponse>,
     title: Title,
   ) {
@@ -29,7 +29,7 @@ export class ImdbMediaRestClient {
     return matches?.[0];
   }
 
-  private static isMatchWithName(
+  private isMatchWithName(
     response: AxiosResponse<ImdbMediaResponse>,
     title: Title,
   ) {

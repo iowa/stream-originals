@@ -3,7 +3,7 @@ import { ImdbMediaTitle, ImdbMediaTitleImage } from "./ImdbMediaTypes.js";
 
 export class ImdbMediaMapper {
 
-  static mapTitle(title: Title, imdbTitle?: ImdbMediaTitle): Title {
+  mapTitle(title: Title, imdbTitle?: ImdbMediaTitle): Title {
     if (!imdbTitle) {
       return title
     }
@@ -14,7 +14,7 @@ export class ImdbMediaMapper {
     };
   }
 
-  static mapPoster(titleId: string, poster: ImdbMediaTitleImage): TitleMediaInsert {
+  mapPoster(titleId: string, poster: ImdbMediaTitleImage): TitleMediaInsert {
     return {
       titleId: titleId,
       url: poster.imageUrl,

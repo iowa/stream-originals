@@ -5,6 +5,7 @@ import { TitlesSchema } from "./types.js";
 import { TitlesService } from "./TitlesService.js";
 
 const app = new Hono();
+const titlesService = new TitlesService();
 
 app.get(
   "/",
@@ -19,7 +20,7 @@ app.get(
     },
   }),
   async (c) => {
-    const titles = await TitlesService.getTitles('appleTV+');
+    const titles = await titlesService.getTitles('appleTV+');
     return c.json(titles);
   },
 );
@@ -37,7 +38,7 @@ app.post(
     },
   }),
   async (c) => {
-    const response = await TitlesService.create();
+    const response = await titlesService.create();
     return c.json(response);
   },
 );

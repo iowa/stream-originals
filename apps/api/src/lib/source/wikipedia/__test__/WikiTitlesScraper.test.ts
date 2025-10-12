@@ -10,7 +10,7 @@ describe("WikiTitlesScraper", () => {
       "/data/original_programming.html",
     );
     const $ = cheerio.load(html);
-    const series = await WikiTitlesScraper.findTitles($, "appleTV+");
+    const series = await new WikiTitlesScraper().findTitles($, "appleTV+");
 
     expect(series).toMatchSnapshot("applePlus_titles.html");
   });

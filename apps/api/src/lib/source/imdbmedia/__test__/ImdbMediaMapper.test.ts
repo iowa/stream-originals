@@ -4,7 +4,7 @@ import { Datas } from "../../../utils/data/Datas.js";
 
 describe("ImdbMediaMapper", () => {
   it("mapTitle", () => {
-    const result = ImdbMediaMapper.mapTitle(Datas.Title_HouseOfCards, Datas.ImdbMediaTitle_HouseOfCards)
+    const result = new ImdbMediaMapper().mapTitle(Datas.Title_HouseOfCards, Datas.ImdbMediaTitle_HouseOfCards)
 
     expect(result).toMatchInlineSnapshot(`
       {
@@ -19,7 +19,7 @@ describe("ImdbMediaMapper", () => {
   });
 
   it("mapTitle", () => {
-    const result = ImdbMediaMapper.mapPoster('tt1856010', Datas.ImdbMediaTitleImage_HouseOfCards)
+    const result = new ImdbMediaMapper().mapPoster('tt1856010', Datas.ImdbMediaTitleImage_HouseOfCards)
     expect(result).toMatchInlineSnapshot(`
       {
         "height": 2048,

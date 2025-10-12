@@ -2,7 +2,7 @@ import * as cheerio from "cheerio";
 import { Times, Title } from "@repo/common";
 
 export class WikiTitlesTable {
-  static parseRow(html: string) {
+   parseRow(html: string) {
     const $ = cheerio.load(html, { xml: true });
     const cells = $("tr").first().find("td");
     return {
@@ -11,13 +11,13 @@ export class WikiTitlesTable {
     } as Title;
   }
 
-  private static getTitle(html: string): string {
+  private  getTitle(html: string): string {
     const $ = cheerio.load(html);
     $("sup").remove();
     return $.root().text().trim();
   }
 
-  private static getPremiere(html: string): string | undefined {
+  private  getPremiere(html: string): string | undefined {
     const $ = cheerio.load(html);
     $("sup").remove();
     const premiere = $.root().text().trim();

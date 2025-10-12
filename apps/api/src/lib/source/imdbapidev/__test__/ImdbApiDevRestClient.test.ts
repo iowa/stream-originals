@@ -4,7 +4,7 @@ import { ImdbApiDevRestClient } from "../ImdbApiDevRestClient.js";
 
 describe("ImdbApiDevRestClient", () => {
   it("getTitles tt1856010", async () => {
-    const result = await ImdbApiDevRestClient.getTitles(['tt1856010']);
+    const result = await new ImdbApiDevRestClient().getTitles(['tt1856010']);
     if (!result.titles || result.titles.length === 0) {
       throw new Error("titles not found or empty");
     }

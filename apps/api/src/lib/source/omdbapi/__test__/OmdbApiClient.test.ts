@@ -5,7 +5,7 @@ describe("OmdbApiRestClient", () => {
 
   it("findTitle tt1856010", async () => {
 
-    const result = await OmdbApiRestClient.findTitle('tt1856010');
+    const result = await new OmdbApiRestClient().findTitle('tt1856010');
 
     expect(result.imdbID).toBe("tt1856010");
     expect(result.Type).toBe("series");

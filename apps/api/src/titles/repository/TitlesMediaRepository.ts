@@ -1,8 +1,8 @@
-import { db, TitleMedia, TitleMediaInsert, titlesMediaTable } from "@repo/common";
+import { db, TitleMediaInsert, titlesMediaTable } from "@repo/common";
 
 export class TitlesMediaRepository {
 
-  static async insert(media: TitleMediaInsert) {
+    insert(media: TitleMediaInsert) {
     return db.insert(titlesMediaTable).values(media).onConflictDoNothing().returning({ insertedId: titlesMediaTable.id });
   }
 

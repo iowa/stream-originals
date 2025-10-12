@@ -3,7 +3,14 @@ import type { Streamer, Title } from "@repo/common";
 import { WikiTitlesTable } from "./WikiTitlesTable.js";
 
 export class WikiTitlesScraper {
-  static async findTitles(
+
+  constructor(
+    private readonly wikiTitlesTable: WikiTitlesTable = new WikiTitlesTable(),
+  ) {
+
+  }
+
+  async findTitles(
     $: cheerio.CheerioAPI,
     streamer: Streamer,
   ): Promise<Title[]> {
@@ -16,14 +23,14 @@ export class WikiTitlesScraper {
           tableHeaders.eq(2).text().trim() === "Release")
       ) {
         $(table)
-          .find("tbody tr:has(td)")
-          .each((_, row) => {
-            const title = WikiTitlesTable.parseRow(cheerio.load(row).html());
-            titles.push({
-              ...title,
-              streamer: streamer,
-            });
+        .find("tbody tr:has(td)")
+        .each((_, row) => {
+          const title = this.wikiTitlesTable.parseRow(cheerio.load(row).html());
+          titles.push({
+            ...title,
+            streamer: streamer,
           });
+        });
       }
     });
 

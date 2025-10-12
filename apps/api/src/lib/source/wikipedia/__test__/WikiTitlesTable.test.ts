@@ -9,7 +9,7 @@ describe("WikiTitlesTable", () => {
       "/data/tr_For_All_Mankind.html",
     );
 
-    const result = WikiTitlesTable.parseRow(html);
+    const result = new WikiTitlesTable().parseRow(html);
     expect(result).toMatchInlineSnapshot(`
       {
         "name": "For All Mankind",
@@ -24,7 +24,7 @@ describe("WikiTitlesTable", () => {
       "/data/tr_The_Savant.html",
     );
 
-    const result = WikiTitlesTable.parseRow(html);
+    const result = new WikiTitlesTable().parseRow(html);
     expect(result).toMatchInlineSnapshot(`
       {
         "name": "The Savant",
@@ -39,7 +39,7 @@ describe("WikiTitlesTable", () => {
       "/data/tr_Eva_the_Owlet.html",
     );
 
-    const result = WikiTitlesTable.parseRow(html);
+    const result = new WikiTitlesTable().parseRow(html);
     expect(result).toMatchInlineSnapshot(`
       {
         "name": "Eva the Owlet",
@@ -54,7 +54,7 @@ describe("WikiTitlesTable", () => {
       "/data/tr_Neuromancer.html",
     );
 
-    const result = WikiTitlesTable.parseRow(html);
+    const result = new WikiTitlesTable().parseRow(html);
     expect(result).toMatchInlineSnapshot(`
       {
         "name": "Neuromancer",

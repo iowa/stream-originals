@@ -1,16 +1,16 @@
 import { and, count, eq, isNotNull } from "drizzle-orm";
-import { db, Streamer, Title, titlesMediaTable, titlesTable } from "@repo/common";
+import { db, Streamer, Title, titlesTable } from "@repo/common";
 
 
 export class TitlesRepository {
-  static async getTitles(streamer: Streamer): Promise<Title[]> {
+  getTitles(streamer: Streamer): Promise<Title[]> {
     return db
     .select()
     .from(titlesTable)
     .where(eq(titlesTable.streamer, streamer));
   }
 
-  static async getTitlesCount(
+  async getTitlesCount(
     streamer: Streamer,
     withImdbId?: boolean,
   ): Promise<number> {
@@ -28,7 +28,7 @@ export class TitlesRepository {
     return result[0]?.count ?? 0;
   }
 
-  static async insertTitle(title: Title) {
+  insertTitle(title: Title) {
     return db
     .insert(titlesTable)
     .values(title)
