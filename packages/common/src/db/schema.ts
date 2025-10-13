@@ -44,3 +44,27 @@ export const titleImagesTable = schema.table(
     uniqueUrl: p.unique().on(table.url),
   }),
 );
+
+
+export const interestsTable = schema.table('interests', {
+  id: p.varchar('id', { length: 20 }).primaryKey(),
+  name: p.varchar('name', { length: 100 }).notNull(),
+  isSubgenre: p.boolean('is_subgenre'),
+});
+
+
+export const titlesToInterests = schema.table(
+  'titles_to_interests',
+  {
+    titleId: p.uuid('title_id')
+    .notNull()
+    .references(() => titlesTable.id),
+    interestId: p.varchar('interest_id', { length: 20 })
+    .notNull()
+    .references(() => interestsTable.id),
+  },
+  (t) => [
+    p.primaryKey({ columns: [t.titleId, t.interestId] })
+  ],
+);
+
