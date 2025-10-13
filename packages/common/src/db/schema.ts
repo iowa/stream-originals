@@ -45,7 +45,7 @@ export const titlesMediaTable = schema.table(
   }),
 );
 
-export const interests = schema.table('interests', {
+export const interestsTable = schema.table('interests', {
   id: p.varchar('id', { length: 20 }).primaryKey(),
   titleId: p
   .uuid("title_id")

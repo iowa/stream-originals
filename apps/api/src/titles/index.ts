@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { describeRoute, resolver } from "hono-openapi";
-import { TitlesPatchResponseSchema } from "@repo/common";
+import { TitlesCreateResponseSchema, TitlesPatchResponseSchema } from "@repo/common";
 import { TitlesSchema } from "./types.js";
 import { TitlesService } from "./TitlesService.js";
 
@@ -28,6 +28,26 @@ app.get(
 app.post(
   "/init/crawler",
   describeRoute({
+    description: "Initial crawler to fill titles",
+    responses: {
+      200: {
+        description: "OK",
+        content: {
+          "application/json": { schema: resolver(TitlesCreateResponseSchema) },
+        },
+      },
+    },
+  }),
+  async (c) => {
+    const response = await titlesService.create();
+    return c.json(response);
+  },
+);
+
+app.patch(
+  "/",
+  describeRoute({
+    description: "Patch found titles with additional data",
     responses: {
       200: {
         description: "OK",
@@ -38,7 +58,7 @@ app.post(
     },
   }),
   async (c) => {
-    const response = await titlesService.create();
+    const response = await titlesService.patch();
     return c.json(response);
   },
 );

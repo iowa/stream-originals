@@ -10,14 +10,20 @@ export class TitlesRepository {
     this.db = dbInstance
   }
 
-  getTitles(streamer: Streamer): Promise<Title[]> {
+  get(streamer: Streamer, withImdbId?: boolean): Promise<Title[]> {
     return this.db
     .select()
     .from(titlesTable)
-    .where(eq(titlesTable.streamer, streamer));
+    .where(() => {
+      const base = eq(titlesTable.streamer, streamer);
+      if (withImdbId) {
+        return and(base, isNotNull(titlesTable.imdbId));
+      }
+      return base;
+    });
   }
 
-  async getTitlesCount(
+  async getCount(
     streamer: Streamer,
     withImdbId?: boolean,
   ): Promise<number> {
@@ -35,7 +41,7 @@ export class TitlesRepository {
     return result[0]?.count ?? 0;
   }
 
-  insertTitle(title: Title) {
+  insert(title: Title) {
     return this.db
     .insert(titlesTable)
     .values(title)

@@ -1,9 +1,9 @@
 import "dotenv/config";
-import { Configuration, TitleApi } from "./generated/index.js";
+import { Configuration, ImdbapiBatchGetTitlesResponse, TitleApi } from "./generated/index.js";
 
 export class ImdbApiDevRestClient {
 
-  async getTitles(imdbIds: string[]) {
+  async getTitles(imdbIds: string[]): Promise<ImdbapiBatchGetTitlesResponse> {
     const api = new TitleApi(this.getConfiguration())
     const response = await api.iMDbAPIServiceBatchGetTitles(imdbIds);
     return response.data

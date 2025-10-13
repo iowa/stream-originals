@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import { Streamer, Title, TitlesPatchResponse, TitlesStreamerResponse } from "@repo/common";
+import { TitlesCreateResponse, Streamer, Title, TitlesCreate } from "@repo/common";
 import { gotScraping } from "crawlee";
 import { WikiTitlesScraper } from "../../lib/source/wikipedia/WikiTitlesScraper.js";
 import { ImdbMediaMapper } from "../../lib/source/imdbmedia/ImdbMediaMapper.js";
@@ -21,8 +21,8 @@ export class TitlesCreateCrawler {
     this.streamers.set('netflix', "https://en.wikipedia.org/wiki/List_of_Netflix_original_programming");
   }
 
-  async create(streamer?: Streamer): Promise<TitlesPatchResponse> {
-    const response: TitlesPatchResponse = { items: [] };
+  async create(streamer?: Streamer): Promise<TitlesCreateResponse> {
+    const response: TitlesCreateResponse = { items: [] };
     const streamers = streamer ? [streamer] : ['appleTV+'] as Streamer[];
 
     for (const s of streamers) {
@@ -32,26 +32,26 @@ export class TitlesCreateCrawler {
     return response;
   }
 
-  private async patchStreamer(streamer: Streamer): Promise<TitlesStreamerResponse> {
-    const response: TitlesStreamerResponse = this.buildStreamerResponse(streamer);
+  private async patchStreamer(streamer: Streamer): Promise<TitlesCreate> {
+    const response: TitlesCreate = this.buildCreateResponse(streamer);
     const $ = await this.buildCheerio(this.streamers.get(streamer)!);
     const wikipediaTitles = await this.wikiTitlesScraper.findTitles($, streamer);
     response.totalOnWebsite = wikipediaTitles.length;
-    const dbTitles = await this.titlesRepository.getTitles(streamer);
+    const dbTitles = await this.titlesRepository.get(streamer);
     for (const wikipediaTitle of wikipediaTitles) {
       const titleFound = this.findInTitles(wikipediaTitle, dbTitles);
       if (!titleFound?.imdbId) {
         const imdbMediaTitle = await this.imdbMediaRestClient.findTitle(wikipediaTitle);
         const newTitle = this.imdbMediaMapper.mapTitle(wikipediaTitle, imdbMediaTitle);
-        const insertedId = await this.titlesRepository.insertTitle(newTitle);
+        const insertedId = await this.titlesRepository.insert(newTitle);
         if (imdbMediaTitle?.i) {
           const titleMedia = this.imdbMediaMapper.mapPoster(insertedId[0].insertedId, imdbMediaTitle.i);
           await this.titlesMediaRepository.insert(titleMedia)
         }
       }
     }
-    response.totalInDatabase = await this.titlesRepository.getTitlesCount(streamer);
-    response.totalWithImdbId = await this.titlesRepository.getTitlesCount(
+    response.totalInDatabase = await this.titlesRepository.getCount(streamer);
+    response.totalWithImdbId = await this.titlesRepository.getCount(
       streamer,
       true,
     );
@@ -59,13 +59,13 @@ export class TitlesCreateCrawler {
     return response;
   }
 
-  private buildStreamerResponse(streamer: string) {
+  private buildCreateResponse(streamer: string) {
     return {
       totalOnWebsite: 0,
       totalInDatabase: 0,
       totalWithImdbId: 0,
       streamer: streamer,
-    } as TitlesStreamerResponse;
+    } as TitlesCreate;
   }
 
   private async buildCheerio(url: string): Promise<cheerio.CheerioAPI> {

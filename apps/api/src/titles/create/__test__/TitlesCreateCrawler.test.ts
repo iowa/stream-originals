@@ -61,7 +61,7 @@ describe("TitlesCreateCrawler", async () => {
       }
     `)
 
-    const titles = await titlesRepository.getTitles('netflix');
+    const titles = await titlesRepository.get('netflix');
     expect(
       titles.map(({ id, ...rest }) => ({ id: "ignored", ...rest }))
     ).toMatchInlineSnapshot(`
