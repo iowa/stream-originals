@@ -2,10 +2,9 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { Datas } from "../../../lib/utils/data/Datas.js";
 import { WikiTitlesScraper } from "../../../lib/source/wikipedia/WikiTitlesScraper.js";
 import { TitlesCreateCrawler } from "../TitlesCreateCrawler.js";
-import { TitlesRepository } from "../../repository/TitlesRepository.js";
 import { ImdbMediaRestClient } from "../../../lib/source/imdbmedia/ImdbMediaRestClient.js";
-import { TitlesMediaRepository } from "../../repository/TitlesMediaRepository.js";
 import { getDbMock } from "@repo/common/db/dbMock";
+import { TitlesMediaRepository, TitlesRepository } from "@repo/common";
 
 describe("TitlesCreateCrawler", async () => {
   let { client, db } = await getDbMock();

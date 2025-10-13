@@ -1,11 +1,15 @@
 import * as cheerio from "cheerio";
-import { TitlesCreateResponse, Streamer, Title, TitlesCreate } from "@repo/common";
+import {
+  TitlesCreateResponse,
+  Streamer,
+  Title,
+  TitlesCreate,
+  TitlesRepository, TitlesMediaRepository
+} from "@repo/common";
 import { gotScraping } from "crawlee";
 import { WikiTitlesScraper } from "../../lib/source/wikipedia/WikiTitlesScraper.js";
 import { ImdbMediaMapper } from "../../lib/source/imdbmedia/ImdbMediaMapper.js";
 import { ImdbMediaRestClient } from "../../lib/source/imdbmedia/ImdbMediaRestClient.js";
-import { TitlesRepository } from "../repository/TitlesRepository.js";
-import { TitlesMediaRepository } from "../repository/TitlesMediaRepository.js";
 
 export class TitlesCreateCrawler {
   private readonly streamers: Map<Streamer, string> = new Map();

@@ -1,7 +1,8 @@
+import { db } from "../db/db.js";
+import { Streamer, Title } from "../db/dbTypes.js";
+import { titlesTable } from "../db/schema.js";
 import { and, count, eq, isNotNull } from "drizzle-orm";
-import { db, Streamer, Title, titlesTable } from "@repo/common";
 import { NodePgDatabase } from "drizzle-orm/node-postgres";
-
 
 export class TitlesRepository {
   private readonly db: NodePgDatabase
@@ -9,7 +10,6 @@ export class TitlesRepository {
   constructor(dbInstance: any = db) {
     this.db = dbInstance
   }
-
   get(streamer: Streamer, withImdbId?: boolean): Promise<Title[]> {
     return this.db
     .select()
@@ -48,4 +48,5 @@ export class TitlesRepository {
     .onConflictDoNothing()
     .returning({ insertedId: titlesTable.id });
   }
+
 }

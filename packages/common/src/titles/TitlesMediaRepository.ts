@@ -1,6 +1,8 @@
-import { db, TitleMedia, titlesMediaTable } from "@repo/common";
 import { NodePgDatabase } from "drizzle-orm/node-postgres";
 import { eq } from "drizzle-orm";
+import { db } from "../db/db.js";
+import { TitleMedia } from "../db/dbTypes.js";
+import { titlesMediaTable } from "../db/schema.js";
 
 export class TitlesMediaRepository {
   private readonly db: NodePgDatabase
