@@ -4,22 +4,20 @@ import { ImdbMediaTitle, ImdbMediaTitleImage } from "../../source/imdbmedia/Imdb
 export class Datas {
 
   public static readonly Title_HouseOfCards: Title = {
-    id: "",
     name: "House of Cards",
     premiere: "2013-02-01",
     streamer: "netflix",
     imdbId: null,
     imdbType: null
-  };
+  } as Title;
 
   public static readonly Title_tt1856010: Title = {
-    id: "",
     name: "House of Cards",
     premiere: "2013-02-01",
     streamer: "netflix",
     imdbId: "tt1856010",
     imdbType: "tvSeries",
-  };
+  } as Title;
 
   public static readonly ImdbMediaTitleImage_HouseOfCards: ImdbMediaTitleImage = {
     height: 2048,

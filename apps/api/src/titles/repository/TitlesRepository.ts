@@ -1,11 +1,12 @@
 import { and, count, eq, isNotNull } from "drizzle-orm";
 import { db, Streamer, Title, titlesTable } from "@repo/common";
+import { NodePgDatabase } from "drizzle-orm/node-postgres";
 
 
 export class TitlesRepository {
-  private readonly db
+  private readonly db: NodePgDatabase
 
-  constructor(dbInstance = db) {
+  constructor(dbInstance: any = db) {
     this.db = dbInstance
   }
 

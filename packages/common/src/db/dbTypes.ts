@@ -1,4 +1,4 @@
-import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
+import type { InferSelectModel } from "drizzle-orm";
 import { titlesMediaTable, titlesTable } from "./schema.js";
 
 export type Title = InferSelectModel<typeof titlesTable>;
@@ -22,4 +22,3 @@ export const titlesMediaType = ["poster"] as const;
 export type TitleMediaType = (typeof titlesMediaType)[number];
 
 export type TitleMedia = InferSelectModel<typeof titlesMediaTable>;
-export type TitleMediaInsert = InferInsertModel<typeof titlesMediaTable>;

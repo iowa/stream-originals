@@ -8,7 +8,6 @@ describe("ImdbMediaMapper", () => {
 
     expect(result).toMatchInlineSnapshot(`
       {
-        "id": "",
         "imdbId": "tt1856010",
         "imdbType": "tvSeries",
         "name": "House of Cards",
