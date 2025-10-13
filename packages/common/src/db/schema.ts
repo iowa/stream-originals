@@ -32,9 +32,9 @@ export const titlesMediaTable = schema.table(
   {
     id: p.uuid("id").primaryKey().defaultRandom(),
     titleId: p
-      .uuid("title_id")
-      .references(() => titlesTable.id)
-      .notNull(),
+    .uuid("title_id")
+    .references(() => titlesTable.id)
+    .notNull(),
     url: p.text().notNull(),
     height: p.integer().notNull(),
     width: p.integer().notNull(),
@@ -44,3 +44,13 @@ export const titlesMediaTable = schema.table(
     uniqueUrl: p.unique().on(table.url),
   }),
 );
+
+export const interests = schema.table('interests', {
+  id: p.varchar('id', { length: 20 }).primaryKey(),
+  titleId: p
+  .uuid("title_id")
+  .references(() => titlesTable.id)
+  .notNull(),
+  name: p.varchar('name', { length: 100 }).notNull(),
+  isSubgenre: p.boolean('is_subgenre'),
+});
