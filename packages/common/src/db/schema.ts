@@ -31,7 +31,10 @@ export const titleImagesTable = schema.table(
   "title_images",
   {
     id: p.uuid("id").primaryKey().defaultRandom(),
-    titleId: p.uuid('title_id'),
+    titleId: p
+    .uuid("title_id")
+    .references(() => titlesTable.id)
+    .notNull(),
     url: p.text().notNull(),
     height: p.integer().notNull(),
     width: p.integer().notNull(),

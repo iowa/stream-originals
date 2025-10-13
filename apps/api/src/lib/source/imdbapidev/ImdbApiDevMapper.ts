@@ -1,9 +1,9 @@
-import { TitleDto } from "@repo/common";
 import type { ImdbapiTitle } from "./generated/index.js";
+import { Title } from "@repo/common";
 
 export class ImdbApiDevMapper {
 
-  mapTitle(dbTitle: TitleDto, apiTitle: ImdbapiTitle) {
+  mapTitle(dbTitle: Title, apiTitle: ImdbapiTitle) {
   }
 
 }

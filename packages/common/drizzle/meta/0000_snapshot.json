@@ -1,5 +1,5 @@
 {
-  "id": "7bb7debb-027e-4534-b335-8483ada02338",
+  "id": "93e59067-ceb7-4149-88ed-fffc8088d95d",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -19,7 +19,7 @@
           "name": "title_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "url": {
           "name": "url",
@@ -48,7 +48,22 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {},
+      "foreignKeys": {
+        "title_images_title_id_titles_id_fk": {
+          "name": "title_images_title_id_titles_id_fk",
+          "tableFrom": "title_images",
+          "tableTo": "titles",
+          "schemaTo": "stream_originals",
+          "columnsFrom": [
+            "title_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "title_images_url_unique": {
