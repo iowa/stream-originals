@@ -3,8 +3,14 @@ import { db, Streamer, Title, titlesTable } from "@repo/common";
 
 
 export class TitlesRepository {
+  private readonly db
+
+  constructor(dbInstance = db) {
+    this.db = dbInstance
+  }
+
   getTitles(streamer: Streamer): Promise<Title[]> {
-    return db
+    return this.db
     .select()
     .from(titlesTable)
     .where(eq(titlesTable.streamer, streamer));
@@ -14,7 +20,7 @@ export class TitlesRepository {
     streamer: Streamer,
     withImdbId?: boolean,
   ): Promise<number> {
-    const result = await db
+    const result = await this.db
     .select({ count: count() })
     .from(titlesTable)
     .where(() => {
@@ -29,7 +35,7 @@ export class TitlesRepository {
   }
 
   insertTitle(title: Title) {
-    return db
+    return this.db
     .insert(titlesTable)
     .values(title)
     .onConflictDoNothing()
