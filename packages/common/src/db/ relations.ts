@@ -4,10 +4,7 @@ import * as schema from "./schema.js";
 export const relations = defineRelations(schema, (r) => ({
   titlesTable: {
     titleImages: r.many.titleImagesTable(),
-    interests: r.many.interestsTable({
-      from: r.titlesTable.id.through(r.titlesToInterests.titleId),
-      to: r.interestsTable.id.through(r.titlesToInterests.interestId)
-    })
+    interests: r.many.interestsTable()
   },
   titleImagesTable: {
     title: r.one.titlesTable({
@@ -16,7 +13,10 @@ export const relations = defineRelations(schema, (r) => ({
     })
   },
   interestsTable: {
-    titles: r.many.titlesTable()
+    interests: r.many.titlesTable({
+      from: r.titlesTable.id.through(r.titlesToInterests.titleId),
+      to: r.interestsTable.id.through(r.titlesToInterests.interestId)
+    })
   }
 }))
 
