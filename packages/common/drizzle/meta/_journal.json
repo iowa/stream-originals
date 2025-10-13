@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1760101203048,
-      "tag": "0000_messy_lenny_balinger",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1760346814799,
-      "tag": "0001_steady_jazinda",
+      "when": 1760365611668,
+      "tag": "0000_empty_kabuki",
       "breakpoints": true
     }
   ]

@@ -1,11 +1,11 @@
 {
-  "id": "0e02c295-73b6-4f7a-936b-a013d11c34da",
+  "id": "7bb7debb-027e-4534-b335-8483ada02338",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "stream_originals.titles_media": {
-      "name": "titles_media",
+    "stream_originals.title_images": {
+      "name": "title_images",
       "schema": "stream_originals",
       "columns": {
         "id": {
@@ -19,7 +19,7 @@
           "name": "title_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "url": {
           "name": "url",
@@ -41,33 +41,18 @@
         },
         "type": {
           "name": "type",
-          "type": "titles_media_type",
+          "type": "title_image_types",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false
         }
       },
       "indexes": {},
-      "foreignKeys": {
-        "titles_media_title_id_titles_id_fk": {
-          "name": "titles_media_title_id_titles_id_fk",
-          "tableFrom": "titles_media",
-          "tableTo": "titles",
-          "schemaTo": "stream_originals",
-          "columnsFrom": [
-            "title_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
+      "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "titles_media_url_unique": {
-          "name": "titles_media_url_unique",
+        "title_images_url_unique": {
+          "name": "title_images_url_unique",
           "nullsNotDistinct": false,
           "columns": [
             "url"
@@ -116,7 +101,7 @@
         },
         "imdbType": {
           "name": "imdbType",
-          "type": "titles_type",
+          "type": "title_types",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false
@@ -149,15 +134,15 @@
         "netflix"
       ]
     },
-    "public.titles_media_type": {
-      "name": "titles_media_type",
+    "public.title_image_types": {
+      "name": "title_image_types",
       "schema": "public",
       "values": [
         "poster"
       ]
     },
-    "public.titles_type": {
-      "name": "titles_type",
+    "public.title_types": {
+      "name": "title_types",
       "schema": "public",
       "values": [
         "movie",

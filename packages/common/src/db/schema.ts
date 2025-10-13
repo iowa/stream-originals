@@ -1,11 +1,11 @@
 import * as p from "drizzle-orm/pg-core";
-import { streamerValues, titlesMediaType, titleTypeValues } from "./dbTypes.js";
+import { streamerValues, titleImageTypeValues, titleTypeValues } from "./dbTypes.js";
 
 export const schema = p.pgSchema("stream_originals");
 
 export const streamersEnum = p.pgEnum("streamers", streamerValues);
 
-export const titlesTypeEnum = p.pgEnum("titles_type", titleTypeValues);
+export const titleTypesEnum = p.pgEnum("title_types", titleTypeValues);
 
 export const titlesTable = schema.table(
   "titles",
@@ -15,30 +15,27 @@ export const titlesTable = schema.table(
     premiere: p.date(),
     streamer: streamersEnum().notNull(),
     imdbId: p.text(),
-    imdbType: titlesTypeEnum(),
+    imdbType: titleTypesEnum(),
   },
   (table) => ({
     uniqueTitleStreamer: p.unique().on(table.name, table.streamer),
   }),
 );
 
-export const titlesMediaTypeEnum = p.pgEnum(
-  "titles_media_type",
-  titlesMediaType,
+export const titleImageTypesEnum = p.pgEnum(
+  "title_image_types",
+  titleImageTypeValues,
 );
 
-export const titlesMediaTable = schema.table(
-  "titles_media",
+export const titleImagesTable = schema.table(
+  "title_images",
   {
     id: p.uuid("id").primaryKey().defaultRandom(),
-    titleId: p
-    .uuid("title_id")
-    .references(() => titlesTable.id)
-    .notNull(),
+    titleId: p.uuid('title_id'),
     url: p.text().notNull(),
     height: p.integer().notNull(),
     width: p.integer().notNull(),
-    type: titlesMediaTypeEnum(),
+    type: titleImageTypesEnum(),
   },
   (table) => ({
     uniqueUrl: p.unique().on(table.url),

@@ -4,7 +4,7 @@ import {
   Streamer,
   Title,
   TitlesCreate,
-  TitlesRepository, TitlesMediaRepository
+  TitlesRepository, TitleImagesRepository
 } from "@repo/common";
 import { gotScraping } from "crawlee";
 import { WikiTitlesScraper } from "../../lib/source/wikipedia/WikiTitlesScraper.js";
@@ -16,7 +16,7 @@ export class TitlesCreateCrawler {
 
   constructor(
     private readonly titlesRepository: TitlesRepository = new TitlesRepository(),
-    private readonly titlesMediaRepository: TitlesMediaRepository = new TitlesMediaRepository(),
+    private readonly titlesMediaRepository: TitleImagesRepository = new TitleImagesRepository(),
     private readonly imdbMediaRestClient: ImdbMediaRestClient = new ImdbMediaRestClient(),
     private readonly imdbMediaMapper: ImdbMediaMapper = new ImdbMediaMapper(),
     private readonly wikiTitlesScraper: WikiTitlesScraper = new WikiTitlesScraper()
