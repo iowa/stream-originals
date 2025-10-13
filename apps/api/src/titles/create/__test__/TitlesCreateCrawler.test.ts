@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { Datas } from "../../../lib/utils/data/Datas.js";
 import { WikiTitlesScraper } from "../../../lib/source/wikipedia/WikiTitlesScraper.js";
 import { TitlesCreateCrawler } from "../TitlesCreateCrawler.js";
@@ -8,11 +8,11 @@ import { TitlesMediaRepository } from "../../repository/TitlesMediaRepository.js
 import { getDbMock } from "@repo/common/db/dbMock";
 
 describe("TitlesCreateCrawler", async () => {
-  let db = await getDbMock();
+  let { client, db } = await getDbMock();
   let wikiTitlesScraper: WikiTitlesScraper;
-  let titlesRepository = new TitlesRepository(db);
+  let titlesRepository: TitlesRepository;
   let imdbMediaRestClient: ImdbMediaRestClient;
-  let titlesMediaRepository = new TitlesMediaRepository(db);
+  let titlesMediaRepository: TitlesMediaRepository;
   let crawler: TitlesCreateCrawler;
 
   beforeEach(() => {
@@ -20,11 +20,13 @@ describe("TitlesCreateCrawler", async () => {
       findTitles: vi.fn()
     } as unknown as WikiTitlesScraper;
 
+    titlesRepository = new TitlesRepository(db);
 
     imdbMediaRestClient = {
       findTitle: vi.fn()
     } as unknown as ImdbMediaRestClient;
 
+    titlesMediaRepository = new TitlesMediaRepository(db);
 
     crawler = new TitlesCreateCrawler(
       titlesRepository,
@@ -34,6 +36,10 @@ describe("TitlesCreateCrawler", async () => {
       wikiTitlesScraper
     );
     vi.clearAllMocks();
+  });
+
+  afterEach(async () => {
+    await client.close();
   });
 
   it("create title found on wikipedia but not in database", async () => {

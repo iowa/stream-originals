@@ -4,13 +4,13 @@ import { drizzle } from "drizzle-orm/pglite";
 import { migrate } from "drizzle-orm/pglite/migrator";
 import path from "node:path";
 
-const client = new PGlite();
 
 async function getDbMock() {
+  const client = new PGlite();
   const db = drizzle(client);
   const migrationsFolder = path.resolve(__dirname, '../../drizzle');
   await migrate(db, { migrationsFolder: migrationsFolder });
-  return db;
+  return { db, client };
 }
 
 export { getDbMock }
