@@ -5,9 +5,9 @@ import { TitleImage } from "../db/dbTypes.js";
 import { titleImagesTable } from "../db/schema.js";
 
 export class TitleImagesRepository {
-  private readonly db: NodePgDatabase
+  private readonly db
 
-  constructor(dbInstance: any = db) {
+  constructor(dbInstance = db) {
     this.db = dbInstance
   }
 

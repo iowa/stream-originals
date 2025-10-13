@@ -13,11 +13,9 @@ export const relations = defineRelations(schema, (r) => ({
     })
   },
   interestsTable: {
-    interests: r.many.titlesTable({
-      from: r.titlesTable.id.through(r.titlesToInterests.titleId),
-      to: r.interestsTable.id.through(r.titlesToInterests.interestId)
+    titles: r.many.titlesTable({
+      from: r.interestsTable.id.through(r.titlesToInterests.interestId),
+      to: r.titlesTable.id.through(r.titlesToInterests.titleId)
     })
   }
 }))
-
-//https://rqbv2.drizzle-orm-fe.pages.dev/docs/relations-v1-v2

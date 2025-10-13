@@ -2,25 +2,19 @@ import { db } from "../db/db.js";
 import { Streamer, Title } from "../db/dbTypes.js";
 import { titlesTable } from "../db/schema.js";
 import { and, count, eq, isNotNull } from "drizzle-orm";
-import { NodePgDatabase } from "drizzle-orm/node-postgres";
 
 export class TitlesRepository {
-  private readonly db: NodePgDatabase
+  private readonly db
 
-  constructor(dbInstance: any = db) {
+  constructor(dbInstance = db) {
     this.db = dbInstance
   }
-  get(streamer: Streamer, withImdbId?: boolean): Promise<Title[]> {
+
+  get(streamer: Streamer): Promise<Title[]> {
     return this.db
     .select()
     .from(titlesTable)
-    .where(() => {
-      const base = eq(titlesTable.streamer, streamer);
-      if (withImdbId) {
-        return and(base, isNotNull(titlesTable.imdbId));
-      }
-      return base;
-    });
+    .where(eq(titlesTable.streamer, streamer));
   }
 
   async getCount(
@@ -47,6 +41,18 @@ export class TitlesRepository {
     .values(title)
     .onConflictDoNothing()
     .returning({ insertedId: titlesTable.id });
+  }
+
+  getWithRelations(streamer: Streamer) {
+    return this.db.query.titlesTable.findMany({
+      with: {
+        interests: true
+      },
+      where: {
+        streamer: streamer,
+        imdbId: { isNotNull: true }
+      }
+    })
   }
 
 }

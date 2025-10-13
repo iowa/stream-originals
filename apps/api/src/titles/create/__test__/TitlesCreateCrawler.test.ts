@@ -4,7 +4,7 @@ import { WikiTitlesScraper } from "../../../lib/source/wikipedia/WikiTitlesScrap
 import { TitlesCreateCrawler } from "../TitlesCreateCrawler.js";
 import { ImdbMediaRestClient } from "../../../lib/source/imdbmedia/ImdbMediaRestClient.js";
 import { getDbMock } from "@repo/common/db/dbMock";
-import { TitleImagesRepository, TitlesRepository } from "@repo/common";
+import { Db, TitleImagesRepository, TitlesRepository } from "@repo/common";
 
 describe("TitlesCreateCrawler", async () => {
   let { client, db } = await getDbMock();
@@ -19,13 +19,13 @@ describe("TitlesCreateCrawler", async () => {
       findTitles: vi.fn()
     } as unknown as WikiTitlesScraper;
 
-    titlesRepository = new TitlesRepository(db);
+    titlesRepository = new TitlesRepository(db as unknown as Db);
 
     imdbMediaRestClient = {
       findTitle: vi.fn()
     } as unknown as ImdbMediaRestClient;
 
-    titlesMediaRepository = new TitleImagesRepository(db);
+    titlesMediaRepository = new TitleImagesRepository(db as unknown as Db);
 
     crawler = new TitlesCreateCrawler(
       titlesRepository,
