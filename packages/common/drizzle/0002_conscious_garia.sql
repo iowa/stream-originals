@@ -1,0 +1,1 @@
+ALTER TABLE "stream_originals"."interests" ADD COLUMN "description" text;
