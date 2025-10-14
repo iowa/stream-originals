@@ -102,8 +102,9 @@ POSTGRES_URL="postgres://postgres:password@104.197.84.134:5432"
 
 ---
 
-## ADDITIONAL NOTES
+## HOW TO INIT
 
-- Ensure your Google Cloud project and Cloud SQL instance are properly configured.
-- Update credentials and connection strings as needed for your environment.
-- For troubleshooting, consult Docker and Google Cloud documentation.
+RUN
+http://localhost:8080/#tag/default/post/titles/init load in TITLES
+
+http://localhost:8080/#tag/default/post/interests/init load in INTERESTS

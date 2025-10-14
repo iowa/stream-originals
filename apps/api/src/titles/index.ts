@@ -5,7 +5,7 @@ import { TitlesSchema } from "./types.js";
 import { TitlesService } from "./TitlesService.js";
 
 const app = new Hono();
-const titlesService = new TitlesService();
+const service = new TitlesService();
 
 app.get(
   "/",
@@ -20,15 +20,15 @@ app.get(
     },
   }),
   async (c) => {
-    const titles = await titlesService.getTitles('appleTV+');
+    const titles = await service.getTitles('appleTV+');
     return c.json(titles);
   },
 );
 
 app.post(
-  "/init/crawler",
+  "/init",
   describeRoute({
-    description: "Initial crawler to fill titles",
+    description: "Initial Titles import",
     responses: {
       200: {
         description: "OK",
@@ -39,7 +39,7 @@ app.post(
     },
   }),
   async (c) => {
-    const response = await titlesService.create();
+    const response = await service.create();
     return c.json(response);
   },
 );
@@ -58,7 +58,7 @@ app.patch(
     },
   }),
   async (c) => {
-    const response = await titlesService.patch();
+    const response = await service.patch();
     return c.json(response);
   },
 );
