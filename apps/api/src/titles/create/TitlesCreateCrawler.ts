@@ -37,30 +37,45 @@ export class TitlesCreateCrawler {
   }
 
   private async patchStreamer(streamer: Streamer): Promise<TitlesCreate> {
-    const response: TitlesCreate = this.buildCreateResponse(streamer);
-    const $ = await this.buildCheerio(this.streamers.get(streamer)!);
+    const response = this.buildCreateResponse(streamer);
+    const $ = await this.fetchAndParseHtml(streamer);
     const wikipediaTitles = await this.wikiTitlesScraper.findTitles($, streamer);
     response.totalOnWebsite = wikipediaTitles.length;
+
     const dbTitles = await this.titlesRepository.get(streamer);
+
+    await this.processTitles(wikipediaTitles, dbTitles, streamer);
+
+    response.totalInDatabase = await this.titlesRepository.getCount(streamer);
+    response.totalWithImdbId = await this.titlesRepository.getCount(streamer, true);
+
+    console.log(response);
+    return response;
+  }
+
+  private async fetchAndParseHtml(streamer: Streamer): Promise<cheerio.CheerioAPI> {
+    const url = this.streamers.get(streamer)!;
+    return this.buildCheerio(url);
+  }
+
+  private async processTitles(wikipediaTitles: Title[], dbTitles: Title[], streamer: Streamer): Promise<void> {
     for (const wikipediaTitle of wikipediaTitles) {
       const titleFound = this.findInTitles(wikipediaTitle, dbTitles);
       if (!titleFound?.imdbId) {
-        const imdbMediaTitle = await this.imdbMediaRestClient.findTitle(wikipediaTitle);
-        const newTitle = this.imdbMediaMapper.mapTitle(wikipediaTitle, imdbMediaTitle);
-        const insertedId = await this.titlesRepository.insert(newTitle);
-        if (imdbMediaTitle?.i) {
-          const titleMedia = this.imdbMediaMapper.mapPoster(insertedId[0].insertedId, imdbMediaTitle.i);
-          await this.titlesMediaRepository.insert(titleMedia)
-        }
+        await this.insertNewTitle(wikipediaTitle);
       }
     }
-    response.totalInDatabase = await this.titlesRepository.getCount(streamer);
-    response.totalWithImdbId = await this.titlesRepository.getCount(
-      streamer,
-      true,
-    );
-    console.log(response);
-    return response;
+  }
+
+  private async insertNewTitle(wikipediaTitle: Title): Promise<void> {
+    const imdbMediaTitle = await this.imdbMediaRestClient.findTitle(wikipediaTitle);
+    const newTitle = this.imdbMediaMapper.mapTitle(wikipediaTitle, imdbMediaTitle);
+    const [insertedId] = await this.titlesRepository.insert(newTitle);
+
+    if (imdbMediaTitle?.i) {
+      const titleMedia = this.imdbMediaMapper.mapPoster(insertedId.insertedId, imdbMediaTitle.i);
+      await this.titlesMediaRepository.insert(titleMedia);
+    }
   }
 
   private buildCreateResponse(streamer: string) {
