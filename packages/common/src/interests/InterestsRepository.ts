@@ -10,6 +10,10 @@ export class InterestsRepository {
     this.db = dbInstance
   }
 
+  getAll(): Promise<Interests[]> {
+    return this.db.query.interestsTable.findMany();
+  }
+
   async getAllIds(): Promise<string[]> {
     const result = await this.db
     .select({ id: interestsTable.id })
