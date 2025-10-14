@@ -3,42 +3,35 @@ import { ImdbApiDevRestClient } from "../lib/source/imdbapidev/ImdbApiDevRestCli
 import { ImdbApiDevMapper } from "../lib/source/imdbapidev/ImdbApiDevMapper.js";
 
 export class InterestsService {
-
   constructor(
-    private readonly imdbApiDevRestClient: ImdbApiDevRestClient = new ImdbApiDevRestClient(),
-    private readonly interestsRepository: InterestsRepository = new InterestsRepository(),
-    private readonly imdbApiDevMapper: ImdbApiDevMapper = new ImdbApiDevMapper(),
-  ) {
-
-  }
+    private readonly imdbApiDevRestClient = new ImdbApiDevRestClient(),
+    private readonly interestsRepository = new InterestsRepository(),
+    private readonly imdbApiDevMapper = new ImdbApiDevMapper(),
+  ) {}
 
   async create(): Promise<InteretsCreateResponse> {
     const response = this.buildCreateResponse();
-    const apiResponse = await this.imdbApiDevRestClient.getInterests()
+    const { categories } = await this.imdbApiDevRestClient.getInterests();
     const dbInterestsIds = await this.interestsRepository.getAllIds();
-    if (apiResponse.categories) {
-      for (const apiCategory of apiResponse.categories) {
-        if (apiCategory.interests) {
-          response.totalInApi += apiCategory.interests.length
-          for (const apiInterest of apiCategory.interests) {
-            if (apiInterest.id && !dbInterestsIds.includes(apiInterest.id)) {
-              const interest = this.imdbApiDevMapper.mapInterest(apiCategory.category!, apiInterest);
-              await this.interestsRepository.insert(interest);
+    if (categories) {
+      for (const { category, interests } of categories) {
+        if (interests) {
+          for (const interest of interests) {
+            if (interest.id && !dbInterestsIds.includes(interest.id)) {
+              await this.interestsRepository.insert(
+                this.imdbApiDevMapper.mapInterest(category!, interest)
+              );
             }
           }
+          response.totalInApi += interests.length;
         }
       }
     }
-    response.totalInDatabase = await this.interestsRepository.getCount()
-    return response
+    response.totalInDatabase = await this.interestsRepository.getCount();
+    return response;
   }
-
 
   private buildCreateResponse(): InteretsCreateResponse {
-    return {
-      totalInDatabase: 0,
-      totalInApi: 0,
-    };
+    return { totalInDatabase: 0, totalInApi: 0 };
   }
-
 }
