@@ -45,14 +45,13 @@ export const titleImagesTable = schema.table(
   }),
 );
 
-
 export const interestsTable = schema.table('interests', {
   id: p.varchar('id', { length: 20 }).primaryKey(),
   name: p.varchar('name', { length: 100 }).notNull(),
   isSubgenre: p.boolean('is_subgenre'),
-  description: p.text()
+  description: p.text(),
+  category: p.varchar('category', { length: 100 }),
 });
-
 
 export const titlesToInterests = schema.table(
   'titles_to_interests',

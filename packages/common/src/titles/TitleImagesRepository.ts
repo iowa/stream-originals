@@ -1,4 +1,3 @@
-import { NodePgDatabase } from "drizzle-orm/node-postgres";
 import { eq } from "drizzle-orm";
 import { db } from "../db/db.js";
 import { TitleImage } from "../db/dbTypes.js";

@@ -1,5 +1,11 @@
 import "dotenv/config";
-import { Configuration, ImdbapiBatchGetTitlesResponse, TitleApi } from "./generated/index.js";
+import {
+  Configuration,
+  ImdbapiBatchGetTitlesResponse,
+  ImdbapiListListInterestCategoriesResponse,
+  InterestApi,
+  TitleApi
+} from "./generated/index.js";
 
 export class ImdbApiDevRestClient {
 
@@ -7,6 +13,12 @@ export class ImdbApiDevRestClient {
     const api = new TitleApi(this.getConfiguration())
     const response = await api.iMDbAPIServiceBatchGetTitles(imdbIds);
     return response.data
+  }
+
+  async getInterests(): Promise<ImdbapiListListInterestCategoriesResponse> {
+    const api = new InterestApi(this.getConfiguration());
+    const response = await api.iMDbAPIServiceListInterestCategories();
+    return response.data;
   }
 
   private getConfiguration() {

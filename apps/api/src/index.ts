@@ -3,6 +3,7 @@ import { Hono } from 'hono'
 import { Scalar } from "@scalar/hono-api-reference";
 import { openAPIRouteHandler } from "hono-openapi";
 import titles from "./titles/index.js";
+import interests from "./interests/index.js";
 
 const app = new Hono()
 
@@ -23,6 +24,7 @@ app.get(
 );
 
 app.route("/titles", titles);
+app.route("/interests", interests);
 
 serve({
   fetch: app.fetch,
