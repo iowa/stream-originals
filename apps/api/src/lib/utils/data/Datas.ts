@@ -1,5 +1,6 @@
 import { Title } from "@repo/common";
 import { ImdbMediaTitle, ImdbMediaTitleImage } from "../../source/imdbmedia/ImdbMediaTypes.js";
+import type { ImdbapiInterest } from "../../source/imdbapidev/generated/index.js";
 
 export class Datas {
 
@@ -32,6 +33,18 @@ export class Datas {
     q: "TV series",
     qid: "tvSeries",
     y: 2013,
+  }
+
+  public static readonly ImdbapiInterest_in0000084: ImdbapiInterest = {
+    id: "in0000084",
+    name: "Political Drama",
+    primaryImage: {
+      "url": "https://m.media-amazon.com/images/M/MV5BYzc5ZTdmNmYtYTNkZC00MDRlLWI2ZDEtZmQzMTE0MzIwMjNjXkEyXkFqcGc@._V1_.jpg",
+      "width": 3000,
+      "height": 2001
+    },
+    description: "The political drama subgenre features the intricacies of political power, government institutions, political conflicts, and the individuals involved in the political process. These dramas often explore themes of ambition, corruption, ethical dilemmas, and the impact of political decisions on society and individuals.",
+    isSubgenre: true
   }
 
 }

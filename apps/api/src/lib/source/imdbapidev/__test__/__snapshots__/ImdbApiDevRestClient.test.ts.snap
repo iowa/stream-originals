@@ -1,0 +1,169 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ImdbApiDevRestClient > getInterests > interests.json 1`] = `
+[
+  {
+    "description": "The action genre features fast-paced, thrilling, and intense sequences of physical feats, combat, and excitement. The characters of these stories are involved in daring and often dangerous situations, requiring them to rely on their physical prowess, skills, and quick thinking to overcome challenges and adversaries.",
+    "id": "in0000001",
+    "name": "Action",
+    "primaryImage": {
+      "height": 720,
+      "url": "https://m.media-amazon.com/images/M/MV5BMDU4ZmM1NjYtNGY2MS00NmE1LThiMzAtNzU3NWZhYmM0ZjgxXkEyXkFqcGc@._V1_.jpg",
+      "width": 1280,
+    },
+  },
+  {
+    "description": "The action epic subgenre features fast-paced action with a grand and sweeping narrative scope, often spanning across vast landscapes, historical eras, and larger-than-life characters and conflicts. Classically, an epic tells the heroic journey and deeds of a single person, or group of persons, upon which the fate of many people depends.",
+    "id": "in0000002",
+    "isSubgenre": true,
+    "name": "Action Epic",
+    "primaryImage": {
+      "height": 768,
+      "url": "https://m.media-amazon.com/images/M/MV5BM2RkNmFkZTItODFkMS00Yjk5LTg2YTQtMGQ0Zjc0Mzk3ZGQ5XkEyXkFqcGc@._V1_.jpg",
+      "width": 1366,
+    },
+  },
+  {
+    "description": "The B-action subgenre features lower budgets, simpler plots, and lower production values compared to bigger budget mainstream action titles. Originally used in a derogatory manner, the subgenre has evolved to describe a specific type of filmmaking with its own unique charm and appeal. The "B" designation originally referred to the second feature in a double feature presentation, with the "A" film being the main attraction. Over time, "B-movies" became associated with low-budget and less prestigious productions.",
+    "id": "in0000003",
+    "isSubgenre": true,
+    "name": "B-Action",
+    "primaryImage": {
+      "height": 1073,
+      "url": "https://m.media-amazon.com/images/M/MV5BNmQ5YzZiMGQtNzUyYS00OTNkLWExZjgtOTQxOWZiMTY1ZmUxXkEyXkFqcGc@._V1_.jpg",
+      "width": 1914,
+    },
+  },
+  {
+    "description": "The car action subgenre features high-speed car chases, daring stunts, and intense vehicular action sequences. Automobiles take on a central role as characters engage in thrilling pursuits, races, and confrontations involving cars, motorcycles, trucks, and other vehicles.",
+    "id": "in0000004",
+    "isSubgenre": true,
+    "name": "Car Action",
+    "primaryImage": {
+      "height": 1131,
+      "url": "https://m.media-amazon.com/images/M/MV5BMTQ2Nzg5ODU5NV5BMl5BanBnXkFtZTcwMDk2NTkxNA@@._V1_.jpg",
+      "width": 2048,
+    },
+  },
+  {
+    "description": "The disaster subgenre features narratives where characters must confront and survive catastrophic and often life-threatening events. These events can range from natural disasters like earthquakes, tsunamis, and hurricanes to man-made disasters like terrorist attacks, nuclear accidents, and plane crashes.",
+    "id": "in0000005",
+    "isSubgenre": true,
+    "name": "Disaster",
+    "primaryImage": {
+      "height": 1080,
+      "url": "https://m.media-amazon.com/images/M/MV5BODAzMDA4ZDYtNjJlNi00ZjlmLTk2ZTQtZTQ2NzI1ODg2M2ZjXkEyXkFqcGc@._V1_.jpg",
+      "width": 1920,
+    },
+  },
+  {
+    "description": "The martial arts subgenre features martial arts techniques, choreography, and combat as central elements of the story. These stories often revolve around skilled martial artists who use their expertise to navigate challenges, seek revenge, protect others, or engage in epic battles.",
+    "id": "in0000006",
+    "isSubgenre": true,
+    "name": "Martial Arts",
+    "primaryImage": {
+      "height": 720,
+      "url": "https://m.media-amazon.com/images/M/MV5BOGFmODI5ZWItZmIwZS00ZmQ5LThkOWUtZTY0OTU1ZmIwMmJlXkEyXkFqcGc@._V1_.jpg",
+      "width": 1280,
+    },
+  },
+  {
+    "description": "The one-person army subgenre features a single protagonist who takes on hordes of enemies all by themselves. These stories are characterized by adrenaline-pumping action, highly choreographed action sequences, memorable characters, and the sheer spectacle of watching a lone hero take on insurmountable odds.",
+    "id": "in0000007",
+    "isSubgenre": true,
+    "name": "One-Person Army Action",
+    "primaryImage": {
+      "height": 3648,
+      "url": "https://m.media-amazon.com/images/M/MV5BMTUzNjg4NjA1M15BMl5BanBnXkFtZTgwMjI0OTcyMDI@._V1_.jpg",
+      "width": 5472,
+    },
+  },
+  {
+    "description": "The superhero subgenre features costumed crime fighters with extraordinary abilities or powers who use them to fight against villains and protect the innocent. They often combine high-energy action sequences with themes of heroism, morality, and the struggle between good and evil.",
+    "id": "in0000008",
+    "isSubgenre": true,
+    "name": "Superhero",
+    "primaryImage": {
+      "height": 1152,
+      "url": "https://m.media-amazon.com/images/M/MV5BMTM2MzY1ODc1Nl5BMl5BanBnXkFtZTcwNTg4OTY3Nw@@._V1_.jpg",
+      "width": 2048,
+    },
+  },
+  {
+    "description": "The sword and sandal subgenre, also known as "peplum," features narratives set in ancient times, particularly during the eras of ancient Greece and Rome. These stories often revolve around epic battles, heroic figures, and historical or mythological events. The term "sword and sandal" refers to the prominent use of ancient weaponry and the characteristic attire of the time, including sandals worn by the characters.",
+    "id": "in0000009",
+    "isSubgenre": true,
+    "name": "Sword & Sandal",
+    "primaryImage": {
+      "height": 1351,
+      "url": "https://m.media-amazon.com/images/M/MV5BNDMzNzkwNDgxMF5BMl5BanBnXkFtZTcwNzg0NjcxNA@@._V1_.jpg",
+      "width": 2048,
+    },
+  },
+  {
+    "description": "The war genre features armed conflicts, both historical and fictional, and the experiences of individuals and groups involved in warfare. This genre explores the physical, emotional, and moral challenges faced by soldiers, civilians, and others affected by war.",
+    "id": "in0000010",
+    "name": "War",
+    "primaryImage": {
+      "height": 720,
+      "url": "https://m.media-amazon.com/images/M/MV5BYTczMGFjOGUtZDJlMy00NWE2LWI5MGYtZWRkOThlZDllNjEwXkEyXkFqcGc@._V1_.jpg",
+      "width": 1280,
+    },
+  },
+  {
+    "description": "The war epic subgenre features large-scale, sweeping narratives set against the backdrop of significant historical conflicts with a sense of historical or cultural importance. They often emphasize grandeur, scope, and the monumental impact of war on both individuals and societies.",
+    "id": "in0000011",
+    "isSubgenre": true,
+    "name": "War Epic",
+    "primaryImage": {
+      "height": 858,
+      "url": "https://m.media-amazon.com/images/M/MV5BNjA4MzEzOTc0N15BMl5BanBnXkFtZTgwOTcyNDY4MjI@._V1_.jpg",
+      "width": 2048,
+    },
+  },
+  {
+    "description": "The gun fu subgenre features highly choreographed gun battles that incorporate stylized martial arts, acrobatics, and fluid gun handling. These battles often involve close-quarters combat, dynamic camera work, and rapid editing to create a sense of frenetic energy and excitement.",
+    "id": "in0000197",
+    "isSubgenre": true,
+    "name": "Gun Fu",
+    "primaryImage": {
+      "height": 800,
+      "url": "https://m.media-amazon.com/images/M/MV5BYmNhYjJiYTUtNWMyNy00NTUyLTlkZDktMDk2YTZiMTJhN2MxXkEyXkFqcGc@._V1_.jpg",
+      "width": 1920,
+    },
+  },
+  {
+    "description": "The kung fu subgenre features the practice and mastery of Chinese martial arts. In Chinese, "kung fu" refers to any skill acquired through practice. Born as a backlash against the supernatural tropes of wuxia, the kung fu subgenre depicts realistic, unarmed fight choreography, highlighting the skill, speed, and agility of the martial artists involved, as well as the discipline, patience and strength required to become a master.",
+    "id": "in0000198",
+    "isSubgenre": true,
+    "name": "Kung Fu",
+    "primaryImage": {
+      "height": 1365,
+      "url": "https://m.media-amazon.com/images/M/MV5BNDkzNTkyODE1NF5BMl5BanBnXkFtZTgwNTE3MzYyNzE@._V1_.jpg",
+      "width": 2048,
+    },
+  },
+  {
+    "description": "The samurai subgenre, also known as chanbara, features the samurai warrior class and their way of life. These stories explore themes found within bushido, or "the way of the warrior," a moral code that guides samurai attitudes, behavior and lifestyle. Often set in feudal Japan during the Edo period (1603-1868), samurai stories depict the tension between tradition and modernization, the struggle for power and justice, and the decline of a traditional way of life.",
+    "id": "in0000199",
+    "isSubgenre": true,
+    "name": "Samurai",
+    "primaryImage": {
+      "height": 1547,
+      "url": "https://m.media-amazon.com/images/M/MV5BMTg5MTc4MTc4M15BMl5BanBnXkFtZTcwNjA5MTU4Mw@@._V1_.jpg",
+      "width": 2048,
+    },
+  },
+  {
+    "description": "The wuxia subgenre features the adventures of chivalrous heroes in ancient China who possess extraordinary martial arts skills, sometimes bordering on the supernatural. Wuxia heroes strive to redress wrongs, fight for righteousness, remove oppressors, and bring retribution for past misdeeds. These stories depict highly stylized action sequences, characterized by gravity-defying stunts, intricate choreography, and the use of various weapons.",
+    "id": "in0000200",
+    "isSubgenre": true,
+    "name": "Wuxia",
+    "primaryImage": {
+      "height": 749,
+      "url": "https://m.media-amazon.com/images/M/MV5BMWJjMjgzYTctMTY5OC00YzQzLTk3MDMtMmY5YWNkYzFlMGU2XkEyXkFqcGc@._V1_.jpg",
+      "width": 1080,
+    },
+  },
+]
+`;

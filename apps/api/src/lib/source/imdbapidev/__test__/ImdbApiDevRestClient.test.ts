@@ -15,4 +15,12 @@ describe("ImdbApiDevRestClient", () => {
     expect(title?.startYear).toBe(2013);
     expect(title?.genres?.at(0)).toBe("Drama");
   })
+
+  it("getInterests", async () => {
+    const result = await new ImdbApiDevRestClient().getInterests();
+    if (!result?.categories || result.categories.length === 0) {
+      throw new Error("categories not found or empty");
+    }
+    expect(result.categories[0].interests).toMatchSnapshot("interests.json");
+  });
 });
