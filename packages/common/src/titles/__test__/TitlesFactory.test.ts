@@ -39,6 +39,7 @@ describe("TitlesFactory", async () => {
       [
         {
           "id": "53f423b6-1cf3-4544-b090-8708fd00543a",
+          "images": [],
           "imdbId": "tt7772588",
           "imdbType": "tvSeries",
           "interests": [

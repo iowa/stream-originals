@@ -3,7 +3,7 @@ import * as schema from "./schema.js";
 
 export const relations = defineRelations(schema, (r) => ({
   titlesTable: {
-    titleImages: r.many.titleImagesTable(),
+    images: r.many.titleImagesTable(),
     interests: r.many.interestsTable()
   },
   titleImagesTable: {

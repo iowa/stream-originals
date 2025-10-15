@@ -1,7 +1,7 @@
 import StreamerList from "~/ui/streamer/StreamerList";
 import { createAsync, useParams } from "@solidjs/router";
-import { getTitlesList } from "~/lib/titles/TitlesRepository";
 import { Streamer } from "@repo/common";
+import { getTitlesList } from "~/lib/titles/TitlesAction";
 
 
 export default function StreamerPage() {

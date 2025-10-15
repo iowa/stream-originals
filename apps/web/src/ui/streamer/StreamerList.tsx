@@ -1,12 +1,12 @@
 import { AccessorWithLatest } from "@solidjs/router";
 import { For, Suspense } from "solid-js";
 import { Eye, Info, Star } from "lucide-solid";
-import { TitlesList } from "~/lib/titles/types";
 import { Image } from "@unpic/solid";
-import { Times } from "@repo/common";
+import { Times, TitleDto } from "@repo/common";
+import InterestsBadges from "~/ui/streamer/InterestsBadges";
 
 interface StreamerListProps {
-  titles: AccessorWithLatest<TitlesList[] | undefined>
+  titles: AccessorWithLatest<TitleDto[] | undefined>
 }
 
 export default function StreamerList({ titles }: StreamerListProps) {
@@ -23,11 +23,11 @@ export default function StreamerList({ titles }: StreamerListProps) {
                       {/* Poster Image */}
                       <div class="flex-shrink-0">
                         <Image
-                          src={title?.titles_media?.url || ""}
-                          alt={`${title.titles.name}_cover`}
+                          src={title?.images[0]?.url || ""}
+                          alt={`${title.name}_poster`}
                           width={120}
                           height={180}
-                          class={"w-auto h-[80px]"}
+                          class={"w-auto h-[180px]"}
                         />
                       </div>
 
@@ -37,17 +37,17 @@ export default function StreamerList({ titles }: StreamerListProps) {
                         <div class="flex items-start justify-between gap-4">
                           <div class="flex-1">
                             <h2
-                              class="text-xl font-semibold text-foreground mb-2">{title.titles.name}</h2>
+                              class="text-xl font-semibold text-foreground mb-2">{title.name}</h2>
                             {/* Metadata */}
                             <div
                               class="flex items-center gap-2 text-sm text-muted-foreground flex-wrap">
-                              <span>{Times.asDayjs(title.titles.premiere).year()}–2018</span>
+                              <span>{Times.asDayjs(title.premiere).year()}–2018</span>
                               <span>•</span>
                               <span>73 eps</span>
                               <span>•</span>
                               <span class="badge badge-sm badge-outline">TV-MA</span>
                               <span>•</span>
-                              <span>{title.titles.imdbType}</span>
+                              <span>{title.imdbType}</span>
                             </div>
                           </div>
 
@@ -56,6 +56,9 @@ export default function StreamerList({ titles }: StreamerListProps) {
                             <Info class="w-5 h-5 text-primary"/>
                           </button>
                         </div>
+
+                        {/* Interests */}
+                        <InterestsBadges interests={title.interests}/>
 
                         {/* Rating and Actions */}
                         <div class="flex items-center gap-4 flex-wrap">

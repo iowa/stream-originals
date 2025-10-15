@@ -43,15 +43,18 @@ export class TitlesRepository {
     .returning({ insertedId: titlesTable.id });
   }
 
-  getWithRelations(streamer: Streamer) {
+  getWithRelations(streamer: Streamer, page = 1, pageSize = 10): Promise<Title[]> {
     return this.db.query.titlesTable.findMany({
       with: {
+        images: true,
         interests: true,
       },
       where: {
         streamer: streamer,
         imdbId: { isNotNull: true }
-      }
+      },
+      limit: pageSize,
+      offset: (page - 1) * pageSize
     })
   }
 

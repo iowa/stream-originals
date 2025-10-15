@@ -28,5 +28,6 @@ export type Interest = InferSelectModel<typeof interestsTable>;
 export type TitleToInterest = InferSelectModel<typeof titlesToInterests>;
 
 export type TitleDto = Title & {
+  images: TitleImage[],
   interests: Interest[]
 }
