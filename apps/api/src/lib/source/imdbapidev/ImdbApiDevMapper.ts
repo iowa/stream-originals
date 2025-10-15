@@ -1,12 +1,14 @@
 import type { ImdbapiInterest, ImdbapiTitle } from "./generated/index.js";
-import { Interests, Title } from "@repo/common";
+import { Interest, TitleDto } from "@repo/common";
 
 export class ImdbApiDevMapper {
 
-  mapTitle(dbTitle: Title, apiTitle: ImdbapiTitle) {
+  mapTitle(dbTitle: TitleDto, apiTitle: ImdbapiTitle) {
+    console.log(JSON.stringify(dbTitle));
+    console.log(JSON.stringify(apiTitle));
   }
 
-  mapInterest(category: string, apiInterest: ImdbapiInterest): Interests {
+  mapInterest(category: string, apiInterest: ImdbapiInterest): Interest {
     return {
       id: apiInterest.id!,
       name: apiInterest.name!,

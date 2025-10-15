@@ -21,6 +21,7 @@ describe("ImdbApiDevRestClient", () => {
     if (!result?.categories || result.categories.length === 0) {
       throw new Error("categories not found or empty");
     }
-    expect(result.categories[0].interests).toMatchSnapshot("interests.json");
+    const actionCategory = result.categories.filter(c => c.category === 'Action');
+    expect(actionCategory[0].interests).toMatchSnapshot("interests.json");
   });
 });

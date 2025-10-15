@@ -46,7 +46,7 @@ export class TitlesRepository {
   getWithRelations(streamer: Streamer) {
     return this.db.query.titlesTable.findMany({
       with: {
-        interests: true
+        interests: true,
       },
       where: {
         streamer: streamer,
