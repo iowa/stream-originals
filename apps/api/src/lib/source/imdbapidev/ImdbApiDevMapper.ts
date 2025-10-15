@@ -3,9 +3,17 @@ import { Interest, TitleDto } from "@repo/common";
 
 export class ImdbApiDevMapper {
 
-  mapTitle(dbTitle: TitleDto, apiTitle: ImdbapiTitle) {
-    console.log(JSON.stringify(dbTitle));
-    console.log(JSON.stringify(apiTitle));
+  mapTitle(dbTitle: TitleDto, apiTitle: ImdbapiTitle): TitleDto {
+    const interests: Interest[] = [];
+    if (apiTitle.interests) {
+      for (const apiInterest of apiTitle.interests) {
+        interests.push(this.mapInterest('', apiInterest))
+      }
+    }
+    return {
+      ...dbTitle,
+      interests: interests
+    } as TitleDto;
   }
 
   mapInterest(category: string, apiInterest: ImdbapiInterest): Interest {

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import * as cheerio from "cheerio";
 import { WikiTitlesScraper } from "../WikiTitlesScraper.js";
-import { TestFiles } from "@repo/common/utils/files/TestFiles";
+import { TestFiles } from "@repo/common";
 
 describe("WikiTitlesScraper", () => {
   it("findTitles", async () => {

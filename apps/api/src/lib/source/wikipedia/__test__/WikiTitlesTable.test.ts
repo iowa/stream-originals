@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { WikiTitlesTable } from "../WikiTitlesTable.js";
-import { TestFiles } from "@repo/common/utils/files/TestFiles";
+import { TestFiles } from "@repo/common";
 
 describe("WikiTitlesTable", () => {
   it("parseRow For All Mankind", () => {
