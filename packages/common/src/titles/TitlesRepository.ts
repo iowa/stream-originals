@@ -1,5 +1,5 @@
 import { db } from "../db/db.js";
-import { Streamer, Title } from "../db/dbTypes.js";
+import { Streamer, Title, TitleDto } from "../db/dbTypes.js";
 import { titlesTable } from "../db/schema.js";
 import { and, count, eq, isNotNull } from "drizzle-orm";
 
@@ -43,7 +43,7 @@ export class TitlesRepository {
     .returning({ insertedId: titlesTable.id });
   }
 
-  getWithRelations(streamer: Streamer, page = 1, pageSize = 10): Promise<Title[]> {
+  getWithRelations(streamer: Streamer, page?: number, pageSize?: number): Promise<TitleDto[]> {
     return this.db.query.titlesTable.findMany({
       with: {
         images: true,
@@ -54,7 +54,7 @@ export class TitlesRepository {
         imdbId: { isNotNull: true }
       },
       limit: pageSize,
-      offset: (page - 1) * pageSize
+      offset: (page && pageSize) ? ((page - 1) * pageSize) : undefined,
     })
   }
 

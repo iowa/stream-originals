@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { getDbMock } from "@repo/common/db/dbMock";
 import {
-  Db,
+  Db, Interest,
   InterestsRepository,
   TestFiles,
   TitleDto,
@@ -19,6 +19,7 @@ describe("TitlesPatcher", async () => {
   let imdbApiDevRestClient: ImdbApiDevRestClient;
   let imdbApiDevMapper: ImdbApiDevMapper;
   let titlesFactory: TitlesFactory;
+  let interestsRepository: InterestsRepository;
   let cut: TitlesPatcher;
 
   beforeEach(() => {
@@ -28,8 +29,8 @@ describe("TitlesPatcher", async () => {
     } as unknown as ImdbApiDevRestClient;
 
     imdbApiDevMapper = new ImdbApiDevMapper();
-    let interestsRepository = new InterestsRepository(db as unknown as Db);
-    titlesFactory = new TitlesFactory(titlesRepository, interestsRepository)
+    interestsRepository = new InterestsRepository(db as unknown as Db);
+    titlesFactory = new TitlesFactory(interestsRepository)
 
     cut = new TitlesPatcher(
       titlesRepository,
@@ -45,20 +46,21 @@ describe("TitlesPatcher", async () => {
   });
 
   it("patch title", async () => {
-    const titleDto: TitleDto = TestFiles.loadJson(__dirname, `/data/title_tt7772588.json`);
-    await titlesFactory.insert(titleDto)
-    const apiResponse: ImdbapiBatchGetTitlesResponse = TestFiles.loadJson(__dirname, `/data/imdbapidev_tt7772588.json`);
+    const titleDto: TitleDto = TestFiles.loadJson(__dirname, `/data/title_tt1856010.json`);
+    await prepareData(titleDto);
+
+    const apiResponse: ImdbapiBatchGetTitlesResponse = TestFiles.loadJson(__dirname, `/data/imdbapidev_tt1856010.json`);
     (imdbApiDevRestClient.getTitles as any).mockResolvedValue(apiResponse);
 
-    const titlesPatchResponse = await cut.patch('appleTV+');
+    const titlesPatchResponse = await cut.patch('netflix');
 
-    const titles = await titlesRepository.getWithRelations('appleTV+');
+    const titles = await titlesRepository.getWithRelations('netflix');
     expect(titles).toMatchInlineSnapshot(`
       [
         {
           "id": "53f423b6-1cf3-4544-b090-8708fd00543a",
           "images": [],
-          "imdbId": "tt7772588",
+          "imdbId": "tt1856010",
           "imdbType": "tvSeries",
           "interests": [
             {
@@ -69,27 +71,42 @@ describe("TitlesPatcher", async () => {
               "name": "Drama",
             },
             {
-              "category": "Sci-Fi",
-              "description": "The sci-fi genre, short for science fiction, features imaginative and futuristic concepts that are often rooted in scientific principles, technology, and possibilities. These stories delve into "what if" questions and can serve as a platform to address contemporary social, political, and ethical issues by projecting them onto future or alternate settings.",
-              "id": "in0000162",
-              "isSubgenre": null,
-              "name": "Sci-Fi",
+              "category": "Drama",
+              "description": "The epic subgenre features grand and sweeping stories often set against significant historical, cultural, or societal backdrops. Epic dramas are characterized by their scope, scale, and often lengthy runtime, as they aim to capture the grandeur of human experiences, events, and emotions.",
+              "id": "in0000077",
+              "isSubgenre": true,
+              "name": "Epic",
             },
             {
-              "category": "Sci-Fi",
-              "description": "The space sci-fi subgenre features stories set primarily in outer space or involving space travel, exploration, and interstellar adventures. Space sci-fi often emphasizes the wonders and challenges of space travel, as well as the exploration of unknown frontiers, advanced technology, and encounters with extraterrestrial life.",
-              "id": "in0000164",
+              "category": "Drama",
+              "description": "The political drama subgenre features the intricacies of political power, government institutions, political conflicts, and the individuals involved in the political process. These dramas often explore themes of ambition, corruption, ethical dilemmas, and the impact of political decisions on society and individuals.",
+              "id": "in0000084",
               "isSubgenre": true,
-              "name": "Space Sci-Fi",
+              "name": "Political Drama",
+            },
+            {
+              "category": "Thriller",
+              "description": "The thriller genre features suspense, tension, and excitement. These stories are known for keeping audiences on the edge of their seats and delivering intense emotional experiences by revolving around high-stakes situations, dangerous conflicts, and the constant anticipation of unexpected events.",
+              "id": "in0000186",
+              "isSubgenre": null,
+              "name": "Thriller",
             },
           ],
-          "name": "For All Mankind",
-          "premiere": "2019-11-01",
-          "streamer": "appleTV+",
+          "name": "House of Cards",
+          "premiere": "2013-02-01",
+          "streamer": "netflix",
         },
       ]
     `)
   });
+
+  async function prepareData(original: TitleDto) {
+    await titlesRepository.insert(original);
+    const interests: Interest[] = TestFiles.loadJson(__dirname, `data/interests_tt1856010.json`);
+    for (const interest of interests) {
+      await interestsRepository.insert(interest)
+    }
+  }
 
 
 });

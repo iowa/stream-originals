@@ -27,6 +27,8 @@ export class TitlesPatcher {
       const imdbIds = batch.map(t => t.imdbId!).filter(Boolean);
       if (imdbIds.length === 0) continue;
       const apiTitles = await this.imdbApiDevRestClient.getTitles(imdbIds);
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      console.log(`Batch ${i}`)
       if (apiTitles.titles) {
         for (const apiTitle of apiTitles.titles) {
           if (apiTitle.id) {

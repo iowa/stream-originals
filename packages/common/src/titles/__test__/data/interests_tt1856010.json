@@ -1,0 +1,28 @@
+[
+  {
+    "id": "in0000076",
+    "name": "Drama",
+    "description": "The drama genre is a broad category that features stories portraying human experiences, emotions, conflicts, and relationships in a realistic and emotionally impactful way. Dramas delve into the complexities of human life, often exploring themes of love, loss, morality, societal issues, personal growth, with the aim to evoke an emotional response from the audience by presenting relatable and thought-provoking stories.",
+    "category": "Drama"
+  },
+  {
+    "id": "in0000077",
+    "isSubgenre": true,
+    "name": "Epic",
+    "description": "The epic subgenre features grand and sweeping stories often set against significant historical, cultural, or societal backdrops. Epic dramas are characterized by their scope, scale, and often lengthy runtime, as they aim to capture the grandeur of human experiences, events, and emotions.",
+    "category": "Drama"
+  },
+  {
+    "id": "in0000084",
+    "isSubgenre": true,
+    "name": "Political Drama",
+    "description": "The political drama subgenre features the intricacies of political power, government institutions, political conflicts, and the individuals involved in the political process. These dramas often explore themes of ambition, corruption, ethical dilemmas, and the impact of political decisions on society and individuals.",
+    "category": "Drama"
+  },
+  {
+    "id": "in0000186",
+    "name": "Thriller",
+    "description": "The thriller genre features suspense, tension, and excitement. These stories are known for keeping audiences on the edge of their seats and delivering intense emotional experiences by revolving around high-stakes situations, dangerous conflicts, and the constant anticipation of unexpected events.",
+    "category": "Thriller"
+  }
+]
