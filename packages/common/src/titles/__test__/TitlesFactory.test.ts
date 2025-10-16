@@ -27,7 +27,7 @@ describe("TitlesFactory", async () => {
     await client.close();
   });
 
-  it("Merge update with original", async () => {
+  it("Merge original with updated and inverse", async () => {
     const original: TitleDto = TestFiles.loadJson(__dirname, 'data/title_original_tt7772588.json');
     const updated: TitleDto = TestFiles.loadJson(__dirname, 'data/title_updated_tt7772588.json');
     await cut.insert(updated);
@@ -71,7 +71,24 @@ describe("TitlesFactory", async () => {
         },
       ]
     `);
-  });
 
+    await cut.merge(updated, original);
+
+    const resultInverse = await titlesRepository.getWithRelations('appleTV+');
+    expect(resultInverse).toMatchInlineSnapshot(`
+      [
+        {
+          "id": "53f423b6-1cf3-4544-b090-8708fd00543a",
+          "images": [],
+          "imdbId": "tt7772588",
+          "imdbType": "tvSeries",
+          "interests": [],
+          "name": "For All Mankind",
+          "premiere": "2019-11-01",
+          "streamer": "appleTV+",
+        },
+      ]
+    `);
+  });
 
 });

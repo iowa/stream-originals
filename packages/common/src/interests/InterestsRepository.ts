@@ -1,5 +1,5 @@
 import { db } from "../db/db.js";
-import { count, eq } from "drizzle-orm";
+import { and, count, eq, inArray } from "drizzle-orm";
 import { interestsTable, titlesToInterests } from "../db/schema.js";
 import { Interest } from "../db/dbTypes.js";
 
@@ -32,31 +32,26 @@ export class InterestsRepository {
     return this.db.insert(interestsTable).values(entity)
   }
 
-  async refresh(titleId: string, o: Interest[], u: Interest[],) {
-    const currentIds = o.map(i => i.id)
-    const newIds = new Set(u.map(i => i.id));
+  async refresh(titleId: string, o: Interest[], u: Interest[]) {
+    const currentIds = o.map(i => i.id);
+    const newIds = u.map(i => i.id);
 
-    // Interests to delete
-    const toDelete = [...currentIds].filter(id => !newIds.has(id));
+    const toDelete = currentIds.filter(id => !newIds.includes(id));
     if (toDelete.length) {
-      await this.db.delete(titlesToInterests)
-      .where(
-        eq(titlesToInterests.titleId, titleId)
-        // @ts-ignore: Drizzle may need an 'in' helper here
-        && titlesToInterests.interestId.in(toDelete)
+      await this.db.delete(titlesToInterests).where(
+        and(
+          eq(titlesToInterests.titleId, titleId),
+          inArray(titlesToInterests.interestId, toDelete)
+        )
       );
     }
 
-    // Interests to insert
-    const toInsert = [...newIds].filter(id => !currentIds.includes(id));
+    const toInsert = newIds.filter(id => !currentIds.includes(id));
     if (toInsert.length) {
-      const insertRows = toInsert.map(interestId => ({
-        titleId: titleId,
-        interestId
-      }));
-      await this.db.insert(titlesToInterests).values(insertRows);
+      await this.db.insert(titlesToInterests).values(
+        toInsert.map(interestId => ({ titleId, interestId }))
+      );
     }
   }
-
 
 }
