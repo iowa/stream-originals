@@ -26,7 +26,8 @@ export const relations = defineRelations(schema, (r) => ({
     }),
     credit: r.one.titleCreditsTable({
       from: r.creditsTable.id,
-      to: r.titleCreditsTable.creditId
+      to: r.titleCreditsTable.creditId,
+      optional: false
     })
   },
 }))

@@ -47,9 +47,7 @@ describe("TitlesMerger", async () => {
           "credits": [
             {
               "credit": {
-                "creditId": "88d3a8b9-92ed-43c6-af0d-1dc0dd82cf07",
                 "role": "star",
-                "titleId": "53f423b6-1cf3-4544-b090-8708fd00543a",
               },
               "displayName": "Kevin Spacey",
               "id": "88d3a8b9-92ed-43c6-af0d-1dc0dd82cf07",
@@ -65,29 +63,21 @@ describe("TitlesMerger", async () => {
           "imdbType": "tvSeries",
           "interests": [
             {
-              "category": "Drama",
-              "description": "The drama genre is a broad category that features stories portraying human experiences, emotions, conflicts, and relationships in a realistic and emotionally impactful way. Dramas delve into the complexities of human life, often exploring themes of love, loss, morality, societal issues, personal growth, with the aim to evoke an emotional response from the audience by presenting relatable and thought-provoking stories.",
               "id": "in0000076",
               "isSubgenre": null,
               "name": "Drama",
             },
             {
-              "category": "Drama",
-              "description": "The epic subgenre features grand and sweeping stories often set against significant historical, cultural, or societal backdrops. Epic dramas are characterized by their scope, scale, and often lengthy runtime, as they aim to capture the grandeur of human experiences, events, and emotions.",
               "id": "in0000077",
               "isSubgenre": true,
               "name": "Epic",
             },
             {
-              "category": "Drama",
-              "description": "The political drama subgenre features the intricacies of political power, government institutions, political conflicts, and the individuals involved in the political process. These dramas often explore themes of ambition, corruption, ethical dilemmas, and the impact of political decisions on society and individuals.",
               "id": "in0000084",
               "isSubgenre": true,
               "name": "Political Drama",
             },
             {
-              "category": "Thriller",
-              "description": "The thriller genre features suspense, tension, and excitement. These stories are known for keeping audiences on the edge of their seats and delivering intense emotional experiences by revolving around high-stakes situations, dangerous conflicts, and the constant anticipation of unexpected events.",
               "id": "in0000186",
               "isSubgenre": null,
               "name": "Thriller",

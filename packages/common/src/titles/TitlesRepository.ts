@@ -50,7 +50,7 @@ export class TitlesRepository {
     .where(eq(titlesTable.id, id))
   }
 
-  getWithRelations(streamer: Streamer, page?: number, pageSize?: number) {
+  getWithRelations(streamer: Streamer, page?: number, pageSize?: number): Promise<TitleDto[]> {
     return this.db.query.titlesTable.findMany({
       with: {
         images: true,
