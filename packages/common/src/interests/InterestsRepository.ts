@@ -1,6 +1,6 @@
 import { db } from "../db/db.js";
 import { and, count, eq, inArray } from "drizzle-orm";
-import { interestsTable, titlesToInterests } from "../db/schema.js";
+import { interestsTable, titleInterestsTable } from "../db/schema.js";
 import { Interest } from "../db/dbTypes.js";
 
 export class InterestsRepository {
@@ -38,17 +38,17 @@ export class InterestsRepository {
 
     const toDelete = currentIds.filter(id => !newIds.includes(id));
     if (toDelete.length) {
-      await this.db.delete(titlesToInterests).where(
+      await this.db.delete(titleInterestsTable).where(
         and(
-          eq(titlesToInterests.titleId, titleId),
-          inArray(titlesToInterests.interestId, toDelete)
+          eq(titleInterestsTable.titleId, titleId),
+          inArray(titleInterestsTable.interestId, toDelete)
         )
       );
     }
 
     const toInsert = newIds.filter(id => !currentIds.includes(id));
     if (toInsert.length) {
-      await this.db.insert(titlesToInterests).values(
+      await this.db.insert(titleInterestsTable).values(
         toInsert.map(interestId => ({ titleId, interestId }))
       );
     }

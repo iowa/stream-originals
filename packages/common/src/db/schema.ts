@@ -1,5 +1,10 @@
 import * as p from "drizzle-orm/pg-core";
-import { streamerValues, titleImageTypeValues, titleTypeValues } from "./dbTypes.js";
+import {
+  creditRoleValues,
+  streamerValues,
+  titleImageTypeValues,
+  titleTypeValues
+} from "./dbTypes.js";
 
 export const schema = p.pgSchema("stream_originals");
 
@@ -53,8 +58,8 @@ export const interestsTable = schema.table('interests', {
   category: p.varchar('category', { length: 100 }),
 });
 
-export const titlesToInterests = schema.table(
-  'titles_to_interests',
+export const titleInterestsTable = schema.table(
+  'title_interests',
   {
     titleId: p.uuid('title_id')
     .notNull()
@@ -68,3 +73,22 @@ export const titlesToInterests = schema.table(
   ],
 );
 
+export const creditRolesEnum = p.pgEnum("credit_roles", creditRoleValues);
+
+export const creditsTable = schema.table("credits", {
+  id: p.uuid("id").primaryKey().defaultRandom(),
+  imdbId: p.text("imdb_id").unique(),
+  displayName: p.text("display_name").notNull(),
+  primaryImageUrl: p.text("primary_image_url"),
+  primaryImageWidth: p.integer("primary_image_width"),
+  primaryImageHeight: p.integer("primary_image_height"),
+});
+
+export const titleCreditsTable = schema.table("title_credits", {
+    titleId: p.uuid("title_id").references(() => titlesTable.id).notNull(),
+    creditId: p.uuid("credit_id").references(() => creditsTable.id).notNull(),
+    role: creditRolesEnum().notNull(),
+  }, (t) => [
+    p.primaryKey({ columns: [t.titleId, t.creditId, t.role] })
+  ],
+);

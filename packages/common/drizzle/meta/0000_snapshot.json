@@ -1,9 +1,180 @@
 {
-  "id": "93e59067-ceb7-4149-88ed-fffc8088d95d",
+  "id": "2292049e-4f91-41fc-9854-b9e7e4dae663",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "stream_originals.credits": {
+      "name": "credits",
+      "schema": "stream_originals",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "imdb_id": {
+          "name": "imdb_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "display_name": {
+          "name": "display_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "primary_image_url": {
+          "name": "primary_image_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "primary_image_width": {
+          "name": "primary_image_width",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "primary_image_height": {
+          "name": "primary_image_height",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "credits_imdb_id_unique": {
+          "name": "credits_imdb_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "imdb_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "stream_originals.interests": {
+      "name": "interests",
+      "schema": "stream_originals",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(20)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_subgenre": {
+          "name": "is_subgenre",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "category": {
+          "name": "category",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "stream_originals.title_credits": {
+      "name": "title_credits",
+      "schema": "stream_originals",
+      "columns": {
+        "title_id": {
+          "name": "title_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "credit_id": {
+          "name": "credit_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "role": {
+          "name": "role",
+          "type": "credit_roles",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "title_credits_title_id_titles_id_fk": {
+          "name": "title_credits_title_id_titles_id_fk",
+          "tableFrom": "title_credits",
+          "tableTo": "titles",
+          "schemaTo": "stream_originals",
+          "columnsFrom": [
+            "title_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "title_credits_credit_id_credits_id_fk": {
+          "name": "title_credits_credit_id_credits_id_fk",
+          "tableFrom": "title_credits",
+          "tableTo": "credits",
+          "schemaTo": "stream_originals",
+          "columnsFrom": [
+            "credit_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "title_credits_title_id_credit_id_role_pk": {
+          "name": "title_credits_title_id_credit_id_role_pk",
+          "columns": [
+            "title_id",
+            "credit_id",
+            "role"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "stream_originals.title_images": {
       "name": "title_images",
       "schema": "stream_originals",
@@ -78,6 +249,68 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
+    "stream_originals.title_interests": {
+      "name": "title_interests",
+      "schema": "stream_originals",
+      "columns": {
+        "title_id": {
+          "name": "title_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "interest_id": {
+          "name": "interest_id",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "title_interests_title_id_titles_id_fk": {
+          "name": "title_interests_title_id_titles_id_fk",
+          "tableFrom": "title_interests",
+          "tableTo": "titles",
+          "schemaTo": "stream_originals",
+          "columnsFrom": [
+            "title_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "title_interests_interest_id_interests_id_fk": {
+          "name": "title_interests_interest_id_interests_id_fk",
+          "tableFrom": "title_interests",
+          "tableTo": "interests",
+          "schemaTo": "stream_originals",
+          "columnsFrom": [
+            "interest_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "title_interests_title_id_interest_id_pk": {
+          "name": "title_interests_title_id_interest_id_pk",
+          "columns": [
+            "title_id",
+            "interest_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "stream_originals.titles": {
       "name": "titles",
       "schema": "stream_originals",
@@ -141,6 +374,15 @@
     }
   },
   "enums": {
+    "public.credit_roles": {
+      "name": "credit_roles",
+      "schema": "public",
+      "values": [
+        "star",
+        "writer",
+        "director"
+      ]
+    },
     "public.streamers": {
       "name": "streamers",
       "schema": "public",
