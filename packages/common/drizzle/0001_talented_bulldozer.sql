@@ -1,0 +1,1 @@
+ALTER TABLE "stream_originals"."titles" ADD COLUMN "plot" text;

@@ -2,21 +2,22 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { getDbMock } from "../../db/dbMock.js";
 import { TitlesRepository } from "../TitlesRepository.js";
 import { Db } from "../../db/db.js";
-import { TitlesFactory } from "../TitlesFactory.js";
+import { TitlesMerger } from "../TitlesMerger.js";
 import { InterestsRepository } from "../../interests/InterestsRepository.js";
 import { TestFiles } from "../../utils/files/TestFiles.js";
 import { Interest, TitleDto } from "../../db/dbTypes.js";
 
-describe("TitlesFactory", async () => {
+describe("TitlesMerger", async () => {
   let { client, db } = await getDbMock();
   let titlesRepository: TitlesRepository;
   let interestsRepository: InterestsRepository;
-  let cut: TitlesFactory;
+  let cut: TitlesMerger;
 
   beforeEach(() => {
     titlesRepository = new TitlesRepository(db as unknown as Db);
     interestsRepository = new InterestsRepository(db as unknown as Db);
-    cut = new TitlesFactory(
+    cut = new TitlesMerger(
+      titlesRepository,
       interestsRepository,
     );
     vi.clearAllMocks();
@@ -37,6 +38,7 @@ describe("TitlesFactory", async () => {
     expect(result).toMatchInlineSnapshot(`
       [
         {
+          "credits": [],
           "id": "53f423b6-1cf3-4544-b090-8708fd00543a",
           "images": [],
           "imdbId": "tt1856010",
@@ -72,6 +74,7 @@ describe("TitlesFactory", async () => {
             },
           ],
           "name": "House of Cards",
+          "plot": "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",
           "premiere": "2013-02-01",
           "streamer": "netflix",
         },
@@ -84,12 +87,14 @@ describe("TitlesFactory", async () => {
     expect(resultInverse).toMatchInlineSnapshot(`
       [
         {
+          "credits": [],
           "id": "53f423b6-1cf3-4544-b090-8708fd00543a",
           "images": [],
           "imdbId": "tt1856010",
           "imdbType": "tvSeries",
           "interests": [],
           "name": "House of Cards",
+          "plot": null,
           "premiere": "2013-02-01",
           "streamer": "netflix",
         },

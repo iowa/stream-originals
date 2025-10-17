@@ -84,8 +84,7 @@ export default function StreamerList({ titles }: StreamerListProps) {
 
                         {/* Description */}
                         <p class="text-sm text-foreground leading-relaxed">
-                          A Congressman works with his equally conniving wife to exact revenge on
-                          the people who betrayed him.
+                          {title.plot}
                         </p>
 
                         {/* Creator and Stars */}

@@ -5,7 +5,7 @@ import {
   InterestsRepository,
   TestFiles,
   TitleDto,
-  TitlesFactory,
+  TitlesMerger,
   TitlesRepository
 } from "@repo/common";
 import { TitlesPatcher } from "../TitlesPatcher.js";
@@ -18,7 +18,7 @@ describe("TitlesPatcher", async () => {
   let titlesRepository: TitlesRepository;
   let imdbApiDevRestClient: ImdbApiDevRestClient;
   let imdbApiDevMapper: ImdbApiDevMapper;
-  let titlesFactory: TitlesFactory;
+  let titlesFactory: TitlesMerger;
   let interestsRepository: InterestsRepository;
   let cut: TitlesPatcher;
 
@@ -30,7 +30,7 @@ describe("TitlesPatcher", async () => {
 
     imdbApiDevMapper = new ImdbApiDevMapper();
     interestsRepository = new InterestsRepository(db as unknown as Db);
-    titlesFactory = new TitlesFactory(interestsRepository)
+    titlesFactory = new TitlesMerger(titlesRepository, interestsRepository)
 
     cut = new TitlesPatcher(
       titlesRepository,
@@ -58,6 +58,7 @@ describe("TitlesPatcher", async () => {
     expect(titles).toMatchInlineSnapshot(`
       [
         {
+          "credits": [],
           "id": "53f423b6-1cf3-4544-b090-8708fd00543a",
           "images": [],
           "imdbId": "tt1856010",
@@ -93,6 +94,7 @@ describe("TitlesPatcher", async () => {
             },
           ],
           "name": "House of Cards",
+          "plot": "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",
           "premiere": "2013-02-01",
           "streamer": "netflix",
         },

@@ -1,7 +1,7 @@
 import {
   Streamer,
   TitleDto,
-  TitlesFactory,
+  TitlesMerger,
   TitlesPatchResponse,
   TitlesRepository
 } from "@repo/common";
@@ -14,7 +14,7 @@ export class TitlesPatcher {
     private readonly titlesRepository: TitlesRepository = new TitlesRepository(),
     private readonly imdbApiDevRestClient: ImdbApiDevRestClient = new ImdbApiDevRestClient(),
     private readonly imdbApiDevMapper: ImdbApiDevMapper = new ImdbApiDevMapper(),
-    private readonly titlesFactory: TitlesFactory = new TitlesFactory(),
+    private readonly titlesFactory: TitlesMerger = new TitlesMerger(),
   ) {
   }
 

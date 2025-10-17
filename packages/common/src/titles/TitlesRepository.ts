@@ -43,11 +43,19 @@ export class TitlesRepository {
     .returning({ insertedId: titlesTable.id });
   }
 
+  async update(id: string, updated: Title) {
+    return this.db
+    .update(titlesTable)
+    .set({ plot: updated.plot ? updated.plot : null })
+    .where(eq(titlesTable.id, id))
+  }
+
   getWithRelations(streamer: Streamer, page?: number, pageSize?: number): Promise<TitleDto[]> {
     return this.db.query.titlesTable.findMany({
       with: {
         images: true,
         interests: true,
+        credits: true,
       },
       where: {
         streamer: streamer,

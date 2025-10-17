@@ -21,6 +21,7 @@ export const titlesTable = schema.table(
     streamer: streamersEnum().notNull(),
     imdbId: p.text(),
     imdbType: titleTypesEnum(),
+    plot: p.text()
   },
   (table) => ({
     uniqueTitleStreamer: p.unique().on(table.name, table.streamer),

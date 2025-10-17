@@ -12,6 +12,7 @@ export class ImdbApiDevMapper {
     }
     return {
       ...dbTitle,
+      plot: apiTitle.plot,
       interests: interests
     } as TitleDto;
   }
