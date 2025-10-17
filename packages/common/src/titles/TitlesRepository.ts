@@ -57,7 +57,11 @@ export class TitlesRepository {
         interests: true,
         credits: {
           with: {
-            credit: true
+            credit: {
+              columns: {
+                role: true
+              },
+            }
           }
         }
       },
