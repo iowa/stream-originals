@@ -23,6 +23,10 @@ export const relations = defineRelations(schema, (r) => ({
     titles: r.many.titlesTable({
       from: r.creditsTable.id.through(r.titleCreditsTable.creditId),
       to: r.titlesTable.id.through(r.titleCreditsTable.titleId)
+    }),
+    credit: r.one.titleCreditsTable({
+      from: r.creditsTable.id,
+      to: r.titleCreditsTable.creditId
     })
-  }
+  },
 }))

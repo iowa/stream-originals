@@ -50,12 +50,16 @@ export class TitlesRepository {
     .where(eq(titlesTable.id, id))
   }
 
-  getWithRelations(streamer: Streamer, page?: number, pageSize?: number): Promise<TitleDto[]> {
+  getWithRelations(streamer: Streamer, page?: number, pageSize?: number) {
     return this.db.query.titlesTable.findMany({
       with: {
         images: true,
         interests: true,
-        credits: true,
+        credits: {
+          with: {
+            credit: true
+          }
+        }
       },
       where: {
         streamer: streamer,

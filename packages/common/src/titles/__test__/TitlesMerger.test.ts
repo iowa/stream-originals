@@ -5,20 +5,24 @@ import { Db } from "../../db/db.js";
 import { TitlesMerger } from "../TitlesMerger.js";
 import { InterestsRepository } from "../../interests/InterestsRepository.js";
 import { TestFiles } from "../../utils/files/TestFiles.js";
-import { Interest, TitleDto } from "../../db/dbTypes.js";
+import { Credit, Interest, TitleDto } from "../../db/dbTypes.js";
+import { CreditsRepository } from "../../credits/CreditsRepository.js";
 
 describe("TitlesMerger", async () => {
   let { client, db } = await getDbMock();
   let titlesRepository: TitlesRepository;
   let interestsRepository: InterestsRepository;
-  let cut: TitlesMerger;
+  let creditsRepository: CreditsRepository,
+    cut: TitlesMerger;
 
   beforeEach(() => {
     titlesRepository = new TitlesRepository(db as unknown as Db);
     interestsRepository = new InterestsRepository(db as unknown as Db);
+    creditsRepository = new CreditsRepository(db as unknown as Db);
     cut = new TitlesMerger(
       titlesRepository,
       interestsRepository,
+      creditsRepository
     );
     vi.clearAllMocks();
   });
@@ -31,6 +35,8 @@ describe("TitlesMerger", async () => {
     const original: TitleDto = TestFiles.loadJson(__dirname, 'data/title_original_tt1856010.json');
     const updated: TitleDto = TestFiles.loadJson(__dirname, 'data/title_updated_tt1856010.json');
     await prepareData(original)
+    console.log(await titlesRepository.getWithRelations('netflix'));
+    console.log(await creditsRepository.getAll());
     await cut.merge(original, updated);
 
     const result = await titlesRepository.getWithRelations('netflix');
@@ -38,7 +44,21 @@ describe("TitlesMerger", async () => {
     expect(result).toMatchInlineSnapshot(`
       [
         {
-          "credits": [],
+          "credits": [
+            {
+              "credit": {
+                "creditId": "88d3a8b9-92ed-43c6-af0d-1dc0dd82cf07",
+                "role": "star",
+                "titleId": "53f423b6-1cf3-4544-b090-8708fd00543a",
+              },
+              "displayName": "Kevin Spacey",
+              "id": "88d3a8b9-92ed-43c6-af0d-1dc0dd82cf07",
+              "imdbId": "nm0000228",
+              "primaryImageHeight": null,
+              "primaryImageUrl": null,
+              "primaryImageWidth": null,
+            },
+          ],
           "id": "53f423b6-1cf3-4544-b090-8708fd00543a",
           "images": [],
           "imdbId": "tt1856010",
@@ -107,6 +127,10 @@ describe("TitlesMerger", async () => {
     const interests: Interest[] = TestFiles.loadJson(__dirname, `data/interests_tt1856010.json`);
     for (const interest of interests) {
       await interestsRepository.insert(interest)
+    }
+    const credits: Credit[] = TestFiles.loadJson(__dirname, `data/credits_tt1856010.json`);
+    for (const credit of credits) {
+      await creditsRepository.insert(credit)
     }
   }
 
