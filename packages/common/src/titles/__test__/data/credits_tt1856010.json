@@ -1,6 +1,11 @@
 [
-  {
-    "id": "nm0000228",
-    "name": "Kevin Spacey"
-  }
+  { "id": "nm0000705", "name": "Robin Wright" },
+  { "id": "nm0000228", "name": "Kevin Spacey" },
+  { "id": "nm0318703", "name": "Michel Gill" },
+  { "id": "nm0544718", "name": "Kate Mara" },
+  { "id": "nm0001226", "name": "James Foley" },
+  { "id": "nm0171315", "name": "John David Coles" },
+  { "id": "nm0203577", "name": "Andrew Davies" },
+  { "id": "nm0229645", "name": "Michael Dobbs" },
+  { "id": "nm2802722", "name": "Beau Willimon" }
 ]
