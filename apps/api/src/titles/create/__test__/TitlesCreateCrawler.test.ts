@@ -70,6 +70,7 @@ describe("TitlesCreateCrawler", async () => {
           "imdbId": "tt1856010",
           "imdbType": "tvSeries",
           "name": "House of Cards",
+          "plot": null,
           "premiere": "2013-02-01",
           "streamer": "netflix",
         },

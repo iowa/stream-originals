@@ -14,11 +14,13 @@ export class InterestsRepository {
     return this.db.query.interestsTable.findMany();
   }
 
-  async getAllIds(): Promise<string[]> {
-    const result = await this.db
-    .select({ id: interestsTable.id })
-    .from(interestsTable);
-    return result.map(row => row.id);
+  async getAllIds(): Promise<Set<string>> {
+    const result = await this.db.query.interestsTable.findMany({
+      columns: {
+        id: true
+      },
+    });
+    return new Set(result.map(row => row.id));
   }
 
   async getCount(): Promise<number> {
@@ -31,7 +33,6 @@ export class InterestsRepository {
   insert(entity: Interest) {
     return this.db.insert(interestsTable).values(entity)
   }
-
 
 
 }

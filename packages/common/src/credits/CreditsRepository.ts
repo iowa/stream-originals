@@ -1,5 +1,5 @@
 import { dbDrizzle } from "../db/dbDrizzle.js";
-import { creditsTable } from "../db/schema.js";
+import { creditsTable, interestsTable } from "../db/schema.js";
 import { Credit } from "../db/dbTypes.js";
 
 export class CreditsRepository {
@@ -9,14 +9,18 @@ export class CreditsRepository {
     this.db = dbInstance
   }
 
-  getAll(): Promise<Credit[]> {
-    return this.db.query.creditsTable.findMany();
+  async getAllIds(): Promise<Set<string>> {
+    const result = await this.db.query.creditsTable.findMany({
+      columns: {
+        id: true
+      },
+    });
+    return new Set(result.map(row => row.id));
   }
 
   insert(entity: Credit) {
     return this.db.insert(creditsTable).values(entity)
   }
-
 
 
 }

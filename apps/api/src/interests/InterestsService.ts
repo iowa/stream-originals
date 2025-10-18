@@ -12,12 +12,12 @@ export class InterestsService {
   async create(): Promise<InteretsCreateResponse> {
     const response = this.buildCreateResponse();
     const { categories } = await this.imdbApiDevRestClient.getInterests();
-    const dbInterestsIds = await this.interestsRepository.getAllIds();
+    const dbInterestsIds:Set<string> = await this.interestsRepository.getAllIds();
     if (categories) {
       for (const { category, interests } of categories) {
         if (interests) {
           for (const interest of interests) {
-            if (interest.id && !dbInterestsIds.includes(interest.id)) {
+            if (interest.id && !dbInterestsIds.has(interest.id)) {
               await this.interestsRepository.insert(
                 this.imdbApiDevMapper.mapInterest(category!, interest)
               );

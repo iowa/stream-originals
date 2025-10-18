@@ -1,23 +1,57 @@
 import { ImdbapiInterest, ImdbapiName, ImdbapiTitle } from "./generated/index.js";
-import { Credit, CreditPatchDto, Interest, InterestPatchDto, TitlePatchDto } from "@repo/common";
+import {
+  Credit,
+  CreditPatchDto,
+  Interest,
+  InterestPatchDto,
+  InterestsRepository,
+  TitlePatchDto
+} from "@repo/common";
+import { CreditsRepository } from "@repo/common/credits/CreditsRepository";
 
 export class ImdbApiDevMapper {
 
-  mapTitle(dbTitle: TitlePatchDto, apiTitle: ImdbapiTitle): TitlePatchDto {
+  constructor(
+    private readonly interestsRepository: InterestsRepository = new InterestsRepository(),
+    private readonly creditsRepository: CreditsRepository = new CreditsRepository(),
+  ) {
+  }
+
+  async mapTitle(dbTitle: TitlePatchDto,
+           apiTitle: ImdbapiTitle,
+           interestsIds: Set<string>,
+           creditIds: Set<string>): Promise<TitlePatchDto> {
     const interests: InterestPatchDto[] = [];
     if (apiTitle.interests) {
       for (const apiInterest of apiTitle.interests) {
-        interests.push(this.mapInterest('', apiInterest))
+        const interest = this.mapInterest('', apiInterest);
+        if (!interestsIds.has(interest.id)) {
+          await this.interestsRepository.insert(interest);
+          interestsIds.add(interest.id);
+        }
+        interests.push(interest)
       }
-      const credits: CreditPatchDto[] = [];
-      for (const apiStar of apiTitle.stars || []) {
-
+    }
+    const credits: CreditPatchDto[] = [];
+    for (const apiStar of apiTitle.stars || []) {
+      const credit = this.mapCredit(apiStar);
+      if (!creditIds.has(credit.id)) {
+        await this.creditsRepository.insert(credit);
+        creditIds.add(credit.id);
       }
+      credits.push({
+        id: credit.id,
+        name: credit.name,
+        credit: {
+          role: 'star'
+        }
+      })
     }
     return {
       ...dbTitle,
       plot: apiTitle.plot,
-      interests: interests
+      interests: interests,
+      credits: credits
     } as TitlePatchDto;
   }
 

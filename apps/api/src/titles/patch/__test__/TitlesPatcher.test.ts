@@ -11,6 +11,7 @@ import { TitlesPatcher } from "../TitlesPatcher.js";
 import { ImdbApiDevRestClient } from "../../../lib/source/imdbapidev/ImdbApiDevRestClient.js";
 import { ImdbApiDevMapper } from "../../../lib/source/imdbapidev/ImdbApiDevMapper.js";
 import { ImdbapiBatchGetTitlesResponse } from "../../../lib/source/imdbapidev/generated/index.js";
+import { CreditsRepository } from "@repo/common/credits/CreditsRepository";
 
 describe("TitlesPatcher", async () => {
   let { client, db } = await getDbMock();
@@ -19,6 +20,7 @@ describe("TitlesPatcher", async () => {
   let imdbApiDevMapper: ImdbApiDevMapper;
   let titlesFactory: TitlesMerger;
   let interestsRepository: InterestsRepository;
+  let creditsRepository: CreditsRepository;
   let cut: TitlesPatcher;
 
   beforeEach(() => {
@@ -27,15 +29,18 @@ describe("TitlesPatcher", async () => {
       getTitles: vi.fn()
     } as unknown as ImdbApiDevRestClient;
 
-    imdbApiDevMapper = new ImdbApiDevMapper();
     interestsRepository = new InterestsRepository(db as unknown as DbDrizzle);
+    creditsRepository = new CreditsRepository(db as unknown as DbDrizzle);
     titlesFactory = new TitlesMerger(db as unknown as DbDrizzle)
+    imdbApiDevMapper = new ImdbApiDevMapper(interestsRepository, creditsRepository);
 
     cut = new TitlesPatcher(
       titlesRepository,
       imdbApiDevRestClient,
       imdbApiDevMapper,
-      titlesFactory
+      titlesFactory,
+      interestsRepository,
+      creditsRepository
     );
     vi.clearAllMocks();
   });
@@ -57,38 +62,54 @@ describe("TitlesPatcher", async () => {
     expect(titles).toMatchInlineSnapshot(`
       [
         {
-          "credits": [],
+          "credits": [
+            {
+              "credit": {
+                "role": "star",
+              },
+              "id": "nm0000705",
+              "name": "Robin Wright",
+            },
+            {
+              "credit": {
+                "role": "star",
+              },
+              "id": "nm0000228",
+              "name": "Kevin Spacey",
+            },
+            {
+              "credit": {
+                "role": "star",
+              },
+              "id": "nm0318703",
+              "name": "Michel Gill",
+            },
+            {
+              "credit": {
+                "role": "star",
+              },
+              "id": "nm0544718",
+              "name": "Kate Mara",
+            },
+          ],
           "id": "53f423b6-1cf3-4544-b090-8708fd00543a",
-          "images": [],
           "imdbId": "tt1856010",
           "imdbType": "tvSeries",
           "interests": [
             {
-              "category": "Drama",
-              "description": "The drama genre is a broad category that features stories portraying human experiences, emotions, conflicts, and relationships in a realistic and emotionally impactful way. Dramas delve into the complexities of human life, often exploring themes of love, loss, morality, societal issues, personal growth, with the aim to evoke an emotional response from the audience by presenting relatable and thought-provoking stories.",
               "id": "in0000076",
-              "isSubgenre": null,
               "name": "Drama",
             },
             {
-              "category": "Drama",
-              "description": "The epic subgenre features grand and sweeping stories often set against significant historical, cultural, or societal backdrops. Epic dramas are characterized by their scope, scale, and often lengthy runtime, as they aim to capture the grandeur of human experiences, events, and emotions.",
               "id": "in0000077",
-              "isSubgenre": true,
               "name": "Epic",
             },
             {
-              "category": "Drama",
-              "description": "The political drama subgenre features the intricacies of political power, government institutions, political conflicts, and the individuals involved in the political process. These dramas often explore themes of ambition, corruption, ethical dilemmas, and the impact of political decisions on society and individuals.",
               "id": "in0000084",
-              "isSubgenre": true,
               "name": "Political Drama",
             },
             {
-              "category": "Thriller",
-              "description": "The thriller genre features suspense, tension, and excitement. These stories are known for keeping audiences on the edge of their seats and delivering intense emotional experiences by revolving around high-stakes situations, dangerous conflicts, and the constant anticipation of unexpected events.",
               "id": "in0000186",
-              "isSubgenre": null,
               "name": "Thriller",
             },
           ],
@@ -103,10 +124,6 @@ describe("TitlesPatcher", async () => {
 
   async function prepareData(original: TitlePatchDto) {
     await titlesRepository.insert(original);
-    const interests: Interest[] = TestFiles.loadJson(__dirname, `data/interests_tt1856010.json`);
-    for (const interest of interests) {
-      await interestsRepository.insert(interest)
-    }
   }
 
 });

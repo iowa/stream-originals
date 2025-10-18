@@ -1,4 +1,5 @@
 import {
+  InterestsRepository,
   Streamer,
   TitlePatchDto,
   TitlesMerger,
@@ -7,6 +8,7 @@ import {
 } from "@repo/common";
 import { ImdbApiDevRestClient } from "../../lib/source/imdbapidev/ImdbApiDevRestClient.js";
 import { ImdbApiDevMapper } from "../../lib/source/imdbapidev/ImdbApiDevMapper.js";
+import { CreditsRepository } from "@repo/common/credits/CreditsRepository";
 
 export class TitlesPatcher {
 
@@ -14,13 +16,17 @@ export class TitlesPatcher {
     private readonly titlesRepository: TitlesRepository = new TitlesRepository(),
     private readonly imdbApiDevRestClient: ImdbApiDevRestClient = new ImdbApiDevRestClient(),
     private readonly imdbApiDevMapper: ImdbApiDevMapper = new ImdbApiDevMapper(),
-    private readonly titlesFactory: TitlesMerger = new TitlesMerger(),
+    private readonly titlesMerger: TitlesMerger = new TitlesMerger(),
+    private readonly interestsRepository: InterestsRepository = new InterestsRepository(),
+    private readonly creditsRepository: CreditsRepository = new CreditsRepository(),
   ) {
   }
 
   async patch(streamer: Streamer): Promise<TitlesPatchResponse> {
     const response: TitlesPatchResponse = { items: [] };
     const titles: TitlePatchDto[] = await this.titlesRepository.getTitlePatchDtos(streamer);
+    const interestsIds: Set<string> = await this.interestsRepository.getAllIds();
+    const creditIds: Set<string> = await this.creditsRepository.getAllIds();
     const batchSize = 5;
     for (let i = 0; i < titles.length; i += batchSize) {
       const batch = titles.slice(i, i + batchSize);
@@ -32,9 +38,9 @@ export class TitlesPatcher {
       if (apiTitles.titles) {
         for (const apiTitle of apiTitles.titles) {
           if (apiTitle.id) {
-            let title = this.findInTitles(batch, apiTitle.id);
-            let updatedTitleDto = this.imdbApiDevMapper.mapTitle(title, apiTitle);
-            await this.titlesFactory.merge(title, updatedTitleDto);
+            const title = this.findInTitles(batch, apiTitle.id);
+            const updatedTitleDto = await this.imdbApiDevMapper.mapTitle(title, apiTitle, interestsIds, creditIds);
+            await this.titlesMerger.merge(title, updatedTitleDto);
           }
         }
       }
