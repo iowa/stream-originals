@@ -1,6 +1,6 @@
 import { dbDrizzle } from "../db/dbDrizzle.js";
-import { creditsTable, titleCreditsTable } from "../db/schema.js";
-import { Credit, CreditRole, TitleCredit } from "../db/dbTypes.js";
+import { creditsTable } from "../db/schema.js";
+import { Credit } from "../db/dbTypes.js";
 
 export class CreditsRepository {
   private readonly db

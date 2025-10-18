@@ -45,7 +45,6 @@ export class TitlesRepository {
   }
 
 
-
   getTitlePatchDtos(streamer: Streamer, page?: number, pageSize?: number): Promise<TitlePatchDto[]> {
     return this.db.query.titlesTable.findMany({
       with: {
@@ -58,8 +57,7 @@ export class TitlesRepository {
         credits: {
           columns: {
             id: true,
-            imdbId: true,
-            displayName: true,
+            name: true,
           },
           with: {
             credit: {

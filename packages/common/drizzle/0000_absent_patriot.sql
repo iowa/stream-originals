@@ -5,13 +5,11 @@ CREATE TYPE "public"."streamers" AS ENUM('appleTV+', 'netflix');--> statement-br
 CREATE TYPE "public"."title_image_types" AS ENUM('poster');--> statement-breakpoint
 CREATE TYPE "public"."title_types" AS ENUM('movie', 'tvSeries', 'tvMiniSeries', 'tvSpecial', 'tvMovie', 'short', 'video', 'videoGame');--> statement-breakpoint
 CREATE TABLE "stream_originals"."credits" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"imdb_id" text,
-	"display_name" text NOT NULL,
+	"id" varchar(20) PRIMARY KEY NOT NULL,
+	"name" text NOT NULL,
 	"primary_image_url" text,
 	"primary_image_width" integer,
-	"primary_image_height" integer,
-	CONSTRAINT "credits_imdb_id_unique" UNIQUE("imdb_id")
+	"primary_image_height" integer
 );
 --> statement-breakpoint
 CREATE TABLE "stream_originals"."interests" (
@@ -24,7 +22,7 @@ CREATE TABLE "stream_originals"."interests" (
 --> statement-breakpoint
 CREATE TABLE "stream_originals"."title_credits" (
 	"title_id" uuid NOT NULL,
-	"credit_id" uuid NOT NULL,
+	"credit_id" varchar(20) NOT NULL,
 	"role" "credit_roles" NOT NULL,
 	CONSTRAINT "title_credits_title_id_credit_id_role_pk" PRIMARY KEY("title_id","credit_id","role")
 );
@@ -52,6 +50,7 @@ CREATE TABLE "stream_originals"."titles" (
 	"streamer" "streamers" NOT NULL,
 	"imdbId" text,
 	"imdbType" "title_types",
+	"plot" text,
 	CONSTRAINT "titles_name_streamer_unique" UNIQUE("name","streamer")
 );
 --> statement-breakpoint

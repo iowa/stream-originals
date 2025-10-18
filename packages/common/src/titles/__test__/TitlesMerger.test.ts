@@ -44,9 +44,8 @@ describe("TitlesMerger", async () => {
               "credit": {
                 "role": "star",
               },
-              "displayName": "Kevin Spacey",
-              "id": "88d3a8b9-92ed-43c6-af0d-1dc0dd82cf07",
-              "imdbId": "nm0000228",
+              "id": "nm0000228",
+              "name": "Kevin Spacey",
             },
           ],
           "id": "53f423b6-1cf3-4544-b090-8708fd00543a",

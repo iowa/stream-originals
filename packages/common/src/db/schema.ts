@@ -77,9 +77,8 @@ export const titleInterestsTable = schema.table(
 export const creditRolesEnum = p.pgEnum("credit_roles", creditRoleValues);
 
 export const creditsTable = schema.table("credits", {
-  id: p.uuid("id").primaryKey().defaultRandom(),
-  imdbId: p.text("imdb_id").unique(),
-  displayName: p.text("display_name").notNull(),
+  id: p.varchar('id', { length: 20 }).primaryKey(),
+  name: p.text("name").notNull(),
   primaryImageUrl: p.text("primary_image_url"),
   primaryImageWidth: p.integer("primary_image_width"),
   primaryImageHeight: p.integer("primary_image_height"),
@@ -87,7 +86,7 @@ export const creditsTable = schema.table("credits", {
 
 export const titleCreditsTable = schema.table("title_credits", {
     titleId: p.uuid("title_id").references(() => titlesTable.id).notNull(),
-    creditId: p.uuid("credit_id").references(() => creditsTable.id).notNull(),
+    creditId: p.varchar('credit_id', { length: 20 }).references(() => creditsTable.id).notNull(),
     role: creditRolesEnum().notNull(),
   }, (t) => [
     p.primaryKey({ columns: [t.titleId, t.creditId, t.role] })

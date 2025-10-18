@@ -1,6 +1,6 @@
 import {
   Streamer,
-  TitleDto,
+  TitlePatchDto,
   TitlesMerger,
   TitlesPatchResponse,
   TitlesRepository
@@ -20,7 +20,7 @@ export class TitlesPatcher {
 
   async patch(streamer: Streamer): Promise<TitlesPatchResponse> {
     const response: TitlesPatchResponse = { items: [] };
-    const titles: TitleDto[] = await this.titlesRepository.getTitlePatchDtos(streamer);
+    const titles: TitlePatchDto[] = await this.titlesRepository.getTitlePatchDtos(streamer);
     const batchSize = 5;
     for (let i = 0; i < titles.length; i += batchSize) {
       const batch = titles.slice(i, i + batchSize);
@@ -42,7 +42,7 @@ export class TitlesPatcher {
     return response;
   }
 
-  private findInTitles(titles: TitleDto[], imdbId: string): TitleDto {
+  private findInTitles(titles: TitlePatchDto[], imdbId: string): TitlePatchDto {
     const title = titles.find(t => t.imdbId === imdbId);
     if (!title) {
       throw new Error(`Title with imdbId ${imdbId} not found`);

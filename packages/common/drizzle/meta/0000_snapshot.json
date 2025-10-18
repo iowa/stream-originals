@@ -1,5 +1,5 @@
 {
-  "id": "2292049e-4f91-41fc-9854-b9e7e4dae663",
+  "id": "957e6b83-c7e7-4cce-9f1d-89680e3414bb",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -10,19 +10,12 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "varchar(20)",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
-        "imdb_id": {
-          "name": "imdb_id",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "display_name": {
-          "name": "display_name",
+        "name": {
+          "name": "name",
           "type": "text",
           "primaryKey": false,
           "notNull": true
@@ -49,15 +42,7 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "credits_imdb_id_unique": {
-          "name": "credits_imdb_id_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "imdb_id"
-          ]
-        }
-      },
+      "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
@@ -117,7 +102,7 @@
         },
         "credit_id": {
           "name": "credit_id",
-          "type": "uuid",
+          "type": "varchar(20)",
           "primaryKey": false,
           "notNull": true
         },
@@ -351,6 +336,12 @@
           "name": "imdbType",
           "type": "title_types",
           "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "plot": {
+          "name": "plot",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         }

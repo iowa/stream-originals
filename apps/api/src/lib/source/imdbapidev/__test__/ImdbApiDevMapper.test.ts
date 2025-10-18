@@ -16,4 +16,18 @@ describe("ImdbApiDevMapper", () => {
       }
     `);
   });
+
+  it("mapCredit", () => {
+    const result = new ImdbApiDevMapper().mapCredit(Datas.ImdbapiName_nm0000228);
+
+    expect(result).toMatchInlineSnapshot(`
+      {
+        "id": "nm0000228",
+        "name": "Kevin Spacey",
+        "primaryImageHeight": 1471,
+        "primaryImageUrl": "https://m.media-amazon.com/images/M/MV5BMTY1NzMyODc3Nl5BMl5BanBnXkFtZTgwNzE2MzA1NDM@._V1_.jpg",
+        "primaryImageWidth": 1800,
+      }
+    `);
+  });
 });

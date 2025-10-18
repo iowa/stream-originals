@@ -1,20 +1,24 @@
-import type { ImdbapiInterest, ImdbapiTitle } from "./generated/index.js";
-import { Interest, TitleDto } from "@repo/common";
+import { ImdbapiInterest, ImdbapiName, ImdbapiTitle } from "./generated/index.js";
+import { Credit, CreditPatchDto, Interest, InterestPatchDto, TitlePatchDto } from "@repo/common";
 
 export class ImdbApiDevMapper {
 
-  mapTitle(dbTitle: TitleDto, apiTitle: ImdbapiTitle): TitleDto {
-    const interests: Interest[] = [];
+  mapTitle(dbTitle: TitlePatchDto, apiTitle: ImdbapiTitle): TitlePatchDto {
+    const interests: InterestPatchDto[] = [];
     if (apiTitle.interests) {
       for (const apiInterest of apiTitle.interests) {
         interests.push(this.mapInterest('', apiInterest))
+      }
+      const credits: CreditPatchDto[] = [];
+      for (const apiStar of apiTitle.stars || []) {
+
       }
     }
     return {
       ...dbTitle,
       plot: apiTitle.plot,
       interests: interests
-    } as TitleDto;
+    } as TitlePatchDto;
   }
 
   mapInterest(category: string, apiInterest: ImdbapiInterest): Interest {
@@ -26,5 +30,16 @@ export class ImdbApiDevMapper {
       category: category
     }
   }
+
+  mapCredit(apiCredit: ImdbapiName): Credit {
+    return {
+      id: apiCredit.id!,
+      name: apiCredit.displayName!,
+      primaryImageUrl: apiCredit.primaryImage?.url || null,
+      primaryImageWidth: apiCredit.primaryImage?.width || null,
+      primaryImageHeight: apiCredit.primaryImage?.height || null,
+    }
+  }
+
 
 }

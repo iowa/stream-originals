@@ -3,8 +3,7 @@ import { getDbMock } from "@repo/common/db/dbMock";
 import {
   DbDrizzle, Interest,
   InterestsRepository,
-  TestFiles,
-  TitleDto,
+  TestFiles, TitlePatchDto,
   TitlesMerger,
   TitlesRepository
 } from "@repo/common";
@@ -30,7 +29,7 @@ describe("TitlesPatcher", async () => {
 
     imdbApiDevMapper = new ImdbApiDevMapper();
     interestsRepository = new InterestsRepository(db as unknown as DbDrizzle);
-    titlesFactory = new TitlesMerger(titlesRepository, interestsRepository)
+    titlesFactory = new TitlesMerger(db as unknown as DbDrizzle)
 
     cut = new TitlesPatcher(
       titlesRepository,
@@ -46,7 +45,7 @@ describe("TitlesPatcher", async () => {
   });
 
   it("patch title", async () => {
-    const titleDto: TitleDto = TestFiles.loadJson(__dirname, `/data/title_tt1856010.json`);
+    const titleDto: TitlePatchDto = TestFiles.loadJson(__dirname, `/data/title_tt1856010.json`);
     await prepareData(titleDto);
 
     const apiResponse: ImdbapiBatchGetTitlesResponse = TestFiles.loadJson(__dirname, `/data/imdbapidev_tt1856010.json`);
@@ -54,7 +53,7 @@ describe("TitlesPatcher", async () => {
 
     const titlesPatchResponse = await cut.patch('netflix');
 
-    const titles = await titlesRepository.getWithRelations('netflix');
+    const titles = await titlesRepository.getTitlePatchDtos('netflix');
     expect(titles).toMatchInlineSnapshot(`
       [
         {
@@ -102,13 +101,12 @@ describe("TitlesPatcher", async () => {
     `)
   });
 
-  async function prepareData(original: TitleDto) {
+  async function prepareData(original: TitlePatchDto) {
     await titlesRepository.insert(original);
     const interests: Interest[] = TestFiles.loadJson(__dirname, `data/interests_tt1856010.json`);
     for (const interest of interests) {
       await interestsRepository.insert(interest)
     }
   }
-
 
 });

@@ -1,6 +1,6 @@
 import { Title } from "@repo/common";
 import { ImdbMediaTitle, ImdbMediaTitleImage } from "../../source/imdbmedia/ImdbMediaTypes.js";
-import type { ImdbapiInterest } from "../../source/imdbapidev/generated/index.js";
+import { ImdbapiInterest, ImdbapiName } from "../../source/imdbapidev/generated/index.js";
 
 export class Datas {
 
@@ -45,6 +45,21 @@ export class Datas {
     },
     description: "The political drama subgenre features the intricacies of political power, government institutions, political conflicts, and the individuals involved in the political process. These dramas often explore themes of ambition, corruption, ethical dilemmas, and the impact of political decisions on society and individuals.",
     isSubgenre: true
+  }
+
+  public static readonly ImdbapiName_nm0000228: ImdbapiName = {
+    id: "nm0000228",
+    displayName: "Kevin Spacey",
+    primaryImage: {
+      url: "https://m.media-amazon.com/images/M/MV5BMTY1NzMyODc3Nl5BMl5BanBnXkFtZTgwNzE2MzA1NDM@._V1_.jpg",
+      width: 1800,
+      height: 1471
+    },
+    primaryProfessions: [
+      "actor",
+      "director",
+      "producer"
+    ]
   }
 
 }
