@@ -20,7 +20,7 @@ export class TitlesPatcher {
 
   async patch(streamer: Streamer): Promise<TitlesPatchResponse> {
     const response: TitlesPatchResponse = { items: [] };
-    const titles: TitleDto[] = await this.titlesRepository.getWithRelations(streamer);
+    const titles: TitleDto[] = await this.titlesRepository.getTitlePatchDtos(streamer);
     const batchSize = 5;
     for (let i = 0; i < titles.length; i += batchSize) {
       const batch = titles.slice(i, i + batchSize);

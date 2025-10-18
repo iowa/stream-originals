@@ -1,12 +1,13 @@
-import { db } from "../db/db.js";
-import { Streamer, Title, TitleDto } from "../db/dbTypes.js";
+import { dbDrizzle } from "../db/dbDrizzle.js";
+import { Streamer, Title } from "../db/dbTypes.js";
 import { titlesTable } from "../db/schema.js";
 import { and, count, eq, isNotNull } from "drizzle-orm";
+import { TitlePatchDto } from "../dto/dtoTypes.js";
 
 export class TitlesRepository {
   private readonly db
 
-  constructor(dbInstance = db) {
+  constructor(dbInstance = dbDrizzle) {
     this.db = dbInstance
   }
 
@@ -43,19 +44,23 @@ export class TitlesRepository {
     .returning({ insertedId: titlesTable.id });
   }
 
-  async update(id: string, updated: Title) {
-    return this.db
-    .update(titlesTable)
-    .set({ plot: updated.plot ? updated.plot : null })
-    .where(eq(titlesTable.id, id))
-  }
 
-  getWithRelations(streamer: Streamer, page?: number, pageSize?: number): Promise<TitleDto[]> {
+
+  getTitlePatchDtos(streamer: Streamer, page?: number, pageSize?: number): Promise<TitlePatchDto[]> {
     return this.db.query.titlesTable.findMany({
       with: {
-        images: true,
-        interests: true,
+        interests: {
+          columns: {
+            id: true,
+            name: true,
+          }
+        },
         credits: {
+          columns: {
+            id: true,
+            imdbId: true,
+            displayName: true,
+          },
           with: {
             credit: {
               columns: {

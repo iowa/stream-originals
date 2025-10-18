@@ -1,29 +1,26 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { getDbMock } from "../../db/dbMock.js";
 import { TitlesRepository } from "../TitlesRepository.js";
-import { Db } from "../../db/db.js";
+import { DbDrizzle } from "../../db/dbDrizzle.js";
 import { TitlesMerger } from "../TitlesMerger.js";
-import { InterestsRepository } from "../../interests/InterestsRepository.js";
 import { TestFiles } from "../../utils/files/TestFiles.js";
-import { Credit, Interest, TitleDto } from "../../db/dbTypes.js";
+import { Credit, Interest } from "../../db/dbTypes.js";
+import { TitlePatchDto } from "../../dto/dtoTypes.js";
+import { InterestsRepository } from "../../interests/InterestsRepository.js";
 import { CreditsRepository } from "../../credits/CreditsRepository.js";
 
 describe("TitlesMerger", async () => {
   let { client, db } = await getDbMock();
   let titlesRepository: TitlesRepository;
   let interestsRepository: InterestsRepository;
-  let creditsRepository: CreditsRepository,
-    cut: TitlesMerger;
+  let creditsRepository: CreditsRepository;
+  let cut: TitlesMerger;
 
   beforeEach(() => {
-    titlesRepository = new TitlesRepository(db as unknown as Db);
-    interestsRepository = new InterestsRepository(db as unknown as Db);
-    creditsRepository = new CreditsRepository(db as unknown as Db);
-    cut = new TitlesMerger(
-      titlesRepository,
-      interestsRepository,
-      creditsRepository
-    );
+    titlesRepository = new TitlesRepository(db as unknown as DbDrizzle);
+    interestsRepository = new InterestsRepository(db as unknown as DbDrizzle);
+    creditsRepository = new CreditsRepository(db as unknown as DbDrizzle);
+    cut = new TitlesMerger(db as unknown as DbDrizzle);
     vi.clearAllMocks();
   });
 
@@ -32,14 +29,12 @@ describe("TitlesMerger", async () => {
   });
 
   it("Merge original with updated and inverse", async () => {
-    const original: TitleDto = TestFiles.loadJson(__dirname, 'data/title_original_tt1856010.json');
-    const updated: TitleDto = TestFiles.loadJson(__dirname, 'data/title_updated_tt1856010.json');
+    const original: TitlePatchDto = TestFiles.loadJson(__dirname, 'data/title_original_tt1856010.json');
+    const updated: TitlePatchDto = TestFiles.loadJson(__dirname, 'data/title_updated_tt1856010.json');
     await prepareData(original)
-    console.log(await titlesRepository.getWithRelations('netflix'));
-    console.log(await creditsRepository.getAll());
     await cut.merge(original, updated);
 
-    const result = await titlesRepository.getWithRelations('netflix');
+    const result = await titlesRepository.getTitlePatchDtos('netflix');
 
     expect(result).toMatchInlineSnapshot(`
       [
@@ -52,34 +47,26 @@ describe("TitlesMerger", async () => {
               "displayName": "Kevin Spacey",
               "id": "88d3a8b9-92ed-43c6-af0d-1dc0dd82cf07",
               "imdbId": "nm0000228",
-              "primaryImageHeight": null,
-              "primaryImageUrl": null,
-              "primaryImageWidth": null,
             },
           ],
           "id": "53f423b6-1cf3-4544-b090-8708fd00543a",
-          "images": [],
           "imdbId": "tt1856010",
           "imdbType": "tvSeries",
           "interests": [
             {
               "id": "in0000076",
-              "isSubgenre": null,
               "name": "Drama",
             },
             {
               "id": "in0000077",
-              "isSubgenre": true,
               "name": "Epic",
             },
             {
               "id": "in0000084",
-              "isSubgenre": true,
               "name": "Political Drama",
             },
             {
               "id": "in0000186",
-              "isSubgenre": null,
               "name": "Thriller",
             },
           ],
@@ -93,13 +80,12 @@ describe("TitlesMerger", async () => {
 
     await cut.merge(updated, original);
 
-    const resultInverse = await titlesRepository.getWithRelations('netflix');
+    const resultInverse = await titlesRepository.getTitlePatchDtos('netflix');
     expect(resultInverse).toMatchInlineSnapshot(`
       [
         {
           "credits": [],
           "id": "53f423b6-1cf3-4544-b090-8708fd00543a",
-          "images": [],
           "imdbId": "tt1856010",
           "imdbType": "tvSeries",
           "interests": [],
@@ -112,7 +98,7 @@ describe("TitlesMerger", async () => {
     `);
   });
 
-  async function prepareData(original: TitleDto) {
+  async function prepareData(original: TitlePatchDto) {
     await titlesRepository.insert(original);
     const interests: Interest[] = TestFiles.loadJson(__dirname, `data/interests_tt1856010.json`);
     for (const interest of interests) {

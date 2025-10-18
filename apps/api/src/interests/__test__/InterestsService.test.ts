@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { getDbMock } from "@repo/common/db/dbMock";
-import { Db, InterestsRepository } from "@repo/common";
+import { DbDrizzle, InterestsRepository } from "@repo/common";
 import { InterestsService } from "../InterestsService.js";
 import { ImdbApiDevRestClient } from "../../lib/source/imdbapidev/ImdbApiDevRestClient.js";
 import { ImdbApiDevMapper } from "../../lib/source/imdbapidev/ImdbApiDevMapper.js";
@@ -22,7 +22,7 @@ describe("InterestsService", async () => {
     imdbApiDevRestClient = {
       getInterests: vi.fn()
     } as unknown as ImdbApiDevRestClient;
-    interestsRepository = new InterestsRepository(db as unknown as Db);
+    interestsRepository = new InterestsRepository(db as unknown as DbDrizzle);
     imdbApiDevMapper = new ImdbApiDevMapper();
     cut = new InterestsService(
       imdbApiDevRestClient,

@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { getDbMock } from "@repo/common/db/dbMock";
 import {
-  Db, Interest,
+  DbDrizzle, Interest,
   InterestsRepository,
   TestFiles,
   TitleDto,
@@ -23,13 +23,13 @@ describe("TitlesPatcher", async () => {
   let cut: TitlesPatcher;
 
   beforeEach(() => {
-    titlesRepository = new TitlesRepository(db as unknown as Db);
+    titlesRepository = new TitlesRepository(db as unknown as DbDrizzle);
     imdbApiDevRestClient = {
       getTitles: vi.fn()
     } as unknown as ImdbApiDevRestClient;
 
     imdbApiDevMapper = new ImdbApiDevMapper();
-    interestsRepository = new InterestsRepository(db as unknown as Db);
+    interestsRepository = new InterestsRepository(db as unknown as DbDrizzle);
     titlesFactory = new TitlesMerger(titlesRepository, interestsRepository)
 
     cut = new TitlesPatcher(

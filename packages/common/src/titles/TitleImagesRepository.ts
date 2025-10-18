@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
-import { db } from "../db/db.js";
+import { dbDrizzle } from "../db/dbDrizzle.js";
 import { TitleImage } from "../db/dbTypes.js";
 import { titleImagesTable } from "../db/schema.js";
 
 export class TitleImagesRepository {
   private readonly db
 
-  constructor(dbInstance = db) {
+  constructor(dbInstance = dbDrizzle) {
     this.db = dbInstance
   }
 
