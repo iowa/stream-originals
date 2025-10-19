@@ -2,7 +2,7 @@ import { dbDrizzle } from "../db/dbDrizzle.js";
 import { Streamer, Title } from "../db/dbTypes.js";
 import { titlesTable } from "../db/schema.js";
 import { and, count, eq, isNotNull } from "drizzle-orm";
-import { TitlePatchDto } from "../dto/dtoTypes.js";
+import { TitleListDto, TitlePatchDto } from "../dto/dtoTypes.js";
 
 export class TitlesRepository {
   private readonly db
@@ -49,6 +49,21 @@ export class TitlesRepository {
     return this.db.query.titlesTable.findMany({
       with: {
         interests: { columns: { id: true, name: true } },
+        stars: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
+        directors: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
+        writers: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
+      },
+      where: { streamer, imdbId: { isNotNull: true } },
+      limit: pageSize,
+      offset: page && pageSize ? (page - 1) * pageSize : undefined,
+    });
+  }
+
+  getTitleListDto(streamer: Streamer, page?: number, pageSize?: number): Promise<TitleListDto[]> {
+    return this.db.query.titlesTable.findMany({
+      with: {
+        images: true,
+        interests: { columns: { id: true, name: true, isSubgenre: true } },
         stars: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
         directors: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
         writers: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },

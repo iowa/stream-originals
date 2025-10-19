@@ -3,5 +3,5 @@ import { query } from "@solidjs/router";
 
 export const getTitlesList = query(async (streamer: Streamer) => {
   "use server";
-  return new TitlesRepository().getWithRelations(streamer, 1, 10);
+  return new TitlesRepository().getTitleListDto(streamer, 1, 100);
 }, "getTitlesList");

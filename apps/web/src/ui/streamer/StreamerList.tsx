@@ -2,14 +2,13 @@ import { AccessorWithLatest } from "@solidjs/router";
 import { For, Suspense } from "solid-js";
 import { Eye, Info, Star } from "lucide-solid";
 import { Image } from "@unpic/solid";
-import { Times, TitleDto } from "@repo/common";
+import { Times, TitleListDto } from "@repo/common";
 import InterestsBadges from "~/ui/streamer/InterestsBadges";
 
-interface StreamerListProps {
-  titles: AccessorWithLatest<TitleDto[] | undefined>
-}
 
-export default function StreamerList({ titles }: StreamerListProps) {
+export default function StreamerList({ titles }: {
+  titles: AccessorWithLatest<TitleListDto[] | undefined>
+}) {
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
@@ -90,23 +89,29 @@ export default function StreamerList({ titles }: StreamerListProps) {
                         {/* Creator and Stars */}
                         <div class="flex gap-6 text-sm flex-wrap">
                           <div class="flex gap-2">
-                            <span class="font-semibold text-foreground">Creator</span>
+                            <span class="font-semibold text-foreground">Writers</span>
                             <a href="#" class="link link-primary no-underline hover:underline">
-                              Beau Willimon
+                              <For each={title.writers}>
+                                {(writer) => (
+                                  <a href="#"
+                                     class="link link-primary no-underline hover:underline">
+                                    {writer.credit.name}
+                                  </a>
+                                )}
+                              </For>
                             </a>
                           </div>
                           <div class="flex gap-2">
                             <span class="font-semibold text-foreground">Stars</span>
                             <div class="flex gap-2 flex-wrap">
-                              <a href="#" class="link link-primary no-underline hover:underline">
-                                Kevin Spacey
-                              </a>
-                              <a href="#" class="link link-primary no-underline hover:underline">
-                                Michel Gill
-                              </a>
-                              <a href="#" class="link link-primary no-underline hover:underline">
-                                Robin Wright
-                              </a>
+                              <For each={title.stars}>
+                                {(star) => (
+                                  <a href="#"
+                                     class="link link-primary no-underline hover:underline">
+                                    {star.credit.name}
+                                  </a>
+                                )}
+                              </For>
                             </div>
                           </div>
                         </div>
