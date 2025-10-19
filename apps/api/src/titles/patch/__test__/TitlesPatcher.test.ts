@@ -63,69 +63,24 @@ describe("TitlesPatcher", async () => {
     expect(titles).toMatchInlineSnapshot(`
       [
         {
-          "credits": [
+          "directors": [
             {
               "credit": {
-                "role": "star",
+                "id": "nm0000705",
+                "name": "Robin Wright",
               },
-              "id": "nm0000705",
-              "name": "Robin Wright",
             },
             {
               "credit": {
-                "role": "star",
+                "id": "nm0001226",
+                "name": "James Foley",
               },
-              "id": "nm0000228",
-              "name": "Kevin Spacey",
             },
             {
               "credit": {
-                "role": "star",
+                "id": "nm0171315",
+                "name": "John David Coles",
               },
-              "id": "nm0318703",
-              "name": "Michel Gill",
-            },
-            {
-              "credit": {
-                "role": "star",
-              },
-              "id": "nm0544718",
-              "name": "Kate Mara",
-            },
-            {
-              "credit": {
-                "role": "director",
-              },
-              "id": "nm0001226",
-              "name": "James Foley",
-            },
-            {
-              "credit": {
-                "role": "director",
-              },
-              "id": "nm0171315",
-              "name": "John David Coles",
-            },
-            {
-              "credit": {
-                "role": "writer",
-              },
-              "id": "nm0203577",
-              "name": "Andrew Davies",
-            },
-            {
-              "credit": {
-                "role": "writer",
-              },
-              "id": "nm0229645",
-              "name": "Michael Dobbs",
-            },
-            {
-              "credit": {
-                "role": "writer",
-              },
-              "id": "nm2802722",
-              "name": "Beau Willimon",
             },
           ],
           "id": "53f423b6-1cf3-4544-b090-8708fd00543a",
@@ -152,7 +107,53 @@ describe("TitlesPatcher", async () => {
           "name": "House of Cards",
           "plot": "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",
           "premiere": "2013-02-01",
+          "stars": [
+            {
+              "credit": {
+                "id": "nm0000228",
+                "name": "Kevin Spacey",
+              },
+            },
+            {
+              "credit": {
+                "id": "nm0000705",
+                "name": "Robin Wright",
+              },
+            },
+            {
+              "credit": {
+                "id": "nm0318703",
+                "name": "Michel Gill",
+              },
+            },
+            {
+              "credit": {
+                "id": "nm0544718",
+                "name": "Kate Mara",
+              },
+            },
+          ],
           "streamer": "netflix",
+          "writers": [
+            {
+              "credit": {
+                "id": "nm0203577",
+                "name": "Andrew Davies",
+              },
+            },
+            {
+              "credit": {
+                "id": "nm0229645",
+                "name": "Michael Dobbs",
+              },
+            },
+            {
+              "credit": {
+                "id": "nm2802722",
+                "name": "Beau Willimon",
+              },
+            },
+          ],
         },
       ]
     `)

@@ -24,13 +24,17 @@ export class ImdbApiDevMapper {
     creditIds: Set<string>
   ): Promise<TitlePatchDto> {
     const interests = await this.mapAndInsertInterests(apiTitle.interests, interestsIds);
-    const credits = await this.mapAndInsertCredits(apiTitle, creditIds);
+    const stars = await this.mapAndInsertCredits(apiTitle, creditIds, 'stars');
+    const directors = await this.mapAndInsertCredits(apiTitle, creditIds, 'directors');
+    const writers = await this.mapAndInsertCredits(apiTitle, creditIds, 'writers');
 
     return {
       ...dbTitle,
       plot: apiTitle.plot,
       interests,
-      credits,
+      stars: stars,
+      directors: directors,
+      writers: writers,
     } as TitlePatchDto;
   }
 
@@ -54,27 +58,22 @@ export class ImdbApiDevMapper {
 
   private async mapAndInsertCredits(
     apiTitle: ImdbapiTitle,
-    creditIds: Set<string>
+    creditIds: Set<string>,
+    role: 'stars' | 'directors' | 'writers',
   ): Promise<CreditPatchDto[]> {
-    const roles = ['stars', 'directors', 'writers'] as const;
-    const roleNames = ['star', 'director', 'writer'] as const;
-
     const credits: CreditPatchDto[] = [];
-    for (let i = 0; i < roles.length; i++) {
-      const role = roles[i];
-      const roleName = roleNames[i];
-      for (const apiPerson of apiTitle[role] || []) {
-        const credit = this.mapCredit(apiPerson);
-        if (!creditIds.has(credit.id)) {
-          await this.creditsRepository.insert(credit);
-          creditIds.add(credit.id);
-        }
-        credits.push({
+    for (const apiPerson of apiTitle[role] || []) {
+      const credit = this.mapCredit(apiPerson);
+      if (!creditIds.has(credit.id)) {
+        await this.creditsRepository.insert(credit);
+        creditIds.add(credit.id);
+      }
+      credits.push({
+        credit: {
           id: credit.id,
           name: credit.name,
-          credit: { role: roleName },
-        });
-      }
+        }
+      });
     }
     return credits;
   }
