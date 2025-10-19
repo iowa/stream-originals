@@ -48,33 +48,15 @@ export class TitlesRepository {
   getTitlePatchDtos(streamer: Streamer, page?: number, pageSize?: number): Promise<TitlePatchDto[]> {
     return this.db.query.titlesTable.findMany({
       with: {
-        interests: {
-          columns: {
-            id: true,
-            name: true,
-          }
-        },
-        credits: {
-          columns: {
-            id: true,
-            name: true,
-          },
-          with: {
-            credit: {
-              columns: {
-                role: true
-              },
-            }
-          }
-        }
+        interests: { columns: { id: true, name: true } },
+        stars: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
+        directors: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
+        writers: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
       },
-      where: {
-        streamer: streamer,
-        imdbId: { isNotNull: true }
-      },
+      where: { streamer, imdbId: { isNotNull: true } },
       limit: pageSize,
-      offset: (page && pageSize) ? ((page - 1) * pageSize) : undefined,
-    })
+      offset: page && pageSize ? (page - 1) * pageSize : undefined,
+    });
   }
 
 }

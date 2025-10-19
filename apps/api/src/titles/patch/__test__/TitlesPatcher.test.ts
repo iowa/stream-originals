@@ -101,13 +101,6 @@ describe("TitlesPatcher", async () => {
             },
             {
               "credit": {
-                "role": "star",
-              },
-              "id": "nm0000705",
-              "name": "Robin Wright",
-            },
-            {
-              "credit": {
                 "role": "director",
               },
               "id": "nm0171315",

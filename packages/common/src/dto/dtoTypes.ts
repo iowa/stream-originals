@@ -1,11 +1,13 @@
-import { Credit, Interest, Title, TitleCredit } from "../db/dbTypes.js";
+import { Interest, Title } from "../db/dbTypes.js";
 
 
 export type InterestPatchDto = Pick<Interest, 'id' | 'name'>;
-export type CreditPatchDto = Pick<Credit, 'id' | 'name'> & {
-  credit: Pick<TitleCredit, 'role'>
+export type CreditPatchDto = {
+  credit: Pick<Interest, 'id' | 'name'>
 };
 export type TitlePatchDto = Title & {
   interests: InterestPatchDto[],
-  credits: CreditPatchDto[]
+  stars: CreditPatchDto[],
+  directors: CreditPatchDto[],
+  writers: CreditPatchDto[],
 }

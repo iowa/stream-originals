@@ -5,7 +5,21 @@ export const relations = defineRelations(schema, (r) => ({
   titlesTable: {
     images: r.many.titleImagesTable(),
     interests: r.many.interestsTable(),
-    credits: r.many.creditsTable(),
+    stars: r.many.titleCreditsTable({
+      where: {
+        role: 'star'
+      }
+    }),
+    directors: r.many.titleCreditsTable({
+      where: {
+        role: 'director'
+      }
+    }),
+    writers: r.many.titleCreditsTable({
+      where: {
+        role: 'writer'
+      }
+    }),
   },
   titleImagesTable: {
     title: r.one.titlesTable({
@@ -19,15 +33,15 @@ export const relations = defineRelations(schema, (r) => ({
       to: r.titlesTable.id.through(r.titleInterestsTable.titleId)
     })
   },
-  creditsTable: {
-    titles: r.many.titlesTable({
-      from: r.creditsTable.id.through(r.titleCreditsTable.creditId),
-      to: r.titlesTable.id.through(r.titleCreditsTable.titleId)
+  titleCreditsTable: {
+    title: r.one.titlesTable({
+      from: r.titleCreditsTable.titleId,
+      to: r.titlesTable.id
     }),
-    credit: r.one.titleCreditsTable({
-      from: r.creditsTable.id,
-      to: r.titleCreditsTable.creditId,
+    credit: r.one.creditsTable({
+      from: r.titleCreditsTable.creditId,
+      to: r.creditsTable.id,
       optional: false
     })
-  },
+  }
 }))

@@ -2,6 +2,7 @@ import { CreditPatchDto, InterestPatchDto, TitlePatchDto } from "../dto/dtoTypes
 import { dbDrizzle } from "../db/dbDrizzle.js";
 import { titleCreditsTable, titleInterestsTable, titlesTable } from "../db/schema.js";
 import { and, eq, inArray } from "drizzle-orm";
+import { CreditRole, TitleCredit } from "../db/dbTypes.js";
 
 export class TitlesMerger {
 
@@ -12,8 +13,10 @@ export class TitlesMerger {
 
   async merge(original: TitlePatchDto, updated: TitlePatchDto): Promise<void> {
     await this.mergeTitle(original, updated);
-    await this.mergeInterest(original.id, original.interests, updated.interests)
-    await this.mergeCredits(original.id, original.credits, updated.credits)
+    await this.mergeInterests(original.id, original.interests, updated.interests)
+    await this.mergeCredits(original.id, original.stars, updated.stars, 'star')
+    await this.mergeCredits(original.id, original.directors, updated.directors, 'director')
+    await this.mergeCredits(original.id, original.writers, updated.writers, 'writer')
   }
 
   async mergeTitle(original: TitlePatchDto, updated: TitlePatchDto) {
@@ -25,7 +28,7 @@ export class TitlesMerger {
     }
   }
 
-  async mergeInterest(titleId: string, o: InterestPatchDto[], u: InterestPatchDto[]) {
+  async mergeInterests(titleId: string, o: InterestPatchDto[], u: InterestPatchDto[]) {
     const currentIds = o.map(i => i.id);
     const newIds = u.map(i => i.id);
 
@@ -47,32 +50,28 @@ export class TitlesMerger {
     }
   }
 
-  async mergeCredits(titleId: string, o: CreditPatchDto[], u: CreditPatchDto[]) {
-    const currentPairs = o.map(c => `${c.id}:${c.credit.role}`);
-    const newPairs = u.map(c => `${c.id}:${c.credit.role}`);
+  async mergeCredits(titleId: string, o: CreditPatchDto[], u: CreditPatchDto[], role: CreditRole) {
+    const currentIds = o.map(i => i.credit.id);
+    const newIds = u.map(i => i.credit.id);
 
-    const toDelete = currentPairs.filter(pair => !newPairs.includes(pair));
+    const toDelete = currentIds.filter(id => !newIds.includes(id));
     if (toDelete.length) {
-      const toDeleteCredits = toDelete.map(pair => {
-        const [creditId, role] = pair.split(':');
-        return { creditId, role };
-      });
       await this.db.delete(titleCreditsTable).where(
         and(
           eq(titleCreditsTable.titleId, titleId),
-          inArray(titleCreditsTable.creditId, toDeleteCredits.map(c => c.creditId)),
+          inArray(titleCreditsTable.creditId, toDelete)
         )
       );
     }
 
-    const toInsert = u.filter(c => !currentPairs.includes(`${c.id}:${c.credit.role}`));
+    const toInsert = newIds.filter(id => !currentIds.includes(id));
     if (toInsert.length) {
       await this.db.insert(titleCreditsTable).values(
-        toInsert.map(c => ({
-          titleId,
-          creditId: c.id,
-          role: c.credit.role
-        }))
+        toInsert.map(creditId => ({
+          titleId: titleId,
+          creditId: creditId,
+          role: role
+        } as TitleCredit))
       );
     }
   }
