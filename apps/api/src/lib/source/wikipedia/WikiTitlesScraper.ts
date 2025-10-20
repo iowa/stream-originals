@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import type { Streamer, Title } from "@repo/common";
+import type { Streamer, Title, TitleDraft } from "@repo/common";
 import { WikiTitlesTable } from "./WikiTitlesTable.js";
 
 export class WikiTitlesScraper {
@@ -13,8 +13,8 @@ export class WikiTitlesScraper {
   async findTitles(
     $: cheerio.CheerioAPI,
     streamer: Streamer,
-  ): Promise<Title[]> {
-    const titles: Title[] = [];
+  ): Promise<TitleDraft[]> {
+    const titles: TitleDraft[] = [];
     $("table").each((_, table) => {
       const tableHeaders = $(table).find("th");
       if (
@@ -33,7 +33,6 @@ export class WikiTitlesScraper {
         });
       }
     });
-
     return titles;
   }
 }

@@ -1,15 +1,18 @@
 import * as cheerio from "cheerio";
 import {
-  TitlesCreateResponse,
   Streamer,
   Title,
+  TitleDraft,
+  TitleImagesRepository,
   TitlesCreate,
-  TitlesRepository, TitleImagesRepository
+  TitlesCreateResponse,
+  TitlesRepository
 } from "@repo/common";
 import { gotScraping } from "crawlee";
 import { WikiTitlesScraper } from "../../lib/source/wikipedia/WikiTitlesScraper.js";
 import { ImdbMediaMapper } from "../../lib/source/imdbmedia/ImdbMediaMapper.js";
 import { ImdbMediaRestClient } from "../../lib/source/imdbmedia/ImdbMediaRestClient.js";
+import { ImdbMediaTitle } from "../../lib/source/imdbmedia/ImdbMediaTypes.js";
 
 export class TitlesCreateCrawler {
   private readonly streamers: Map<Streamer, string> = new Map();
@@ -42,12 +45,13 @@ export class TitlesCreateCrawler {
     const wikipediaTitles = await this.wikiTitlesScraper.findTitles($, streamer);
     response.totalOnWebsite = wikipediaTitles.length;
 
+    const dbTitleDrafts = await this.titlesRepository.getDrafts(streamer);
     const dbTitles = await this.titlesRepository.get(streamer);
 
-    await this.processTitles(wikipediaTitles, dbTitles, streamer);
+    await this.processTitles(wikipediaTitles, dbTitles, dbTitleDrafts);
 
     response.totalInDatabase = await this.titlesRepository.getCount(streamer);
-    response.totalWithImdbId = await this.titlesRepository.getCount(streamer, true);
+    response.totalDraftsInDatabase = await this.titlesRepository.getDraftCount(streamer);
 
     console.log(response);
     return response;
@@ -58,20 +62,33 @@ export class TitlesCreateCrawler {
     return this.buildCheerio(url);
   }
 
-  private async processTitles(wikipediaTitles: Title[], dbTitles: Title[], streamer: Streamer): Promise<void> {
+  private async processTitles(wikipediaTitles: TitleDraft[], dbTitles: Title[], dbTitleDrafts: TitleDraft[]): Promise<void> {
     for (const wikipediaTitle of wikipediaTitles) {
       const titleFound = this.findInTitles(wikipediaTitle, dbTitles);
-      if (!titleFound?.imdbId) {
-        await this.insertNewTitle(wikipediaTitle);
+      const draftFound = this.findInTitleDrafts(wikipediaTitle, dbTitleDrafts);
+      if (titleFound) {
+        continue
+      }
+      if (draftFound) {
+        const imdbMediaTitle = await this.imdbMediaRestClient.findTitle(wikipediaTitle);
+        if (imdbMediaTitle) {
+          await this.insertNewTitle(wikipediaTitle, imdbMediaTitle);
+          await this.titlesRepository.deleteDraft(wikipediaTitle);
+        }
+        continue;
+      }
+      const imdbMediaTitle = await this.imdbMediaRestClient.findTitle(wikipediaTitle);
+      if (imdbMediaTitle) {
+        await this.insertNewTitle(wikipediaTitle, imdbMediaTitle);
+      } else {
+        await this.titlesRepository.insertDraft(wikipediaTitle);
       }
     }
   }
 
-  private async insertNewTitle(wikipediaTitle: Title): Promise<void> {
-    const imdbMediaTitle = await this.imdbMediaRestClient.findTitle(wikipediaTitle);
-    const newTitle = this.imdbMediaMapper.mapTitle(wikipediaTitle, imdbMediaTitle);
+  private async insertNewTitle(wikipediaTitle: TitleDraft, imdbMediaTitle: ImdbMediaTitle): Promise<void> {
+    const newTitle: Title = this.imdbMediaMapper.mapTitle(wikipediaTitle, imdbMediaTitle);
     const [insertedId] = await this.titlesRepository.insert(newTitle);
-
     if (imdbMediaTitle?.i) {
       const titleMedia = this.imdbMediaMapper.mapPoster(insertedId.insertedId, imdbMediaTitle.i);
       await this.titlesMediaRepository.insert(titleMedia);
@@ -82,7 +99,7 @@ export class TitlesCreateCrawler {
     return {
       totalOnWebsite: 0,
       totalInDatabase: 0,
-      totalWithImdbId: 0,
+      totalDraftsInDatabase: 0,
       streamer: streamer,
     } as TitlesCreate;
   }
@@ -94,7 +111,11 @@ export class TitlesCreateCrawler {
     return cheerio.load(body);
   }
 
-  private findInTitles(title: Title, titles: Title[]) {
+  private findInTitles(title: TitleDraft, titles: Title[]): Title | undefined {
     return titles.find(t => t.name === title.name);
+  }
+
+  private findInTitleDrafts(title: TitleDraft, dbTitleDrafts: TitleDraft[]): TitleDraft | undefined {
+    return dbTitleDrafts.find(t => t.name === title.name);
   }
 }

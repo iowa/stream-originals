@@ -1,6 +1,6 @@
 import { dbDrizzle } from "../db/dbDrizzle.js";
-import { Streamer, Title } from "../db/dbTypes.js";
-import { titlesTable } from "../db/schema.js";
+import { Streamer, Title, TitleDraft } from "../db/dbTypes.js";
+import { titleDraftsTable, titlesTable } from "../db/schema.js";
 import { count, eq } from "drizzle-orm";
 import { TitleListDto, TitlePatchDto } from "../dto/dtoTypes.js";
 
@@ -18,6 +18,14 @@ export class TitlesRepository {
     .where(eq(titlesTable.streamer, streamer));
   }
 
+  getDrafts(streamer: Streamer): Promise<TitleDraft[]> {
+    return this.db.query.titleDraftsTable.findMany({
+      where: {
+        streamer: streamer
+      }
+    })
+  }
+
   async getCount(
     streamer: Streamer
   ): Promise<number> {
@@ -31,6 +39,19 @@ export class TitlesRepository {
     return result[0]?.count ?? 0;
   }
 
+  async getDraftCount(
+    streamer: Streamer
+  ): Promise<number> {
+    const result = await this.db
+    .select({ count: count() })
+    .from(titleDraftsTable)
+    .where(() => {
+      return eq(titleDraftsTable.streamer, streamer);
+    });
+
+    return result[0]?.count ?? 0;
+  }
+
   insert(title: Title) {
     return this.db
     .insert(titlesTable)
@@ -39,6 +60,15 @@ export class TitlesRepository {
     .returning({ insertedId: titlesTable.id });
   }
 
+  insertDraft(titleDraft: TitleDraft) {
+    return this.db
+    .insert(titleDraftsTable)
+    .values(titleDraft)
+  }
+
+  deleteDraft(titleDraft: TitleDraft) {
+    return this.db.delete(titleDraftsTable).where(eq(titleDraftsTable.id, titleDraft.id));
+  }
 
   getTitlePatchDtos(streamer: Streamer, page?: number, pageSize?: number): Promise<TitlePatchDto[]> {
     return this.db.query.titlesTable.findMany({

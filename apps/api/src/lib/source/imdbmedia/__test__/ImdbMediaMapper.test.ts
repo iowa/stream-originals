@@ -8,11 +8,11 @@ describe("ImdbMediaMapper", () => {
 
     expect(result).toMatchInlineSnapshot(`
       {
-        "imdbId": "tt1856010",
-        "imdbType": "tvSeries",
+        "id": "tt1856010",
         "name": "House of Cards",
         "premiere": "2013-02-01",
         "streamer": "netflix",
+        "type": "tvSeries",
       }
     `);
   });

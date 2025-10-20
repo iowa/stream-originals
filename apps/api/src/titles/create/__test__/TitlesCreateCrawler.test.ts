@@ -52,9 +52,9 @@ describe("TitlesCreateCrawler", async () => {
         "items": [
           {
             "streamer": "netflix",
+            "totalDraftsInDatabase": 0,
             "totalInDatabase": 1,
             "totalOnWebsite": 1,
-            "totalWithImdbId": 1,
           },
         ],
       }
@@ -67,12 +67,11 @@ describe("TitlesCreateCrawler", async () => {
       [
         {
           "id": "ignored",
-          "imdbId": "tt1856010",
-          "imdbType": "tvSeries",
           "name": "House of Cards",
           "plot": null,
           "premiere": "2013-02-01",
           "streamer": "netflix",
+          "type": "tvSeries",
         },
       ]
     `)

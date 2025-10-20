@@ -2,12 +2,12 @@ import type { InferSelectModel } from "drizzle-orm";
 import {
   creditsTable,
   interestsTable,
-  titleCreditsTable, titleDraftTable,
+  titleCreditsTable, titleDraftsTable,
   titleImagesTable,
   titlesTable
 } from "./schema.js";
 
-export type TitleDraft = InferSelectModel<typeof titleDraftTable>;
+export type TitleDraft = InferSelectModel<typeof titleDraftsTable>;
 export type Title = InferSelectModel<typeof titlesTable>;
 
 export const streamerValues = ["appleTV+", "netflix"] as const;

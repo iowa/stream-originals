@@ -4,7 +4,7 @@ import { streamerValues } from "../db/dbTypes.js";
 export const TitlesCreateSchema = z.object({
   totalOnWebsite: z.number(),
   totalInDatabase: z.number(),
-  totalWithImdbId: z.number(),
+  totalDraftsInDatabase: z.number(),
   streamer: z.enum(streamerValues),
 });
 

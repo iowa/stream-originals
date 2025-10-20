@@ -12,7 +12,7 @@ export const streamersEnum = p.pgEnum("streamers", streamerValues);
 
 export const titleTypesEnum = p.pgEnum("title_types", titleTypeValues);
 
-export const titleDraftTable = schema.table("title_drafts", {
+export const titleDraftsTable = schema.table("title_drafts", {
   id: p.uuid("id").primaryKey().defaultRandom(),
   name: p.text().notNull(),
   streamer: streamersEnum().notNull(),
