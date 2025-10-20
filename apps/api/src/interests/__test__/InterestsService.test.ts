@@ -10,15 +10,18 @@ import {
   ImdbapiListListInterestCategoriesResponse
 } from "../../lib/source/imdbapidev/generated/index.js";
 import { Datas } from "../../lib/utils/data/Datas.js";
+import { PGlite } from "@electric-sql/pglite";
 
 describe("InterestsService", async () => {
-  let { client, db } = await getDbMock();
+  let pgClient: PGlite
   let imdbApiDevRestClient: ImdbApiDevRestClient;
   let interestsRepository: InterestsRepository;
   let imdbApiDevMapper: ImdbApiDevMapper;
   let cut: InterestsService;
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    let { client, db } = await getDbMock();
+    pgClient = client
     imdbApiDevRestClient = {
       getInterests: vi.fn()
     } as unknown as ImdbApiDevRestClient;
@@ -33,7 +36,7 @@ describe("InterestsService", async () => {
   });
 
   afterEach(async () => {
-    await client.close();
+    await pgClient.close();
   });
 
   it("create interests", async () => {

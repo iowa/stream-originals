@@ -3,7 +3,7 @@ import {
   Streamer,
   Title,
   TitleDraft,
-  TitleImagesRepository,
+  TitleImagesRepository, TitleInsertDraft,
   TitlesCreate,
   TitlesCreateResponse,
   TitlesRepository
@@ -81,7 +81,10 @@ export class TitlesCreateCrawler {
       if (imdbMediaTitle) {
         await this.insertNewTitle(wikipediaTitle, imdbMediaTitle);
       } else {
-        await this.titlesRepository.insertDraft(wikipediaTitle);
+        await this.titlesRepository.insertDraft({
+          ...wikipediaTitle,
+          id: undefined
+        });
       }
     }
   }

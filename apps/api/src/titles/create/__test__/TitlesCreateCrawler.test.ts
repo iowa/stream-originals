@@ -5,16 +5,19 @@ import { TitlesCreateCrawler } from "../TitlesCreateCrawler.js";
 import { ImdbMediaRestClient } from "../../../lib/source/imdbmedia/ImdbMediaRestClient.js";
 import { getDbMock } from "@repo/common/db/dbMock";
 import { DbDrizzle, TitleImagesRepository, TitlesRepository } from "@repo/common";
+import { PGlite } from "@electric-sql/pglite";
 
 describe("TitlesCreateCrawler", async () => {
-  let { client, db } = await getDbMock();
+  let pgClient: PGlite
   let wikiTitlesScraper: WikiTitlesScraper;
   let titlesRepository: TitlesRepository;
   let imdbMediaRestClient: ImdbMediaRestClient;
   let titlesMediaRepository: TitleImagesRepository;
   let crawler: TitlesCreateCrawler;
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    let { client, db } = await getDbMock();
+    pgClient = client
     wikiTitlesScraper = {
       findTitles: vi.fn()
     } as unknown as WikiTitlesScraper;
@@ -31,17 +34,17 @@ describe("TitlesCreateCrawler", async () => {
       titlesRepository,
       titlesMediaRepository,
       imdbMediaRestClient,
-      undefined, // imdbMediaMapper can be undefined if not used in test
+      undefined,
       wikiTitlesScraper
     );
     vi.clearAllMocks();
   });
 
   afterEach(async () => {
-    await client.close();
+    await pgClient.close();
   });
 
-  it("create title found on wikipedia but not in database", async () => {
+  it("create title found on wikipedia and imdbMedia", async () => {
     (wikiTitlesScraper.findTitles as any).mockResolvedValue([Datas.TitleDraft_HouseOfCards]);
     (imdbMediaRestClient.findTitle as any).mockResolvedValue(Datas.ImdbMediaTitle_HouseOfCards);
 
@@ -62,11 +65,11 @@ describe("TitlesCreateCrawler", async () => {
 
     const titles = await titlesRepository.get('netflix');
     expect(
-      titles.map(({ id, ...rest }) => ({ id: "ignored", ...rest }))
+      titles
     ).toMatchInlineSnapshot(`
       [
         {
-          "id": "ignored",
+          "id": "tt1856010",
           "name": "House of Cards",
           "plot": null,
           "premiere": "2013-02-01",
@@ -77,22 +80,58 @@ describe("TitlesCreateCrawler", async () => {
     `)
     const titlesMedia = await titlesMediaRepository.getByTitleId(titles[0].id);
     expect(
-      titlesMedia.map(({ id, titleId, ...rest }) => ({
+      titlesMedia.map(({ id, ...rest }) => ({
         id: "ignored",
-        titleId: "ignored", ...rest
+        ...rest
       }))
     ).toMatchInlineSnapshot(`
       [
         {
           "height": 2048,
           "id": "ignored",
-          "titleId": "ignored",
+          "titleId": "tt1856010",
           "type": "poster",
           "url": "https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg",
           "width": 1382,
         },
       ]
     `);
+  });
+
+  it("create title draft found on wikipedia but not imdbMedia", async () => {
+    (wikiTitlesScraper.findTitles as any).mockResolvedValue([Datas.TitleDraft_HouseOfCards]);
+    (imdbMediaRestClient.findTitle as any).mockResolvedValue(undefined);
+
+    const response = await crawler.create('netflix');
+
+    expect(response).toMatchInlineSnapshot(`
+      {
+        "items": [
+          {
+            "streamer": "netflix",
+            "totalDraftsInDatabase": 1,
+            "totalInDatabase": 0,
+            "totalOnWebsite": 1,
+          },
+        ],
+      }
+    `)
+
+    const titles = await titlesRepository.getDrafts('netflix');
+    expect(
+      titles.map(({ id, ...rest }) => ({
+        id: "ignored",
+        ...rest
+      }))).toMatchInlineSnapshot(`
+        [
+          {
+            "id": "ignored",
+            "name": "House of Cards",
+            "premiere": "2013-02-01",
+            "streamer": "netflix",
+          },
+        ]
+      `)
   });
 
 

@@ -13,9 +13,10 @@ import { ImdbApiDevRestClient } from "../../../lib/source/imdbapidev/ImdbApiDevR
 import { ImdbApiDevMapper } from "../../../lib/source/imdbapidev/ImdbApiDevMapper.js";
 import { ImdbapiBatchGetTitlesResponse } from "../../../lib/source/imdbapidev/generated/index.js";
 import { CreditsRepository } from "@repo/common/credits/CreditsRepository";
+import { PGlite } from "@electric-sql/pglite";
 
 describe("TitlesPatcher", async () => {
-  let { client, db } = await getDbMock();
+  let pgClient: PGlite
   let titlesRepository: TitlesRepository;
   let imdbApiDevRestClient: ImdbApiDevRestClient;
   let imdbApiDevMapper: ImdbApiDevMapper;
@@ -24,7 +25,9 @@ describe("TitlesPatcher", async () => {
   let creditsRepository: CreditsRepository;
   let cut: TitlesPatcher;
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    let { client, db } = await getDbMock();
+    pgClient = client
     titlesRepository = new TitlesRepository(db as unknown as DbDrizzle);
     imdbApiDevRestClient = {
       getTitles: vi.fn()
@@ -47,7 +50,7 @@ describe("TitlesPatcher", async () => {
   });
 
   afterEach(async () => {
-    await client.close();
+    await pgClient.close();
   });
 
   it("patch title", async () => {

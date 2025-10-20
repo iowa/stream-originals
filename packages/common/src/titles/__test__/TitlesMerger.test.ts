@@ -8,15 +8,18 @@ import { Credit, Interest } from "../../db/dbTypes.js";
 import { TitlePatchDto } from "../../dto/dtoTypes.js";
 import { InterestsRepository } from "../../interests/InterestsRepository.js";
 import { CreditsRepository } from "../../credits/CreditsRepository.js";
+import { PGlite } from "@electric-sql/pglite";
 
 describe("TitlesMerger", async () => {
-  let { client, db } = await getDbMock();
+  let pgClient: PGlite
   let titlesRepository: TitlesRepository;
   let interestsRepository: InterestsRepository;
   let creditsRepository: CreditsRepository;
   let cut: TitlesMerger;
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    let { client, db } = await getDbMock();
+    pgClient = client
     titlesRepository = new TitlesRepository(db as unknown as DbDrizzle);
     interestsRepository = new InterestsRepository(db as unknown as DbDrizzle);
     creditsRepository = new CreditsRepository(db as unknown as DbDrizzle);
@@ -25,7 +28,7 @@ describe("TitlesMerger", async () => {
   });
 
   afterEach(async () => {
-    await client.close();
+    await pgClient.close();
   });
 
   it("Merge original with updated and inverse", async () => {
@@ -140,15 +143,14 @@ describe("TitlesMerger", async () => {
       [
         {
           "directors": [],
-          "id": "53f423b6-1cf3-4544-b090-8708fd00543a",
-          "imdbId": "tt1856010",
-          "imdbType": "tvSeries",
+          "id": "tt1856010",
           "interests": [],
           "name": "House of Cards",
           "plot": null,
           "premiere": "2013-02-01",
           "stars": [],
           "streamer": "netflix",
+          "type": "tvSeries",
           "writers": [],
         },
       ]

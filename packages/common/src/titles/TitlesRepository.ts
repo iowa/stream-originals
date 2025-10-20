@@ -1,5 +1,5 @@
 import { dbDrizzle } from "../db/dbDrizzle.js";
-import { Streamer, Title, TitleDraft } from "../db/dbTypes.js";
+import { Streamer, Title, TitleDraft, TitleInsertDraft } from "../db/dbTypes.js";
 import { titleDraftsTable, titlesTable } from "../db/schema.js";
 import { count, eq } from "drizzle-orm";
 import { TitleListDto, TitlePatchDto } from "../dto/dtoTypes.js";
@@ -60,7 +60,7 @@ export class TitlesRepository {
     .returning({ insertedId: titlesTable.id });
   }
 
-  insertDraft(titleDraft: TitleDraft) {
+  insertDraft(titleDraft: TitleInsertDraft) {
     return this.db
     .insert(titleDraftsTable)
     .values(titleDraft)
