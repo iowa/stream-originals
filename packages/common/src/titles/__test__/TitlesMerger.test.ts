@@ -25,6 +25,7 @@ describe("TitlesMerger", async () => {
     creditsRepository = new CreditsRepository(db as unknown as DbDrizzle);
     cut = new TitlesMerger(db as unknown as DbDrizzle);
     vi.clearAllMocks();
+    vi.setSystemTime(0)
   });
 
   afterEach(async () => {
@@ -112,6 +113,7 @@ describe("TitlesMerger", async () => {
           ],
           "streamer": "netflix",
           "type": "tvSeries",
+          "updatedAt": 1970-01-01T00:00:00.000Z,
           "writers": [
             {
               "credit": {
@@ -151,6 +153,7 @@ describe("TitlesMerger", async () => {
           "stars": [],
           "streamer": "netflix",
           "type": "tvSeries",
+          "updatedAt": 1970-01-01T00:00:00.000Z,
           "writers": [],
         },
       ]

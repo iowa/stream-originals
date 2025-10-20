@@ -17,7 +17,8 @@ export class Datas {
     name: "House of Cards",
     premiere: "2013-02-01",
     streamer: "netflix",
-    plot: "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him."
+    plot: "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",
+    updatedAt: new Date("1970-01-01T00:00:00.000Z")
   };
 
   public static readonly ImdbMediaTitleImage_HouseOfCards: ImdbMediaTitleImage = {

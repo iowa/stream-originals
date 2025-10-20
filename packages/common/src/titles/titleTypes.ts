@@ -18,7 +18,7 @@ export type TitlesCreateResponse = z.infer<typeof TitlesCreateResponseSchema>;
 
 
 export const TitlesPatchSchema = z.object({
-  totalWithImdbId: z.number(),
+  totalInDatabase: z.number(),
   totalPatched: z.number(),
   failedIds: z.array(z.string()),
   streamer: z.enum(streamerValues),

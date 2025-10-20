@@ -30,6 +30,8 @@ export const titlesTable = schema.table(
     streamer: streamersEnum().notNull(),
     premiere: p.date(),
     plot: p.text(),
+    updatedAt: p.timestamp("updated_at").defaultNow(),
+
   }
 );
 

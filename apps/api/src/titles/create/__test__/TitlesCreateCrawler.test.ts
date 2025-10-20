@@ -38,6 +38,7 @@ describe("TitlesCreateCrawler", async () => {
       wikiTitlesScraper
     );
     vi.clearAllMocks();
+    vi.setSystemTime(0)
   });
 
   afterEach(async () => {
@@ -75,6 +76,7 @@ describe("TitlesCreateCrawler", async () => {
           "premiere": "2013-02-01",
           "streamer": "netflix",
           "type": "tvSeries",
+          "updatedAt": 1970-01-01T00:00:00.000Z,
         },
       ]
     `)

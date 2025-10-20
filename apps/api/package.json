@@ -5,7 +5,7 @@
     "build": "tsc",
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
-    "test": "vitest",
+    "test": "vitest run",
     "upgrade-dependencies": "ncu -u",
     "imdbapidevapi:generate": "openapi-generator-cli generate -c config/imdbapidev.json"
   },
