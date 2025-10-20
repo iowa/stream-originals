@@ -22,7 +22,7 @@ export class TitlesPatcher {
   ) {
   }
 
-  async patch(streamer: Streamer): Promise<TitlesPatchResponse> {
+  async patch(streamer: Streamer, timeout: number = 1000): Promise<TitlesPatchResponse> {
     const response: TitlesPatchResponse = { items: [] };
     const titles: TitlePatchDto[] = await this.titlesRepository.getTitlePatchDtos(streamer);
     const interestsIds: Set<string> = await this.interestsRepository.getAllIds();
@@ -33,7 +33,7 @@ export class TitlesPatcher {
       const imdbIds = batch.map(t => t.id!).filter(Boolean);
       if (imdbIds.length === 0) continue;
       const apiTitles = await this.imdbApiDevRestClient.getTitles(imdbIds);
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise(resolve => setTimeout(resolve, timeout));
       console.log(`Batch ${i}`)
       if (apiTitles.titles) {
         for (const apiTitle of apiTitles.titles) {

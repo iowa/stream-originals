@@ -61,7 +61,7 @@ describe("TitlesPatcher", async () => {
     const apiResponse: ImdbapiBatchGetTitlesResponse = TestFiles.loadJson(__dirname, `/data/imdbapidev_tt1856010.json`);
     (imdbApiDevRestClient.getTitles as any).mockResolvedValue(apiResponse);
 
-    const titlesPatchResponse = await cut.patch('netflix');
+    const titlesPatchResponse = await cut.patch('netflix', 0);
 
     const titles = await titlesRepository.getTitlePatchDtos('netflix');
     expect(titles).toMatchInlineSnapshot(`
