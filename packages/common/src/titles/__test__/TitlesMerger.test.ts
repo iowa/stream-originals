@@ -59,9 +59,7 @@ describe("TitlesMerger", async () => {
               },
             },
           ],
-          "id": "53f423b6-1cf3-4544-b090-8708fd00543a",
-          "imdbId": "tt1856010",
-          "imdbType": "tvSeries",
+          "id": "tt1856010",
           "interests": [
             {
               "id": "in0000076",
@@ -110,6 +108,7 @@ describe("TitlesMerger", async () => {
             },
           ],
           "streamer": "netflix",
+          "type": "tvSeries",
           "writers": [
             {
               "credit": {

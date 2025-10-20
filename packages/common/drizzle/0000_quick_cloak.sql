@@ -21,15 +21,23 @@ CREATE TABLE "stream_originals"."interests" (
 );
 --> statement-breakpoint
 CREATE TABLE "stream_originals"."title_credits" (
-	"title_id" uuid NOT NULL,
+	"title_id" varchar(20) NOT NULL,
 	"credit_id" varchar(20) NOT NULL,
 	"role" "credit_roles" NOT NULL,
 	CONSTRAINT "title_credits_title_id_credit_id_role_pk" PRIMARY KEY("title_id","credit_id","role")
 );
 --> statement-breakpoint
+CREATE TABLE "stream_originals"."title_drafts" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"name" text NOT NULL,
+	"streamer" "streamers" NOT NULL,
+	"premiere" date,
+	CONSTRAINT "title_drafts_name_streamer_unique" UNIQUE("name","streamer")
+);
+--> statement-breakpoint
 CREATE TABLE "stream_originals"."title_images" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"title_id" uuid NOT NULL,
+	"title_id" varchar(20) NOT NULL,
 	"url" text NOT NULL,
 	"height" integer NOT NULL,
 	"width" integer NOT NULL,
@@ -38,20 +46,18 @@ CREATE TABLE "stream_originals"."title_images" (
 );
 --> statement-breakpoint
 CREATE TABLE "stream_originals"."title_interests" (
-	"title_id" uuid NOT NULL,
+	"title_id" varchar(20) NOT NULL,
 	"interest_id" varchar(20) NOT NULL,
 	CONSTRAINT "title_interests_title_id_interest_id_pk" PRIMARY KEY("title_id","interest_id")
 );
 --> statement-breakpoint
 CREATE TABLE "stream_originals"."titles" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" varchar(20) PRIMARY KEY NOT NULL,
+	"type" "title_types" NOT NULL,
 	"name" text NOT NULL,
-	"premiere" date,
 	"streamer" "streamers" NOT NULL,
-	"imdbId" text,
-	"imdbType" "title_types",
-	"plot" text,
-	CONSTRAINT "titles_name_streamer_unique" UNIQUE("name","streamer")
+	"premiere" date,
+	"plot" text
 );
 --> statement-breakpoint
 ALTER TABLE "stream_originals"."title_credits" ADD CONSTRAINT "title_credits_title_id_titles_id_fk" FOREIGN KEY ("title_id") REFERENCES "stream_originals"."titles"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint

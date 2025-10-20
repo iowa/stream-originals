@@ -1,10 +1,10 @@
 import axios, { type AxiosResponse } from "axios";
-import { Times, Title } from "@repo/common";
+import { Times, TitleDraft } from "@repo/common";
 import { ImdbMediaResponse, ImdbMediaTitle } from "./ImdbMediaTypes.js";
 
 export class ImdbMediaRestClient {
 
-  async findTitle(title: Title): Promise<ImdbMediaTitle | undefined> {
+  async findTitle(title: TitleDraft): Promise<ImdbMediaTitle | undefined> {
     const axiosInstance = axios.create({
       baseURL: "https://v3.sg.media-imdb.com",
     });
@@ -20,7 +20,7 @@ export class ImdbMediaRestClient {
 
   private isMatchWithStartYear(
     response: AxiosResponse<ImdbMediaResponse>,
-    title: Title,
+    title: TitleDraft,
   ) {
     const matches = response.data.d?.filter(
       (t) => Times.asDayjs(title.premiere).year() === t.y,
@@ -31,7 +31,7 @@ export class ImdbMediaRestClient {
 
   private isMatchWithName(
     response: AxiosResponse<ImdbMediaResponse>,
-    title: Title,
+    title: TitleDraft,
   ) {
     const matches = response.data.d?.filter((t) => title.name === t.l);
 

@@ -30,7 +30,7 @@ export class TitlesPatcher {
     const batchSize = 5;
     for (let i = 0; i < titles.length; i += batchSize) {
       const batch = titles.slice(i, i + batchSize);
-      const imdbIds = batch.map(t => t.imdbId!).filter(Boolean);
+      const imdbIds = batch.map(t => t.id!).filter(Boolean);
       if (imdbIds.length === 0) continue;
       const apiTitles = await this.imdbApiDevRestClient.getTitles(imdbIds);
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -49,7 +49,7 @@ export class TitlesPatcher {
   }
 
   private findInTitles(titles: TitlePatchDto[], imdbId: string): TitlePatchDto {
-    const title = titles.find(t => t.imdbId === imdbId);
+    const title = titles.find(t => t.id === imdbId);
     if (!title) {
       throw new Error(`Title with imdbId ${imdbId} not found`);
     }

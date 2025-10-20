@@ -42,7 +42,7 @@ describe("TitlesCreateCrawler", async () => {
   });
 
   it("create title found on wikipedia but not in database", async () => {
-    (wikiTitlesScraper.findTitles as any).mockResolvedValue([Datas.Title_HouseOfCards]);
+    (wikiTitlesScraper.findTitles as any).mockResolvedValue([Datas.TitleDraft_HouseOfCards]);
     (imdbMediaRestClient.findTitle as any).mockResolvedValue(Datas.ImdbMediaTitle_HouseOfCards);
 
     const response = await crawler.create('netflix');

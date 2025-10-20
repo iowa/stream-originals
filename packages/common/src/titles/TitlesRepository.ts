@@ -1,7 +1,7 @@
 import { dbDrizzle } from "../db/dbDrizzle.js";
 import { Streamer, Title } from "../db/dbTypes.js";
 import { titlesTable } from "../db/schema.js";
-import { and, count, eq, isNotNull } from "drizzle-orm";
+import { count, eq } from "drizzle-orm";
 import { TitleListDto, TitlePatchDto } from "../dto/dtoTypes.js";
 
 export class TitlesRepository {
@@ -19,18 +19,13 @@ export class TitlesRepository {
   }
 
   async getCount(
-    streamer: Streamer,
-    withImdbId?: boolean,
+    streamer: Streamer
   ): Promise<number> {
     const result = await this.db
     .select({ count: count() })
     .from(titlesTable)
     .where(() => {
-      const base = eq(titlesTable.streamer, streamer);
-      if (withImdbId) {
-        return and(base, isNotNull(titlesTable.imdbId));
-      }
-      return base;
+      return eq(titlesTable.streamer, streamer);
     });
 
     return result[0]?.count ?? 0;
@@ -53,7 +48,6 @@ export class TitlesRepository {
         directors: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
         writers: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
       },
-      where: { streamer, imdbId: { isNotNull: true } },
       limit: pageSize,
       offset: page && pageSize ? (page - 1) * pageSize : undefined,
     });
@@ -68,7 +62,6 @@ export class TitlesRepository {
         directors: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
         writers: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
       },
-      where: { streamer, imdbId: { isNotNull: true } },
       limit: pageSize,
       offset: page && pageSize ? (page - 1) * pageSize : undefined,
     });

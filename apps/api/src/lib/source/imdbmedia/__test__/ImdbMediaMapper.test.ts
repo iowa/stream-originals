@@ -4,7 +4,7 @@ import { Datas } from "../../../utils/data/Datas.js";
 
 describe("ImdbMediaMapper", () => {
   it("mapTitle", () => {
-    const result = new ImdbMediaMapper().mapTitle(Datas.Title_HouseOfCards, Datas.ImdbMediaTitle_HouseOfCards)
+    const result = new ImdbMediaMapper().mapTitle(Datas.TitleDraft_HouseOfCards, Datas.ImdbMediaTitle_HouseOfCards)
 
     expect(result).toMatchInlineSnapshot(`
       {

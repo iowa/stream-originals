@@ -1,5 +1,5 @@
 {
-  "id": "957e6b83-c7e7-4cce-9f1d-89680e3414bb",
+  "id": "1d179e49-59b1-4046-ba1f-135f9bdaca88",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -96,7 +96,7 @@
       "columns": {
         "title_id": {
           "name": "title_id",
-          "type": "uuid",
+          "type": "varchar(20)",
           "primaryKey": false,
           "notNull": true
         },
@@ -160,6 +160,54 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
+    "stream_originals.title_drafts": {
+      "name": "title_drafts",
+      "schema": "stream_originals",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "streamer": {
+          "name": "streamer",
+          "type": "streamers",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "premiere": {
+          "name": "premiere",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "title_drafts_name_streamer_unique": {
+          "name": "title_drafts_name_streamer_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "name",
+            "streamer"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "stream_originals.title_images": {
       "name": "title_images",
       "schema": "stream_originals",
@@ -173,7 +221,7 @@
         },
         "title_id": {
           "name": "title_id",
-          "type": "uuid",
+          "type": "varchar(20)",
           "primaryKey": false,
           "notNull": true
         },
@@ -240,7 +288,7 @@
       "columns": {
         "title_id": {
           "name": "title_id",
-          "type": "uuid",
+          "type": "varchar(20)",
           "primaryKey": false,
           "notNull": true
         },
@@ -302,22 +350,22 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "varchar(20)",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "title_types",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
         },
         "name": {
           "name": "name",
           "type": "text",
           "primaryKey": false,
           "notNull": true
-        },
-        "premiere": {
-          "name": "premiere",
-          "type": "date",
-          "primaryKey": false,
-          "notNull": false
         },
         "streamer": {
           "name": "streamer",
@@ -326,16 +374,9 @@
           "primaryKey": false,
           "notNull": true
         },
-        "imdbId": {
-          "name": "imdbId",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "imdbType": {
-          "name": "imdbType",
-          "type": "title_types",
-          "typeSchema": "public",
+        "premiere": {
+          "name": "premiere",
+          "type": "date",
           "primaryKey": false,
           "notNull": false
         },
@@ -349,16 +390,7 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "titles_name_streamer_unique": {
-          "name": "titles_name_streamer_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "name",
-            "streamer"
-          ]
-        }
-      },
+      "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false

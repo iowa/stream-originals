@@ -1,24 +1,24 @@
-import { Title } from "@repo/common";
+import { Title, TitleDraft } from "@repo/common";
 import { ImdbMediaTitle, ImdbMediaTitleImage } from "../../source/imdbmedia/ImdbMediaTypes.js";
 import { ImdbapiInterest, ImdbapiName } from "../../source/imdbapidev/generated/index.js";
 
 export class Datas {
 
-  public static readonly Title_HouseOfCards: Title = {
+  public static readonly TitleDraft_HouseOfCards: TitleDraft = {
+    id: "",
     name: "House of Cards",
     premiere: "2013-02-01",
     streamer: "netflix",
-    imdbId: null,
-    imdbType: null
-  } as Title;
+  };
 
   public static readonly Title_tt1856010: Title = {
+    id: "tt1856010",
+    type: "tvSeries",
     name: "House of Cards",
     premiere: "2013-02-01",
     streamer: "netflix",
-    imdbId: "tt1856010",
-    imdbType: "tvSeries",
-  } as Title;
+    plot: "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him."
+  };
 
   public static readonly ImdbMediaTitleImage_HouseOfCards: ImdbMediaTitleImage = {
     height: 2048,

@@ -83,9 +83,7 @@ describe("TitlesPatcher", async () => {
               },
             },
           ],
-          "id": "53f423b6-1cf3-4544-b090-8708fd00543a",
-          "imdbId": "tt1856010",
-          "imdbType": "tvSeries",
+          "id": "tt1856010",
           "interests": [
             {
               "id": "in0000076",
@@ -105,7 +103,7 @@ describe("TitlesPatcher", async () => {
             },
           ],
           "name": "House of Cards",
-          "plot": "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",
+          "plot": " ",
           "premiere": "2013-02-01",
           "stars": [
             {
@@ -134,6 +132,7 @@ describe("TitlesPatcher", async () => {
             },
           ],
           "streamer": "netflix",
+          "type": "tvSeries",
           "writers": [
             {
               "credit": {

@@ -12,20 +12,25 @@ export const streamersEnum = p.pgEnum("streamers", streamerValues);
 
 export const titleTypesEnum = p.pgEnum("title_types", titleTypeValues);
 
+export const titleDraftTable = schema.table("title_drafts", {
+  id: p.uuid("id").primaryKey().defaultRandom(),
+  name: p.text().notNull(),
+  streamer: streamersEnum().notNull(),
+  premiere: p.date(),
+}, (table) => ({
+  uniqueTitleStreamer: p.unique().on(table.name, table.streamer),
+}),)
+
 export const titlesTable = schema.table(
   "titles",
   {
-    id: p.uuid("id").primaryKey().defaultRandom(),
+    id: p.varchar('id', { length: 20 }).primaryKey(),
+    type: titleTypesEnum().notNull(),
     name: p.text().notNull(),
-    premiere: p.date(),
     streamer: streamersEnum().notNull(),
-    imdbId: p.text(),
-    imdbType: titleTypesEnum(),
-    plot: p.text()
-  },
-  (table) => ({
-    uniqueTitleStreamer: p.unique().on(table.name, table.streamer),
-  }),
+    premiere: p.date(),
+    plot: p.text(),
+  }
 );
 
 export const titleImageTypesEnum = p.pgEnum(
@@ -38,7 +43,7 @@ export const titleImagesTable = schema.table(
   {
     id: p.uuid("id").primaryKey().defaultRandom(),
     titleId: p
-    .uuid("title_id")
+    .varchar('title_id', { length: 20 })
     .references(() => titlesTable.id)
     .notNull(),
     url: p.text().notNull(),
@@ -62,7 +67,7 @@ export const interestsTable = schema.table('interests', {
 export const titleInterestsTable = schema.table(
   'title_interests',
   {
-    titleId: p.uuid('title_id')
+    titleId: p.varchar('title_id', { length: 20 })
     .notNull()
     .references(() => titlesTable.id),
     interestId: p.varchar('interest_id', { length: 20 })
@@ -85,7 +90,7 @@ export const creditsTable = schema.table("credits", {
 });
 
 export const titleCreditsTable = schema.table("title_credits", {
-    titleId: p.uuid("title_id").references(() => titlesTable.id).notNull(),
+    titleId: p.varchar('title_id', { length: 20 }).references(() => titlesTable.id).notNull(),
     creditId: p.varchar('credit_id', { length: 20 }).references(() => creditsTable.id).notNull(),
     role: creditRolesEnum().notNull(),
   }, (t) => [

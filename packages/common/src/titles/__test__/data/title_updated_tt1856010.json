@@ -1,10 +1,9 @@
 {
-  "id": "53f423b6-1cf3-4544-b090-8708fd00543a",
+  "id": "tt1856010",
+  "type": "tvSeries",
   "name": "House of Cards",
   "premiere": "2013-02-01",
   "streamer": "netflix",
-  "imdbId": "tt1856010",
-  "imdbType": "tvSeries",
   "plot": "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",
   "interests": [
     {
