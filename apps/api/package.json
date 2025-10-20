@@ -7,27 +7,27 @@
     "start": "node dist/index.js",
     "test": "vitest",
     "upgrade-dependencies": "ncu -u",
-    "omdbapi:generate": "openapi-generator-cli generate -c config/imdbapidev.json"
+    "imdbapidevapi:generate": "openapi-generator-cli generate -c config/imdbapidev.json"
   },
   "dependencies": {
     "@hono/node-server": "^1.19.5",
     "@hono/standard-validator": "^0.1.5",
     "@repo/common": "workspace:*",
-    "@scalar/hono-api-reference": "^0.9.21",
+    "@scalar/hono-api-reference": "^0.9.22",
     "axios": "^1.12.2",
     "cheerio": "^1.1.2",
     "crawlee": "^3.15.1",
-    "drizzle-orm": "^0.44.6",
-    "drizzle-zod": "^0.8.3",
     "dotenv": "^17.2.3",
-    "hono": "^4.9.10",
+    "drizzle-orm": "1.0.0-beta.1-ac4ce44",
+    "drizzle-zod": "^0.8.3",
+    "hono": "^4.10.1",
     "hono-openapi": "^1.1.0"
   },
   "devDependencies": {
-    "@electric-sql/pglite": "^0.3.10",
-    "@openapitools/openapi-generator-cli": "^2.24.0",
-    "@types/node": "^24.7.0",
-    "npm-check-updates": "^19.0.0",
+    "@electric-sql/pglite": "^0.3.11",
+    "@openapitools/openapi-generator-cli": "^2.25.0",
+    "@types/node": "^24.8.1",
+    "npm-check-updates": "^19.1.1",
     "tsx": "^4.20.6"
   }
 }

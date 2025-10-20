@@ -10,7 +10,7 @@
     "upgrade-dependencies": "ncu -u"
   },
   "devDependencies": {
-    "npm-check-updates": "^19.0.0",
+    "npm-check-updates": "^19.1.1",
     "prettier": "^3.6.2",
     "turbo": "^2.5.8",
     "typescript": "5.9.3",

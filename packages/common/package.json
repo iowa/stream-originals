@@ -30,11 +30,11 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
-    "@electric-sql/pglite": "^0.3.10",
-    "@types/node": "^22.10.7",
+    "@electric-sql/pglite": "^0.3.11",
+    "@types/node": "^24.8.1",
     "@types/pg": "^8.15.5",
     "drizzle-kit": "1.0.0-beta.1-ac4ce44",
-    "npm-check-updates": "^19.0.0",
-    "typescript": "5.8.2"
+    "npm-check-updates": "^19.1.1",
+    "typescript": "5.9.3"
   }
 }
