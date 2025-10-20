@@ -64,27 +64,18 @@ export class TitlesCreateCrawler {
 
   private async processTitles(wikipediaTitles: TitleDraft[], dbTitles: Title[], dbTitleDrafts: TitleDraft[]): Promise<void> {
     for (const wikipediaTitle of wikipediaTitles) {
-      const titleFound = this.findInTitles(wikipediaTitle, dbTitles);
+      if (this.findInTitles(wikipediaTitle, dbTitles)) continue;
+
       const draftFound = this.findInTitleDrafts(wikipediaTitle, dbTitleDrafts);
-      if (titleFound) {
-        continue
-      }
-      if (draftFound) {
-        const imdbMediaTitle = await this.imdbMediaRestClient.findTitle(wikipediaTitle);
-        if (imdbMediaTitle) {
-          await this.insertNewTitle(wikipediaTitle, imdbMediaTitle);
-          await this.titlesRepository.deleteDraft(wikipediaTitle);
-        }
-        continue;
-      }
       const imdbMediaTitle = await this.imdbMediaRestClient.findTitle(wikipediaTitle);
-      if (imdbMediaTitle) {
+
+      if (draftFound && imdbMediaTitle) {
         await this.insertNewTitle(wikipediaTitle, imdbMediaTitle);
-      } else {
-        await this.titlesRepository.insertDraft({
-          ...wikipediaTitle,
-          id: undefined
-        });
+        await this.titlesRepository.deleteDraft(wikipediaTitle);
+      } else if (imdbMediaTitle) {
+        await this.insertNewTitle(wikipediaTitle, imdbMediaTitle);
+      } else if (!draftFound) {
+        await this.titlesRepository.insertDraft({ ...wikipediaTitle, id: undefined });
       }
     }
   }
