@@ -46,7 +46,7 @@ export default function StreamerList({ titles }: {
                               <span>•</span>
                               <span class="badge badge-sm badge-outline">TV-MA</span>
                               <span>•</span>
-                              <span>{title.imdbType}</span>
+                              <span>{title.type}</span>
                             </div>
                           </div>
 
