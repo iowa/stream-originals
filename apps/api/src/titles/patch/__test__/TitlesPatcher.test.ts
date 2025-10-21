@@ -107,7 +107,7 @@ describe("TitlesPatcher", async () => {
             },
           ],
           "name": "House of Cards",
-          "plot": " ",
+          "plot": "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",
           "premiere": "2013-02-01",
           "stars": [
             {

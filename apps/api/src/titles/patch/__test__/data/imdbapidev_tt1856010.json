@@ -1,37 +1,17 @@
 {
   "titles": [
     {
-      "id": "tt1856010",
-      "type": "tvSeries",
-      "primaryTitle": "House of Cards",
-      "primaryImage": {
-        "url": "https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg",
-        "width": 1382,
-        "height": 2048
-      },
-      "startYear": 2013,
-      "endYear": 2018,
-      "runtimeSeconds": 3000,
-      "genres": [
-        "Drama",
-        "Thriller"
-      ],
-      "rating": {
-        "aggregateRating": 8.6,
-        "voteCount": 552137
-      },
-      "plot": " ",
       "directors": [
         {
-          "id": "nm0001226",
-          "displayName": "James Foley",
           "alternativeNames": [
             "Peter Percher"
           ],
+          "displayName": "James Foley",
+          "id": "nm0001226",
           "primaryImage": {
+            "height": 548,
             "url": "https://m.media-amazon.com/images/M/MV5BMjI1MDQyMTAxNF5BMl5BanBnXkFtZTgwMjg0MTM2NjE@._V1_.jpg",
-            "width": 362,
-            "height": 548
+            "width": 362
           },
           "primaryProfessions": [
             "director",
@@ -40,16 +20,16 @@
           ]
         },
         {
-          "id": "nm0000705",
-          "displayName": "Robin Wright",
           "alternativeNames": [
             "Robin Wright Penn",
             "Robin Wright-Penn"
           ],
+          "displayName": "Robin Wright",
+          "id": "nm0000705",
           "primaryImage": {
+            "height": 400,
             "url": "https://m.media-amazon.com/images/M/MV5BMTU0NTc4MzEyOV5BMl5BanBnXkFtZTcwODY0ODkzMQ@@._V1_.jpg",
-            "width": 280,
-            "height": 400
+            "width": 280
           },
           "primaryProfessions": [
             "actress",
@@ -58,16 +38,16 @@
           ]
         },
         {
-          "id": "nm0171315",
-          "displayName": "John David Coles",
           "alternativeNames": [
             "John D. Coles",
             "John Coles"
           ],
+          "displayName": "John David Coles",
+          "id": "nm0171315",
           "primaryImage": {
+            "height": 693,
             "url": "https://m.media-amazon.com/images/M/MV5BMWQ5OWEyN2YtYTdiYi00OWQ1LWJjODAtN2EyMWE5M2E0MDc2XkEyXkFqcGc@._V1_.jpg",
-            "width": 693,
-            "height": 693
+            "width": 693
           },
           "primaryProfessions": [
             "director",
@@ -76,119 +56,30 @@
           ]
         }
       ],
-      "writers": [
-        {
-          "id": "nm0203577",
-          "displayName": "Andrew Davies",
-          "primaryProfessions": [
-            "producer",
-            "script_department",
-            "writer"
-          ]
-        },
-        {
-          "id": "nm0229645",
-          "displayName": "Michael Dobbs",
-          "alternativeNames": [
-            "Baron Dobbs",
-            "Lord Dobbs",
-            "David Davis MP",
-            "Michael Dobbs Lord Dobbs of Wylye",
-            "Lord dobbs"
-          ],
-          "primaryImage": {
-            "url": "https://m.media-amazon.com/images/M/MV5BYzJjYTNkNjMtOThmZS00OWYwLWIyMGYtZjE4ZTE3OGZlZmQ4XkEyXkFqcGc@._V1_.jpg",
-            "width": 611,
-            "height": 916
-          },
-          "primaryProfessions": [
-            "actor",
-            "producer",
-            "writer"
-          ]
-        },
-        {
-          "id": "nm2802722",
-          "displayName": "Beau Willimon",
-          "primaryImage": {
-            "url": "https://m.media-amazon.com/images/M/MV5BMTQ2ODk3Mjg3Ml5BMl5BanBnXkFtZTcwNTQyMjQwOQ@@._V1_.jpg",
-            "width": 1365,
-            "height": 2048
-          },
-          "primaryProfessions": [
-            "miscellaneous",
-            "producer",
-            "writer"
-          ]
-        }
+      "endYear": 2018,
+      "genres": [
+        "Drama",
+        "Thriller"
       ],
-      "stars": [
+      "id": "tt1856010",
+      "interests": [
         {
-          "id": "nm0000705",
-          "displayName": "Robin Wright",
-          "alternativeNames": [
-            "Robin Wright Penn",
-            "Robin Wright-Penn"
-          ],
-          "primaryImage": {
-            "url": "https://m.media-amazon.com/images/M/MV5BMTU0NTc4MzEyOV5BMl5BanBnXkFtZTcwODY0ODkzMQ@@._V1_.jpg",
-            "width": 280,
-            "height": 400
-          },
-          "primaryProfessions": [
-            "actress",
-            "director",
-            "producer"
-          ]
+          "id": "in0000076",
+          "name": "Drama"
         },
         {
-          "id": "nm0000228",
-          "displayName": "Kevin Spacey",
-          "primaryImage": {
-            "url": "https://m.media-amazon.com/images/M/MV5BMTY1NzMyODc3Nl5BMl5BanBnXkFtZTgwNzE2MzA1NDM@._V1_.jpg",
-            "width": 1800,
-            "height": 1471
-          },
-          "primaryProfessions": [
-            "actor",
-            "director",
-            "producer"
-          ]
+          "id": "in0000077",
+          "isSubgenre": true,
+          "name": "Epic"
         },
         {
-          "id": "nm0318703",
-          "displayName": "Michel Gill",
-          "alternativeNames": [
-            "Michael R. Gill",
-            "Michael Gill",
-            "Michel R. Gill"
-          ],
-          "primaryImage": {
-            "url": "https://m.media-amazon.com/images/M/MV5BNzE2NmRlNWQtYzFiNi00YWE4LTg2Y2YtOWUzOTMyNjBiZTMxXkEyXkFqcGc@._V1_.jpg",
-            "width": 829,
-            "height": 858
-          },
-          "primaryProfessions": [
-            "actor"
-          ]
+          "id": "in0000084",
+          "isSubgenre": true,
+          "name": "Political Drama"
         },
         {
-          "id": "nm0544718",
-          "displayName": "Kate Mara",
-          "alternativeNames": [
-            "Kate Mara Bell",
-            "The Mara Family"
-          ],
-          "primaryImage": {
-            "url": "https://m.media-amazon.com/images/M/MV5BMjE5MDY3OTE4MV5BMl5BanBnXkFtZTcwNTA0MDM5OQ@@._V1_.jpg",
-            "width": 640,
-            "height": 512
-          },
-          "primaryProfessions": [
-            "actress",
-            "producer",
-            "soundtrack"
-          ]
+          "id": "in0000186",
+          "name": "Thriller"
         }
       ],
       "originCountries": [
@@ -197,30 +88,139 @@
           "name": "United States"
         }
       ],
+      "plot": "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",
+      "primaryImage": {
+        "height": 2048,
+        "url": "https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg",
+        "width": 1382
+      },
+      "primaryTitle": "House of Cards",
+      "rating": {
+        "aggregateRating": 8.6,
+        "voteCount": 552297
+      },
+      "runtimeSeconds": 3000,
       "spokenLanguages": [
         {
           "code": "eng",
           "name": "English"
         }
       ],
-      "interests": [
+      "stars": [
         {
-          "id": "in0000076",
-          "name": "Drama"
+          "alternativeNames": [
+            "Robin Wright Penn",
+            "Robin Wright-Penn"
+          ],
+          "displayName": "Robin Wright",
+          "id": "nm0000705",
+          "primaryImage": {
+            "height": 400,
+            "url": "https://m.media-amazon.com/images/M/MV5BMTU0NTc4MzEyOV5BMl5BanBnXkFtZTcwODY0ODkzMQ@@._V1_.jpg",
+            "width": 280
+          },
+          "primaryProfessions": [
+            "actress",
+            "director",
+            "producer"
+          ]
         },
         {
-          "id": "in0000077",
-          "name": "Epic",
-          "isSubgenre": true
+          "displayName": "Kevin Spacey",
+          "id": "nm0000228",
+          "primaryImage": {
+            "height": 1471,
+            "url": "https://m.media-amazon.com/images/M/MV5BMTY1NzMyODc3Nl5BMl5BanBnXkFtZTgwNzE2MzA1NDM@._V1_.jpg",
+            "width": 1800
+          },
+          "primaryProfessions": [
+            "actor",
+            "director",
+            "producer"
+          ]
         },
         {
-          "id": "in0000084",
-          "name": "Political Drama",
-          "isSubgenre": true
+          "alternativeNames": [
+            "Michael R. Gill",
+            "Michael Gill",
+            "Michel R. Gill"
+          ],
+          "displayName": "Michel Gill",
+          "id": "nm0318703",
+          "primaryImage": {
+            "height": 858,
+            "url": "https://m.media-amazon.com/images/M/MV5BNzE2NmRlNWQtYzFiNi00YWE4LTg2Y2YtOWUzOTMyNjBiZTMxXkEyXkFqcGc@._V1_.jpg",
+            "width": 829
+          },
+          "primaryProfessions": [
+            "actor"
+          ]
         },
         {
-          "id": "in0000186",
-          "name": "Thriller"
+          "alternativeNames": [
+            "Kate Mara Bell",
+            "The Mara Family"
+          ],
+          "displayName": "Kate Mara",
+          "id": "nm0544718",
+          "primaryImage": {
+            "height": 512,
+            "url": "https://m.media-amazon.com/images/M/MV5BMjE5MDY3OTE4MV5BMl5BanBnXkFtZTcwNTA0MDM5OQ@@._V1_.jpg",
+            "width": 640
+          },
+          "primaryProfessions": [
+            "actress",
+            "producer",
+            "soundtrack"
+          ]
+        }
+      ],
+      "startYear": 2013,
+      "type": "tvSeries",
+      "writers": [
+        {
+          "displayName": "Andrew Davies",
+          "id": "nm0203577",
+          "primaryProfessions": [
+            "producer",
+            "script_department",
+            "writer"
+          ]
+        },
+        {
+          "alternativeNames": [
+            "Baron Dobbs",
+            "Lord Dobbs",
+            "David Davis MP",
+            "Michael Dobbs Lord Dobbs of Wylye",
+            "Lord dobbs"
+          ],
+          "displayName": "Michael Dobbs",
+          "id": "nm0229645",
+          "primaryImage": {
+            "height": 916,
+            "url": "https://m.media-amazon.com/images/M/MV5BYzJjYTNkNjMtOThmZS00OWYwLWIyMGYtZjE4ZTE3OGZlZmQ4XkEyXkFqcGc@._V1_.jpg",
+            "width": 611
+          },
+          "primaryProfessions": [
+            "actor",
+            "producer",
+            "writer"
+          ]
+        },
+        {
+          "displayName": "Beau Willimon",
+          "id": "nm2802722",
+          "primaryImage": {
+            "height": 2048,
+            "url": "https://m.media-amazon.com/images/M/MV5BMTQ2ODk3Mjg3Ml5BMl5BanBnXkFtZTcwNTQyMjQwOQ@@._V1_.jpg",
+            "width": 1365
+          },
+          "primaryProfessions": [
+            "miscellaneous",
+            "producer",
+            "writer"
+          ]
         }
       ]
     }
