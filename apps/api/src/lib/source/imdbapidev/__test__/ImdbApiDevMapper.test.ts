@@ -30,4 +30,17 @@ describe("ImdbApiDevMapper", () => {
       }
     `);
   });
+
+  it("mapRating", () => {
+    const result = new ImdbApiDevMapper().mapRating("tt1856010",Datas.ImdbapiRating_tt1856010);
+
+    expect(result).toMatchInlineSnapshot(`
+      {
+        "titleId": "tt1856010",
+        "total": "8.6",
+        "type": "imdb",
+        "voteCount": 552297,
+      }
+    `);
+  });
 });

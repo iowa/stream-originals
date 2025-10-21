@@ -1,6 +1,10 @@
 import { Title, TitleDraft } from "@repo/common";
 import { ImdbMediaTitle, ImdbMediaTitleImage } from "../../source/imdbmedia/ImdbMediaTypes.js";
-import { ImdbapiInterest, ImdbapiName } from "../../source/imdbapidev/generated/index.js";
+import {
+  ImdbapiInterest,
+  ImdbapiName,
+  ImdbapiRating
+} from "../../source/imdbapidev/generated/index.js";
 
 export class Datas {
 
@@ -61,6 +65,11 @@ export class Datas {
       "director",
       "producer"
     ]
+  }
+
+  public static readonly ImdbapiRating_tt1856010: ImdbapiRating = {
+    aggregateRating: 8.6,
+    voteCount: 552297
   }
 
 }

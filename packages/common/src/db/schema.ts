@@ -109,8 +109,8 @@ export const ratingsTable = schema.table(
     .notNull()
     .references(() => titlesTable.id),
     type: ratingTypesEnum().notNull(),
-    total: p.numeric("total").notNull(),
-    voteCount: p.integer("vote_count").notNull(),
+    total: p.numeric("total"),
+    voteCount: p.integer("vote_count"),
   }, (t) => [
     p.primaryKey({ columns: [t.titleId, t.type] })
   ],

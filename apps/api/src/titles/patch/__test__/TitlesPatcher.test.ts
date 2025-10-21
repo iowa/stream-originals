@@ -109,6 +109,13 @@ describe("TitlesPatcher", async () => {
           "name": "House of Cards",
           "plot": "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",
           "premiere": "2013-02-01",
+          "ratings": [
+            {
+              "total": "8.6",
+              "type": "imdb",
+              "voteCount": 552297,
+            },
+          ],
           "stars": [
             {
               "credit": {

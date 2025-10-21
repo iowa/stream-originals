@@ -1,10 +1,10 @@
-import { ImdbapiInterest, ImdbapiName, ImdbapiTitle } from "./generated/index.js";
+import { ImdbapiInterest, ImdbapiName, ImdbapiRating, ImdbapiTitle } from "./generated/index.js";
 import {
   Credit,
   CreditPatchDto,
   Interest,
   InterestPatchDto,
-  InterestsRepository,
+  InterestsRepository, Rating,
   TitlePatchDto
 } from "@repo/common";
 import { CreditsRepository } from "@repo/common/credits/CreditsRepository";
@@ -27,7 +27,7 @@ export class ImdbApiDevMapper {
     const stars = await this.mapAndInsertCredits(apiTitle, creditIds, 'stars');
     const directors = await this.mapAndInsertCredits(apiTitle, creditIds, 'directors');
     const writers = await this.mapAndInsertCredits(apiTitle, creditIds, 'writers');
-
+    const rating = this.mapRating(dbTitle.id, apiTitle.rating)
     return {
       ...dbTitle,
       plot: apiTitle.plot,
@@ -35,7 +35,40 @@ export class ImdbApiDevMapper {
       stars: stars,
       directors: directors,
       writers: writers,
+      ratings: rating ? [rating] : [],
     } as TitlePatchDto;
+  }
+
+  mapInterest(category: string, apiInterest: ImdbapiInterest): Interest {
+    return {
+      id: apiInterest.id!,
+      name: apiInterest.name!,
+      isSubgenre: apiInterest.isSubgenre!,
+      description: apiInterest.description ?? null,
+      category: category
+    }
+  }
+
+  mapCredit(apiCredit: ImdbapiName): Credit {
+    return {
+      id: apiCredit.id!,
+      name: apiCredit.displayName!,
+      primaryImageUrl: apiCredit.primaryImage?.url || null,
+      primaryImageWidth: apiCredit.primaryImage?.width || null,
+      primaryImageHeight: apiCredit.primaryImage?.height || null,
+    }
+  }
+
+  mapRating(titleId: string, apiRating?: ImdbapiRating): Rating | null {
+    if (!apiRating) {
+      return null
+    }
+    return {
+      titleId: titleId,
+      type: 'imdb',
+      total: apiRating.aggregateRating?.toString() || null,
+      voteCount: apiRating.voteCount || null,
+    }
   }
 
   private async mapAndInsertInterests(
@@ -77,26 +110,4 @@ export class ImdbApiDevMapper {
     }
     return credits;
   }
-
-  mapInterest(category: string, apiInterest: ImdbapiInterest): Interest {
-    return {
-      id: apiInterest.id!,
-      name: apiInterest.name!,
-      isSubgenre: apiInterest.isSubgenre!,
-      description: apiInterest.description ?? null,
-      category: category
-    }
-  }
-
-  mapCredit(apiCredit: ImdbapiName): Credit {
-    return {
-      id: apiCredit.id!,
-      name: apiCredit.displayName!,
-      primaryImageUrl: apiCredit.primaryImage?.url || null,
-      primaryImageWidth: apiCredit.primaryImage?.width || null,
-      primaryImageHeight: apiCredit.primaryImage?.height || null,
-    }
-  }
-
-
 }
