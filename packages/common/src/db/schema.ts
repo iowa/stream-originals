@@ -1,6 +1,6 @@
 import * as p from "drizzle-orm/pg-core";
 import {
-  creditRoleValues,
+  creditRoleValues, ratingTypeValues,
   streamerValues,
   titleImageTypeValues,
   titleTypeValues
@@ -97,5 +97,21 @@ export const titleCreditsTable = schema.table("title_credits", {
     role: creditRolesEnum().notNull(),
   }, (t) => [
     p.primaryKey({ columns: [t.titleId, t.creditId, t.role] })
+  ],
+);
+
+export const ratingTypesEnum = p.pgEnum("rating_types", ratingTypeValues);
+
+export const ratingsTable = schema.table(
+  "ratings",
+  {
+    titleId: p.varchar("title_id", { length: 20 })
+    .notNull()
+    .references(() => titlesTable.id),
+    type: ratingTypesEnum().notNull(),
+    total: p.numeric("total").notNull(),
+    voteCount: p.integer("vote_count").notNull(),
+  }, (t) => [
+    p.primaryKey({ columns: [t.titleId, t.type] })
   ],
 );

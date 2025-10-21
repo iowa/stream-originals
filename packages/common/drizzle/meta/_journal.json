@@ -15,6 +15,13 @@
       "when": 1760982408435,
       "tag": "0001_acoustic_talkback",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1761028431334,
+      "tag": "0002_tranquil_shadowcat",
+      "breakpoints": true
     }
   ]
 }

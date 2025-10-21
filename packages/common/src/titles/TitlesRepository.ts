@@ -77,6 +77,7 @@ export class TitlesRepository {
         stars: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
         directors: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
         writers: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
+        ratings: { columns: { type: true, total: true, voteCount: true } }
       },
       limit: pageSize,
       offset: page && pageSize ? (page - 1) * pageSize : undefined,
@@ -91,6 +92,7 @@ export class TitlesRepository {
         stars: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
         directors: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
         writers: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
+        ratings: { columns: { type: true, total: true, voteCount: true } }
       },
       limit: pageSize,
       offset: page && pageSize ? (page - 1) * pageSize : undefined,

@@ -1,6 +1,11 @@
-import { CreditPatchDto, InterestPatchDto, TitlePatchDto } from "../dto/dtoTypes.js";
+import {
+  CreditPatchDto,
+  InterestPatchDto,
+  RatingPatchDto,
+  TitlePatchDto
+} from "../dto/dtoTypes.js";
 import { dbDrizzle } from "../db/dbDrizzle.js";
-import { titleCreditsTable, titleInterestsTable, titlesTable } from "../db/schema.js";
+import { ratingsTable, titleCreditsTable, titleInterestsTable, titlesTable } from "../db/schema.js";
 import { and, eq, inArray } from "drizzle-orm";
 import { CreditRole, TitleCredit } from "../db/dbTypes.js";
 
@@ -17,14 +22,15 @@ export class TitlesMerger {
     await this.mergeCredits(original.id, original.stars, updated.stars, 'star')
     await this.mergeCredits(original.id, original.directors, updated.directors, 'director')
     await this.mergeCredits(original.id, original.writers, updated.writers, 'writer')
+    await this.mergeRatings(original.id, original.ratings, updated.ratings)
   }
 
-  async mergeTitle(original: TitlePatchDto, updated: TitlePatchDto) {
-    if (original.plot !== updated.plot) {
+  async mergeTitle(o: TitlePatchDto, u: TitlePatchDto) {
+    if (o.plot !== u.plot) {
       await this.db
       .update(titlesTable)
-      .set({ plot: updated.plot ? updated.plot : null })
-      .where(eq(titlesTable.id, original.id))
+      .set({ plot: u.plot ? u.plot : null })
+      .where(eq(titlesTable.id, o.id))
     }
   }
 
@@ -73,6 +79,35 @@ export class TitlesMerger {
           role: role
         } as TitleCredit))
       );
+    }
+  }
+
+  private async mergeRatings(titleId: string, o: RatingPatchDto[], u: RatingPatchDto[]) {
+    const currentTypes = new Set(o.map(r => r.type));
+    const newTypes = new Set(u.map(r => r.type));
+
+    const toDelete = [...currentTypes].filter(type => !newTypes.has(type));
+    if (toDelete.length) {
+      await this.db.delete(ratingsTable).where(
+        and(eq(ratingsTable.titleId, titleId), inArray(ratingsTable.type, toDelete))
+      );
+    }
+
+    const toInsert = u.filter(r => !currentTypes.has(r.type));
+    if (toInsert.length) {
+      await this.db.insert(ratingsTable).values(
+        toInsert.map(({ type, total, voteCount }) => ({ titleId, type, total, voteCount }))
+      );
+    }
+
+    const toUpdate = u.filter(r => {
+      const orig = o.find(or => or.type === r.type);
+      return orig && (orig.total !== r.total || orig.voteCount !== r.voteCount);
+    });
+    for (const { type, total, voteCount } of toUpdate) {
+      await this.db.update(ratingsTable)
+      .set({ total, voteCount })
+      .where(and(eq(ratingsTable.titleId, titleId), eq(ratingsTable.type, type)));
     }
   }
 

@@ -90,5 +90,12 @@
         "name": "John David Coles"
       }
     }
+  ],
+  "ratings": [
+    {
+      "type": "imdb",
+      "total": 8.6,
+      "voteCount": 552297
+    }
   ]
 }
