@@ -4,7 +4,7 @@ import {
   CreditPatchDto,
   Interest,
   InterestPatchDto,
-  InterestsRepository, Rating,
+  InterestsRepository, TitleRating,
   TitlePatchDto
 } from "@repo/common";
 import { CreditsRepository } from "@repo/common/credits/CreditsRepository";
@@ -59,7 +59,7 @@ export class ImdbApiDevMapper {
     }
   }
 
-  mapRating(titleId: string, apiRating?: ImdbapiRating): Rating | null {
+  mapRating(titleId: string, apiRating?: ImdbapiRating): TitleRating | null {
     if (!apiRating) {
       return null
     }

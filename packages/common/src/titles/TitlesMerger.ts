@@ -1,11 +1,11 @@
 import {
   CreditPatchDto,
   InterestPatchDto,
-  RatingPatchDto,
+  TitleRatingPatchDto,
   TitlePatchDto
 } from "../dto/dtoTypes.js";
 import { dbDrizzle } from "../db/dbDrizzle.js";
-import { ratingsTable, titleCreditsTable, titleInterestsTable, titlesTable } from "../db/schema.js";
+import { titleRatingsTable, titleCreditsTable, titleInterestsTable, titlesTable } from "../db/schema.js";
 import { and, eq, inArray } from "drizzle-orm";
 import { CreditRole, TitleCredit } from "../db/dbTypes.js";
 
@@ -82,20 +82,20 @@ export class TitlesMerger {
     }
   }
 
-  private async mergeRatings(titleId: string, o: RatingPatchDto[], u: RatingPatchDto[]) {
+  private async mergeRatings(titleId: string, o: TitleRatingPatchDto[], u: TitleRatingPatchDto[]) {
     const currentTypes = new Set(o.map(r => r.type));
     const newTypes = new Set(u.map(r => r.type));
 
     const toDelete = [...currentTypes].filter(type => !newTypes.has(type));
     if (toDelete.length) {
-      await this.db.delete(ratingsTable).where(
-        and(eq(ratingsTable.titleId, titleId), inArray(ratingsTable.type, toDelete))
+      await this.db.delete(titleRatingsTable).where(
+        and(eq(titleRatingsTable.titleId, titleId), inArray(titleRatingsTable.type, toDelete))
       );
     }
 
     const toInsert = u.filter(r => !currentTypes.has(r.type));
     if (toInsert.length) {
-      await this.db.insert(ratingsTable).values(
+      await this.db.insert(titleRatingsTable).values(
         toInsert.map(({ type, total, voteCount }) => ({ titleId, type, total, voteCount }))
       );
     }
@@ -105,9 +105,9 @@ export class TitlesMerger {
       return orig && (orig.total !== r.total || orig.voteCount !== r.voteCount);
     });
     for (const { type, total, voteCount } of toUpdate) {
-      await this.db.update(ratingsTable)
+      await this.db.update(titleRatingsTable)
       .set({ total, voteCount })
-      .where(and(eq(ratingsTable.titleId, titleId), eq(ratingsTable.type, type)));
+      .where(and(eq(titleRatingsTable.titleId, titleId), eq(titleRatingsTable.type, type)));
     }
   }
 

@@ -20,7 +20,7 @@ export const relations = defineRelations(schema, (r) => ({
         role: 'writer'
       }
     }),
-    ratings: r.many.ratingsTable()
+    ratings: r.many.titleRatingsTable()
   },
   titleImagesTable: {
     title: r.one.titlesTable({
@@ -45,9 +45,9 @@ export const relations = defineRelations(schema, (r) => ({
       optional: false
     })
   },
-  ratingsTable: {
+  titleRatingsTable: {
     title: r.one.titlesTable({
-      from: r.ratingsTable.titleId,
+      from: r.titleRatingsTable.titleId,
       to: r.titlesTable.id
     })
   }
