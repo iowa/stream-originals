@@ -4,6 +4,7 @@ import { Eye, Info, Star } from "lucide-solid";
 import { Times, TitleListDto } from "@repo/common";
 import InterestsBadges from "~/ui/streamer/InterestsBadges";
 import TitlePoster from "~/ui/streamer/TitlePoster";
+import RatingDisplay from "~/ui/streamer/RatingDisplay";
 
 
 export default function StreamerList({ titles }: {
@@ -53,12 +54,7 @@ export default function StreamerList({ titles }: {
                         {/* Rating and Actions */}
                         <div class="flex items-center gap-4 flex-wrap">
                           {/* Rating */}
-                          <div class="flex items-center gap-2">
-                            <Star class="w-5 h-5 fill-yellow-500 text-yellow-500"/>
-                            <span class="font-semibold text-foreground">8.6</span>
-                            <span class="text-sm text-muted-foreground">(552K)</span>
-                          </div>
-
+                          <RatingDisplay title={title}/>
                           {/* Rate button */}
                           <button class="btn btn-ghost btn-sm gap-2">
                             <Star class="w-4 h-4"/>
