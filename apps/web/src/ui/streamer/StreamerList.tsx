@@ -1,9 +1,9 @@
 import { AccessorWithLatest } from "@solidjs/router";
 import { For, Suspense } from "solid-js";
 import { Eye, Info, Star } from "lucide-solid";
-import { Image } from "@unpic/solid";
 import { Times, TitleListDto } from "@repo/common";
 import InterestsBadges from "~/ui/streamer/InterestsBadges";
+import TitlePoster from "~/ui/streamer/TitlePoster";
 
 
 export default function StreamerList({ titles }: {
@@ -20,16 +20,7 @@ export default function StreamerList({ titles }: {
                   <div class="card-body p-6">
                     <div class="flex gap-6">
                       {/* Poster Image */}
-                      <div class="flex-shrink-0">
-                        <Image
-                          src={title?.images[0]?.url || ""}
-                          alt={`${title.name}_poster`}
-                          width={120}
-                          height={180}
-                          class={"w-auto h-[180px]"}
-                        />
-                      </div>
-
+                      <TitlePoster title={title}/>
                       {/* Content */}
                       <div class="flex-1 flex flex-col gap-3">
                         {/* Header with title and info icon */}
