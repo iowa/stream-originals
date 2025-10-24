@@ -2,7 +2,7 @@ import { Show } from "solid-js";
 import { TitleListDto } from "@repo/common";
 import { Image } from "@unpic/solid";
 
-export default function TitlePoster({ title }: { title: TitleListDto }) {
+export default function StreamerListTitlePoster({ title }: { title: TitleListDto }) {
   return (
     <div class="flex-shrink-0">
       <Show

@@ -1,11 +1,11 @@
-import { TitleListDto } from "@repo/common";
+import { TitleRatingPatchDto } from "@repo/common";
 import { Star } from "lucide-solid";
 import { For, Show } from "solid-js";
 
-export default function RatingDisplay({ title }: { title: TitleListDto }) {
+export default function StreamerListRating({ ratings }: { ratings: TitleRatingPatchDto[] }) {
   return (
     <div>
-      <For each={title.ratings}>
+      <For each={ratings}>
         {(rating) => (
           <div class="flex items-center gap-2">
             <Star class="w-5 h-5 fill-yellow-500 text-yellow-500"/>

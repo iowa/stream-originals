@@ -1,7 +1,7 @@
 import { For } from "solid-js";
 import { Interest, InterestListDto } from "@repo/common";
 
-export default function InterestsBadges({ interests }: { interests: InterestListDto[] }) {
+export default function StreamerListInterests({ interests }: { interests: InterestListDto[] }) {
   const list = interests.filter(i => i.isSubgenre === null);
   return (
     <div class="flex items-center gap-2 flex-wrap">
