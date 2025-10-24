@@ -30,5 +30,8 @@ serve({
   fetch: app.fetch,
   port: 8080
 }, (info) => {
+  if (!process.env.POSTGRES_URL) {
+    throw new Error("Missing required environment variable: POSTGRES_URL");
+  }
   console.log(`Server is running on http://localhost:${info.port}`)
 })
