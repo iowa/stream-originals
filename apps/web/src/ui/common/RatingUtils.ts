@@ -1,4 +1,4 @@
-export class StreamerListUtils {
+export class RatingUtils {
   static formatVoteCount(voteCount?: number | null): string {
     if (voteCount == null) return "(~)";
     if (voteCount < 1000) return `(${voteCount})`;

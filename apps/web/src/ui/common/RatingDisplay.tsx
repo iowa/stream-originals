@@ -1,9 +1,9 @@
 import { TitleRatingPatchDto } from "@repo/common";
 import { Star } from "lucide-solid";
 import { For } from "solid-js";
-import { StreamerListUtils } from "~/ui/streamer/streamerListUtils";
+import { RatingUtils } from "~/ui/common/RatingUtils";
 
-export default function StreamerListRating({ ratings }: { ratings: TitleRatingPatchDto[] }) {
+export default function RatingDisplay({ ratings }: { ratings: TitleRatingPatchDto[] }) {
   return (
     <div>
       <For each={ratings}>
@@ -12,7 +12,7 @@ export default function StreamerListRating({ ratings }: { ratings: TitleRatingPa
             <Star class="w-5 h-5 fill-yellow-500 text-yellow-500"/>
             <span class="font-semibold text-foreground">{rating.total}</span>
             <span class="text-sm text-muted-foreground">
-              {StreamerListUtils.formatVoteCount(rating.voteCount)}
+              {RatingUtils.formatVoteCount(rating.voteCount)}
             </span>
           </div>
         )}
