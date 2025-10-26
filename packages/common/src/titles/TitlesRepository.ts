@@ -2,7 +2,7 @@ import { dbDrizzle } from "../db/dbDrizzle.js";
 import { Streamer, Title, TitleDraft, TitleInsertDraft } from "../db/dbTypes.js";
 import { titleDraftsTable, titlesTable } from "../db/schema.js";
 import { count, eq } from "drizzle-orm";
-import { TitleListDto, TitlePatchDto } from "../dto/dtoTypes.js";
+import { TitleDto, TitleListDto, TitlePatchDto } from "../dto/dtoTypes.js";
 
 export class TitlesRepository {
   private readonly db
@@ -84,7 +84,7 @@ export class TitlesRepository {
     });
   }
 
-  getTitleListDto(streamer: Streamer, page?: number, pageSize?: number): Promise<TitleListDto[]> {
+  geTitleListDtos(streamer: Streamer, page?: number, pageSize?: number): Promise<TitleListDto[]> {
     return this.db.query.titlesTable.findMany({
       with: {
         images: true,
@@ -97,6 +97,17 @@ export class TitlesRepository {
       limit: pageSize,
       offset: page && pageSize ? (page - 1) * pageSize : undefined,
     });
+  }
+
+  getTitleDto(titleId: string): Promise<TitleDto | undefined> {
+    return this.db.query.titlesTable.findFirst({
+      with: {
+        images: true
+      },
+      where: {
+        id: titleId
+      }
+    })
   }
 
 }

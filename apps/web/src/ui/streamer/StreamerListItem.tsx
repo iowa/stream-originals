@@ -2,10 +2,10 @@ import { TitleListDto } from "@repo/common";
 import { A } from "@solidjs/router";
 import StreamerListTitlePoster from "~/ui/streamer/StreamerListTitlePoster";
 import StreamerListItemHeader from "./StreamerListItemHeader";
-import StreamerListInterests from "~/ui/streamer/StreamerListInterests";
 import StreamerListItemActions from "./StreamerListItemActions";
 import StreamerListItemDescription from "./StreamerListItemDescription";
 import { StreamerListItemCredits } from "~/ui/streamer/StreamerListItemCredits";
+import InterestsDisplay from "~/ui/common/InterestsDisplay";
 
 export function StreamerListItem({ title }: { title: TitleListDto }) {
   return (
@@ -17,7 +17,7 @@ export function StreamerListItem({ title }: { title: TitleListDto }) {
               <StreamerListTitlePoster title={title}/>
               <div class="flex-1 flex flex-col gap-3">
                 <StreamerListItemHeader title={title}/>
-                <StreamerListInterests interests={title.interests}/>
+                <InterestsDisplay interests={title.interests} isSubgenre={false}/>
                 <StreamerListItemActions ratings={title.ratings}/>
                 <StreamerListItemDescription plot={title.plot}/>
                 <StreamerListItemCredits writers={title.writers} stars={title.stars}/>

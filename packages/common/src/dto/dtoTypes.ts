@@ -25,3 +25,7 @@ export type TitleListDto = Title & {
   writers: CreditPatchDto[],
   ratings: TitleRatingPatchDto[],
 }
+
+export type TitleDto = Title & {
+  images: TitleImage[]
+}

@@ -3,11 +3,10 @@ import { query } from "@solidjs/router";
 
 export const getTitlesList = query(async (streamer: Streamer) => {
   "use server";
-  return new TitlesRepository().getTitleListDto(streamer, 1, 100);
+  return new TitlesRepository().geTitleListDtos(streamer, 1, 100);
 }, "getTitlesList");
 
 export const getTitle = query(async (titleId: string) => {
   "use server";
-  const titles = await new TitlesRepository().getTitleListDto('appleTV+', 1, 100);
-  return titles.find((title) => title.id === titleId);
+  return new TitlesRepository().getTitleDto(titleId);
 }, "getTitlesList");
