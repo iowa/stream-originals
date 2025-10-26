@@ -11,7 +11,7 @@ export default function RatingDisplay({ ratings }: { ratings: TitleRatingPatchDt
           <div class="flex items-center gap-2">
             <Star class="w-5 h-5 fill-yellow-500 text-yellow-500"/>
             <span class="font-semibold text-foreground">{rating.total}</span>
-            <span class="text-sm text-muted-foreground">
+            <span class="text-md text-muted-foreground">
               {RatingUtils.formatVoteCount(rating.voteCount)}
             </span>
           </div>

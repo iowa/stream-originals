@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { RatingUtils } from "~/ui/common/RatingUtils";
 
-describe('StreamerListUtils.formatVoteCount', () => {
+describe('RatingUtils.formatVoteCount', () => {
   it('returns (~) for undefined', () => {
     expect(RatingUtils.formatVoteCount(undefined)).toBe('(~)');
   });

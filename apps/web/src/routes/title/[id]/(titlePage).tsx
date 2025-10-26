@@ -6,5 +6,8 @@ import TitleView from "~/ui/title/TitleView";
 export default function TitlePage() {
   const { id } = useParams();
   const title = createAsync<TitleDto | undefined>(() => getTitle(id));
-  return <TitleView title={title}/>
+  return <div class="mx-auto w-[800px]">
+    <TitleView title={title}/>
+  </div>
+
 }

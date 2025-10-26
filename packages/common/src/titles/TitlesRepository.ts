@@ -102,7 +102,8 @@ export class TitlesRepository {
   getTitleDto(titleId: string): Promise<TitleDto | undefined> {
     return this.db.query.titlesTable.findFirst({
       with: {
-        images: true
+        images: true,
+        ratings: { columns: { type: true, total: true, voteCount: true } }
       },
       where: {
         id: titleId

@@ -1,5 +1,6 @@
 import { Info } from "lucide-solid";
-import { Times, TitleListDto } from "@repo/common";
+import { TitleListDto } from "@repo/common";
+import { TitleDateUtils } from "../title/TitleDateUtils";
 
 export default function StreamerListItemHeader({ title }: { title: TitleListDto }) {
   return (
@@ -7,7 +8,7 @@ export default function StreamerListItemHeader({ title }: { title: TitleListDto 
       <div class="flex-1">
         <h2 class="text-xl font-semibold text-foreground mb-2">{title.name}</h2>
         <div class="flex items-center gap-2 text-sm text-muted-foreground flex-wrap">
-          <span>{Times.asDayjs(title.premiere).year()}–2018</span>
+          <span>{TitleDateUtils.getYearRange(title.premiere)}</span>
           <span>•</span>
           <span>73 eps</span>
           <span>•</span>
@@ -17,9 +18,8 @@ export default function StreamerListItemHeader({ title }: { title: TitleListDto 
         </div>
       </div>
       <button class="btn btn-ghost btn-sm btn-circle">
-        <Info class="w-5 h-5 text-primary" />
+        <Info class="w-5 h-5 text-primary"/>
       </button>
     </div>
   );
 }
-
