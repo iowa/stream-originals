@@ -12,17 +12,16 @@
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.3",
     "@solidjs/start": "^1.2.0",
-    "drizzle-orm": "^0.44.6",
-    "lucide-solid": "^0.545.0",
+    "lucide-solid": "^0.548.0",
     "solid-js": "^1.9.9",
     "@unpic/solid": "^1.0.0",
     "vinxi": "^0.5.8"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.14",
-    "daisyui": "^5.1.29",
-    "npm-check-updates": "^19.0.0",
-    "tailwindcss": "^4.1.14"
+    "@tailwindcss/vite": "^4.1.16",
+    "daisyui": "^5.3.10",
+    "npm-check-updates": "^19.1.1",
+    "tailwindcss": "^4.1.16"
   },
   "engines": {
     "node": ">=22"
