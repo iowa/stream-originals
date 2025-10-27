@@ -3,7 +3,7 @@ import { streamerValues } from "@repo/common";
 
 export default function AppHeader() {
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100">
       <div className="navbar-start">
         <a className="btn btn-ghost text-xl">{AppConstants.APP_NAME}</a>
       </div>
@@ -15,7 +15,6 @@ export default function AppHeader() {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
       </div>
     </div>
   );
