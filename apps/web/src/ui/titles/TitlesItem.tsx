@@ -5,6 +5,7 @@ import TitleRating from "@/ui/title/header/TitleRating";
 import TitleInterests from "@/ui/titles/TitleInterests";
 import { AppConstants } from "@/lib/AppConstants";
 import TitleDetails from "@/ui/titles/TitleDetails";
+import TitlesCredits from "@/ui/titles/TitlesCredits";
 
 export function TitlesItem({ title }: { title: TitleListDto }) {
   return (
@@ -21,8 +22,7 @@ export function TitlesItem({ title }: { title: TitleListDto }) {
           <p className="text-sm text-foreground leading-relaxed">
             {title.plot || AppConstants.NOT_AVAILABLE}
           </p>
-          <div className="card-actions justify-end">
-          </div>
+          <TitlesCredits title={title}/>
         </div>
       </div>
     </Link>
