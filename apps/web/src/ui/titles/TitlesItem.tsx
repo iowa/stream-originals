@@ -4,7 +4,7 @@ import TitlesPoster from "@/ui/titles/TitlesPoster";
 import TitleRating from "@/ui/title/header/TitleRating";
 import TitleInterests from "@/ui/titles/TitleInterests";
 import { AppConstants } from "@/lib/AppConstants";
-import { TitleUtils } from "@/lib/title/TitleUtils";
+import TitleDetails from "@/ui/titles/TitleDetails";
 
 export function TitlesItem({ title }: { title: TitleListDto }) {
   return (
@@ -14,7 +14,8 @@ export function TitlesItem({ title }: { title: TitleListDto }) {
           <TitlesPoster title={title}/>
         </div>
         <div className="card-body">
-          <h2 className="card-title">{title.name} ({TitleUtils.getYearRange(title.premiere)})</h2>
+          <h2 className="card-title">{title.name}</h2>
+          <TitleDetails titleDto={title}/>
           <TitleRating ratings={title.ratings}/>
           <TitleInterests interests={title.interests} isSubgenre={false}/>
           <p className="text-sm text-foreground leading-relaxed">

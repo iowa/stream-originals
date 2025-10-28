@@ -20,6 +20,6 @@ async function TitlePageData({ id }: { id: string }) {
     return <>No title found.</>
   }
   return <div className="flex flex-col gap-6">
-    <TitleHeader titleDto={title}/>
+    <TitleHeader title={title}/>
   </div>
 }

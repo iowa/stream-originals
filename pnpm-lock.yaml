@@ -102,6 +102,9 @@ importers:
       react-dom:
         specifier: 19.2.0
         version: 19.2.0(react@19.2.0)
+      text-case:
+        specifier: ^1.2.9
+        version: 1.2.9
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4.1.16
@@ -3908,6 +3911,69 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
+  text-camel-case@1.2.9:
+    resolution: {integrity: sha512-wKYs9SgRxYizJE1mneR7BbLNlGw2IYzJAS8XwkWIry0CTbO1gvvPkFsx5Z1/hr+VqUaBqx9q3yKd30HpZLdMsQ==}
+
+  text-capital-case@1.2.9:
+    resolution: {integrity: sha512-X5zV8U8pxtq2xS2t46lgAWqZdDbgWMKq03MQSNwY2CJdQCsdTNh144E2Q/q9wBxWzSBUXn+jRc9kF+Gs8/pGhA==}
+
+  text-case@1.2.9:
+    resolution: {integrity: sha512-zZVdA8rMcjx9zhekdUuOPZShc25UTV7W8/ddKbgbPtfCEvIiToPtWiSd2lXLSuiGMovNhJ4+Tw49xll9o9ts+Q==}
+
+  text-constant-case@1.2.9:
+    resolution: {integrity: sha512-Vosm6nC7Gag+JFakJHwqS9AXRNgl07j5KZ7srU9cYuKRzYwrxzeJ4RpEogRBNHw7CfmOm0j5FGEznblWtu7pIw==}
+
+  text-dot-case@1.2.9:
+    resolution: {integrity: sha512-N83hsnvGdSO9q9AfNSB9Cy1LFDNN2MCx53LcxtaPoDWPUTk47fv0JlvIY1tgY0wyzCiThF03kVj3jworvAOScA==}
+
+  text-header-case@1.2.9:
+    resolution: {integrity: sha512-TqryEKcYisQAfWLbtT3xPnZlMZ/mySO1uS+LUg+B0eNuqgETrSzVpXIUj5E6Zf/EyJHgpZf4VndbAXtOMJuT4w==}
+
+  text-is-lower-case@1.2.9:
+    resolution: {integrity: sha512-cEurrWSnYVYqL8FSwl5cK4mdfqF7qNDCcKJgXI3NnfTesiB8umxAhdlQoErrRYI1xEvYr2WN0MI333EehUhQjg==}
+
+  text-is-upper-case@1.2.9:
+    resolution: {integrity: sha512-HxsWr3VCsXXiLlhD0c+Ey+mS2lOTCiSJbkepjaXNHl2bp33KiscQaiG0qLwQmmpZQm4SJCg2s9FkndxS0RNDLQ==}
+
+  text-kebab-case@1.2.9:
+    resolution: {integrity: sha512-nOUyNR5Ej2B9D/wyyXfwUEv26+pQuOb1pEX+ojE37mCIWo8QeOxw5y6nxuqDmG7NrEPzbO6265UMV+EICH13Cw==}
+
+  text-lower-case-first@1.2.9:
+    resolution: {integrity: sha512-iiphHTV7PVH0MljrEQUA9iBE7jfDpXoi4RQju3WzZU3BRVbS6540cNZgxR19hWa0z6z/7cJTH0Ls9LPBaiUfKg==}
+
+  text-lower-case@1.2.9:
+    resolution: {integrity: sha512-53AOnDrhPpiAUQkgY1SHleKUXp/u7GsqRX13NcCREZscmtjLLJ099uxMRjkK7q2KwHkFYVPl9ytkQlTkTQLS0w==}
+
+  text-no-case@1.2.9:
+    resolution: {integrity: sha512-IcCt328KaapimSrytP4ThfC8URmHZb2DgOqCL9BYvGjpxY2lDiqCkIQk9sClZtwcELs2gTnq83a7jNc573FTLA==}
+
+  text-param-case@1.2.9:
+    resolution: {integrity: sha512-nR/Ju9amY3aQS1en2CUCgqN/ZiZIVdDyjlJ3xX5J92ChBevGuA4o9K10fh3JGMkbzK97Vcb+bWQJ4Q+Svz+GyQ==}
+
+  text-pascal-case@1.2.9:
+    resolution: {integrity: sha512-o6ZxMGjWDTUW54pcghpXes+C2PqbYRMdU5mHrIhueb6z6nq1NueiIOeCUdrSjN/3wXfhCmnFjK7/d9aRGZNqSg==}
+
+  text-path-case@1.2.9:
+    resolution: {integrity: sha512-s8cJ6r5TkJp5ticXMgtxd7f12odEN4d1CfX5u4aoz6jcUtBR2lDqzIhVimkqWFMJ4UKPSrmilUha8Xc2BPi+ow==}
+
+  text-sentence-case@1.2.9:
+    resolution: {integrity: sha512-/G/Yi5kZfUa1edFRV4O3lGZAkbDZTFvlwW8CYfH7szkEGe2k2MYEYbOyAkGRVQEGV6V6JiuUAaP3VS9c1tB6nQ==}
+
+  text-snake-case@1.2.9:
+    resolution: {integrity: sha512-+ZrqK19ynF/TLQZ7ynqVrL2Dy04uu9syYZwsm8PhzUdsY3XrwPy6QiRqhIEFqhyWbShPcfyfmheer5UEQqFxlw==}
+
+  text-swap-case@1.2.9:
+    resolution: {integrity: sha512-g5fp12ldktYKK9wdHRMvvtSCQrZYNv/D+ZGLumDsvAY4q9T5bCMO2IWMkIP1F5gVQrysdHH6Xv877P/pjUq1iw==}
+
+  text-title-case@1.2.9:
+    resolution: {integrity: sha512-RAtC9cdmPp41ns5/HXZBsaQg71BsHT7uZpj2ojTtuFa8o2dNuRYYOrSmy5YdLRIAJQ6WK5hQVpV3jHuq7a+4Tw==}
+
+  text-upper-case-first@1.2.9:
+    resolution: {integrity: sha512-wEDD1B6XqJmEV+xEnBJd+2sBCHZ+7fvA/8Rv/o8+dAsp05YWjYP/kjB8sPH6zqzW0s6jtehIg4IlcKjcYxk2CQ==}
+
+  text-upper-case@1.2.9:
+    resolution: {integrity: sha512-K/0DNT7a4z8eah2spARtoJllTZyrNTo6Uc0ujhN/96Ir9uJ/slpahfs13y46H9osL3daaLl3O7iXOkW4xtX6bg==}
+
   through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
 
@@ -6421,8 +6487,8 @@ snapshots:
       '@next/eslint-plugin-next': 16.0.0
       eslint: 9.38.0(jiti@2.6.1)
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint@9.38.0(jiti@2.6.1)))(eslint@9.38.0(jiti@2.6.1))
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint@9.38.0(jiti@2.6.1)))(eslint@9.38.0(jiti@2.6.1)))(eslint@9.38.0(jiti@2.6.1))
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@9.38.0(jiti@2.6.1))
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.38.0(jiti@2.6.1))
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.38.0(jiti@2.6.1))
       eslint-plugin-react: 7.37.5(eslint@9.38.0(jiti@2.6.1))
       eslint-plugin-react-hooks: 7.0.1(eslint@9.38.0(jiti@2.6.1))
@@ -6444,7 +6510,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint@9.38.0(jiti@2.6.1)))(eslint@9.38.0(jiti@2.6.1)):
+  eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@9.38.0(jiti@2.6.1)):
     dependencies:
       '@nolyfill/is-core-module': 1.0.39
       debug: 4.4.3
@@ -6455,22 +6521,22 @@ snapshots:
       tinyglobby: 0.2.15
       unrs-resolver: 1.11.1
     optionalDependencies:
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint@9.38.0(jiti@2.6.1)))(eslint@9.38.0(jiti@2.6.1)))(eslint@9.38.0(jiti@2.6.1))
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.38.0(jiti@2.6.1))
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint@9.38.0(jiti@2.6.1)))(eslint@9.38.0(jiti@2.6.1)))(eslint@9.38.0(jiti@2.6.1)):
+  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@9.38.0(jiti@2.6.1)):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
       '@typescript-eslint/parser': 8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3)
       eslint: 9.38.0(jiti@2.6.1)
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint@9.38.0(jiti@2.6.1)))(eslint@9.38.0(jiti@2.6.1))
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@9.38.0(jiti@2.6.1))
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint@9.38.0(jiti@2.6.1)))(eslint@9.38.0(jiti@2.6.1)))(eslint@9.38.0(jiti@2.6.1)):
+  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.38.0(jiti@2.6.1)):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.1.9
@@ -6481,7 +6547,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 9.38.0(jiti@2.6.1)
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint@9.38.0(jiti@2.6.1)))(eslint@9.38.0(jiti@2.6.1)))(eslint@9.38.0(jiti@2.6.1))
+      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@9.38.0(jiti@2.6.1))
       hasown: 2.0.2
       is-core-module: 2.16.1
       is-glob: 4.0.3
@@ -8222,6 +8288,99 @@ snapshots:
       commander: 2.20.3
       source-map-support: 0.5.21
     optional: true
+
+  text-camel-case@1.2.9:
+    dependencies:
+      text-pascal-case: 1.2.9
+
+  text-capital-case@1.2.9:
+    dependencies:
+      text-no-case: 1.2.9
+      text-upper-case-first: 1.2.9
+
+  text-case@1.2.9:
+    dependencies:
+      text-camel-case: 1.2.9
+      text-capital-case: 1.2.9
+      text-constant-case: 1.2.9
+      text-dot-case: 1.2.9
+      text-header-case: 1.2.9
+      text-is-lower-case: 1.2.9
+      text-is-upper-case: 1.2.9
+      text-kebab-case: 1.2.9
+      text-lower-case: 1.2.9
+      text-lower-case-first: 1.2.9
+      text-no-case: 1.2.9
+      text-param-case: 1.2.9
+      text-pascal-case: 1.2.9
+      text-path-case: 1.2.9
+      text-sentence-case: 1.2.9
+      text-snake-case: 1.2.9
+      text-swap-case: 1.2.9
+      text-title-case: 1.2.9
+      text-upper-case: 1.2.9
+      text-upper-case-first: 1.2.9
+
+  text-constant-case@1.2.9:
+    dependencies:
+      text-no-case: 1.2.9
+      text-upper-case: 1.2.9
+
+  text-dot-case@1.2.9:
+    dependencies:
+      text-no-case: 1.2.9
+
+  text-header-case@1.2.9:
+    dependencies:
+      text-capital-case: 1.2.9
+
+  text-is-lower-case@1.2.9: {}
+
+  text-is-upper-case@1.2.9: {}
+
+  text-kebab-case@1.2.9:
+    dependencies:
+      text-no-case: 1.2.9
+
+  text-lower-case-first@1.2.9: {}
+
+  text-lower-case@1.2.9: {}
+
+  text-no-case@1.2.9:
+    dependencies:
+      text-lower-case: 1.2.9
+
+  text-param-case@1.2.9:
+    dependencies:
+      text-dot-case: 1.2.9
+
+  text-pascal-case@1.2.9:
+    dependencies:
+      text-no-case: 1.2.9
+
+  text-path-case@1.2.9:
+    dependencies:
+      text-dot-case: 1.2.9
+
+  text-sentence-case@1.2.9:
+    dependencies:
+      text-no-case: 1.2.9
+      text-upper-case-first: 1.2.9
+
+  text-snake-case@1.2.9:
+    dependencies:
+      text-dot-case: 1.2.9
+
+  text-swap-case@1.2.9: {}
+
+  text-title-case@1.2.9:
+    dependencies:
+      text-no-case: 1.2.9
+      text-upper-case-first: 1.2.9
+
+  text-upper-case-first@1.2.9: {}
+
+  text-upper-case@1.2.9: {}
 
   through@2.3.8: {}
 
