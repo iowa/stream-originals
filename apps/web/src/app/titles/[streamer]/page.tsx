@@ -12,7 +12,7 @@ export default async function Titles({ params }: { params: { streamer: Streamer 
 };
 
 async function TitlesPageData({ streamer }: { streamer: Streamer }) {
-  const titles = await new TitlesRepository().geTitleListDtos(streamer, 1, 10);
+  const titles = await new TitlesRepository().geTitleListDtos(decodeURIComponent(streamer) as Streamer, 1, 10);
   return <ul className="list bg-base-100 shadow-lg">
     {titles.map((title) => (
       <li key={title.id} className="py-0.5">

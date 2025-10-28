@@ -94,6 +94,9 @@ export class TitlesRepository {
         writers: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
         ratings: { columns: { type: true, total: true, voteCount: true } }
       },
+      where: {
+        streamer: streamer,
+      },
       limit: pageSize,
       offset: page && pageSize ? (page - 1) * pageSize : undefined,
     });
