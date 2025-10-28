@@ -74,6 +74,7 @@ describe("TitlesCreateCrawler", async () => {
           "name": "House of Cards",
           "plot": null,
           "premiere": "2013-02-01",
+          "runtimeSeconds": null,
           "streamer": "netflix",
           "type": "tvSeries",
           "updatedAt": 1970-01-01T00:00:00.000Z,

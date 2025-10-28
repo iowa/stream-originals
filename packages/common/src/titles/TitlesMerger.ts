@@ -5,7 +5,12 @@ import {
   TitlePatchDto
 } from "../dto/dtoTypes.js";
 import { dbDrizzle } from "../db/dbDrizzle.js";
-import { titleRatingsTable, titleCreditsTable, titleInterestsTable, titlesTable } from "../db/schema.js";
+import {
+  titleRatingsTable,
+  titleCreditsTable,
+  titleInterestsTable,
+  titlesTable
+} from "../db/schema.js";
 import { and, eq, inArray } from "drizzle-orm";
 import { CreditRole, TitleCredit } from "../db/dbTypes.js";
 
@@ -26,10 +31,13 @@ export class TitlesMerger {
   }
 
   async mergeTitle(o: TitlePatchDto, u: TitlePatchDto) {
-    if (o.plot !== u.plot) {
+    if (o.plot !== u.plot || o.runtimeSeconds !== u.runtimeSeconds) {
       await this.db
       .update(titlesTable)
-      .set({ plot: u.plot ? u.plot : null })
+      .set({
+        plot: u.plot ? u.plot : null,
+        runtimeSeconds: u.runtimeSeconds ? u.runtimeSeconds : null
+      })
       .where(eq(titlesTable.id, o.id))
     }
   }

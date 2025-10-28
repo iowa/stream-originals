@@ -92,6 +92,7 @@ describe("TitlesMerger", async () => {
               "voteCount": 552297,
             },
           ],
+          "runtimeSeconds": 3000,
           "stars": [
             {
               "credit": {
@@ -158,6 +159,7 @@ describe("TitlesMerger", async () => {
           "plot": null,
           "premiere": "2013-02-01",
           "ratings": [],
+          "runtimeSeconds": null,
           "stars": [],
           "streamer": "netflix",
           "type": "tvSeries",

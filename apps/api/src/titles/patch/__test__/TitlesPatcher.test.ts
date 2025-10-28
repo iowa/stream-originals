@@ -116,6 +116,7 @@ describe("TitlesPatcher", async () => {
               "voteCount": 552297,
             },
           ],
+          "runtimeSeconds": 3000,
           "stars": [
             {
               "credit": {

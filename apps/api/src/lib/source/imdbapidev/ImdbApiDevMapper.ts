@@ -31,6 +31,7 @@ export class ImdbApiDevMapper {
     return {
       ...dbTitle,
       plot: apiTitle.plot,
+      runtimeSeconds: apiTitle.runtimeSeconds,
       interests,
       stars: stars,
       directors: directors,

@@ -31,7 +31,7 @@ export const titlesTable = schema.table(
     premiere: p.date(),
     plot: p.text(),
     updatedAt: p.timestamp("updated_at").defaultNow(),
-
+    runtimeSeconds: p.integer("runtime_seconds"),
   }
 );
 
