@@ -9,8 +9,8 @@ export default function TitlesPoster({ title }: { title: TitleListDto }) {
         x="60"
         y="90"
         textAnchor="middle"
-        dominant-baseline="middle"
-        font-size="16"
+        dominantBaseline="middle"
+        fontSize="16"
         fill="#6b7280"
       >
         not available
@@ -18,14 +18,10 @@ export default function TitlesPoster({ title }: { title: TitleListDto }) {
     </svg>
   }
   return (
-    <div className="flex-shrink-0">
+    <div className={"relative w-[120px] h-[180px]"}>
       <Image
-        src={title.images[0].url}
-        alt={`${title.name}_poster`}
-        width={120}
-        height={180}
-        className={"w-auto h-[180px]"}
-      />
+        src={title.images[0].url} width={0} height={0} sizes="100vh"
+        style={{ height: '100%', width: 'auto' }} alt={""}/>
     </div>
   );
 };
