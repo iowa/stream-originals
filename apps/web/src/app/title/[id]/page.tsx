@@ -6,7 +6,7 @@ export default async function TitlePage({ params }: { params: { id: string } }) 
   const { id } = await params;
 
   return (
-    <div className="mx-auto w-[800px]">
+    <div>
       <Suspense key={id} fallback={<div>Loading...</div>}>
         <TitlePageData id={id}/>
       </Suspense>

@@ -31,7 +31,7 @@ export default function RootLayout({
     >
     <div>
       <AppHeader/>
-      <main>
+      <main className="mx-auto w-[800px]">
         {children}
       </main>
       <AppFooter/>

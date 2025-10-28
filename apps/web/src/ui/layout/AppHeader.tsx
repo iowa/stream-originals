@@ -1,5 +1,7 @@
 import { AppConstants } from "@/lib/AppConstants";
 import { streamerValues } from "@repo/common";
+import Link from "next/link";
+import { Paths } from "@/lib/Paths";
 
 export default function AppHeader() {
   return (
@@ -10,7 +12,9 @@ export default function AppHeader() {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           {streamerValues.map((streamer) => (
-            <li key={streamer}><a>{streamer}</a></li>
+            <li key={streamer}>
+              <Link href={Paths.titles(streamer)}>{streamer}</Link>
+            </li>
           ))}
         </ul>
       </div>
