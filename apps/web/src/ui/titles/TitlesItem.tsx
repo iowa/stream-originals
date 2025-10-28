@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { TitleListDto } from "@repo/common";
 import TitlesPoster from "@/ui/titles/TitlesPoster";
+import TitleRating from "@/ui/title/header/TitleRating";
+import TitleInterests from "@/ui/titles/TitleInterests";
 
 export function TitlesItem({ title }: { title: TitleListDto }) {
   return (
@@ -11,9 +13,10 @@ export function TitlesItem({ title }: { title: TitleListDto }) {
         </div>
         <div className="card-body">
           <h2 className="card-title">{title.name}</h2>
+          <TitleRating ratings={title.ratings}/>
+          <TitleInterests interests={title.interests} isSubgenre={false}/>
           <p>{title.plot}</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Watch</button>
           </div>
         </div>
       </div>
