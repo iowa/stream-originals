@@ -13,8 +13,6 @@ export default function TitleHeader({ titleDto }: { titleDto: TitleDto }) {
           <span className="mx-1">·</span>
           {TitleUtils.getYearRange(titleDto.premiere)}
           <span className="mx-1">·</span>
-          TV-MA
-          <span className="mx-1">·</span>
           50m
         </div>
       </div>

@@ -5,6 +5,7 @@ export class TitleUtils {
 
   static getYearRange(premiere: string | null, finale?: string | null): string {
     const startYear = Times.asDayjs(premiere).year();
+    if (isNaN(startYear)) return AppConstants.NOT_AVAILABLE;
     const endYear = finale ? Times.asDayjs(finale).year() : null;
     return endYear ? `${startYear}–${endYear}` : `${startYear}`;
   }
