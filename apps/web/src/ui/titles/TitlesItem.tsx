@@ -3,6 +3,7 @@ import { TitleListDto } from "@repo/common";
 import TitlesPoster from "@/ui/titles/TitlesPoster";
 import TitleRating from "@/ui/title/header/TitleRating";
 import TitleInterests from "@/ui/titles/TitleInterests";
+import { AppConstants } from "@/lib/AppConstants";
 
 export function TitlesItem({ title }: { title: TitleListDto }) {
   return (
@@ -15,7 +16,7 @@ export function TitlesItem({ title }: { title: TitleListDto }) {
           <h2 className="card-title">{title.name}</h2>
           <TitleRating ratings={title.ratings}/>
           <TitleInterests interests={title.interests} isSubgenre={false}/>
-          <p>{title.plot}</p>
+          <p>{title.plot || AppConstants.NOT_AVAILABLE}</p>
           <div className="card-actions justify-end">
           </div>
         </div>
