@@ -17,7 +17,7 @@ export default function AppHeader() {
           {streamerValues.map((streamer) => (
             <li key={streamer}>
               <Link href={Paths.titles(streamer)}>
-                <StreamerLogo streamer={streamer}/>
+                <StreamerLogo streamer={streamer} height={10}/>
               </Link>
             </li>
           ))}

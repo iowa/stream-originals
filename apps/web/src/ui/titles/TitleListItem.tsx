@@ -6,8 +6,9 @@ import TitleInterests from "@/ui/titles/TitleInterests";
 import { AppConstants } from "@/lib/AppConstants";
 import TitleDetails from "@/ui/titles/TitleDetails";
 import TitlesCredits from "@/ui/titles/TitlesCredits";
+import StreamerLogo from "@/lib/streamer/StreamerLogo";
 
-export function TitlesItem({ title }: { title: TitleListDto }) {
+export function TitleListItem({ title }: { title: TitleListDto }) {
   return (
     <Link href={`/title/${title.id}`}>
       <div className="card card-side bg-base-100 shadow-sm">
@@ -15,7 +16,10 @@ export function TitlesItem({ title }: { title: TitleListDto }) {
           <TitlesPoster title={title}/>
         </div>
         <div className="card-body">
-          <h2 className="card-title">{title.name}</h2>
+          <div className="flex">
+            <h2 className="card-title grow ">{title.name}</h2>
+            <StreamerLogo streamer={title.streamer} height={10}/>
+          </div>
           <TitleDetails titleDto={title}/>
           <TitleRating ratings={title.ratings}/>
           <TitleInterests interests={title.interests} isSubgenre={false}/>
