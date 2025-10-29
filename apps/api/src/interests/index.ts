@@ -1,28 +1,27 @@
-import { Hono } from "hono";
-import { describeRoute, resolver } from "hono-openapi";
 import { InterestsService } from "./InterestsService.js";
+import { createRoute, OpenAPIHono } from "@hono/zod-openapi";
 import { InteretsCreateResponseSchema } from "@repo/common";
 
-const app = new Hono();
+const app = new OpenAPIHono();
 const service = new InterestsService();
 
-app.post(
-  "/init",
-  describeRoute({
-    description: "Initial Interests import",
-    responses: {
-      200: {
-        description: "OK",
-        content: {
-          "application/json": { schema: resolver(InteretsCreateResponseSchema) },
+app.openapi(createRoute({
+  method: 'post',
+  path: '/init',
+  description: "Initial Interests import",
+  responses: {
+    200: {
+      description: "OK",
+      content: {
+        'application/json': {
+          schema: InteretsCreateResponseSchema,
         },
       },
     },
-  }),
-  async (c) => {
-    const response = await service.create();
-    return c.json(response);
   },
-);
+}), async (c) => {
+  const response = await service.create();
+  return c.json(response);
+})
 
-export default app;
+export default app

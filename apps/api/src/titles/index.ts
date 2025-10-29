@@ -1,39 +1,49 @@
-import { Hono } from "hono";
-import { describeRoute, resolver } from "hono-openapi";
-import { TitlesCreateResponseSchema, TitlesPatchResponseSchema } from "@repo/common";
-import { TitlesSchema } from "./types.js";
+import { createRoute, OpenAPIHono } from "@hono/zod-openapi";
+import {
+  TitlesCreateResponseSchema,
+  TitlesGetCountsResponseSchema,
+  TitlesPatchRequest,
+  TitlesPatchRequestSchema,
+  TitlesPatchResponseSchema
+} from "@repo/common";
 import { TitlesService } from "./TitlesService.js";
 
-const app = new Hono();
+const app = new OpenAPIHono();
 const service = new TitlesService();
 
-app.get(
-  "/",
-  describeRoute({
+app.openapi(
+  createRoute({
+    method: "get",
+    path: "/counts",
+    description: "Get Titles counts per streamer",
     responses: {
       200: {
         description: "OK",
         content: {
-          "application/json": { schema: resolver(TitlesSchema) },
+          "application/json": {
+            schema: TitlesGetCountsResponseSchema,
+          },
         },
       },
     },
   }),
   async (c) => {
-    const titles = await service.getTitles('appleTV+');
-    return c.json(titles);
-  },
+    return c.json(await service.getCounts());
+  }
 );
 
-app.post(
-  "/init",
-  describeRoute({
+app.openapi(
+  createRoute({
+    method: "post",
+    path: "/init",
     description: "Initial Titles import",
     responses: {
       200: {
         description: "OK",
         content: {
-          "application/json": { schema: resolver(TitlesCreateResponseSchema) },
+          "application/json": {
+            schema: TitlesCreateResponseSchema,
+          },
         },
       },
     },
@@ -41,26 +51,39 @@ app.post(
   async (c) => {
     const response = await service.create();
     return c.json(response);
-  },
+  }
 );
 
-app.patch(
-  "/",
-  describeRoute({
+app.openapi(
+  createRoute({
+    method: "patch",
+    path: "/",
     description: "Patch found titles with additional data",
+    request: {
+      body: {
+        content: {
+          "application/json": {
+            schema: TitlesPatchRequestSchema
+          }
+        }
+      }
+    },
     responses: {
       200: {
         description: "OK",
         content: {
-          "application/json": { schema: resolver(TitlesPatchResponseSchema) },
+          "application/json": {
+            schema: TitlesPatchResponseSchema,
+          },
         },
       },
     },
   }),
   async (c) => {
-    const response = await service.patch();
+    const req: TitlesPatchRequest = c.req.valid('json')
+    const response = await service.patch(req.streamer);
     return c.json(response);
-  },
+  }
 );
 
 export default app;
