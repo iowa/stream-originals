@@ -12,7 +12,8 @@ export default function TitlesPoster({ title }: { title: TitleListDto }) {
     <div className="relative w-[144px] h-[216px] py-2 px-2">
       <Image
         src={title.images[0].url} width={0} height={0} sizes="100vh"
-        style={{ height: '100%', width: 'auto' }} alt={""}/>
+        style={{ height: '100%', width: 'auto' }} alt={""}
+      />
     </div>
   );
 };
