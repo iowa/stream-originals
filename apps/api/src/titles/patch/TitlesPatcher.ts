@@ -22,7 +22,7 @@ export class TitlesPatcher {
   ) {
   }
 
-  async patch(streamer: Streamer, timeout: number = 1000): Promise<TitlesPatchResponse> {
+  async patch(streamer: Streamer, timeout: number = 500): Promise<TitlesPatchResponse> {
     const response: TitlesPatchResponse = { items: [] };
     const titles: TitlePatchDto[] = await this.titlesRepository.getTitlePatchDtos(streamer);
     const interestsIds: Set<string> = await this.interestsRepository.getAllIds();
