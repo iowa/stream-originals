@@ -17,9 +17,7 @@ export const titleDraftsTable = schema.table("title_drafts", {
   name: p.text().notNull(),
   streamer: streamersEnum().notNull(),
   premiere: p.date(),
-}, (table) => ({
-  uniqueTitleStreamer: p.unique().on(table.name, table.streamer),
-}),)
+})
 
 export const titlesTable = schema.table(
   "titles",

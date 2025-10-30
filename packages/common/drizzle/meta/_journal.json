@@ -43,6 +43,13 @@
       "when": 1761822682153,
       "tag": "0005_nifty_madelyne_pryor",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1761824193722,
+      "tag": "0006_petite_cassandra_nova",
+      "breakpoints": true
     }
   ]
 }

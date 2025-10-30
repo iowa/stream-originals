@@ -65,12 +65,14 @@ export class TitlesRepository {
     return result[0]?.count ?? 0;
   }
 
-  insert(title: Title) {
-    return this.db
+  async insert(title: Title) {
+    const result = await this.db
     .insert(titlesTable)
     .values(title)
     .onConflictDoNothing()
     .returning({ insertedId: titlesTable.id });
+
+    return result[0]?.insertedId;
   }
 
   insertDraft(titleDraft: TitleInsertDraft) {
@@ -91,6 +93,9 @@ export class TitlesRepository {
         directors: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
         writers: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
         ratings: { columns: { type: true, total: true, voteCount: true } }
+      },
+      where: {
+        streamer: streamer,
       },
       limit: pageSize,
       offset: page && pageSize ? (page - 1) * pageSize : undefined,

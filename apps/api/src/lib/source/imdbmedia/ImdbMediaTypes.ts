@@ -4,7 +4,7 @@ export type ImdbMediaResponse = {
 
 export type ImdbMediaTitle = {
   id: string;
-  qid: string;
+  qid?: string;
   l: string;
   q: string;
   y: number;

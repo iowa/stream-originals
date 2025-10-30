@@ -77,9 +77,9 @@ export class TitlesCreateCrawler {
 
   private async insertNewTitle(wikipediaTitle: TitleDraft, imdbMediaTitle: ImdbMediaTitle): Promise<void> {
     const newTitle: Title = this.imdbMediaMapper.mapTitle(wikipediaTitle, imdbMediaTitle);
-    const [insertedId] = await this.titlesRepository.insert(newTitle);
-    if (imdbMediaTitle?.i) {
-      const titleMedia = this.imdbMediaMapper.mapPoster(insertedId.insertedId, imdbMediaTitle.i);
+    const insertedId = (imdbMediaTitle?.qid) ? await this.titlesRepository.insert(newTitle) : undefined;
+    if (insertedId && imdbMediaTitle?.i) {
+      const titleMedia = this.imdbMediaMapper.mapPoster(insertedId, imdbMediaTitle.i);
       await this.titlesMediaRepository.insert(titleMedia);
     }
   }
