@@ -18,7 +18,7 @@ export function TitleListItem({ title }: { title: TitleListDto }) {
         <div className="card-body">
           <div className="flex">
             <h2 className="card-title grow ">{title.name}</h2>
-            <StreamerLogo streamer={title.streamer} height={10}/>
+            <StreamerLogo streamer={title.streamer}/>
           </div>
           <TitleDetails titleDto={title}/>
           <TitleRating ratings={title.ratings}/>

@@ -9,7 +9,7 @@ export const TitlesCreateSchema = z.object({
   totalOnWebsite: z.number(),
   totalInDatabase: z.number(),
   totalDraftsInDatabase: z.number(),
-  streamer: z.enum(streamerValues),
+  url: z.string(),
 });
 
 export const TitlesCreateResponseSchema = z.object({

@@ -3,7 +3,7 @@ import {
   Streamer,
   Title,
   TitleDraft,
-  TitleImagesRepository, TitleInsertDraft,
+  TitleImagesRepository,
   TitlesCreate,
   TitlesCreateResponse,
   TitlesRepository
@@ -15,7 +15,7 @@ import { ImdbMediaRestClient } from "../../lib/source/imdbmedia/ImdbMediaRestCli
 import { ImdbMediaTitle } from "../../lib/source/imdbmedia/ImdbMediaTypes.js";
 
 export class TitlesCreateCrawler {
-  private readonly streamers: Map<Streamer, string> = new Map();
+  private readonly streamers: Map<Streamer, string[]> = new Map();
 
   constructor(
     private readonly titlesRepository: TitlesRepository = new TitlesRepository(),
@@ -24,24 +24,24 @@ export class TitlesCreateCrawler {
     private readonly imdbMediaMapper: ImdbMediaMapper = new ImdbMediaMapper(),
     private readonly wikiTitlesScraper: WikiTitlesScraper = new WikiTitlesScraper()
   ) {
-    this.streamers.set('appleTV+', "https://en.wikipedia.org/wiki/List_of_Apple_TV%2B_original_programming");
-    this.streamers.set('netflix', "https://en.wikipedia.org/wiki/List_of_Netflix_original_programming");
+    this.streamers.set('appleTV+', ["https://en.wikipedia.org/wiki/List_of_Apple_TV%2B_original_programming"]);
+    this.streamers.set('netflix', [
+      "https://en.wikipedia.org/wiki/List_of_Netflix_original_programming",
+      "https://en.wikipedia.org/wiki/List_of_ended_Netflix_original_programming"
+    ]);
   }
 
-  async create(streamer?: Streamer): Promise<TitlesCreateResponse> {
+  async create(streamer: Streamer): Promise<TitlesCreateResponse> {
     const response: TitlesCreateResponse = { items: [] };
-    const streamers = streamer ? [streamer] : ['appleTV+'] as Streamer[];
-
-    for (const s of streamers) {
-      response.items.push(await this.patchStreamer(s));
+    for (const url of this.streamers.get(streamer)?.values() || []) {
+      response.items.push(await this.patchStreamer(streamer, url));
     }
-
     return response;
   }
 
-  private async patchStreamer(streamer: Streamer): Promise<TitlesCreate> {
-    const response = this.buildCreateResponse(streamer);
-    const $ = await this.fetchAndParseHtml(streamer);
+  private async patchStreamer(streamer: Streamer, url: string): Promise<TitlesCreate> {
+    const response = this.buildCreateResponse(url);
+    const $ = await this.buildCheerio(url);
     const wikipediaTitles = await this.wikiTitlesScraper.findTitles($, streamer);
     response.totalOnWebsite = wikipediaTitles.length;
 
@@ -55,11 +55,6 @@ export class TitlesCreateCrawler {
 
     console.log(response);
     return response;
-  }
-
-  private async fetchAndParseHtml(streamer: Streamer): Promise<cheerio.CheerioAPI> {
-    const url = this.streamers.get(streamer)!;
-    return this.buildCheerio(url);
   }
 
   private async processTitles(wikipediaTitles: TitleDraft[], dbTitles: Title[], dbTitleDrafts: TitleDraft[]): Promise<void> {
@@ -89,12 +84,12 @@ export class TitlesCreateCrawler {
     }
   }
 
-  private buildCreateResponse(streamer: string) {
+  private buildCreateResponse(url: string): TitlesCreate {
     return {
       totalOnWebsite: 0,
       totalInDatabase: 0,
       totalDraftsInDatabase: 0,
-      streamer: streamer,
+      url: url,
     } as TitlesCreate;
   }
 

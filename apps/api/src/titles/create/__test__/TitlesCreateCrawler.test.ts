@@ -55,10 +55,16 @@ describe("TitlesCreateCrawler", async () => {
       {
         "items": [
           {
-            "streamer": "netflix",
             "totalDraftsInDatabase": 0,
             "totalInDatabase": 1,
             "totalOnWebsite": 1,
+            "url": "https://en.wikipedia.org/wiki/List_of_Netflix_original_programming",
+          },
+          {
+            "totalDraftsInDatabase": 0,
+            "totalInDatabase": 1,
+            "totalOnWebsite": 1,
+            "url": "https://en.wikipedia.org/wiki/List_of_ended_Netflix_original_programming",
           },
         ],
       }
@@ -111,10 +117,16 @@ describe("TitlesCreateCrawler", async () => {
       {
         "items": [
           {
-            "streamer": "netflix",
             "totalDraftsInDatabase": 1,
             "totalInDatabase": 0,
             "totalOnWebsite": 1,
+            "url": "https://en.wikipedia.org/wiki/List_of_Netflix_original_programming",
+          },
+          {
+            "totalDraftsInDatabase": 1,
+            "totalInDatabase": 0,
+            "totalOnWebsite": 1,
+            "url": "https://en.wikipedia.org/wiki/List_of_ended_Netflix_original_programming",
           },
         ],
       }

@@ -36,7 +36,16 @@ app.openapi(
   createRoute({
     method: "post",
     path: "/init",
-    description: "Initial Titles import",
+    description: "Get intial titles data per streamer",
+    request: {
+      body: {
+        content: {
+          "application/json": {
+            schema: TitlesPatchRequestSchema
+          }
+        }
+      }
+    },
     responses: {
       200: {
         description: "OK",
@@ -49,7 +58,8 @@ app.openapi(
     },
   }),
   async (c) => {
-    const response = await service.create();
+    const req: TitlesPatchRequest = c.req.valid('json')
+    const response = await service.create(req.streamer);
     return c.json(response);
   }
 );
@@ -58,7 +68,7 @@ app.openapi(
   createRoute({
     method: "patch",
     path: "/",
-    description: "Patch found titles with additional data",
+    description: "Patch titles with data per streamer",
     request: {
       body: {
         content: {

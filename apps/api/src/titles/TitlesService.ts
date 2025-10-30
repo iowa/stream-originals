@@ -14,8 +14,8 @@ export class TitlesService {
     return new TitlesRepository().getCounts();
   }
 
-  create(): Promise<TitlesCreateResponse> {
-    return new TitlesCreateCrawler().create();
+  create(streamer: Streamer): Promise<TitlesCreateResponse> {
+    return new TitlesCreateCrawler().create(streamer);
   }
 
   patch(streamer: Streamer): Promise<TitlesPatchResponse> {
