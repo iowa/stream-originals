@@ -1,0 +1,1 @@
+ALTER TYPE "public"."title_types" ADD VALUE 'musicVideo';

@@ -23,7 +23,8 @@ export const titleTypeValues = [
   "short",
   "video",
   "videoGame",
-  "podcastSeries"
+  "podcastSeries",
+  "musicVideo"
 ] as const;
 export type TitleType = (typeof titleTypeValues)[number];
 
