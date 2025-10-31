@@ -1,6 +1,7 @@
 import { TitleDto } from "@repo/common";
 import TitleRatings from "@/ui/title/header/TitleRatings";
 import TitleDetails from "@/ui/titles/TitleDetails";
+import StreamerLogo from "@/lib/streamer/StreamerLogo";
 
 export default function TitleHeader({ title }: { title: TitleDto }) {
   return (
@@ -14,6 +15,7 @@ export default function TitleHeader({ title }: { title: TitleDto }) {
         <div className="text-center">
           <TitleRatings ratings={title.ratings}/>
         </div>
+        <StreamerLogo streamer={title.streamer}/>
       </div>
     </div>
   );
