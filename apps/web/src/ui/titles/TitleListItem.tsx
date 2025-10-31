@@ -13,7 +13,7 @@ export function TitleListItem({ title }: { title: TitleListDto }) {
     <Link href={`/title/${title.id}`}>
       <div className="card card-side bg-base-100 shadow-sm">
         <div className="flex items-center">
-          <TitlesPoster title={title}/>
+          <TitlesPoster title={title} images={title.images} width={144} height={216}/>
         </div>
         <div className="card-body">
           <div className="flex">

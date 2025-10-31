@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { TitlesRepository } from "@repo/common";
 import TitleHeader from "@/ui/title/header/TitleHeader";
+import TitlesPoster from "@/ui/titles/TitlesPoster";
 
 export default async function TitlePage({ params }: { params: { id: string } }) {
   const { id } = await params;
@@ -21,5 +22,8 @@ async function TitlePageData({ id }: { id: string }) {
   }
   return <div className="flex flex-col gap-6">
     <TitleHeader title={title}/>
+    <div>
+      <TitlesPoster title={title} images={title.images} width={278} height={414}/>
+    </div>
   </div>
 }
