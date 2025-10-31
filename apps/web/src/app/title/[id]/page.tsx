@@ -8,6 +8,7 @@ import { AppConstants } from "@/lib/AppConstants";
 import StreamerLogo from "@/lib/streamer/StreamerLogo";
 import TitleDetails from "@/ui/titles/TitleDetails";
 import TitlesCredits from "@/ui/titles/TitlesCredits";
+import TitleTopCast from "@/ui/title/header/TitleTopCast";
 
 export default async function TitlePage({ params }: { params: { id: string } }) {
   const { id } = await params;
@@ -39,5 +40,6 @@ async function TitlePageData({ id }: { id: string }) {
         </p>
       </div>
     </div>
+    <TitleTopCast title={title}/>
   </div>
 }

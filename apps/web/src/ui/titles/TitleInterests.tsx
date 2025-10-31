@@ -5,7 +5,6 @@ export default function TitleInterests({ interests, withSubgenres }: {
   withSubgenres: boolean
 }) {
   const filtered = (withSubgenres) ? interests : interests.filter(i => i.isSubgenre === null);
-  console.log(interests);
   return (
     <div className="flex items-center gap-2 flex-wrap">
       {filtered.map((interest: InterestListDto) => (
