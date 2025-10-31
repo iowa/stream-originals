@@ -28,5 +28,6 @@ export type TitleListDto = Title & {
 
 export type TitleDto = Title & {
   images: TitleImage[],
+  interests: InterestListDto[],
   ratings: TitleRatingPatchDto[],
 }

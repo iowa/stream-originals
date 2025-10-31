@@ -1,5 +1,5 @@
 import { TitleDto } from "@repo/common";
-import TitleRating from "@/ui/title/header/TitleRating";
+import TitleRatings from "@/ui/title/header/TitleRatings";
 import TitleDetails from "@/ui/titles/TitleDetails";
 
 export default function TitleHeader({ title }: { title: TitleDto }) {
@@ -12,7 +12,7 @@ export default function TitleHeader({ title }: { title: TitleDto }) {
       </div>
       <div className="flex gap-8 items-center">
         <div className="text-center">
-          <TitleRating ratings={title.ratings}/>
+          <TitleRatings ratings={title.ratings}/>
         </div>
       </div>
     </div>

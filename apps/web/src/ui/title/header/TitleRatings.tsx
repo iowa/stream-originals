@@ -3,7 +3,7 @@ import { TitleRatingPatchDto } from "@repo/common";
 import { TitleUtils } from "@/lib/title/TitleUtils";
 import { AppConstants } from "@/lib/AppConstants";
 
-export default function TitleRating({ ratings }: { ratings: TitleRatingPatchDto[] }) {
+export default function TitleRatings({ ratings }: { ratings: TitleRatingPatchDto[] }) {
   if (!ratings?.length) {
     return (
       <div className="flex items-center gap-2">

@@ -124,6 +124,7 @@ export class TitlesRepository {
     return this.db.query.titlesTable.findFirst({
       with: {
         images: true,
+        interests: { columns: { id: true, name: true, isSubgenre: true } },
         ratings: { columns: { type: true, total: true, voteCount: true } }
       },
       where: {

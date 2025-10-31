@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { TitleListDto } from "@repo/common";
 import TitlesPoster from "@/ui/titles/TitlesPoster";
-import TitleRating from "@/ui/title/header/TitleRating";
+import TitleRatings from "@/ui/title/header/TitleRatings";
 import TitleInterests from "@/ui/titles/TitleInterests";
 import { AppConstants } from "@/lib/AppConstants";
 import TitleDetails from "@/ui/titles/TitleDetails";
@@ -21,8 +21,8 @@ export function TitleListItem({ title }: { title: TitleListDto }) {
             <StreamerLogo streamer={title.streamer}/>
           </div>
           <TitleDetails titleDto={title}/>
-          <TitleRating ratings={title.ratings}/>
-          <TitleInterests interests={title.interests} isSubgenre={false}/>
+          <TitleRatings ratings={title.ratings}/>
+          <TitleInterests interests={title.interests} withSubgenres={false}/>
           <p className="text-sm text-foreground leading-relaxed">
             {title.plot || AppConstants.NOT_AVAILABLE}
           </p>
