@@ -1,5 +1,7 @@
 import { CreditPatchDto, TitleListDto } from "@repo/common";
 import { AppConstants } from "@/lib/AppConstants";
+import Link from "next/link";
+import { Paths } from "@/lib/Paths";
 
 export default function TitlesCredits({ title }: { title: TitleListDto }) {
   const renderCredits = (label: string, credits: CreditPatchDto[]) => (
@@ -8,7 +10,9 @@ export default function TitlesCredits({ title }: { title: TitleListDto }) {
       {credits.length === 0
         ? <span>{AppConstants.NOT_AVAILABLE}</span>
         : credits.map(({ credit }) => (
-          <span key={credit.id}>{credit.name}</span>
+          <Link key={credit.id} href={Paths.credit(credit.id)}>
+            {credit.name}
+          </Link>
         ))
       }
     </div>

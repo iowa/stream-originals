@@ -37,3 +37,7 @@ export type TitleDto = Title & {
   ratings: TitleRatingPatchDto[],
   stars: TitleCreditWithCredit[],
 }
+
+export type CreditDto = Credit & {
+  titles: Title[]
+}
