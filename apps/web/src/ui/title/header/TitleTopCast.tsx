@@ -12,7 +12,7 @@ export default function TitleTopCast({ title }: { title: TitleDto }) {
       </div>
       <div className="grid grid-cols-2 gap-x-8 gap-y-6">
         {title.stars.map((star) => (
-          <CreditAvatar key={star.credit.id} credit={star}/>
+          <CreditAvatar key={`${star.credit.id}_${star.role}`} credit={star}/>
         ))}
       </div>
     </div>
