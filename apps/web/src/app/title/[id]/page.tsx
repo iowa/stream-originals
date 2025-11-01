@@ -2,12 +2,8 @@ import { Suspense } from "react";
 import { TitlesRepository } from "@repo/common";
 import TitleHeader from "@/ui/title/header/TitleHeader";
 import TitlesPoster from "@/ui/titles/TitlesPoster";
-import TitleRatings from "@/ui/title/header/TitleRatings";
 import TitleInterests from "@/ui/titles/TitleInterests";
 import { AppConstants } from "@/lib/AppConstants";
-import StreamerLogo from "@/lib/streamer/StreamerLogo";
-import TitleDetails from "@/ui/titles/TitleDetails";
-import TitlesCredits from "@/ui/titles/TitlesCredits";
 import TitleTopCast from "@/ui/title/header/TitleTopCast";
 
 export default async function TitlePage({ params }: { params: { id: string } }) {

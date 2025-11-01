@@ -12,7 +12,10 @@ export default function TitleHeader({ title }: { title: TitleDto }) {
         <AppLine>
           <div className="text-5xl font-semibold mb-1">{title.name}</div>
         </AppLine>
-        <TitleDetails titleDto={title}/>
+        <TitleDetails premiere={title.premiere}
+                      runtimeSeconds={title.runtimeSeconds}
+                      type={title.type}
+        />
       </div>
       <div className="flex gap-8 items-center">
         <div className="text-center">

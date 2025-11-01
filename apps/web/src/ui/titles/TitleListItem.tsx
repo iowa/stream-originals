@@ -20,7 +20,10 @@ export function TitleListItem({ title }: { title: TitleListDto }) {
             <h2 className="card-title grow ">{title.name}</h2>
             <StreamerLogo streamer={title.streamer}/>
           </div>
-          <TitleDetails titleDto={title}/>
+          <TitleDetails premiere={title.premiere}
+                        runtimeSeconds={title.runtimeSeconds}
+                        type={title.type}
+          />
           <TitleRatings ratings={title.ratings}/>
           <TitleInterests interests={title.interests} withSubgenres={false}/>
           <p className="text-sm text-foreground leading-relaxed">
