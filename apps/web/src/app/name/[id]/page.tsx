@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { CreditsRepository } from "@repo/common/credits/CreditsRepository";
 import CreditHeader from "@/ui/credit/CreditHeader";
-import CreditKnownFor from "@/ui/credit/CreditKnownFor";
+import CreditTitles from "@/ui/credit/CreditTitles";
 
 export default async function NamePage({ params }: { params: { id: string } }) {
   const { id } = await params;
@@ -27,6 +27,6 @@ async function NamePageData({ id }: { id: string }) {
       <div className="card-body">
       </div>
     </div>
-    <CreditKnownFor credit={credit}/>
+    <CreditTitles credit={credit}/>
   </div>
 }
