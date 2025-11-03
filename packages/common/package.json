@@ -23,18 +23,18 @@
     }
   },
   "dependencies": {
-    "dayjs": "^1.11.18",
+    "dayjs": "^1.11.19",
     "dotenv": "^17.2.3",
-    "drizzle-orm": "1.0.0-beta.1-ac4ce44",
+    "drizzle-orm": "1.0.0-beta.1-27d2721",
     "pg": "^8.16.3",
     "zod": "^4.1.12"
   },
   "devDependencies": {
-    "@electric-sql/pglite": "^0.3.11",
-    "@types/node": "^24.8.1",
-    "@types/pg": "^8.15.5",
-    "drizzle-kit": "1.0.0-beta.1-ac4ce44",
-    "npm-check-updates": "^19.1.1",
+    "@electric-sql/pglite": "^0.3.12",
+    "@types/node": "^24.10.0",
+    "@types/pg": "^8.15.6",
+    "drizzle-kit": "1.0.0-beta.1-27d2721",
+    "npm-check-updates": "^19.1.2",
     "typescript": "5.9.3"
   }
 }
