@@ -33,6 +33,9 @@ export class CreditsRepository {
         titles: {
           with: {
             images: true
+          },
+          orderBy: {
+            premiere: 'asc'
           }
         }
       },
