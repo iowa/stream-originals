@@ -12,5 +12,6 @@ export * from "./titles/TitlesMerger.js";
 export * from "./interests/interestsTypes.js";
 export * from "./interests/InterestsRepository.js";
 
+export * from "./utils/CDatas.js";
 export * from "./utils/time/Times.js";
 export * from "./utils/files/TestFiles.js";
