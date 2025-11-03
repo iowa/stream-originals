@@ -1,12 +1,12 @@
-import { Times } from "@repo/common";
 import { AppConstants } from "@/lib/AppConstants";
+import { TimesClient } from "@/lib/utils/TimesClient";
 
 export class TitleUtils {
 
   static getYearRange(premiere: string | null, finale?: string | null): string {
-    const startYear = Times.asDayjs(premiere).year();
+    const startYear = TimesClient.asDayjs(premiere).year();
     if (isNaN(startYear)) return AppConstants.NOT_AVAILABLE;
-    const endYear = finale ? Times.asDayjs(finale).year() : null;
+    const endYear = finale ? TimesClient.asDayjs(finale).year() : null;
     return endYear ? `${startYear}–${endYear}` : `${startYear}`;
   }
 

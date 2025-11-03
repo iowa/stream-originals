@@ -1,6 +1,6 @@
 import { Streamer, TitlesRepository } from "@repo/common";
 import { Suspense } from "react";
-import { TitleListItem } from "@/ui/titles/TitleListItem";
+import { TitlesCard } from "@/ui/titles/TitlesCard";
 
 export default async function Titles({ params }: { params: { streamer: Streamer } }) {
   const { streamer } = await params;
@@ -16,7 +16,7 @@ async function TitlesPageData({ streamer }: { streamer: Streamer }) {
   return <ul className="list bg-base-100 shadow-lg">
     {titles.map((title) => (
       <li key={title.id} className="py-0.5">
-        <TitleListItem title={title}/>
+        <TitlesCard title={title}/>
       </li>
     ))}
   </ul>

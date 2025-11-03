@@ -4,8 +4,6 @@ import Link from "next/link";
 import { Paths } from "@/lib/Paths";
 import StreamerLogo from "@/lib/streamer/StreamerLogo";
 
-;
-
 export default function AppHeader() {
   return (
     <div className="navbar bg-base-100">
