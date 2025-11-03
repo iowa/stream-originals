@@ -7,6 +7,7 @@ describe("ImdbMediaRestClient", () => {
     const result = await new ImdbMediaRestClient().findTitle(CDatas.TitleDraft_HouseOfCards);
     expect(result?.l).equals("House of Cards");
     expect(result?.y).equals(2013);
+    expect(result?.yr).equals("2013-2018");
   });
 
 });

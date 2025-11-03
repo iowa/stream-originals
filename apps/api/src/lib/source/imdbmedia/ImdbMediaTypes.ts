@@ -8,6 +8,7 @@ export type ImdbMediaTitle = {
   l: string;
   q: string;
   y: number;
+  yr: string;
   i: ImdbMediaTitleImage;
 };
 
