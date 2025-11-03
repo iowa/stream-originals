@@ -16,7 +16,11 @@ export function TitlesCard({ title }: { title: TitleListDto }) {
 
   return (
     <div className="card card-side bg-base-100 shadow-sm"
-         onClick={() => router.push(Paths.title(title.id))}
+         onClick={e => {
+           const target = e.target as HTMLElement;
+           if (target.closest("a")) return;
+           router.push(Paths.title(title.id));
+         }}
     >
       <div className="flex items-center">
         <TitlesPoster title={title} images={title.images} width={144} height={216}/>

@@ -10,7 +10,8 @@ export default function TitlesCredits({ title }: { title: TitleListDto }) {
       {credits.length === 0
         ? <span>{AppConstants.NOT_AVAILABLE}</span>
         : credits.map(({ credit }) => (
-          <Link key={credit.id} href={Paths.credit(credit.id)}>
+          <Link key={credit.id} href={Paths.credit(credit.id)}
+                className="link link-primary link-hover">
             {credit.name}
           </Link>
         ))
