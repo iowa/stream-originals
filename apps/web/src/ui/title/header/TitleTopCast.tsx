@@ -1,14 +1,13 @@
 import { TitleDto } from "@repo/common";
 import CreditAvatar from "@/ui/credit/CreditAvatar";
-import AppLine from "@/ui/layout/AppLine";
+import React from "react";
 
 export default function TitleTopCast({ title }: { title: TitleDto }) {
   return (
     <div>
       <div className="flex items-center mb-6">
-        <AppLine>
-          <h2 className="text-2xl font-semibold">Top Cast</h2>
-        </AppLine>
+        <div className="w-1 h-6 bg-primary mr-3 rounded"></div>
+        <h2 className="text-2xl font-semibold">Top Cast</h2>
       </div>
       <div className="grid grid-cols-2 gap-x-8 gap-y-6">
         {title.stars.map((star) => (
