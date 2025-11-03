@@ -9,7 +9,7 @@ export default function TitlesPoster({ title, images, width, height }: {
   width: number,
   height: number
 }) {
-  const titlePoster =TitleUtils.titlePoster(images);
+  const titlePoster = TitleUtils.titlePoster(images);
   return (
     <div className="py-4 px-4">
       <div style={{ width: width, height: height, position: 'relative' }}>
@@ -21,7 +21,9 @@ export default function TitlesPoster({ title, images, width, height }: {
             style={{ objectFit: 'cover' }}
           />
           :
-          <ImageOff size={48} className="text-gray-400"/>
+          <div className="flex items-center justify-center w-full h-full">
+            <ImageOff size={48} className="text-gray-400"/>
+          </div>
         }
       </div>
     </div>
