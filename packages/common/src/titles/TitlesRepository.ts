@@ -153,6 +153,8 @@ export class TitlesRepository {
         ratings: { columns: { type: true, total: true, voteCount: true } },
         interests: { columns: { id: true, name: true, isSubgenre: true } },
         stars: { with: { credit: true } },
+        directors: { with: { credit: true } },
+        writers: { with: { credit: true } },
       },
       where: {
         id: titleId

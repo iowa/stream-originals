@@ -32,6 +32,20 @@ describe("TitlesRepository", async () => {
 
     expect(result).toMatchInlineSnapshot(`
       {
+        "directors": [
+          {
+            "credit": {
+              "id": "nm0001226",
+              "name": "James Foley",
+              "primaryImageHeight": 548,
+              "primaryImageUrl": "https://m.media-amazon.com/images/M/MV5BMjI1MDQyMTAxNF5BMl5BanBnXkFtZTgwMjg0MTM2NjE@._V1_.jpg",
+              "primaryImageWidth": 362,
+            },
+            "creditId": "nm0001226",
+            "role": "director",
+            "titleId": "tt1856010",
+          },
+        ],
         "id": "tt1856010",
         "images": [
           {
@@ -78,6 +92,20 @@ describe("TitlesRepository", async () => {
         "streamer": "netflix",
         "type": "tvSeries",
         "updatedAt": 1970-01-01T00:00:00.000Z,
+        "writers": [
+          {
+            "credit": {
+              "id": "nm2802722",
+              "name": "Beau Willimon",
+              "primaryImageHeight": 1365,
+              "primaryImageUrl": "https://m.media-amazon.com/images/M/MV5BMTQ2ODk3Mjg3Ml5BMl5BanBnXkFtZTcwNTQyMjQwOQ@@._V1_.jpg",
+              "primaryImageWidth": 2048,
+            },
+            "creditId": "nm2802722",
+            "role": "writer",
+            "titleId": "tt1856010",
+          },
+        ],
       }
     `)
   })
@@ -88,6 +116,10 @@ describe("TitlesRepository", async () => {
     await cut.insertImage(CDatas.TitleImage_tt1856010_poster)
     await creditsRepository.insert(CDatas.Credit_nm0000228)
     await creditsRepository.insertTitle(CDatas.TitleCredit_tt1856010_nm0000228_star)
+    await creditsRepository.insert(CDatas.Credit_nm0001226)
+    await creditsRepository.insertTitle(CDatas.TitleCredit_tt1856010_nm0001226_director)
+    await creditsRepository.insert(CDatas.Credit_nm2802722)
+    await creditsRepository.insertTitle(CDatas.TitleCredit_tt1856010_nm2802722_writer)
     await interestsRepository.insert(CDatas.Interest_in0000076)
     await interestsRepository.insertTitle(CDatas.TitleInterest_tt1856010_in0000076)
   }

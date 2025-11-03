@@ -45,11 +45,40 @@ export class CDatas {
     primaryImageWidth: 1471
   }
 
+  public static readonly Credit_nm0001226: Credit = {
+    id: "nm0001226",
+    name: "James Foley",
+    primaryImageUrl: "https://m.media-amazon.com/images/M/MV5BMjI1MDQyMTAxNF5BMl5BanBnXkFtZTgwMjg0MTM2NjE@._V1_.jpg",
+    primaryImageHeight: 548,
+    primaryImageWidth: 362
+  }
+
+  public static readonly Credit_nm2802722: Credit = {
+    id: "nm2802722",
+    name: "Beau Willimon",
+    primaryImageUrl: "https://m.media-amazon.com/images/M/MV5BMTQ2ODk3Mjg3Ml5BMl5BanBnXkFtZTcwNTQyMjQwOQ@@._V1_.jpg",
+    primaryImageHeight: 1365,
+    primaryImageWidth: 2048
+  }
+
   public static readonly TitleCredit_tt1856010_nm0000228_star: TitleCredit = {
     titleId: CDatas.Title_tt1856010.id,
     creditId: CDatas.Credit_nm0000228.id,
     role: 'star'
   }
+
+  public static readonly TitleCredit_tt1856010_nm0001226_director: TitleCredit = {
+    titleId: CDatas.Title_tt1856010.id,
+    creditId: CDatas.Credit_nm0001226.id,
+    role: 'director'
+  }
+
+  public static readonly TitleCredit_tt1856010_nm2802722_writer: TitleCredit = {
+    titleId: CDatas.Title_tt1856010.id,
+    creditId: CDatas.Credit_nm2802722.id,
+    role: 'writer'
+  }
+
 
   public static readonly TitleRating_tt1856010_imdb: TitleRating = {
     titleId: CDatas.Title_tt1856010.id,

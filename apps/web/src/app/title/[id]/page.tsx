@@ -4,7 +4,7 @@ import TitlesPoster from "@/ui/titles/TitlesPoster";
 import TitleInterests from "@/ui/titles/TitleInterests";
 import { AppConstants } from "@/lib/AppConstants";
 import TitleHeader from "@/ui/title/TitleHeader";
-import TitleTopCast from "@/ui/title/TitleTopCast";
+import TitleTopCredits from "@/ui/title/TitleTopCredits";
 
 export default async function TitlePage({ params }: { params: { id: string } }) {
   const { id } = await params;
@@ -36,6 +36,8 @@ async function TitlePageData({ id }: { id: string }) {
         </p>
       </div>
     </div>
-    <TitleTopCast title={title}/>
+    <TitleTopCredits caption={"Top Cast"} credits={title.stars}/>
+    <TitleTopCredits caption={"Directors"} credits={title.directors}/>
+    <TitleTopCredits caption={"Writers"} credits={title.writers}/>
   </div>
 }
