@@ -36,8 +36,10 @@ async function TitlePageData({ id }: { id: string }) {
         </p>
       </div>
     </div>
-    <TitleTopCredits caption={"Top Cast"} credits={title.stars}/>
-    <TitleTopCredits caption={"Directors"} credits={title.directors}/>
-    <TitleTopCredits caption={"Writers"} credits={title.writers}/>
+    <div className="flex flex-col gap-4">
+      <TitleTopCredits caption={"Top Cast"} credits={title.stars}/>
+      <TitleTopCredits caption={"Directors"} credits={title.directors}/>
+      <TitleTopCredits caption={"Writers"} credits={title.writers}/>
+    </div>
   </div>
 }

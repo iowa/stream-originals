@@ -10,7 +10,11 @@ export default function CreditTitles({ credit }: { credit: CreditDto }) {
         <h2 className="text-2xl font-semibold">Titles</h2>
       </div>
       <div className="grid grid-cols-2 gap-x-8 gap-y-6">
-        {credit.titles.map((title) => (
+        {credit.titles
+        .filter((title, idx, arr) =>
+          arr.findIndex(t => t.id === title.id) === idx
+        )
+        .map((title) => (
           <TitleAvatar key={title.id} title={title}/>
         ))}
       </div>
