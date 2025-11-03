@@ -15,7 +15,7 @@ export function TitlesCard({ title }: { title: TitleListDto }) {
   const router = useRouter();
 
   return (
-    <div className="card card-side bg-base-100 shadow-sm"
+    <div className="card card-side bg-base-100 shadow-sm cursor-pointer"
          onClick={e => {
            const target = e.target as HTMLElement;
            if (target.closest("a")) return;
