@@ -4,7 +4,7 @@ import { WikiTitlesScraper } from "../../../lib/source/wikipedia/WikiTitlesScrap
 import { TitlesCreateCrawler } from "../TitlesCreateCrawler.js";
 import { ImdbMediaRestClient } from "../../../lib/source/imdbmedia/ImdbMediaRestClient.js";
 import { getDbMock } from "@repo/common/db/dbMock";
-import { CDatas, DbDrizzle, TitleImagesRepository, TitlesRepository } from "@repo/common";
+import { CDatas, DbDrizzle, TitlesRepository } from "@repo/common";
 import { PGlite } from "@electric-sql/pglite";
 
 describe("TitlesCreateCrawler", async () => {
@@ -12,7 +12,6 @@ describe("TitlesCreateCrawler", async () => {
   let wikiTitlesScraper: WikiTitlesScraper;
   let titlesRepository: TitlesRepository;
   let imdbMediaRestClient: ImdbMediaRestClient;
-  let titlesMediaRepository: TitleImagesRepository;
   let crawler: TitlesCreateCrawler;
 
   beforeEach(async () => {
@@ -28,11 +27,8 @@ describe("TitlesCreateCrawler", async () => {
       findTitle: vi.fn()
     } as unknown as ImdbMediaRestClient;
 
-    titlesMediaRepository = new TitleImagesRepository(db as unknown as DbDrizzle);
-
     crawler = new TitlesCreateCrawler(
       titlesRepository,
-      titlesMediaRepository,
       imdbMediaRestClient,
       undefined,
       wikiTitlesScraper
@@ -87,7 +83,7 @@ describe("TitlesCreateCrawler", async () => {
         },
       ]
     `)
-    const titlesMedia = await titlesMediaRepository.getByTitleId(titles[0].id);
+    const titlesMedia = await titlesRepository.getImageByTitleId(titles[0].id);
     expect(
       titlesMedia.map(({ id, ...rest }) => ({
         id: "ignored",

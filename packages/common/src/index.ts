@@ -6,7 +6,6 @@ export * from "./dto/dtoTypes.js";
 
 export * from "./titles/titleTypes.js";
 export * from "./titles/TitlesRepository.js";
-export * from "./titles/TitleImagesRepository.js";
 export * from "./titles/TitlesMerger.js";
 
 export * from "./interests/interestsTypes.js";

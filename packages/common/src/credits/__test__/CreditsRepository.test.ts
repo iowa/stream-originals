@@ -5,19 +5,16 @@ import { PGlite } from "@electric-sql/pglite";
 import { CreditsRepository } from "../CreditsRepository.js";
 import { TitlesRepository } from "../../titles/TitlesRepository.js";
 import { CDatas } from "../../utils/CDatas.js";
-import { TitleImagesRepository } from "../../titles/TitleImagesRepository.js";
 
 describe("CreditsRepository", async () => {
   let pgClient: PGlite
   let titlesRepository: TitlesRepository;
-  let titleImagesRepository: TitleImagesRepository;
   let cut: CreditsRepository;
 
   beforeEach(async () => {
     let { client, db } = await getDbMock();
     pgClient = client
     titlesRepository = new TitlesRepository(db as unknown as DbDrizzle);
-    titleImagesRepository = new TitleImagesRepository(db as unknown as DbDrizzle);
     cut = new CreditsRepository(db as unknown as DbDrizzle);
   });
 
@@ -27,7 +24,7 @@ describe("CreditsRepository", async () => {
 
   it("getCreditDto", async () => {
     await prepareData()
-    
+
     const result = await cut.getCreditDto(CDatas.Credit_nm0000228.id);
 
     expect(result).toMatchInlineSnapshot(`
@@ -65,9 +62,9 @@ describe("CreditsRepository", async () => {
 
   async function prepareData() {
     await titlesRepository.insert(CDatas.Title_tt1856010);
-    await titleImagesRepository.insert(CDatas.TitleImage_tt1856010_poster)
+    await titlesRepository.insertImage(CDatas.TitleImage_tt1856010_poster)
     await cut.insert(CDatas.Credit_nm0000228)
-    await cut.insertTitle(CDatas.TitleCredit_tt1856010_nm0000228)
+    await cut.insertTitle(CDatas.TitleCredit_tt1856010_nm0000228_star)
   }
 
 });

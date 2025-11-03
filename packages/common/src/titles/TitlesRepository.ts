@@ -1,6 +1,18 @@
 import { dbDrizzle } from "../db/dbDrizzle.js";
-import { Streamer, Title, TitleDraft, TitleInsertDraft } from "../db/dbTypes.js";
-import { titleDraftsTable, titlesTable } from "../db/schema.js";
+import {
+  Streamer,
+  Title,
+  TitleDraft,
+  TitleImage,
+  TitleInsertDraft,
+  TitleRating
+} from "../db/dbTypes.js";
+import {
+  titleDraftsTable,
+  titleImagesTable,
+  titleRatingsTable,
+  titlesTable
+} from "../db/schema.js";
 import { count, eq } from "drizzle-orm";
 import { TitleDto, TitleListDto, TitlePatchDto } from "../dto/dtoTypes.js";
 import { TitlesGetCountsResponse } from "./titleTypes.js";
@@ -79,6 +91,20 @@ export class TitlesRepository {
     return this.db
     .insert(titleDraftsTable)
     .values(titleDraft)
+  }
+
+  insertRating(entity: TitleRating) {
+    return this.db.insert(titleRatingsTable).values(entity)
+  }
+
+
+  insertImage(image: TitleImage) {
+    return this.db.insert(titleImagesTable).values(image).onConflictDoNothing().returning({ insertedId: titleImagesTable.id });
+  }
+
+
+  getImageByTitleId(titleId: string) {
+    return this.db.select().from(titleImagesTable).where(eq(titleImagesTable.titleId, titleId));
   }
 
   deleteDraft(titleDraft: TitleDraft) {

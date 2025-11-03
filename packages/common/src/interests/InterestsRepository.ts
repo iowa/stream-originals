@@ -1,7 +1,7 @@
 import { dbDrizzle } from "../db/dbDrizzle.js";
 import { count } from "drizzle-orm";
-import { interestsTable } from "../db/schema.js";
-import { Interest } from "../db/dbTypes.js";
+import { interestsTable, titleInterestsTable } from "../db/schema.js";
+import { Interest, TitleInterest } from "../db/dbTypes.js";
 
 export class InterestsRepository {
   private readonly db
@@ -34,5 +34,8 @@ export class InterestsRepository {
     return this.db.insert(interestsTable).values(entity)
   }
 
+  insertTitle(entity: TitleInterest) {
+    return this.db.insert(titleInterestsTable).values(entity)
+  }
 
 }

@@ -3,7 +3,6 @@ import {
   Streamer,
   Title,
   TitleDraft,
-  TitleImagesRepository,
   TitlesCreate,
   TitlesCreateResponse,
   TitlesRepository
@@ -19,7 +18,6 @@ export class TitlesCreateCrawler {
 
   constructor(
     private readonly titlesRepository: TitlesRepository = new TitlesRepository(),
-    private readonly titlesMediaRepository: TitleImagesRepository = new TitleImagesRepository(),
     private readonly imdbMediaRestClient: ImdbMediaRestClient = new ImdbMediaRestClient(),
     private readonly imdbMediaMapper: ImdbMediaMapper = new ImdbMediaMapper(),
     private readonly wikiTitlesScraper: WikiTitlesScraper = new WikiTitlesScraper()
@@ -80,7 +78,7 @@ export class TitlesCreateCrawler {
     const insertedId = (imdbMediaTitle?.qid) ? await this.titlesRepository.insert(newTitle) : undefined;
     if (insertedId && imdbMediaTitle?.i) {
       const titleMedia = this.imdbMediaMapper.mapPoster(insertedId, imdbMediaTitle.i);
-      await this.titlesMediaRepository.insert(titleMedia);
+      await this.titlesRepository.insertImage(titleMedia);
     }
   }
 

@@ -1,5 +1,12 @@
 import { Title, TitleDraft } from "@repo/common";
-import { Credit, TitleCredit, TitleImage } from "../db/dbTypes.js";
+import {
+  Credit,
+  Interest,
+  TitleCredit,
+  TitleImage,
+  TitleInterest,
+  TitleRating
+} from "../db/dbTypes.js";
 
 export class CDatas {
 
@@ -38,10 +45,30 @@ export class CDatas {
     primaryImageWidth: 1471
   }
 
-  public static readonly TitleCredit_tt1856010_nm0000228: TitleCredit = {
+  public static readonly TitleCredit_tt1856010_nm0000228_star: TitleCredit = {
     titleId: CDatas.Title_tt1856010.id,
     creditId: CDatas.Credit_nm0000228.id,
     role: 'star'
   }
+
+  public static readonly TitleRating_tt1856010_imdb: TitleRating = {
+    titleId: CDatas.Title_tt1856010.id,
+    type: 'imdb',
+    total: "8.6",
+    voteCount: 552661
+  }
+
+  public static readonly Interest_in0000076: Interest = {
+    id: "in0000076",
+    name: "Drama",
+    isSubgenre: null,
+    description: "The drama genre is a broad category that features stories portraying human experiences, emotions, conflicts, and relationships in a realistic and emotionally impactful way. Dramas delve into the complexities of human life, often exploring themes of love, loss, morality, societal issues, personal growth, with the aim to evoke an emotional response from the audience by presenting relatable and thought-provoking stories.",
+    category: "Drama"
+  }
+  public static readonly TitleInterest_tt1856010_in0000076: TitleInterest = {
+    titleId: "tt1856010",
+    interestId: "in0000076"
+  }
+
 
 }

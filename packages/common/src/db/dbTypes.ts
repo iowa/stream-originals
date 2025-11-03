@@ -4,7 +4,7 @@ import {
   interestsTable, titleRatingsTable,
   titleCreditsTable, titleDraftsTable,
   titleImagesTable,
-  titlesTable
+  titlesTable, titleInterestsTable
 } from "./schema.js";
 
 export type TitleDraft = InferSelectModel<typeof titleDraftsTable>;
@@ -34,6 +34,7 @@ export type TitleImageType = (typeof titleImageTypeValues)[number];
 export type TitleImage = InferSelectModel<typeof titleImagesTable>;
 
 export type Interest = InferSelectModel<typeof interestsTable>;
+export type TitleInterest = InferSelectModel<typeof titleInterestsTable>;
 
 export const creditRoleValues = ["star", "writer", "director"] as const;
 export type CreditRole = (typeof creditRoleValues)[number];
