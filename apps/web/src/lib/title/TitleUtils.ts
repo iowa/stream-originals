@@ -1,5 +1,6 @@
 import { AppConstants } from "@/lib/AppConstants";
 import { TimesClient } from "@/lib/utils/TimesClient";
+import { TitleImage } from "@repo/common";
 
 export class TitleUtils {
 
@@ -24,4 +25,9 @@ export class TitleUtils {
     if (hours > 0) return `${hours}h`;
     return `${minutes}m`;
   }
+
+  static titlePoster(images: TitleImage[]): TitleImage | undefined {
+    return images.find(value => value.type === 'poster')
+  }
+
 }

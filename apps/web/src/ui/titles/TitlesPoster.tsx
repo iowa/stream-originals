@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ImageOff } from "lucide-react";
 import { Title, TitleImage } from "@repo/common";
+import { TitleUtils } from "@/lib/title/TitleUtils";
 
 export default function TitlesPoster({ title, images, width, height }: {
   title: Title,
@@ -8,13 +9,13 @@ export default function TitlesPoster({ title, images, width, height }: {
   width: number,
   height: number
 }) {
-  const titleImage = images.find(value => value.type === 'poster');
+  const titlePoster =TitleUtils.titlePoster(images);
   return (
     <div className="py-4 px-4">
       <div style={{ width: width, height: height, position: 'relative' }}>
-        {titleImage ?
+        {titlePoster ?
           <Image
-            src={titleImage.url}
+            src={titlePoster.url}
             alt={`${title.name}_poster`}
             fill
             style={{ objectFit: 'cover' }}

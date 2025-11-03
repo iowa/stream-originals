@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 import { TitlesRepository } from "@repo/common";
-import TitleHeader from "@/ui/title/header/TitleHeader";
 import TitlesPoster from "@/ui/titles/TitlesPoster";
 import TitleInterests from "@/ui/titles/TitleInterests";
 import { AppConstants } from "@/lib/AppConstants";
-import TitleTopCast from "@/ui/title/header/TitleTopCast";
+import TitleHeader from "@/ui/title/TitleHeader";
+import TitleTopCast from "@/ui/title/TitleTopCast";
 
 export default async function TitlePage({ params }: { params: { id: string } }) {
   const { id } = await params;

@@ -1,6 +1,6 @@
 import { TitleDto } from "@repo/common";
-import CreditAvatar from "@/ui/credit/CreditAvatar";
 import React from "react";
+import CreditAvatar from "@/ui/title/CreditAvatar";
 
 export default function TitleTopCast({ title }: { title: TitleDto }) {
   return (

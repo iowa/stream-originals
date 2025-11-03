@@ -1,8 +1,8 @@
 import { TitleDto } from "@repo/common";
-import TitleRatings from "@/ui/title/header/TitleRatings";
 import TitleDetails from "@/ui/titles/TitleDetails";
 import StreamerLogo from "@/lib/streamer/StreamerLogo";
 import AppLine from "@/ui/layout/AppLine";
+import TitleRatings from "@/ui/title/TitleRatings";
 
 export default function TitleHeader({ title }: { title: TitleDto }) {
   return (

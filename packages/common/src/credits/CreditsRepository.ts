@@ -1,6 +1,6 @@
 import { dbDrizzle } from "../db/dbDrizzle.js";
-import { creditsTable } from "../db/schema.js";
-import { Credit } from "../db/dbTypes.js";
+import { creditsTable, titleCreditsTable } from "../db/schema.js";
+import { Credit, TitleCredit } from "../db/dbTypes.js";
 import { CreditDto } from "../dto/dtoTypes.js";
 
 export class CreditsRepository {
@@ -23,10 +23,18 @@ export class CreditsRepository {
     return this.db.insert(creditsTable).values(entity)
   }
 
+  insertTitle(entity: TitleCredit) {
+    return this.db.insert(titleCreditsTable).values(entity)
+  }
+
   async getCreditDto(creditId: string): Promise<CreditDto | undefined> {
     return this.db.query.creditsTable.findFirst({
       with: {
-        titles: true
+        titles: {
+          with: {
+            images: true
+          }
+        }
       },
       where: {
         id: creditId

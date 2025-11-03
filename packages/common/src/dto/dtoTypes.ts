@@ -38,6 +38,10 @@ export type TitleDto = Title & {
   stars: TitleCreditWithCredit[],
 }
 
+export type CreditTitleDto = Title & {
+  images: TitleImage[],
+}
+
 export type CreditDto = Credit & {
-  titles: Title[]
+  titles: CreditTitleDto[]
 }
