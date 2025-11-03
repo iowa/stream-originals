@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ImageOff } from "lucide-react";
 import { Title, TitleImage } from "@repo/common";
 import { TitleUtils } from "@/lib/title/TitleUtils";
+import AppImageOff from "@/ui/layout/AppImageOff";
 
 export default function TitlesPoster({ title, images, width, height }: {
   title: Title,
@@ -22,7 +23,7 @@ export default function TitlesPoster({ title, images, width, height }: {
           />
           :
           <div className="flex items-center justify-center w-full h-full">
-            <ImageOff size={48} className="text-gray-400"/>
+            <AppImageOff/>
           </div>
         }
       </div>

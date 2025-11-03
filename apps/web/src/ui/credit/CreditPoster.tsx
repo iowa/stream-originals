@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ImageOff } from "lucide-react";
 import { Credit } from "@repo/common";
+import AppImageOff from "@/ui/layout/AppImageOff";
 
 export default function CreditPoster({ credit, width, height }: {
   credit: Credit,
@@ -19,7 +20,7 @@ export default function CreditPoster({ credit, width, height }: {
           />
           :
           <div className="flex items-center justify-center w-full h-full">
-            <ImageOff size={48} className="text-gray-400"/>
+            <AppImageOff/>
           </div>
         }
       </div>

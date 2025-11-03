@@ -1,12 +1,13 @@
 import { TitleCreditWithCredit } from "@repo/common";
 import Image from "next/image"
-import { ImageOff } from "lucide-react";
 import Link from "next/link";
 import { Paths } from "@/lib/Paths";
+import AppImageOff from "@/ui/layout/AppImageOff";
 
 export default function CreditAvatar({ credit }: { credit: TitleCreditWithCredit }) {
   return (
-    <Link href={Paths.credit(credit.creditId)} passHref className="link link-hover overflow-hidden group">
+    <Link href={Paths.credit(credit.creditId)} passHref
+          className="link link-hover overflow-hidden group">
       <div className="flex items-center gap-4">
         {credit.credit.primaryImageUrl ?
           <div className="avatar">
@@ -20,8 +21,8 @@ export default function CreditAvatar({ credit }: { credit: TitleCreditWithCredit
             </div>
           </div>
           :
-          <div className="flex  justify-center items-center">
-            <ImageOff size={48} className="h-36 w-36 text-gray-400 group-hover:brightness-90"/>
+          <div className="flex  justify-center items-center h-36 w-36">
+            <AppImageOff/>
           </div>
         }
         <div>
