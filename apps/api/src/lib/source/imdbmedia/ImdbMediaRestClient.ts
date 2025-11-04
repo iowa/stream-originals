@@ -11,23 +11,30 @@ export class ImdbMediaRestClient {
     const response: AxiosResponse<ImdbMediaResponse> = await axiosInstance.get(
       `/suggestion/x/${encodeURIComponent(title.name)}.json`,
     );
-    const matchOnYears = this.isMatchOnYears(response, title);
-    const matchWithName = this.isMatchWithName(response, title);
-    return matchOnYears && matchWithName;
+    return this.filterFindTitle(response.data, title);
   }
 
-  private isMatchOnYears(
-    response: AxiosResponse<ImdbMediaResponse>,
+  filterFindTitle(data: ImdbMediaResponse, title: TitleDraft) {
+    const titlesMatchingYears = this.filterOnYears(data, title);
+    const titlesMatchingName = this.filterOnName(titlesMatchingYears, title);
+    if (titlesMatchingName.length === 1) {
+      return titlesMatchingName[0];
+    }
+    return undefined
+  }
+
+  private filterOnYears(
+    data: ImdbMediaResponse,
     title: TitleDraft,
   ) {
     const titlePremiere = Times.asDayjs(title.premiere).year();
     if (!title.finale) {
-      return response.data.d?.filter(
+      return data.d?.filter(
         (t) => Times.asDayjs(title.premiere).year() === t.y,
-      )?.[0]
+      )
     }
     const titleFinale = Times.asDayjs(title.finale).year();
-    const matches = response.data.d?.filter(
+    return data.d?.filter(
       (t) => {
         if (t.yr) {
           const apiPremiere = Number(t.yr.split("-")[0])
@@ -36,16 +43,13 @@ export class ImdbMediaRestClient {
         }
       },
     );
-    return matches?.[0];
   }
 
-  private isMatchWithName(
-    response: AxiosResponse<ImdbMediaResponse>,
+  private filterOnName(
+    titles: ImdbMediaTitle[],
     title: TitleDraft,
   ) {
-    const matches = response.data.d?.filter((t) => title.name === t.l);
-
-    return matches?.[0];
+    return titles.filter((t) => title.name === t.l);
   }
 
 }
