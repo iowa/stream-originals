@@ -9,13 +9,21 @@ describe("WikiTitlesTable", () => {
       "/data/tr_For_All_Mankind.html",
     );
 
-    const result = new WikiTitlesTable().parseRow(html, "appleTV+");
+    const result = new WikiTitlesTable().parseRow({
+      html: html,
+      streamer: 'appleTV+',
+      titleIndex: 0,
+      premiereIndex: 2,
+      seasonsIndex: 3
+    });
     expect(result).toMatchInlineSnapshot(`
       {
+        "episodes": 40,
         "finale": null,
         "id": "",
         "name": "For All Mankind",
         "premiere": "2019-11-01",
+        "seasons": 4,
         "streamer": "appleTV+",
       }
     `);
@@ -27,13 +35,21 @@ describe("WikiTitlesTable", () => {
       "/data/tr_The_Savant.html",
     );
 
-    const result = new WikiTitlesTable().parseRow(html, "appleTV+");
+    const result = new WikiTitlesTable().parseRow({
+      html: html,
+      streamer: 'appleTV+',
+      titleIndex: 0,
+      premiereIndex: 2,
+      seasonsIndex: 3
+    });
     expect(result).toMatchInlineSnapshot(`
       {
+        "episodes": 8,
         "finale": null,
         "id": "",
         "name": "The Savant",
         "premiere": "2025-09-26",
+        "seasons": null,
         "streamer": "appleTV+",
       }
     `);
@@ -45,13 +61,21 @@ describe("WikiTitlesTable", () => {
       "/data/tr_Eva_the_Owlet.html",
     );
 
-    const result = new WikiTitlesTable().parseRow(html, "appleTV+");
+    const result = new WikiTitlesTable().parseRow({
+      html: html,
+      streamer: 'appleTV+',
+      titleIndex: 0,
+      premiereIndex: 2,
+      seasonsIndex: 3
+    });
     expect(result).toMatchInlineSnapshot(`
       {
+        "episodes": 17,
         "finale": null,
         "id": "",
         "name": "Eva the Owlet",
         "premiere": "2023-03-31",
+        "seasons": 2,
         "streamer": "appleTV+",
       }
     `);
@@ -63,13 +87,21 @@ describe("WikiTitlesTable", () => {
       "/data/tr_Neuromancer.html",
     );
 
-    const result = new WikiTitlesTable().parseRow(html, "appleTV+");
+    const result = new WikiTitlesTable().parseRow({
+      html: html,
+      streamer: 'appleTV+',
+      titleIndex: 0,
+      premiereIndex: 2,
+      seasonsIndex: 3
+    });
     expect(result).toMatchInlineSnapshot(`
       {
+        "episodes": 10,
         "finale": null,
         "id": "",
         "name": "Neuromancer",
         "premiere": null,
+        "seasons": 1,
         "streamer": "appleTV+",
       }
     `);
@@ -81,13 +113,22 @@ describe("WikiTitlesTable", () => {
       "/data/tr_Defending_Jacob.html",
     );
 
-    const result = new WikiTitlesTable().parseEndedRow(html, "appleTV+");
+    const result = new WikiTitlesTable().parseRow({
+      html: html,
+      streamer: 'appleTV+',
+      titleIndex: 0,
+      premiereIndex: 2,
+      finaleIndex: 3,
+      seasonsIndex: 4
+    });
     expect(result).toMatchInlineSnapshot(`
       {
+        "episodes": 8,
         "finale": "2020-05-29",
         "id": "",
         "name": "Defending Jacob",
         "premiere": "2020-04-24",
+        "seasons": null,
         "streamer": "appleTV+",
       }
     `);
@@ -99,16 +140,15 @@ describe("WikiTitlesTable", () => {
       "/data/tr_Surfside_Girls.html",
     );
 
-    const result = new WikiTitlesTable().parseEndedRow(html, "appleTV+");
-    expect(result).toMatchInlineSnapshot(`
-      {
-        "finale": "2022-08-19",
-        "id": "",
-        "name": "Surfside Girls",
-        "premiere": "2022-08-19",
-        "streamer": "appleTV+",
-      }
-    `);
+    const result = new WikiTitlesTable().parseRow({
+      html: html,
+      streamer: 'appleTV+',
+      titleIndex: 0,
+      premiereIndex: 2,
+      finaleIndex: 3,
+      seasonsIndex: 4
+    });
+    expect(result).toMatchInlineSnapshot();
   });
 
 });

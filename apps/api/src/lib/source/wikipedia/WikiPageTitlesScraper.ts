@@ -2,6 +2,7 @@ import * as cheerio from "cheerio";
 import { CheerioAPI } from "cheerio";
 import type { Streamer, TitleDraft } from "@repo/common";
 import { WikiTitlesTable } from "./WikiTitlesTable.js";
+import { WikiParseRow } from "./wikipediaTypes.js";
 
 export class WikiPageTitlesScraper {
 
@@ -16,45 +17,47 @@ export class WikiPageTitlesScraper {
   ): Promise<TitleDraft[]> {
     const titles: TitleDraft[] = [];
     this.getCurrentTitles($, titles, streamer);
-    this.getEndedTitles($, titles, streamer);
     return titles;
   }
 
   private getCurrentTitles($: CheerioAPI, titles: TitleDraft[], streamer: Streamer) {
     $("table").each((_, table) => {
       const tableHeaders = $(table).find("th");
-      if (
-        tableHeaders.first().text().trim() === "Title" &&
-        (tableHeaders.eq(2).text().trim() === "Premiere" ||
-          tableHeaders.eq(2).text().trim() === "Release") &&
-        tableHeaders.eq(3).text().trim() === "Seasons"
-      ) {
+      const indices: WikiParseRow = {
+        html: "",
+        streamer: streamer
+      };
+
+      tableHeaders.each((i, tableHeader) => {
+        let headerText = $(tableHeader).text().trim();
+        if (headerText === "Title") {
+          indices.titleIndex = i;
+        }
+        if (headerText === "Premiere" || headerText === "Release") {
+          indices.premiereIndex = i;
+        }
+        if (headerText === "Finale") {
+          indices.finaleIndex = i;
+        }
+        if (headerText === "Seasons") {
+          indices.seasonsIndex = i;
+        }
+      });
+      if (indices.titleIndex !== undefined && indices.premiereIndex !== undefined) {
         $(table)
         .find("tbody tr:has(td)")
         .each((_, row) => {
-          const title = this.wikiTitlesTable.parseRow(cheerio.load(row).html(), streamer);
-          titles.push(title);
+          const title = this.wikiTitlesTable.parseRow({
+            ...indices,
+            html: cheerio.load(row).html(),
+          });
+          if (title) {
+            titles.push(title);
+          }
         });
       }
     });
   }
 
-  private getEndedTitles($: CheerioAPI, titles: TitleDraft[], streamer: Streamer) {
-    $("table").each((_, table) => {
-      const tableHeaders = $(table).find("th");
-      if (
-        tableHeaders.first().text().trim() === "Title" &&
-        (tableHeaders.eq(2).text().trim() === "Premiere" ||
-          tableHeaders.eq(2).text().trim() === "Release") &&
-        tableHeaders.eq(3).text().trim() === "Finale"
-      ) {
-        $(table)
-        .find("tbody tr:has(td)")
-        .each((_, row) => {
-          const title = this.wikiTitlesTable.parseEndedRow(cheerio.load(row).html(), streamer);
-          titles.push(title);
-        });
-      }
-    });
-  }
+
 }

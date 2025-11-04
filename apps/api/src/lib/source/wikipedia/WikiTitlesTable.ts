@@ -1,39 +1,28 @@
 import * as cheerio from "cheerio";
-import { Streamer, Times, TitleDraft } from "@repo/common";
+import { Times, TitleDraft } from "@repo/common";
+import { WikiParseRow } from "./wikipediaTypes.js";
 
 export class WikiTitlesTable {
-  parseRow(html: string, streamer: Streamer): TitleDraft {
-    const $ = cheerio.load(html, { xml: true });
+  parseRow(params: WikiParseRow): TitleDraft | null {
+    if (params.titleIndex === undefined || params.premiereIndex === undefined) {
+      return null
+    }
+    const $ = cheerio.load(params.html, { xml: true });
     const cells = $("tr").first().find("td");
-    return {
-      id: "",
-      streamer: streamer,
-      name: this.getTitle($.html(cells.first())),
-      premiere: this.getDate($.html(cells.eq(2))) || null,
-      finale: null
-    };
-  }
 
-  parseEndedRow(html: string, streamer: Streamer): TitleDraft {
-    const $ = cheerio.load(html, { xml: true });
-    const cells = $("tr").first().find("td");
-    let premiereIdx = 2;
-    let finaleIdx = 3;
-
-    cells.each((i, el) => {
-      if ($(el).attr("colspan") === "2") {
-        if (i <= premiereIdx) {
-          finaleIdx--;
-        }
-      }
-    });
+    let seasonsEpisodes = undefined
+    if (params.seasonsIndex) {
+      seasonsEpisodes = this.getSeasonsEpisodes($.html(cells.eq(params.seasonsIndex)));
+    }
 
     return {
       id: "",
-      streamer: streamer,
-      name: this.getTitle($.html(cells.first())),
-      premiere: this.getDate($.html(cells.eq(premiereIdx))) || null,
-      finale: this.getDate($.html(cells.eq(finaleIdx))) || null,
+      streamer: params.streamer,
+      name: this.getTitle($.html(cells.eq(params.titleIndex))),
+      premiere: this.getDate($.html(cells.eq(params.premiereIndex))) || null,
+      finale: (params.finaleIndex) ? this.getDate($.html(cells.eq(params.finaleIndex))) || null : null,
+      seasons: seasonsEpisodes?.seasons || null,
+      episodes: seasonsEpisodes?.episodes || null,
     };
   }
 
@@ -48,6 +37,15 @@ export class WikiTitlesTable {
     $("sup").remove();
     const date = $.root().text().trim();
     return Times.format(date, Times._sqlDateFormat);
+  }
+
+  private getSeasonsEpisodes(input: string): { seasons: number, episodes: number } {
+    const seasonsMatch = input.match(/(\d+)\s*seasons?/i);
+    const episodesMatch = input.match(/(\d+)\s*episodes?/i);
+    return {
+      seasons: seasonsMatch ? parseInt(seasonsMatch[1], 10) : 0,
+      episodes: episodesMatch ? parseInt(episodesMatch[1], 10) : 0
+    };
   }
 
 }

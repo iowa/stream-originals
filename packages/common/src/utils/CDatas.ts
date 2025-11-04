@@ -15,7 +15,9 @@ export class CDatas {
     name: "House of Cards",
     premiere: "2013-02-01",
     streamer: "netflix",
-    finale: "2018-11-02"
+    finale: "2018-11-02",
+    seasons: 6,
+    episodes: 73
   };
 
   public static readonly Title_tt1856010: Title = {

@@ -18,6 +18,8 @@ export const titleDraftsTable = schema.table("title_drafts", {
   streamer: streamersEnum().notNull(),
   premiere: p.date(),
   finale: p.date(),
+  seasons: p.integer(),
+  episodes: p.integer(),
 })
 
 export const titlesTable = schema.table(
