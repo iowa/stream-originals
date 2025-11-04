@@ -46,6 +46,7 @@ describe("TitlesRepository", async () => {
             "titleId": "tt1856010",
           },
         ],
+        "episodes": 73,
         "id": "tt1856010",
         "images": [
           {
@@ -75,6 +76,7 @@ describe("TitlesRepository", async () => {
           },
         ],
         "runtimeSeconds": 3000,
+        "seasons": 6,
         "stars": [
           {
             "credit": {

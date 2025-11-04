@@ -29,15 +29,15 @@ export class TitlesCreateCrawler {
     ]);
   }
 
-  async create(streamer: Streamer): Promise<TitlesCreateResponse> {
+  async upsert(streamer: Streamer): Promise<TitlesCreateResponse> {
     const response: TitlesCreateResponse = { items: [] };
     for (const url of this.streamers.get(streamer)?.values() || []) {
-      response.items.push(await this.patchStreamer(streamer, url));
+      response.items.push(await this.upsertTitles(streamer, url));
     }
     return response;
   }
 
-  private async patchStreamer(streamer: Streamer, url: string): Promise<TitlesCreate> {
+  private async upsertTitles(streamer: Streamer, url: string): Promise<TitlesCreate> {
     const response = this.buildCreateResponse(url);
     const $ = await this.buildCheerio(url);
     const wikipediaTitles = await this.wikiTitlesScraper.getTitles($, streamer);
@@ -57,7 +57,17 @@ export class TitlesCreateCrawler {
 
   private async processTitles(wikipediaTitles: TitleDraft[], dbTitles: Title[], dbTitleDrafts: TitleDraft[]): Promise<void> {
     for (const wikipediaTitle of wikipediaTitles) {
-      if (this.findInTitles(wikipediaTitle, dbTitles)) continue;
+      let dbTitle = this.findInTitles(wikipediaTitle, dbTitles);
+      if (dbTitle) {
+        if (dbTitle.seasons != wikipediaTitle.seasons || dbTitle.episodes != wikipediaTitle.episodes) {
+          await this.titlesRepository.updateTitle({
+            ...dbTitle,
+            seasons: wikipediaTitle.seasons,
+            episodes: wikipediaTitle.episodes,
+          })
+        }
+        continue
+      }
 
       const draftFound = this.findInTitleDrafts(wikipediaTitle, dbTitleDrafts);
       const imdbMediaTitle = await this.imdbMediaRestClient.findTitle(wikipediaTitle);
@@ -99,10 +109,10 @@ export class TitlesCreateCrawler {
   }
 
   private findInTitles(title: TitleDraft, titles: Title[]): Title | undefined {
-    return titles.find(t => t.name === title.name);
+    return titles.find(t => t.name === title.name && t.premiere === title.premiere);
   }
 
   private findInTitleDrafts(title: TitleDraft, dbTitleDrafts: TitleDraft[]): TitleDraft | undefined {
-    return dbTitleDrafts.find(t => t.name === title.name);
+    return dbTitleDrafts.find(t => t.name === title.name && t.premiere === title.premiere);
   }
 }

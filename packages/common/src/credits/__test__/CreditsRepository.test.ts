@@ -36,6 +36,7 @@ describe("CreditsRepository", async () => {
         "primaryImageWidth": 1471,
         "titles": [
           {
+            "episodes": 73,
             "id": "tt1856010",
             "images": [
               {
@@ -51,6 +52,7 @@ describe("CreditsRepository", async () => {
             "plot": "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",
             "premiere": "2013-02-01",
             "runtimeSeconds": 3000,
+            "seasons": 6,
             "streamer": "netflix",
             "type": "tvSeries",
             "updatedAt": 1970-01-01T00:00:00.000Z,

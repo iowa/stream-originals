@@ -28,7 +28,9 @@ export class CDatas {
     streamer: "netflix",
     plot: "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",
     updatedAt: new Date("1970-01-01T00:00:00.000Z"),
-    runtimeSeconds: 3000
+    runtimeSeconds: 3000,
+    seasons: 6,
+    episodes: 73
   };
 
   public static readonly TitleImage_tt1856010_poster: TitleImage = {

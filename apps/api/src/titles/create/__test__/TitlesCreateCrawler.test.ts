@@ -45,7 +45,7 @@ describe("TitlesCreateCrawler", async () => {
     (wikiTitlesScraper.getTitles as any).mockResolvedValue([CDatas.TitleDraft_HouseOfCards]);
     (imdbMediaRestClient.findTitle as any).mockResolvedValue(Datas.ImdbMediaTitle_HouseOfCards);
 
-    const response = await crawler.create('netflix');
+    const response = await crawler.upsert('netflix');
 
     expect(response).toMatchInlineSnapshot(`
       {
@@ -107,7 +107,7 @@ describe("TitlesCreateCrawler", async () => {
     (wikiTitlesScraper.getTitles as any).mockResolvedValue([CDatas.TitleDraft_HouseOfCards]);
     (imdbMediaRestClient.findTitle as any).mockResolvedValue(undefined);
 
-    const response = await crawler.create('netflix');
+    const response = await crawler.upsert('netflix');
 
     expect(response).toMatchInlineSnapshot(`
       {

@@ -33,6 +33,8 @@ export const titlesTable = schema.table(
     plot: p.text(),
     updatedAt: p.timestamp("updated_at").defaultNow(),
     runtimeSeconds: p.integer("runtime_seconds"),
+    seasons: p.integer(),
+    episodes: p.integer(),
   }
 );
 

@@ -6,6 +6,8 @@
   "streamer": "netflix",
   "plot": null,
   "runtimeSeconds": null,
+  "seasons": 6,
+  "episodes": 73,
   "interests": [],
   "stars": [],
   "writers": [],

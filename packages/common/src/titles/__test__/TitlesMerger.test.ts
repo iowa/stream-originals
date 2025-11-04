@@ -63,6 +63,7 @@ describe("TitlesMerger", async () => {
               },
             },
           ],
+          "episodes": 73,
           "id": "tt1856010",
           "interests": [
             {
@@ -93,6 +94,7 @@ describe("TitlesMerger", async () => {
             },
           ],
           "runtimeSeconds": 3000,
+          "seasons": 6,
           "stars": [
             {
               "credit": {
@@ -153,6 +155,7 @@ describe("TitlesMerger", async () => {
       [
         {
           "directors": [],
+          "episodes": 73,
           "id": "tt1856010",
           "interests": [],
           "name": "House of Cards",
@@ -160,6 +163,7 @@ describe("TitlesMerger", async () => {
           "premiere": "2013-02-01",
           "ratings": [],
           "runtimeSeconds": null,
+          "seasons": 6,
           "stars": [],
           "streamer": "netflix",
           "type": "tvSeries",

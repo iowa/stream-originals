@@ -15,7 +15,7 @@ export class TitlesService {
   }
 
   create(streamer: Streamer): Promise<TitlesCreateResponse> {
-    return new TitlesCreateCrawler().create(streamer);
+    return new TitlesCreateCrawler().upsert(streamer);
   }
 
   patch(streamer: Streamer): Promise<TitlesPatchResponse> {
