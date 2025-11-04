@@ -9,9 +9,12 @@ describe("ImdbMediaMapper", () => {
 
     expect(result).toMatchInlineSnapshot(`
       {
+        "episodes": 73,
+        "finale": "2018-11-02",
         "id": "tt1856010",
         "name": "House of Cards",
         "premiere": "2013-02-01",
+        "seasons": 6,
         "streamer": "netflix",
         "type": "tvSeries",
       }

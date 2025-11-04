@@ -7,6 +7,7 @@ import {
   TitleInterest,
   TitleRating
 } from "../db/dbTypes.js";
+import { TitlePatchDto } from "../dto/dtoTypes.js";
 
 export class CDatas {
 
@@ -21,17 +22,22 @@ export class CDatas {
   };
 
   public static readonly Title_tt1856010: Title = {
+    ...CDatas.TitleDraft_HouseOfCards,
     id: "tt1856010",
     type: "tvSeries",
-    name: "House of Cards",
-    premiere: "2013-02-01",
-    streamer: "netflix",
     plot: "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",
     updatedAt: new Date("1970-01-01T00:00:00.000Z"),
     runtimeSeconds: 3000,
-    seasons: 6,
-    episodes: 73
   };
+
+  public static readonly TitlePatchDto_tt1856010: TitlePatchDto = {
+    ...CDatas.Title_tt1856010,
+    interests: [],
+    stars: [],
+    directors: [],
+    writers: [],
+    ratings: []
+  }
 
   public static readonly TitleImage_tt1856010_poster: TitleImage = {
     id: "cb8fcac8-e826-4f91-9cb6-e78641168274",

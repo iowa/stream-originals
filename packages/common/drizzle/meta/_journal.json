@@ -15,6 +15,13 @@
       "when": 1762254280353,
       "tag": "0001_glamorous_queen_noir",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1762257283231,
+      "tag": "0002_productive_lockjaw",
+      "breakpoints": true
     }
   ]
 }

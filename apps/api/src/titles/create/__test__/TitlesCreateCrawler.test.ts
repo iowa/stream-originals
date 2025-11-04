@@ -18,7 +18,7 @@ describe("TitlesCreateCrawler", async () => {
     let { client, db } = await getDbMock();
     pgClient = client
     wikiTitlesScraper = {
-      findTitles: vi.fn()
+      getTitles: vi.fn()
     } as unknown as WikiPageTitlesScraper;
 
     titlesRepository = new TitlesRepository(db as unknown as DbDrizzle);
@@ -72,11 +72,14 @@ describe("TitlesCreateCrawler", async () => {
     ).toMatchInlineSnapshot(`
       [
         {
+          "episodes": 73,
+          "finale": "2018-11-02",
           "id": "tt1856010",
           "name": "House of Cards",
           "plot": null,
           "premiere": "2013-02-01",
           "runtimeSeconds": null,
+          "seasons": 6,
           "streamer": "netflix",
           "type": "tvSeries",
           "updatedAt": 1970-01-01T00:00:00.000Z,
@@ -136,9 +139,12 @@ describe("TitlesCreateCrawler", async () => {
       }))).toMatchInlineSnapshot(`
         [
           {
+            "episodes": 73,
+            "finale": "2018-11-02",
             "id": "ignored",
             "name": "House of Cards",
             "premiere": "2013-02-01",
+            "seasons": 6,
             "streamer": "netflix",
           },
         ]

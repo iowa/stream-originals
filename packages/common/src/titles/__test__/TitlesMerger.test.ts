@@ -9,6 +9,7 @@ import { TitlePatchDto } from "../../dto/dtoTypes.js";
 import { InterestsRepository } from "../../interests/InterestsRepository.js";
 import { CreditsRepository } from "../../credits/CreditsRepository.js";
 import { PGlite } from "@electric-sql/pglite";
+import { CDatas } from "../../utils/CDatas.js";
 
 describe("TitlesMerger", async () => {
   let pgClient: PGlite
@@ -33,7 +34,7 @@ describe("TitlesMerger", async () => {
   });
 
   it("Merge original with updated and inverse", async () => {
-    const original: TitlePatchDto = TestFiles.loadJson(__dirname, 'data/title_original_tt1856010.json');
+    const original: TitlePatchDto = CDatas.TitlePatchDto_tt1856010;
     const updated: TitlePatchDto = TestFiles.loadJson(__dirname, 'data/title_updated_tt1856010.json');
     await prepareData(original)
     await cut.merge(original, updated);
@@ -64,6 +65,7 @@ describe("TitlesMerger", async () => {
             },
           ],
           "episodes": 73,
+          "finale": "2018-11-02",
           "id": "tt1856010",
           "interests": [
             {
@@ -156,13 +158,14 @@ describe("TitlesMerger", async () => {
         {
           "directors": [],
           "episodes": 73,
+          "finale": "2018-11-02",
           "id": "tt1856010",
           "interests": [],
           "name": "House of Cards",
-          "plot": null,
+          "plot": "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",
           "premiere": "2013-02-01",
           "ratings": [],
-          "runtimeSeconds": null,
+          "runtimeSeconds": 3000,
           "seasons": 6,
           "stars": [],
           "streamer": "netflix",

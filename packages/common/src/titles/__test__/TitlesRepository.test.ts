@@ -47,6 +47,7 @@ describe("TitlesRepository", async () => {
           },
         ],
         "episodes": 73,
+        "finale": "2018-11-02",
         "id": "tt1856010",
         "images": [
           {

@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { getDbMock } from "@repo/common/db/dbMock";
 import {
+  CDatas,
   DbDrizzle,
   InterestsRepository,
   TestFiles,
@@ -55,7 +56,7 @@ describe("TitlesPatcher", async () => {
   });
 
   it("patch title", async () => {
-    const titleDto: TitlePatchDto = TestFiles.loadJson(__dirname, `/data/title_tt1856010.json`);
+    const titleDto: TitlePatchDto = CDatas.TitlePatchDto_tt1856010;
     await prepareData(titleDto);
 
     const apiResponse: ImdbapiBatchGetTitlesResponse = TestFiles.loadJson(__dirname, `/data/imdbapidev_tt1856010.json`);
@@ -87,6 +88,8 @@ describe("TitlesPatcher", async () => {
               },
             },
           ],
+          "episodes": 73,
+          "finale": "2018-11-02",
           "id": "tt1856010",
           "interests": [
             {
@@ -117,6 +120,7 @@ describe("TitlesPatcher", async () => {
             },
           ],
           "runtimeSeconds": 3000,
+          "seasons": 6,
           "stars": [
             {
               "credit": {

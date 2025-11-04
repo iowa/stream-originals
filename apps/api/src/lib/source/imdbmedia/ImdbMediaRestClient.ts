@@ -11,21 +11,31 @@ export class ImdbMediaRestClient {
     const response: AxiosResponse<ImdbMediaResponse> = await axiosInstance.get(
       `/suggestion/x/${encodeURIComponent(title.name)}.json`,
     );
-    const matchWithStartYear = this.isMatchWithStartYear(response, title);
-    if (matchWithStartYear) {
-      return matchWithStartYear;
-    }
-    return this.isMatchWithName(response, title);
+    const matchOnYears = this.isMatchOnYears(response, title);
+    const matchWithName = this.isMatchWithName(response, title);
+    return matchOnYears && matchWithName;
   }
 
-  private isMatchWithStartYear(
+  private isMatchOnYears(
     response: AxiosResponse<ImdbMediaResponse>,
     title: TitleDraft,
   ) {
+    const titlePremiere = Times.asDayjs(title.premiere).year();
+    if (!title.finale) {
+      return response.data.d?.filter(
+        (t) => Times.asDayjs(title.premiere).year() === t.y,
+      )?.[0]
+    }
+    const titleFinale = Times.asDayjs(title.finale).year();
     const matches = response.data.d?.filter(
-      (t) => Times.asDayjs(title.premiere).year() === t.y,
+      (t) => {
+        if (t.yr) {
+          const apiPremiere = Number(t.yr.split("-")[0])
+          const apiFinale = Number(t.yr.split("-")[1])
+          return apiPremiere === titlePremiere && apiFinale === titleFinale;
+        }
+      },
     );
-
     return matches?.[0];
   }
 
