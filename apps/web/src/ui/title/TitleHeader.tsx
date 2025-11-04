@@ -19,10 +19,7 @@ export default function TitleHeader({ title }: { title: TitleDto }) {
           <StreamerLogo streamer={title.streamer}/>
         </div>
       </div>
-      <TitleDetails premiere={title.premiere}
-                    runtimeSeconds={title.runtimeSeconds}
-                    type={title.type}
-      />
+      <TitleDetails title={title}/>
     </div>
   );
 }

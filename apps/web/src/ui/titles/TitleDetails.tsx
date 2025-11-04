@@ -1,17 +1,12 @@
-import { TitleType } from "@repo/common";
+import { Title } from "@repo/common";
 import { TitleUtils } from "@/lib/title/TitleUtils";
-import { capitalCase } from "text-case";
 
-export default function TitleDetails({ premiere, runtimeSeconds, type }: {
-  premiere: string | null,
-  runtimeSeconds: number | null,
-  type: TitleType
-}) {
+export default function TitleDetails({ title }: { title: Title }) {
   return (
     <div className="flex items-center gap-4 flex-wrap">
-      <span>{TitleUtils.getYearRange(premiere)}</span>
-      <span>{TitleUtils.runtime(runtimeSeconds)}</span>
-      <span>{capitalCase(type)}</span>
+      <span>{TitleUtils.getYearRange(title.premiere, title.finale)}</span>
+      <span>{TitleUtils.runtime(title.runtimeSeconds)}</span>
+      <span>{TitleUtils.formatTypeDetails(title)}</span>
     </div>
   );
 };

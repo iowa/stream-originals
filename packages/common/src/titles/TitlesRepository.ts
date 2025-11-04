@@ -16,7 +16,6 @@ import {
 import { count, eq } from "drizzle-orm";
 import { TitleDto, TitleListDto, TitlePatchDto } from "../dto/dtoTypes.js";
 import { TitlesGetCountsResponse } from "./titleTypes.js";
-import * as p from "drizzle-orm/pg-core";
 
 export class TitlesRepository {
   private readonly db

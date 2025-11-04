@@ -1,14 +1,15 @@
 import { AppConstants } from "@/lib/AppConstants";
 import { TimesClient } from "@/lib/utils/TimesClient";
-import { TitleImage } from "@repo/common";
+import { Title, TitleImage } from "@repo/common";
+import { capitalCase } from "text-case";
 
 export class TitleUtils {
 
   static getYearRange(premiere: string | null, finale?: string | null): string {
     const startYear = TimesClient.asDayjs(premiere).year();
     if (isNaN(startYear)) return AppConstants.NOT_AVAILABLE;
-    const endYear = finale ? TimesClient.asDayjs(finale).year() : null;
-    return endYear ? `${startYear}–${endYear}` : `${startYear}`;
+    const endYear = finale && TimesClient.asDayjs(finale).year();
+    return !endYear || startYear === endYear ? `${startYear}` : `${startYear}–${endYear}`;
   }
 
   static formatVoteCount(voteCount?: number | null): string {
@@ -24,6 +25,16 @@ export class TitleUtils {
     if (hours > 0 && minutes > 0) return `${hours}h ${minutes}m`;
     if (hours > 0) return `${hours}h`;
     return `${minutes}m`;
+  }
+
+  static formatTypeDetails(title: Title): string {
+    let details = capitalCase(title.type);
+    if (title.episodes != null) {
+      details += title.seasons != null
+        ? ` (S${title.seasons} E${title.episodes})`
+        : ` (E${title.episodes})`;
+    }
+    return details;
   }
 
   static titlePoster(images: TitleImage[]): TitleImage | undefined {
