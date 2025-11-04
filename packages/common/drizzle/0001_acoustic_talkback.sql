@@ -1,1 +1,0 @@
-ALTER TABLE "stream_originals"."titles" ADD COLUMN "updated_at" timestamp DEFAULT now();

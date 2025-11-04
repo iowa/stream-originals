@@ -1,5 +1,5 @@
 {
-  "id": "1d179e49-59b1-4046-ba1f-135f9bdaca88",
+  "id": "4cd76ea4-acdc-4c4b-917c-ffd76d081cea",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -189,21 +189,30 @@
           "type": "date",
           "primaryKey": false,
           "notNull": false
+        },
+        "finale": {
+          "name": "finale",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "seasons": {
+          "name": "seasons",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "episodes": {
+          "name": "episodes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "title_drafts_name_streamer_unique": {
-          "name": "title_drafts_name_streamer_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "name",
-            "streamer"
-          ]
-        }
-      },
+      "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
@@ -344,6 +353,67 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
+    "stream_originals.title_ratings": {
+      "name": "title_ratings",
+      "schema": "stream_originals",
+      "columns": {
+        "title_id": {
+          "name": "title_id",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "title_rating_types",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "total": {
+          "name": "total",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "vote_count": {
+          "name": "vote_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "title_ratings_title_id_titles_id_fk": {
+          "name": "title_ratings_title_id_titles_id_fk",
+          "tableFrom": "title_ratings",
+          "tableTo": "titles",
+          "schemaTo": "stream_originals",
+          "columnsFrom": [
+            "title_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "title_ratings_title_id_type_pk": {
+          "name": "title_ratings_title_id_type_pk",
+          "columns": [
+            "title_id",
+            "type"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "stream_originals.titles": {
       "name": "titles",
       "schema": "stream_originals",
@@ -385,6 +455,19 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "runtime_seconds": {
+          "name": "runtime_seconds",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -421,6 +504,13 @@
         "poster"
       ]
     },
+    "public.title_rating_types": {
+      "name": "title_rating_types",
+      "schema": "public",
+      "values": [
+        "imdb"
+      ]
+    },
     "public.title_types": {
       "name": "title_types",
       "schema": "public",
@@ -432,7 +522,10 @@
         "tvMovie",
         "short",
         "video",
-        "videoGame"
+        "videoGame",
+        "podcastSeries",
+        "musicVideo",
+        "tvShort"
       ]
     }
   },

@@ -3,7 +3,8 @@ CREATE SCHEMA "stream_originals";
 CREATE TYPE "public"."credit_roles" AS ENUM('star', 'writer', 'director');--> statement-breakpoint
 CREATE TYPE "public"."streamers" AS ENUM('appleTV+', 'netflix');--> statement-breakpoint
 CREATE TYPE "public"."title_image_types" AS ENUM('poster');--> statement-breakpoint
-CREATE TYPE "public"."title_types" AS ENUM('movie', 'tvSeries', 'tvMiniSeries', 'tvSpecial', 'tvMovie', 'short', 'video', 'videoGame');--> statement-breakpoint
+CREATE TYPE "public"."title_rating_types" AS ENUM('imdb');--> statement-breakpoint
+CREATE TYPE "public"."title_types" AS ENUM('movie', 'tvSeries', 'tvMiniSeries', 'tvSpecial', 'tvMovie', 'short', 'video', 'videoGame', 'podcastSeries', 'musicVideo', 'tvShort');--> statement-breakpoint
 CREATE TABLE "stream_originals"."credits" (
 	"id" varchar(20) PRIMARY KEY NOT NULL,
 	"name" text NOT NULL,
@@ -32,7 +33,9 @@ CREATE TABLE "stream_originals"."title_drafts" (
 	"name" text NOT NULL,
 	"streamer" "streamers" NOT NULL,
 	"premiere" date,
-	CONSTRAINT "title_drafts_name_streamer_unique" UNIQUE("name","streamer")
+	"finale" date,
+	"seasons" integer,
+	"episodes" integer
 );
 --> statement-breakpoint
 CREATE TABLE "stream_originals"."title_images" (
@@ -51,17 +54,28 @@ CREATE TABLE "stream_originals"."title_interests" (
 	CONSTRAINT "title_interests_title_id_interest_id_pk" PRIMARY KEY("title_id","interest_id")
 );
 --> statement-breakpoint
+CREATE TABLE "stream_originals"."title_ratings" (
+	"title_id" varchar(20) NOT NULL,
+	"type" "title_rating_types" NOT NULL,
+	"total" numeric,
+	"vote_count" integer,
+	CONSTRAINT "title_ratings_title_id_type_pk" PRIMARY KEY("title_id","type")
+);
+--> statement-breakpoint
 CREATE TABLE "stream_originals"."titles" (
 	"id" varchar(20) PRIMARY KEY NOT NULL,
 	"type" "title_types" NOT NULL,
 	"name" text NOT NULL,
 	"streamer" "streamers" NOT NULL,
 	"premiere" date,
-	"plot" text
+	"plot" text,
+	"updated_at" timestamp DEFAULT now(),
+	"runtime_seconds" integer
 );
 --> statement-breakpoint
 ALTER TABLE "stream_originals"."title_credits" ADD CONSTRAINT "title_credits_title_id_titles_id_fk" FOREIGN KEY ("title_id") REFERENCES "stream_originals"."titles"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "stream_originals"."title_credits" ADD CONSTRAINT "title_credits_credit_id_credits_id_fk" FOREIGN KEY ("credit_id") REFERENCES "stream_originals"."credits"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "stream_originals"."title_images" ADD CONSTRAINT "title_images_title_id_titles_id_fk" FOREIGN KEY ("title_id") REFERENCES "stream_originals"."titles"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "stream_originals"."title_interests" ADD CONSTRAINT "title_interests_title_id_titles_id_fk" FOREIGN KEY ("title_id") REFERENCES "stream_originals"."titles"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "stream_originals"."title_interests" ADD CONSTRAINT "title_interests_interest_id_interests_id_fk" FOREIGN KEY ("interest_id") REFERENCES "stream_originals"."interests"("id") ON DELETE no action ON UPDATE no action;
+ALTER TABLE "stream_originals"."title_interests" ADD CONSTRAINT "title_interests_interest_id_interests_id_fk" FOREIGN KEY ("interest_id") REFERENCES "stream_originals"."interests"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "stream_originals"."title_ratings" ADD CONSTRAINT "title_ratings_title_id_titles_id_fk" FOREIGN KEY ("title_id") REFERENCES "stream_originals"."titles"("id") ON DELETE no action ON UPDATE no action;

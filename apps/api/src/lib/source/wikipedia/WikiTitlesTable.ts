@@ -10,6 +10,19 @@ export class WikiTitlesTable {
     const $ = cheerio.load(params.html, { xml: true });
     const cells = $("tr").first().find("td");
 
+    cells.each((i, el) => {
+      if ($(el).attr("colspan") === "2") {
+        if (params.premiereIndex && i <= params.premiereIndex) {
+          if (params.finaleIndex) {
+            params.finaleIndex--;
+          }
+          if (params.seasonsIndex) {
+            params.seasonsIndex--;
+          }
+        }
+      }
+    });
+
     let seasonsEpisodes = undefined
     if (params.seasonsIndex) {
       seasonsEpisodes = this.getSeasonsEpisodes($.html(cells.eq(params.seasonsIndex)));

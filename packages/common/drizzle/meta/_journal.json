@@ -5,64 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1760936559614,
-      "tag": "0000_quick_cloak",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1760982408435,
-      "tag": "0001_acoustic_talkback",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1761029038317,
-      "tag": "0002_quiet_bloodstorm",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1761031479659,
-      "tag": "0003_ambitious_mariko_yashida",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1761650864306,
-      "tag": "0004_icy_lady_vermin",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "7",
-      "when": 1761822682153,
-      "tag": "0005_nifty_madelyne_pryor",
-      "breakpoints": true
-    },
-    {
-      "idx": 6,
-      "version": "7",
-      "when": 1761824193722,
-      "tag": "0006_petite_cassandra_nova",
-      "breakpoints": true
-    },
-    {
-      "idx": 7,
-      "version": "7",
-      "when": 1761824640554,
-      "tag": "0007_polite_oracle",
-      "breakpoints": true
-    },
-    {
-      "idx": 8,
-      "version": "7",
-      "when": 1761824716240,
-      "tag": "0008_curly_bug",
+      "when": 1762252983492,
+      "tag": "0000_talented_wallflower",
       "breakpoints": true
     }
   ]

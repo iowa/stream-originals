@@ -1,1 +1,0 @@
-ALTER TYPE "public"."title_types" ADD VALUE 'podcastSeries';

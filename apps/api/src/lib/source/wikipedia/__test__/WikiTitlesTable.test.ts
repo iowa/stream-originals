@@ -148,7 +148,17 @@ describe("WikiTitlesTable", () => {
       finaleIndex: 3,
       seasonsIndex: 4
     });
-    expect(result).toMatchInlineSnapshot();
+    expect(result).toMatchInlineSnapshot(`
+      {
+        "episodes": 10,
+        "finale": "2022-08-19",
+        "id": "",
+        "name": "Surfside Girls",
+        "premiere": "2022-08-19",
+        "seasons": 1,
+        "streamer": "appleTV+",
+      }
+    `);
   });
 
 });
