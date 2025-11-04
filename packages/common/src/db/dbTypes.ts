@@ -11,7 +11,7 @@ export type TitleDraft = InferSelectModel<typeof titleDraftsTable>;
 export type TitleInsertDraft = InferInsertModel<typeof titleDraftsTable>;
 export type Title = InferSelectModel<typeof titlesTable>;
 
-export const streamerValues = ["appleTV+", "netflix"] as const;
+export const streamerValues = ["appleTV+", "netflix", "primeVideo"] as const;
 export type Streamer = (typeof streamerValues)[number];
 
 export const titleTypeValues = [

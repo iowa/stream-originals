@@ -8,6 +8,8 @@ export class StreamerUtils {
         return '/appleTVPlus.svg'
       case 'netflix':
         return '/netflix.svg'
+      case 'primeVideo':
+        return '/primeVideo.svg'
       default:
         throw Error(`Logo for ${streamer} not found`);
     }

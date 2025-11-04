@@ -27,6 +27,10 @@ export class TitlesCreateCrawler {
       "https://en.wikipedia.org/wiki/List_of_Netflix_original_programming",
       "https://en.wikipedia.org/wiki/List_of_ended_Netflix_original_programming"
     ]);
+    this.streamers.set('primeVideo', [
+      "https://en.wikipedia.org/wiki/List_of_Amazon_Prime_Video_original_programming",
+      "https://en.wikipedia.org/wiki/List_of_ended_Amazon_Prime_Video_original_programming"
+    ]);
   }
 
   async upsert(streamer: Streamer): Promise<TitlesCreateResponse> {
