@@ -20,6 +20,7 @@ export class Datas {
     q: "TV series",
     qid: "tvSeries",
     y: 2013,
+    yr: "2013-2018"
   }
 
   public static readonly ImdbapiInterest_in0000084: ImdbapiInterest = {

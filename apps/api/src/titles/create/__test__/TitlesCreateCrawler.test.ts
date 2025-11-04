@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { Datas } from "../../../lib/utils/data/Datas.js";
-import { WikiTitlesScraper } from "../../../lib/source/wikipedia/WikiTitlesScraper.js";
+import { WikiPageTitlesScraper } from "../../../lib/source/wikipedia/WikiPageTitlesScraper.js";
 import { TitlesCreateCrawler } from "../TitlesCreateCrawler.js";
 import { ImdbMediaRestClient } from "../../../lib/source/imdbmedia/ImdbMediaRestClient.js";
 import { getDbMock } from "@repo/common/db/dbMock";
@@ -9,7 +9,7 @@ import { PGlite } from "@electric-sql/pglite";
 
 describe("TitlesCreateCrawler", async () => {
   let pgClient: PGlite
-  let wikiTitlesScraper: WikiTitlesScraper;
+  let wikiTitlesScraper: WikiPageTitlesScraper;
   let titlesRepository: TitlesRepository;
   let imdbMediaRestClient: ImdbMediaRestClient;
   let crawler: TitlesCreateCrawler;
@@ -19,7 +19,7 @@ describe("TitlesCreateCrawler", async () => {
     pgClient = client
     wikiTitlesScraper = {
       findTitles: vi.fn()
-    } as unknown as WikiTitlesScraper;
+    } as unknown as WikiPageTitlesScraper;
 
     titlesRepository = new TitlesRepository(db as unknown as DbDrizzle);
 
@@ -42,7 +42,7 @@ describe("TitlesCreateCrawler", async () => {
   });
 
   it("create title found on wikipedia and imdbMedia", async () => {
-    (wikiTitlesScraper.findTitles as any).mockResolvedValue([CDatas.TitleDraft_HouseOfCards]);
+    (wikiTitlesScraper.getTitles as any).mockResolvedValue([CDatas.TitleDraft_HouseOfCards]);
     (imdbMediaRestClient.findTitle as any).mockResolvedValue(Datas.ImdbMediaTitle_HouseOfCards);
 
     const response = await crawler.create('netflix');
@@ -104,7 +104,7 @@ describe("TitlesCreateCrawler", async () => {
   });
 
   it("create title draft found on wikipedia but not imdbMedia", async () => {
-    (wikiTitlesScraper.findTitles as any).mockResolvedValue([CDatas.TitleDraft_HouseOfCards]);
+    (wikiTitlesScraper.getTitles as any).mockResolvedValue([CDatas.TitleDraft_HouseOfCards]);
     (imdbMediaRestClient.findTitle as any).mockResolvedValue(undefined);
 
     const response = await crawler.create('netflix');

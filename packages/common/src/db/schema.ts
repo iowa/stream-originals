@@ -17,6 +17,7 @@ export const titleDraftsTable = schema.table("title_drafts", {
   name: p.text().notNull(),
   streamer: streamersEnum().notNull(),
   premiere: p.date(),
+  finale: p.date(),
 })
 
 export const titlesTable = schema.table(

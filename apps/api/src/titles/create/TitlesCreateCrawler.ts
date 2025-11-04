@@ -8,7 +8,7 @@ import {
   TitlesRepository
 } from "@repo/common";
 import { gotScraping } from "crawlee";
-import { WikiTitlesScraper } from "../../lib/source/wikipedia/WikiTitlesScraper.js";
+import { WikiPageTitlesScraper } from "../../lib/source/wikipedia/WikiPageTitlesScraper.js";
 import { ImdbMediaMapper } from "../../lib/source/imdbmedia/ImdbMediaMapper.js";
 import { ImdbMediaRestClient } from "../../lib/source/imdbmedia/ImdbMediaRestClient.js";
 import { ImdbMediaTitle } from "../../lib/source/imdbmedia/ImdbMediaTypes.js";
@@ -20,7 +20,7 @@ export class TitlesCreateCrawler {
     private readonly titlesRepository: TitlesRepository = new TitlesRepository(),
     private readonly imdbMediaRestClient: ImdbMediaRestClient = new ImdbMediaRestClient(),
     private readonly imdbMediaMapper: ImdbMediaMapper = new ImdbMediaMapper(),
-    private readonly wikiTitlesScraper: WikiTitlesScraper = new WikiTitlesScraper()
+    private readonly wikiTitlesScraper: WikiPageTitlesScraper = new WikiPageTitlesScraper()
   ) {
     this.streamers.set('appleTV+', ["https://en.wikipedia.org/wiki/List_of_Apple_TV%2B_original_programming"]);
     this.streamers.set('netflix', [
@@ -40,7 +40,7 @@ export class TitlesCreateCrawler {
   private async patchStreamer(streamer: Streamer, url: string): Promise<TitlesCreate> {
     const response = this.buildCreateResponse(url);
     const $ = await this.buildCheerio(url);
-    const wikipediaTitles = await this.wikiTitlesScraper.findTitles($, streamer);
+    const wikipediaTitles = await this.wikiTitlesScraper.getTitles($, streamer);
     response.totalOnWebsite = wikipediaTitles.length;
 
     const dbTitleDrafts = await this.titlesRepository.getDrafts(streamer);
