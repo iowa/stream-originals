@@ -23,26 +23,22 @@ export class ImdbMediaRestClient {
     return undefined
   }
 
-  private filterOnYears(
-    data: ImdbMediaResponse,
-    title: TitleDraft,
-  ) {
-    const titlePremiere = Times.asDayjs(title.premiere).year();
+  private filterOnYears(data: ImdbMediaResponse, title: TitleDraft) {
+    if (!title.premiere) return [];
+
+    const titlePremiereYear = Times.asDayjs(title.premiere).year();
+
     if (!title.finale) {
-      return data.d?.filter(
-        (t) => Times.asDayjs(title.premiere).year() === t.y,
-      )
+      return data.d?.filter((t) => t.y === titlePremiereYear);
     }
-    const titleFinale = Times.asDayjs(title.finale).year();
-    return data.d?.filter(
-      (t) => {
-        if (t.yr) {
-          const apiPremiere = Number(t.yr.split("-")[0])
-          const apiFinale = Number(t.yr.split("-")[1])
-          return apiPremiere === titlePremiere && apiFinale === titleFinale;
-        }
-      },
-    );
+
+    const titleFinaleYear = Times.asDayjs(title.finale).year();
+    return data.d?.filter((t) => {
+      if (t.yr) {
+        const [apiPremiere, apiFinale] = t.yr.split("-").map(Number);
+        return apiPremiere === titlePremiereYear && apiFinale === titleFinaleYear;
+      }
+    });
   }
 
   private filterOnName(
