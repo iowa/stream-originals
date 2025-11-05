@@ -15,7 +15,7 @@ export function TitlesCard({ title }: { title: TitleListDto }) {
   const router = useRouter();
 
   return (
-    <div className="card card-side bg-base-100 shadow-sm cursor-pointer"
+    <div className="card card-side bg-base-100 border-1 border-base-300 shadow-sm cursor-pointer card-sm rounded-none"
          onClick={e => {
            const target = e.target as HTMLElement;
            if (target.closest("a")) return;
@@ -23,7 +23,7 @@ export function TitlesCard({ title }: { title: TitleListDto }) {
          }}
     >
       <div className="flex items-center">
-        <TitlesPoster title={title} images={title.images} width={144} height={216}/>
+        <TitlesPoster title={title} images={title.images} width={100.8} height={151.2}/>
       </div>
       <div className="card-body">
         <div className="flex">
@@ -33,9 +33,9 @@ export function TitlesCard({ title }: { title: TitleListDto }) {
         <TitleDetails title={title}/>
         <TitleRatings ratings={title.ratings}/>
         <TitleInterests interests={title.interests} withSubgenres={false}/>
-        <p className="text-sm text-foreground leading-relaxed">
+        <div className="text-sm text-foreground leading-relaxed">
           {title.plot || AppConstants.NOT_AVAILABLE}
-        </p>
+        </div>
         <TitlesCredits title={title}/>
       </div>
     </div>

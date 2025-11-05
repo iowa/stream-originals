@@ -15,7 +15,7 @@ async function TitlesPageData({ streamer }: { streamer: Streamer }) {
   const titles = await new TitlesRepository().geTitleListDtos(decodeURIComponent(streamer) as Streamer, 1, 10);
   return <ul className="list bg-base-100 shadow-lg">
     {titles.map((title) => (
-      <li key={title.id} className="py-0.5">
+      <li key={title.id}>
         <TitlesCard title={title}/>
       </li>
     ))}
