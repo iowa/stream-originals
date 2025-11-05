@@ -13,11 +13,21 @@ export default async function Titles({ params }: { params: { streamer: Streamer 
 
 async function TitlesPageData({ streamer }: { streamer: Streamer }) {
   const titles = await new TitlesRepository().geTitleListDtos(decodeURIComponent(streamer) as Streamer, 1, 10);
-  return <ul className="list bg-base-100 shadow-lg">
-    {titles.map((title) => (
-      <li key={title.id}>
-        <TitlesCard title={title}/>
-      </li>
-    ))}
-  </ul>
+
+  return <div className="flex items-center flex-col gap-4">
+    <div className="w-full">
+      <ul className="list bg-base-100 shadow-lg">
+        {titles.map((title) => (
+          <li key={title.id}>
+            <TitlesCard title={title}/>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div className="join">
+      <button className="join-item btn">«</button>
+      <button className="join-item btn">Page 22</button>
+      <button className="join-item btn">»</button>
+    </div>
+  </div>
 }
