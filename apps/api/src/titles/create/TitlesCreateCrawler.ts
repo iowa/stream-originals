@@ -44,7 +44,8 @@ export class TitlesCreateCrawler {
   private async upsertTitles(streamer: Streamer, url: string): Promise<TitlesCreate> {
     const response = this.buildCreateResponse(url);
     const $ = await this.buildCheerio(url);
-    const wikipediaTitles = await this.wikiTitlesScraper.getTitles($, streamer);
+    const wikipediaTitles = (await this.wikiTitlesScraper.getTitles($, streamer))
+    .filter(title => !!title.premiere);
     response.totalOnWebsite = wikipediaTitles.length;
 
     const dbTitleDrafts = await this.titlesRepository.getDrafts(streamer);

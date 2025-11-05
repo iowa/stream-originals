@@ -42,4 +42,34 @@ describe("ImdbRestClient", () => {
     `)
   });
 
+  it("findTitle Pretzel and the Puppies", async () => {
+    const data: ImdbResponse = TestFiles.loadJson(__dirname, "/data/imdb_Pretzel_and_the_Puppies_responses.json");
+    const result =  new ImdbRestClient().filterFindTitle(data, {
+      "episodes": 18,
+      "finale": "2023-02-24",
+      "id": "",
+      "name": "Pretzel and the Puppies",
+      "premiere": "2022-02-11",
+      "seasons": 2,
+      "streamer": "appleTV+",
+    });
+
+    expect(result).toMatchInlineSnapshot(`
+      {
+        "i": {
+          "height": 750,
+          "imageUrl": "https://m.media-amazon.com/images/M/MV5BMGE0ZjEwZWQtY2E3Mi00MWFhLTg2MTctNjQ1NmZkOTlhZGE4XkEyXkFqcGc@._V1_.jpg",
+          "width": 500,
+        },
+        "id": "tt17524490",
+        "l": "Pretzel and the Puppies",
+        "q": "TV series",
+        "qid": "tvSeries",
+        "rank": 105143,
+        "s": "Nasim Pedrad, Alex Jayne Go",
+        "y": 2022,
+      }
+    `)
+  });
+
 });

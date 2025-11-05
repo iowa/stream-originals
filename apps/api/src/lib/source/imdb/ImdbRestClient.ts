@@ -17,8 +17,11 @@ export class ImdbRestClient {
   filterFindTitle(data: ImdbResponse, title: TitleDraft) {
     const titlesMatchingYears = this.filterOnYears(data, title);
     const titlesMatchingName = this.filterOnName(titlesMatchingYears, title);
-    if (titlesMatchingName.length === 1) {
+    if (titlesMatchingName.length > 0) {
       return titlesMatchingName[0];
+    }
+    if (titlesMatchingYears.length > 0) {
+      return titlesMatchingYears[0];
     }
     return undefined
   }
@@ -27,18 +30,17 @@ export class ImdbRestClient {
     if (!title.premiere) return [];
 
     const titlePremiereYear = Times.asDayjs(title.premiere).year();
+    const titleFinaleYear = title.finale ? Times.asDayjs(title.finale).year() : null;
 
-    if (!title.finale) {
-      return data.d?.filter((t) => t.y === titlePremiereYear);
-    }
-
-    const titleFinaleYear = Times.asDayjs(title.finale).year();
-    return data.d?.filter((t) => {
-      if (t.yr) {
+    const titlesMatchingY = data.d?.filter((t) => {
+      if (t.yr && titleFinaleYear) {
         const [apiPremiere, apiFinale] = t.yr.split("-").map(Number);
         return apiPremiere === titlePremiereYear && apiFinale === titleFinaleYear;
       }
+      return false;
     });
+
+    return titlesMatchingY?.length ? titlesMatchingY : data.d?.filter((t) => t.y === titlePremiereYear);
   }
 
   private filterOnName(
