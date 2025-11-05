@@ -1,20 +1,20 @@
 import { describe, expect, it } from "vitest";
-import { ImdbMediaRestClient } from "../ImdbMediaRestClient.js";
+import { ImdbRestClient } from "../ImdbRestClient.js";
 import { CDatas, TestFiles } from "@repo/common";
-import { ImdbMediaResponse } from "../ImdbMediaTypes.js";
+import { ImdbResponse } from "../ImdbTypes.js";
 
-describe("ImdbMediaRestClient", () => {
+describe("ImdbRestClient", () => {
   it("findTitle House of Cards", async () => {
-    const result = await new ImdbMediaRestClient().findTitle(CDatas.TitleDraft_HouseOfCards);
+    const result = await new ImdbRestClient().findTitle(CDatas.TitleDraft_HouseOfCards);
     expect(result?.l).equals("House of Cards");
     expect(result?.y).equals(2013);
     expect(result?.yr).equals("2013-2018");
   });
 
   it("findTitle Mr. & Mrs. Smith", async () => {
-    const data: ImdbMediaResponse = TestFiles.loadJson(__dirname, "/data/imdbMedia_Mr_&_Mrs_Smith_responses.json");
+    const data: ImdbResponse = TestFiles.loadJson(__dirname, "/data/imdb_Mr_&_Mrs_Smith_responses.json");
 
-    const result = new ImdbMediaRestClient().filterFindTitle(data, {
+    const result = new ImdbRestClient().filterFindTitle(data, {
       episodes: 8,
       finale: null,
       id: "",

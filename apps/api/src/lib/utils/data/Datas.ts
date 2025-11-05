@@ -1,20 +1,20 @@
-import { ImdbMediaTitle, ImdbMediaTitleImage } from "../../source/imdbmedia/ImdbMediaTypes.js";
 import {
   ImdbapiInterest,
   ImdbapiName,
   ImdbapiRating
 } from "../../source/imdbapidev/generated/index.js";
+import { ImdbTitle, ImdbTitleImage } from "../../source/imdb/ImdbTypes.js";
 
 export class Datas {
 
-  public static readonly ImdbMediaTitleImage_HouseOfCards: ImdbMediaTitleImage = {
+  public static readonly ImdbTitleImage_HouseOfCards: ImdbTitleImage = {
     height: 2048,
     imageUrl: "https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg",
     width: 1382
   }
 
-  public static readonly ImdbMediaTitle_HouseOfCards: ImdbMediaTitle = {
-    i: this.ImdbMediaTitleImage_HouseOfCards,
+  public static readonly ImdbTitle_HouseOfCards: ImdbTitle = {
+    i: this.ImdbTitleImage_HouseOfCards,
     id: "tt1856010",
     l: "House of Cards",
     q: "TV series",

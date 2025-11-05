@@ -1,9 +1,9 @@
-import { ImdbMediaTitle, ImdbMediaTitleImage, } from "./ImdbMediaTypes.js";
 import { Title, TitleDraft, TitleImage, TitleType } from "@repo/common";
+import { ImdbTitle, ImdbTitleImage } from "./ImdbTypes.js";
 
-export class ImdbMediaMapper {
+export class ImdbMapper {
 
-  mapTitle(title: TitleDraft, imdbTitle: ImdbMediaTitle): Title {
+  mapTitle(title: TitleDraft, imdbTitle: ImdbTitle): Title {
     return {
       ...title,
       id: imdbTitle.id ?? null,
@@ -11,7 +11,7 @@ export class ImdbMediaMapper {
     } as Title;
   }
 
-  mapPoster(titleId: string, poster: ImdbMediaTitleImage): TitleImage {
+  mapPoster(titleId: string, poster: ImdbTitleImage): TitleImage {
     return {
       titleId: titleId,
       url: poster.imageUrl,

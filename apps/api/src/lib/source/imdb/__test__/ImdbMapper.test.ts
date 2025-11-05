@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { ImdbMediaMapper } from "../ImdbMediaMapper.js";
+import { ImdbMapper } from "../ImdbMapper.js";
 import { CDatas } from "@repo/common";
 import { Datas } from "../../../utils/data/Datas.js";
 
-describe("ImdbMediaMapper", () => {
+describe("ImdbMapper", () => {
   it("mapTitle", () => {
-    const result = new ImdbMediaMapper().mapTitle(CDatas.TitleDraft_HouseOfCards, Datas.ImdbMediaTitle_HouseOfCards)
+    const result = new ImdbMapper().mapTitle(CDatas.TitleDraft_HouseOfCards, Datas.ImdbTitle_HouseOfCards)
 
     expect(result).toMatchInlineSnapshot(`
       {
@@ -22,7 +22,7 @@ describe("ImdbMediaMapper", () => {
   });
 
   it("mapTitle", () => {
-    const result = new ImdbMediaMapper().mapPoster('tt1856010', Datas.ImdbMediaTitleImage_HouseOfCards)
+    const result = new ImdbMapper().mapPoster('tt1856010', Datas.ImdbTitleImage_HouseOfCards)
     expect(result).toMatchInlineSnapshot(`
       {
         "height": 2048,

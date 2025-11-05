@@ -1,20 +1,20 @@
 import axios, { type AxiosResponse } from "axios";
 import { Times, TitleDraft } from "@repo/common";
-import { ImdbMediaResponse, ImdbMediaTitle } from "./ImdbMediaTypes.js";
+import { ImdbResponse, ImdbTitle } from "./ImdbTypes.js";
 
-export class ImdbMediaRestClient {
+export class ImdbRestClient {
 
-  async findTitle(title: TitleDraft): Promise<ImdbMediaTitle | undefined> {
+  async findTitle(title: TitleDraft): Promise<ImdbTitle | undefined> {
     const axiosInstance = axios.create({
       baseURL: "https://v3.sg.media-imdb.com",
     });
-    const response: AxiosResponse<ImdbMediaResponse> = await axiosInstance.get(
+    const response: AxiosResponse<ImdbResponse> = await axiosInstance.get(
       `/suggestion/x/${encodeURIComponent(title.name)}.json`,
     );
     return this.filterFindTitle(response.data, title);
   }
 
-  filterFindTitle(data: ImdbMediaResponse, title: TitleDraft) {
+  filterFindTitle(data: ImdbResponse, title: TitleDraft) {
     const titlesMatchingYears = this.filterOnYears(data, title);
     const titlesMatchingName = this.filterOnName(titlesMatchingYears, title);
     if (titlesMatchingName.length === 1) {
@@ -23,7 +23,7 @@ export class ImdbMediaRestClient {
     return undefined
   }
 
-  private filterOnYears(data: ImdbMediaResponse, title: TitleDraft) {
+  private filterOnYears(data: ImdbResponse, title: TitleDraft) {
     if (!title.premiere) return [];
 
     const titlePremiereYear = Times.asDayjs(title.premiere).year();
@@ -42,7 +42,7 @@ export class ImdbMediaRestClient {
   }
 
   private filterOnName(
-    titles: ImdbMediaTitle[],
+    titles: ImdbTitle[],
     title: TitleDraft,
   ) {
     return titles.filter((t) => title.name === t.l);

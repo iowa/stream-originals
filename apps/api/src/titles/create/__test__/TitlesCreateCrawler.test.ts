@@ -2,16 +2,16 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { Datas } from "../../../lib/utils/data/Datas.js";
 import { WikiPageTitlesScraper } from "../../../lib/source/wikipedia/WikiPageTitlesScraper.js";
 import { TitlesCreateCrawler } from "../TitlesCreateCrawler.js";
-import { ImdbMediaRestClient } from "../../../lib/source/imdbmedia/ImdbMediaRestClient.js";
 import { getDbMock } from "@repo/common/db/dbMock";
 import { CDatas, DbDrizzle, TitlesRepository } from "@repo/common";
 import { PGlite } from "@electric-sql/pglite";
+import { ImdbRestClient } from "../../../lib/source/imdb/ImdbRestClient.js";
 
 describe("TitlesCreateCrawler", async () => {
   let pgClient: PGlite
   let wikiTitlesScraper: WikiPageTitlesScraper;
   let titlesRepository: TitlesRepository;
-  let imdbMediaRestClient: ImdbMediaRestClient;
+  let imdbRestClient: ImdbRestClient;
   let crawler: TitlesCreateCrawler;
 
   beforeEach(async () => {
@@ -23,13 +23,13 @@ describe("TitlesCreateCrawler", async () => {
 
     titlesRepository = new TitlesRepository(db as unknown as DbDrizzle);
 
-    imdbMediaRestClient = {
+    imdbRestClient = {
       findTitle: vi.fn()
-    } as unknown as ImdbMediaRestClient;
+    } as unknown as ImdbRestClient;
 
     crawler = new TitlesCreateCrawler(
       titlesRepository,
-      imdbMediaRestClient,
+      imdbRestClient,
       undefined,
       wikiTitlesScraper
     );
@@ -43,7 +43,7 @@ describe("TitlesCreateCrawler", async () => {
 
   it("create title found on wikipedia and imdbMedia", async () => {
     (wikiTitlesScraper.getTitles as any).mockResolvedValue([CDatas.TitleDraft_HouseOfCards]);
-    (imdbMediaRestClient.findTitle as any).mockResolvedValue(Datas.ImdbMediaTitle_HouseOfCards);
+    (imdbRestClient.findTitle as any).mockResolvedValue(Datas.ImdbTitle_HouseOfCards);
 
     const response = await crawler.upsert('netflix');
 
@@ -108,7 +108,7 @@ describe("TitlesCreateCrawler", async () => {
 
   it("create title draft found on wikipedia but not imdbMedia", async () => {
     (wikiTitlesScraper.getTitles as any).mockResolvedValue([CDatas.TitleDraft_HouseOfCards]);
-    (imdbMediaRestClient.findTitle as any).mockResolvedValue(undefined);
+    (imdbRestClient.findTitle as any).mockResolvedValue(undefined);
 
     const response = await crawler.upsert('netflix');
 

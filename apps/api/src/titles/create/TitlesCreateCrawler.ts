@@ -9,17 +9,17 @@ import {
 } from "@repo/common";
 import { gotScraping } from "crawlee";
 import { WikiPageTitlesScraper } from "../../lib/source/wikipedia/WikiPageTitlesScraper.js";
-import { ImdbMediaMapper } from "../../lib/source/imdbmedia/ImdbMediaMapper.js";
-import { ImdbMediaRestClient } from "../../lib/source/imdbmedia/ImdbMediaRestClient.js";
-import { ImdbMediaTitle } from "../../lib/source/imdbmedia/ImdbMediaTypes.js";
+import { ImdbRestClient } from "../../lib/source/imdb/ImdbRestClient.js";
+import { ImdbMapper } from "../../lib/source/imdb/ImdbMapper.js";
+import { ImdbTitle } from "../../lib/source/imdb/ImdbTypes.js";
 
 export class TitlesCreateCrawler {
   private readonly streamers: Map<Streamer, string[]> = new Map();
 
   constructor(
     private readonly titlesRepository: TitlesRepository = new TitlesRepository(),
-    private readonly imdbMediaRestClient: ImdbMediaRestClient = new ImdbMediaRestClient(),
-    private readonly imdbMediaMapper: ImdbMediaMapper = new ImdbMediaMapper(),
+    private readonly imdbMediaRestClient: ImdbRestClient = new ImdbRestClient(),
+    private readonly imdbMediaMapper: ImdbMapper = new ImdbMapper(),
     private readonly wikiTitlesScraper: WikiPageTitlesScraper = new WikiPageTitlesScraper()
   ) {
     this.streamers.set('appleTV+', ["https://en.wikipedia.org/wiki/List_of_Apple_TV%2B_original_programming"]);
@@ -87,7 +87,7 @@ export class TitlesCreateCrawler {
     }
   }
 
-  private async insertNewTitle(wikipediaTitle: TitleDraft, imdbMediaTitle: ImdbMediaTitle): Promise<void> {
+  private async insertNewTitle(wikipediaTitle: TitleDraft, imdbMediaTitle: ImdbTitle): Promise<void> {
     const newTitle: Title = this.imdbMediaMapper.mapTitle(wikipediaTitle, imdbMediaTitle);
     const insertedId = (imdbMediaTitle?.qid) ? await this.titlesRepository.insert(newTitle) : undefined;
     if (insertedId && imdbMediaTitle?.i) {
