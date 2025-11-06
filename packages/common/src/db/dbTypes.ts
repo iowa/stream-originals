@@ -1,10 +1,12 @@
 import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
 import {
   creditsTable,
-  interestsTable, titleRatingsTable,
-  titleCreditsTable, titleDraftsTable,
-  titleImagesTable,
-  titlesTable, titleInterestsTable
+  interestsTable,
+  titleCreditsTable,
+  titleDraftsTable,
+  titleInterestsTable,
+  titleRatingsTable,
+  titlesTable
 } from "./schema.js";
 
 export type TitleDraft = InferSelectModel<typeof titleDraftsTable>;
@@ -28,10 +30,6 @@ export const titleTypeValues = [
   "tvShort"
 ] as const;
 export type TitleType = (typeof titleTypeValues)[number];
-
-export const titleImageTypeValues = ["poster"] as const;
-export type TitleImageType = (typeof titleImageTypeValues)[number];
-export type TitleImage = InferSelectModel<typeof titleImagesTable>;
 
 export type Interest = InferSelectModel<typeof interestsTable>;
 export type TitleInterest = InferSelectModel<typeof titleInterestsTable>;

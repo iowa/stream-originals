@@ -39,16 +39,7 @@ describe("CreditsRepository", async () => {
             "episodes": 73,
             "finale": "2018-11-02",
             "id": "tt1856010",
-            "images": [
-              {
-                "height": 2048,
-                "id": "cb8fcac8-e826-4f91-9cb6-e78641168274",
-                "titleId": "tt1856010",
-                "type": "poster",
-                "url": "https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg",
-                "width": 1382,
-              },
-            ],
+            "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg",
             "name": "House of Cards",
             "plot": "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",
             "premiere": "2013-02-01",
@@ -65,7 +56,6 @@ describe("CreditsRepository", async () => {
 
   async function prepareData() {
     await titlesRepository.insert(CDatas.Title_tt1856010);
-    await titlesRepository.insertImage(CDatas.TitleImage_tt1856010_poster)
     await cut.insert(CDatas.Credit_nm0000228)
     await cut.insertTitle(CDatas.TitleCredit_tt1856010_nm0000228_star)
   }

@@ -2,7 +2,6 @@ import * as p from "drizzle-orm/pg-core";
 import {
   creditRoleValues, titleRatingTypeValues,
   streamerValues,
-  titleImageTypeValues,
   titleTypeValues
 } from "./dbTypes.js";
 
@@ -36,30 +35,8 @@ export const titlesTable = schema.table(
     runtimeSeconds: p.integer("runtime_seconds"),
     seasons: p.integer(),
     episodes: p.integer(),
+    imageUrl: p.text(),
   }
-);
-
-export const titleImageTypesEnum = p.pgEnum(
-  "title_image_types",
-  titleImageTypeValues,
-);
-
-export const titleImagesTable = schema.table(
-  "title_images",
-  {
-    id: p.uuid("id").primaryKey().defaultRandom(),
-    titleId: p
-    .varchar('title_id', { length: 20 })
-    .references(() => titlesTable.id)
-    .notNull(),
-    url: p.text().notNull(),
-    height: p.integer().notNull(),
-    width: p.integer().notNull(),
-    type: titleImageTypesEnum(),
-  },
-  (table) => ({
-    uniqueUrl: p.unique().on(table.url),
-  }),
 );
 
 export const interestsTable = schema.table('interests', {

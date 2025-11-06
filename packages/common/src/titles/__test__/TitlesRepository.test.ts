@@ -49,16 +49,7 @@ describe("TitlesRepository", async () => {
         "episodes": 73,
         "finale": "2018-11-02",
         "id": "tt1856010",
-        "images": [
-          {
-            "height": 2048,
-            "id": "cb8fcac8-e826-4f91-9cb6-e78641168274",
-            "titleId": "tt1856010",
-            "type": "poster",
-            "url": "https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg",
-            "width": 1382,
-          },
-        ],
+        "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg",
         "interests": [
           {
             "id": "in0000076",
@@ -116,7 +107,6 @@ describe("TitlesRepository", async () => {
   async function prepareData() {
     await cut.insert(CDatas.Title_tt1856010)
     await cut.insertRating(CDatas.TitleRating_tt1856010_imdb)
-    await cut.insertImage(CDatas.TitleImage_tt1856010_poster)
     await creditsRepository.insert(CDatas.Credit_nm0000228)
     await creditsRepository.insertTitle(CDatas.TitleCredit_tt1856010_nm0000228_star)
     await creditsRepository.insert(CDatas.Credit_nm0001226)

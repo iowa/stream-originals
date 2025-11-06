@@ -3,13 +3,11 @@ import {
   Streamer,
   Title,
   TitleDraft,
-  TitleImage,
   TitleInsertDraft,
   TitleRating
 } from "../db/dbTypes.js";
 import {
   titleDraftsTable,
-  titleImagesTable,
   titleRatingsTable,
   titlesTable
 } from "../db/schema.js";
@@ -73,14 +71,9 @@ export class TitlesRepository {
     })
   }
 
-  getImageByTitleId(titleId: string) {
-    return this.db.select().from(titleImagesTable).where(eq(titleImagesTable.titleId, titleId));
-  }
-
   getTitleDto(titleId: string): Promise<TitleDto | undefined> {
     return this.db.query.titlesTable.findFirst({
       with: {
-        images: true,
         ratings: { columns: { type: true, total: true, voteCount: true } },
         interests: { columns: { id: true, name: true, isSubgenre: true } },
         stars: { with: { credit: true } },
@@ -113,7 +106,6 @@ export class TitlesRepository {
   geTitleListDtos(streamer: Streamer, page?: number, pageSize?: number): Promise<TitleListDto[]> {
     return this.db.query.titlesTable.findMany({
       with: {
-        images: true,
         interests: { columns: { id: true, name: true, isSubgenre: true } },
         stars: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
         directors: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
@@ -146,10 +138,6 @@ export class TitlesRepository {
     return this.db
     .insert(titleDraftsTable)
     .values(titleDraft)
-  }
-
-  insertImage(image: TitleImage) {
-    return this.db.insert(titleImagesTable).values(image).onConflictDoNothing().returning({ insertedId: titleImagesTable.id });
   }
 
   insertRating(entity: TitleRating) {

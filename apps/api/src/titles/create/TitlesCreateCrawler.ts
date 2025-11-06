@@ -90,11 +90,7 @@ export class TitlesCreateCrawler {
 
   private async insertNewTitle(wikipediaTitle: TitleDraft, imdbMediaTitle: ImdbTitle): Promise<void> {
     const newTitle: Title = this.imdbMediaMapper.mapTitle(wikipediaTitle, imdbMediaTitle);
-    const insertedId = (imdbMediaTitle?.qid) ? await this.titlesRepository.insert(newTitle) : undefined;
-    if (insertedId && imdbMediaTitle?.i) {
-      const titleMedia = this.imdbMediaMapper.mapPoster(insertedId, imdbMediaTitle.i);
-      await this.titlesRepository.insertImage(titleMedia);
-    }
+    (imdbMediaTitle?.qid) ? await this.titlesRepository.insert(newTitle) : undefined;
   }
 
   private buildCreateResponse(url: string): TitlesCreate {

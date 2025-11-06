@@ -91,6 +91,7 @@ describe("TitlesPatcher", async () => {
           "episodes": 73,
           "finale": "2018-11-02",
           "id": "tt1856010",
+          "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg",
           "interests": [
             {
               "id": "in0000076",

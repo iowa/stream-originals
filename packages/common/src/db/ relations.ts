@@ -15,7 +15,6 @@ export const relations = defineRelations(schema, (r) => ({
     })
   },
   titlesTable: {
-    images: r.many.titleImagesTable(),
     interests: r.many.interestsTable(),
     stars: r.many.titleCreditsTable({
       where: {
@@ -43,12 +42,6 @@ export const relations = defineRelations(schema, (r) => ({
       from: r.titleCreditsTable.creditId,
       to: r.creditsTable.id,
       optional: false
-    })
-  },
-  titleImagesTable: {
-    title: r.one.titlesTable({
-      from: r.titleImagesTable.titleId,
-      to: r.titlesTable.id
     })
   },
   titleRatingsTable: {

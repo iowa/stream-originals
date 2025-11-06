@@ -1,1 +1,0 @@
-ALTER TYPE "public"."streamers" ADD VALUE 'primeVideo';

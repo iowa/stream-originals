@@ -9,7 +9,7 @@ export type ImdbTitle = {
   q: string;
   y: number;
   yr: string;
-  i: ImdbTitleImage;
+  i?: ImdbTitleImage;
 };
 
 export type ImdbTitleImage = {

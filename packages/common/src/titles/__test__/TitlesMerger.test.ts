@@ -67,6 +67,7 @@ describe("TitlesMerger", async () => {
           "episodes": 73,
           "finale": "2018-11-02",
           "id": "tt1856010",
+          "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg",
           "interests": [
             {
               "id": "in0000076",
@@ -160,6 +161,7 @@ describe("TitlesMerger", async () => {
           "episodes": 73,
           "finale": "2018-11-02",
           "id": "tt1856010",
+          "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg",
           "interests": [],
           "name": "House of Cards",
           "plot": "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",

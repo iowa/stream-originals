@@ -31,9 +31,6 @@ export class CreditsRepository {
     return this.db.query.creditsTable.findFirst({
       with: {
         titles: {
-          with: {
-            images: true
-          },
           orderBy: {
             premiere: 'asc'
           }

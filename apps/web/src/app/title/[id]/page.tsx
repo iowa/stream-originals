@@ -27,7 +27,7 @@ async function TitlePageData({ id }: { id: string }) {
     <TitleHeader title={title}/>
     <div className="card card-side">
       <div className="flex items-center">
-        <TitlesPoster title={title} images={title.images} width={278} height={414}/>
+        <TitlesPoster title={title} width={278} height={414}/>
       </div>
       <div className="card-body">
         <TitleInterests interests={title.interests} withSubgenres={true}/>

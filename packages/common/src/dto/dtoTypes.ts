@@ -1,4 +1,4 @@
-import { Interest, TitleRating, Title, TitleImage, Credit, TitleCredit } from "../db/dbTypes.js";
+import { Credit, Interest, Title, TitleCredit, TitleRating } from "../db/dbTypes.js";
 
 
 export type InterestPatchDto = Pick<Interest, 'id' | 'name'>;
@@ -18,7 +18,6 @@ export type TitlePatchDto = Title & {
 export type InterestListDto = Pick<Interest, 'id' | 'name' | 'isSubgenre'>;
 
 export type TitleListDto = Title & {
-  images: TitleImage[],
   interests: InterestListDto[],
   stars: CreditPatchDto[],
   directors: CreditPatchDto[],
@@ -32,7 +31,6 @@ export type TitleCreditWithCredit = TitleCredit & {
 };
 
 export type TitleDto = Title & {
-  images: TitleImage[],
   interests: InterestListDto[],
   ratings: TitleRatingPatchDto[],
   stars: TitleCreditWithCredit[],
@@ -40,9 +38,7 @@ export type TitleDto = Title & {
   writers: TitleCreditWithCredit[],
 }
 
-export type CreditTitleDto = Title & {
-  images: TitleImage[],
-}
+export type CreditTitleDto = Title
 
 export type CreditDto = Credit & {
   titles: CreditTitleDto[]

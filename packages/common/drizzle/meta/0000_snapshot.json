@@ -1,5 +1,5 @@
 {
-  "id": "4cd76ea4-acdc-4c4b-917c-ffd76d081cea",
+  "id": "13a3281a-fdfc-4de9-8e23-307dba6d0a58",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -217,80 +217,6 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "stream_originals.title_images": {
-      "name": "title_images",
-      "schema": "stream_originals",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
-        },
-        "title_id": {
-          "name": "title_id",
-          "type": "varchar(20)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "url": {
-          "name": "url",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "height": {
-          "name": "height",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "width": {
-          "name": "width",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "type": {
-          "name": "type",
-          "type": "title_image_types",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "title_images_title_id_titles_id_fk": {
-          "name": "title_images_title_id_titles_id_fk",
-          "tableFrom": "title_images",
-          "tableTo": "titles",
-          "schemaTo": "stream_originals",
-          "columnsFrom": [
-            "title_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "title_images_url_unique": {
-          "name": "title_images_url_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "url"
-          ]
-        }
-      },
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
     "stream_originals.title_interests": {
       "name": "title_interests",
       "schema": "stream_originals",
@@ -450,6 +376,12 @@
           "primaryKey": false,
           "notNull": false
         },
+        "finale": {
+          "name": "finale",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
         "plot": {
           "name": "plot",
           "type": "text",
@@ -466,6 +398,24 @@
         "runtime_seconds": {
           "name": "runtime_seconds",
           "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "seasons": {
+          "name": "seasons",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "episodes": {
+          "name": "episodes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "imageUrl": {
+          "name": "imageUrl",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         }
@@ -494,14 +444,8 @@
       "schema": "public",
       "values": [
         "appleTV+",
-        "netflix"
-      ]
-    },
-    "public.title_image_types": {
-      "name": "title_image_types",
-      "schema": "public",
-      "values": [
-        "poster"
+        "netflix",
+        "primeVideo"
       ]
     },
     "public.title_rating_types": {

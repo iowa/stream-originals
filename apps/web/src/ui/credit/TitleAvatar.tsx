@@ -9,7 +9,7 @@ export default function TitleAvatar({ title }: { title: CreditTitleDto }) {
     <Link href={Paths.title(title.id)}>
       <div className="card card-side bg-base-100 shadow-sm">
         <div className="flex items-center">
-          <TitlesPoster title={title} images={title.images} width={144} height={216}/>
+          <TitlesPoster title={title} width={144} height={216}/>
         </div>
         <div className="card-body">
           <h2 className="card-title text-sm">{title.name}</h2>

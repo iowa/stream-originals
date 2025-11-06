@@ -1,6 +1,6 @@
 import { AppConstants } from "@/lib/AppConstants";
 import { TimesClient } from "@/lib/utils/TimesClient";
-import { Title, TitleImage } from "@repo/common";
+import { Title } from "@repo/common";
 import { capitalCase } from "text-case";
 
 export class TitleUtils {
@@ -35,10 +35,6 @@ export class TitleUtils {
         : ` (E${title.episodes})`;
     }
     return details;
-  }
-
-  static titlePoster(images: TitleImage[]): TitleImage | undefined {
-    return images.find(value => value.type === 'poster')
   }
 
 }

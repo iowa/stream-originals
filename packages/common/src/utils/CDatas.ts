@@ -3,7 +3,6 @@ import {
   Credit,
   Interest,
   TitleCredit,
-  TitleImage,
   TitleInterest,
   TitleRating
 } from "../db/dbTypes.js";
@@ -28,6 +27,7 @@ export class CDatas {
     plot: "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",
     updatedAt: new Date("1970-01-01T00:00:00.000Z"),
     runtimeSeconds: 3000,
+    imageUrl: 'https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg'
   };
 
   public static readonly TitlePatchDto_tt1856010: TitlePatchDto = {
@@ -37,15 +37,6 @@ export class CDatas {
     directors: [],
     writers: [],
     ratings: []
-  }
-
-  public static readonly TitleImage_tt1856010_poster: TitleImage = {
-    id: "cb8fcac8-e826-4f91-9cb6-e78641168274",
-    titleId: "tt1856010",
-    url: "https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg",
-    height: 2048,
-    width: 1382,
-    type: "poster"
   }
 
   public static readonly Credit_nm0000228: Credit = {

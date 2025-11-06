@@ -1,22 +1,18 @@
 import Image from "next/image";
-import { ImageOff } from "lucide-react";
-import { Title, TitleImage } from "@repo/common";
-import { TitleUtils } from "@/lib/title/TitleUtils";
+import { Title } from "@repo/common";
 import AppImageOff from "@/ui/layout/AppImageOff";
 
-export default function TitlesPoster({ title, images, width, height }: {
+export default function TitlesPoster({ title, width, height }: {
   title: Title,
-  images: TitleImage[],
   width: number,
   height: number
 }) {
-  const titlePoster = TitleUtils.titlePoster(images);
   return (
     <div className="py-4 px-4">
       <div style={{ width: width, height: height, position: 'relative' }}>
-        {titlePoster ?
+        {title.imageUrl ?
           <Image
-            src={titlePoster.url}
+            src={title.imageUrl}
             alt={`${title.name}_poster`}
             fill
             style={{ objectFit: 'cover' }}

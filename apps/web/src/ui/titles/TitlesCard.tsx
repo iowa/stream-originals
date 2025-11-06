@@ -15,15 +15,16 @@ export function TitlesCard({ title }: { title: TitleListDto }) {
   const router = useRouter();
 
   return (
-    <div className="card card-side bg-base-100 border-1 border-base-300 shadow-sm cursor-pointer card-sm rounded-none"
-         onClick={e => {
-           const target = e.target as HTMLElement;
-           if (target.closest("a")) return;
-           router.push(Paths.title(title.id));
-         }}
+    <div
+      className="card card-side bg-base-100 border-1 border-base-300 shadow-sm cursor-pointer card-sm rounded-none"
+      onClick={e => {
+        const target = e.target as HTMLElement;
+        if (target.closest("a")) return;
+        router.push(Paths.title(title.id));
+      }}
     >
       <div className="flex items-center">
-        <TitlesPoster title={title} images={title.images} width={100.8} height={151.2}/>
+        <TitlesPoster title={title}width={100.8} height={151.2}/>
       </div>
       <div className="card-body">
         <div className="flex">

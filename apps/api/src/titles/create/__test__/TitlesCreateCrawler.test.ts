@@ -75,6 +75,7 @@ describe("TitlesCreateCrawler", async () => {
           "episodes": 73,
           "finale": "2018-11-02",
           "id": "tt1856010",
+          "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg",
           "name": "House of Cards",
           "plot": null,
           "premiere": "2013-02-01",
@@ -86,24 +87,6 @@ describe("TitlesCreateCrawler", async () => {
         },
       ]
     `)
-    const titlesMedia = await titlesRepository.getImageByTitleId(titles[0].id);
-    expect(
-      titlesMedia.map(({ id, ...rest }) => ({
-        id: "ignored",
-        ...rest
-      }))
-    ).toMatchInlineSnapshot(`
-      [
-        {
-          "height": 2048,
-          "id": "ignored",
-          "titleId": "tt1856010",
-          "type": "poster",
-          "url": "https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg",
-          "width": 1382,
-        },
-      ]
-    `);
   });
 
   it("create title draft found on wikipedia but not imdbMedia", async () => {
