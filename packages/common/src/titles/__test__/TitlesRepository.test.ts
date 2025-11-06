@@ -36,10 +36,8 @@ describe("TitlesRepository", async () => {
           {
             "credit": {
               "id": "nm0001226",
+              "imageUrl": "https://m.media-amazon.com/images/M/MV5BMjI1MDQyMTAxNF5BMl5BanBnXkFtZTgwMjg0MTM2NjE@._V1_.jpg",
               "name": "James Foley",
-              "primaryImageHeight": 548,
-              "primaryImageUrl": "https://m.media-amazon.com/images/M/MV5BMjI1MDQyMTAxNF5BMl5BanBnXkFtZTgwMjg0MTM2NjE@._V1_.jpg",
-              "primaryImageWidth": 362,
             },
             "creditId": "nm0001226",
             "role": "director",
@@ -73,10 +71,8 @@ describe("TitlesRepository", async () => {
           {
             "credit": {
               "id": "nm0000228",
+              "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTY1NzMyODc3Nl5BMl5BanBnXkFtZTgwNzE2MzA1NDM@._V1_.jpg",
               "name": "Kevin Spacey",
-              "primaryImageHeight": 1800,
-              "primaryImageUrl": "https://m.media-amazon.com/images/M/MV5BMTY1NzMyODc3Nl5BMl5BanBnXkFtZTgwNzE2MzA1NDM@._V1_.jpg",
-              "primaryImageWidth": 1471,
             },
             "creditId": "nm0000228",
             "role": "star",
@@ -90,10 +86,8 @@ describe("TitlesRepository", async () => {
           {
             "credit": {
               "id": "nm2802722",
+              "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTQ2ODk3Mjg3Ml5BMl5BanBnXkFtZTcwNTQyMjQwOQ@@._V1_.jpg",
               "name": "Beau Willimon",
-              "primaryImageHeight": 1365,
-              "primaryImageUrl": "https://m.media-amazon.com/images/M/MV5BMTQ2ODk3Mjg3Ml5BMl5BanBnXkFtZTcwNTQyMjQwOQ@@._V1_.jpg",
-              "primaryImageWidth": 2048,
             },
             "creditId": "nm2802722",
             "role": "writer",

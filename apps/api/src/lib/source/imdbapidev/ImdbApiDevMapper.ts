@@ -54,9 +54,7 @@ export class ImdbApiDevMapper {
     return {
       id: apiCredit.id!,
       name: apiCredit.displayName!,
-      primaryImageUrl: apiCredit.primaryImage?.url || null,
-      primaryImageWidth: apiCredit.primaryImage?.width || null,
-      primaryImageHeight: apiCredit.primaryImage?.height || null,
+      imageUrl: apiCredit.primaryImage?.url || null,
     }
   }
 

@@ -67,9 +67,7 @@ export const creditRolesEnum = p.pgEnum("credit_roles", creditRoleValues);
 export const creditsTable = schema.table("credits", {
   id: p.varchar('id', { length: 20 }).primaryKey(),
   name: p.text("name").notNull(),
-  primaryImageUrl: p.text("primary_image_url"),
-  primaryImageWidth: p.integer("primary_image_width"),
-  primaryImageHeight: p.integer("primary_image_height"),
+  imageUrl: p.text("imageUrl"),
 });
 
 export const titleCreditsTable = schema.table("title_credits", {

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ImageOff } from "lucide-react";
 import { Credit } from "@repo/common";
 import AppImageOff from "@/ui/layout/AppImageOff";
 
@@ -11,9 +10,9 @@ export default function CreditPoster({ credit, width, height }: {
   return (
     <div className="py-4 px-4">
       <div style={{ width: width, height: height, position: 'relative' }}>
-        {credit.primaryImageUrl ?
+        {credit.imageUrl ?
           <Image
-            src={credit.primaryImageUrl}
+            src={credit.imageUrl}
             alt={`${credit.name}_poster`}
             fill
             style={{ objectFit: 'cover' }}

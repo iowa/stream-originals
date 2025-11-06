@@ -42,25 +42,19 @@ export class CDatas {
   public static readonly Credit_nm0000228: Credit = {
     id: "nm0000228",
     name: "Kevin Spacey",
-    primaryImageUrl: "https://m.media-amazon.com/images/M/MV5BMTY1NzMyODc3Nl5BMl5BanBnXkFtZTgwNzE2MzA1NDM@._V1_.jpg",
-    primaryImageHeight: 1800,
-    primaryImageWidth: 1471
+    imageUrl: "https://m.media-amazon.com/images/M/MV5BMTY1NzMyODc3Nl5BMl5BanBnXkFtZTgwNzE2MzA1NDM@._V1_.jpg",
   }
 
   public static readonly Credit_nm0001226: Credit = {
     id: "nm0001226",
     name: "James Foley",
-    primaryImageUrl: "https://m.media-amazon.com/images/M/MV5BMjI1MDQyMTAxNF5BMl5BanBnXkFtZTgwMjg0MTM2NjE@._V1_.jpg",
-    primaryImageHeight: 548,
-    primaryImageWidth: 362
+    imageUrl: "https://m.media-amazon.com/images/M/MV5BMjI1MDQyMTAxNF5BMl5BanBnXkFtZTgwMjg0MTM2NjE@._V1_.jpg"
   }
 
   public static readonly Credit_nm2802722: Credit = {
     id: "nm2802722",
     name: "Beau Willimon",
-    primaryImageUrl: "https://m.media-amazon.com/images/M/MV5BMTQ2ODk3Mjg3Ml5BMl5BanBnXkFtZTcwNTQyMjQwOQ@@._V1_.jpg",
-    primaryImageHeight: 1365,
-    primaryImageWidth: 2048
+    imageUrl: "https://m.media-amazon.com/images/M/MV5BMTQ2ODk3Mjg3Ml5BMl5BanBnXkFtZTcwNTQyMjQwOQ@@._V1_.jpg"
   }
 
   public static readonly TitleCredit_tt1856010_nm0000228_star: TitleCredit = {

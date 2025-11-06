@@ -9,11 +9,11 @@ export default function CreditAvatar({ credit }: { credit: TitleCreditWithCredit
     <Link href={Paths.credit(credit.creditId)} passHref
           className="link link-hover overflow-hidden group">
       <div className="flex items-center gap-4">
-        {credit.credit.primaryImageUrl ?
+        {credit.credit.imageUrl ?
           <div className="avatar">
             <div className="w-36 rounded">
               <Image
-                src={credit.credit.primaryImageUrl || ''}
+                src={credit.credit.imageUrl || ''}
                 alt={`${credit.credit.name}_avatar`}
                 fill={true}
                 className="group-hover:brightness-90"
