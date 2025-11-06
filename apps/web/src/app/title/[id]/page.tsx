@@ -24,7 +24,7 @@ async function TitlePageData({ id }: { id: string }) {
     return <>No title found.</>
   }
   return <div className="card p-4">
-    <TitleHeader title={title}/>
+    <TitleHeader title={title} ratings={title.ratings} titleSize={'text-5xl'}/>
     <div className="card card-side">
       <div className="flex items-center">
         <TitlesPoster title={title} width={278} height={414}/>
