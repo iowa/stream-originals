@@ -97,7 +97,7 @@ export class TitlesRepository {
     const allTitleIds = await this.db
     .select({ titleId: titlesTable.id })
     .from(titlesTable)
-    .leftJoin(titleRatingsTable, eq(titlesTable.id, titleRatingsTable.titleId))
+    .innerJoin(titleRatingsTable, eq(titlesTable.id, titleRatingsTable.titleId))
     .where(eq(titlesTable.streamer, streamer))
     .orderBy(desc(titleRatingsTable.voteCount))
     .then(results => results.map(t => t.titleId));
