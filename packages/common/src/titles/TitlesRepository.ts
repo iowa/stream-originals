@@ -1,17 +1,7 @@
 import { dbDrizzle } from "../db/dbDrizzle.js";
-import {
-  Streamer,
-  Title,
-  TitleDraft,
-  TitleInsertDraft,
-  TitleRating
-} from "../db/dbTypes.js";
-import {
-  titleDraftsTable,
-  titleRatingsTable,
-  titlesTable
-} from "../db/schema.js";
-import { count, eq } from "drizzle-orm";
+import { Streamer, Title, TitleDraft, TitleInsertDraft, TitleRating } from "../db/dbTypes.js";
+import { titleDraftsTable, titleRatingsTable, titlesTable } from "../db/schema.js";
+import { count, desc, eq } from "drizzle-orm";
 import { TitleDto, TitleListDto, TitlePatchDto } from "../dto/dtoTypes.js";
 import { TitlesGetCountsResponse } from "./titleTypes.js";
 
@@ -103,21 +93,31 @@ export class TitlesRepository {
     });
   }
 
-  geTitleListDtos(streamer: Streamer, page?: number, pageSize?: number): Promise<TitleListDto[]> {
-    return this.db.query.titlesTable.findMany({
+  async geTitleListDtos(streamer: Streamer, page: number, pageSize: number): Promise<TitleListDto[]> {
+    const allTitleIds = await this.db
+    .select({ titleId: titlesTable.id })
+    .from(titlesTable)
+    .leftJoin(titleRatingsTable, eq(titlesTable.id, titleRatingsTable.titleId))
+    .orderBy(desc(titleRatingsTable.total))
+    .then(results => results.map(t => t.titleId));
+
+    const pageTitleIds = allTitleIds.slice((page - 1) * pageSize, page * pageSize);
+
+    const titles = await this.db.query.titlesTable.findMany({
       with: {
         interests: { columns: { id: true, name: true, isSubgenre: true } },
-        stars: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
-        directors: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
-        writers: { columns: {}, with: { credit: { columns: { id: true, name: true } } } },
+        stars: { with: { credit: { columns: { id: true, name: true } } } },
+        directors: { with: { credit: { columns: { id: true, name: true } } } },
+        writers: { with: { credit: { columns: { id: true, name: true } } } },
         ratings: { columns: { type: true, total: true, voteCount: true } }
       },
       where: {
-        streamer: streamer,
-      },
-      limit: pageSize,
-      offset: page && pageSize ? (page - 1) * pageSize : undefined,
+        streamer,
+        id: { in: pageTitleIds },
+      }
     });
+    const idToTitle = new Map(titles.map(t => [t.id, t]));
+    return pageTitleIds.map(id => idToTitle.get(id)).filter(Boolean) as TitleListDto[];
   }
 
   deleteDraft(titleDraft: TitleDraft) {
