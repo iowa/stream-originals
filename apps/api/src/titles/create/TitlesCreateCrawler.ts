@@ -3,8 +3,6 @@ import {
   Streamer,
   Title,
   TitleDraft,
-  TitlesCreate,
-  TitlesCreateResponse,
   TitlesRepository
 } from "@repo/common";
 import { gotScraping } from "crawlee";
@@ -12,6 +10,7 @@ import { WikiPageTitlesScraper } from "../../lib/source/wikipedia/WikiPageTitles
 import { ImdbRestClient } from "../../lib/source/imdb/ImdbRestClient.js";
 import { ImdbMapper } from "../../lib/source/imdb/ImdbMapper.js";
 import { ImdbTitle } from "../../lib/source/imdb/ImdbTypes.js";
+import { TitlesCreate, TitlesCreateResponse } from "../titleTypes.js";
 
 export class TitlesCreateCrawler {
   private readonly streamers: Map<Streamer, string[]> = new Map();

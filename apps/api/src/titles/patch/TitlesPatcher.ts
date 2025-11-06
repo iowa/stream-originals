@@ -3,12 +3,12 @@ import {
   Streamer,
   TitlePatchDto,
   TitlesMerger,
-  TitlesPatchResponse,
   TitlesRepository
 } from "@repo/common";
 import { ImdbApiDevRestClient } from "../../lib/source/imdbapidev/ImdbApiDevRestClient.js";
 import { ImdbApiDevMapper } from "../../lib/source/imdbapidev/ImdbApiDevMapper.js";
 import { CreditsRepository } from "@repo/common/credits/CreditsRepository";
+import { TitlesPatchResponse } from "../titleTypes.js";
 
 export class TitlesPatcher {
 

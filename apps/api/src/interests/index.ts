@@ -1,6 +1,6 @@
 import { InterestsService } from "./InterestsService.js";
 import { createRoute, OpenAPIHono } from "@hono/zod-openapi";
-import { InteretsCreateResponseSchema } from "@repo/common";
+import { InteretsCreateResponseSchema } from "./interestsTypes.js";
 
 const app = new OpenAPIHono();
 const service = new InterestsService();

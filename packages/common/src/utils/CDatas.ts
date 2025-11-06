@@ -113,6 +113,20 @@ export class CDatas {
     voteCount: 552661
   }
 
+  public static readonly TitleRating_tt4574334_imdb: TitleRating = {
+    titleId: CDatas.Title_tt4574334.id,
+    type: 'imdb',
+    total: "8.6",
+    voteCount: 1498843
+  }
+
+  public static readonly TitleRating_tt14852808_imdb: TitleRating = {
+    titleId: CDatas.Title_tt14852808.id,
+    type: 'imdb',
+    total: "6.5",
+    voteCount: 90666
+  }
+
   public static readonly Interest_in0000076: Interest = {
     id: "in0000076",
     name: "Drama",

@@ -5,7 +5,7 @@ import {
   TitlesPatchRequest,
   TitlesPatchRequestSchema,
   TitlesPatchResponseSchema
-} from "@repo/common";
+} from "./titleTypes.js";
 import { TitlesService } from "./TitlesService.js";
 
 const app = new OpenAPIHono();

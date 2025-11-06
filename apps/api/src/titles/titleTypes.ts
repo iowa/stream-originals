@@ -1,5 +1,5 @@
+import { streamerValues } from "@repo/common";
 import { z } from "zod";
-import { streamerValues } from "../db/dbTypes.js";
 
 export const TitlesGetCountsResponseSchema = z.record(z.enum(streamerValues), z.number());
 

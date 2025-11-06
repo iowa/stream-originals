@@ -3,7 +3,6 @@ import { Streamer, Title, TitleDraft, TitleInsertDraft, TitleRating } from "../d
 import { titleDraftsTable, titleRatingsTable, titlesTable } from "../db/schema.js";
 import { count, desc, eq } from "drizzle-orm";
 import { TitleDto, TitleListDto, TitlePatchDto } from "../dto/dtoTypes.js";
-import { TitlesGetCountsResponse } from "./titleTypes.js";
 
 export class TitlesRepository {
   private readonly db
@@ -12,16 +11,11 @@ export class TitlesRepository {
     this.db = dbInstance
   }
 
-  async getCounts(): Promise<TitlesGetCountsResponse> {
-    const results = await this.db
+  async getCounts() {
+    return await this.db
     .select({ streamer: titlesTable.streamer, count: count() })
     .from(titlesTable)
     .groupBy(titlesTable.streamer);
-
-    return results.reduce((acc, { streamer, count }) => {
-      acc[streamer as keyof TitlesGetCountsResponse] = count;
-      return acc;
-    }, {} as TitlesGetCountsResponse);
   }
 
   async getCount(streamer: Streamer): Promise<number> {

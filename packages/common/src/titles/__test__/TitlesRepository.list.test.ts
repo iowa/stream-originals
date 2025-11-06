@@ -24,17 +24,17 @@ describe("TitlesRepository list", async () => {
 
     const result1 = await cut.geTitleListDtos('netflix', 1, 1);
 
-    expect(result1.map(value => value.id)).toEqual(
+    expect(result1.map(value => value.name)).toEqual(
       [
-        "tt1856010",
+        "Stranger Things",
       ]
     )
     const result2 = await cut.geTitleListDtos('netflix', 1, 2);
 
-    expect(result2.map(value => value.id)).toEqual(
+    expect(result2.map(value => value.name)).toEqual(
       [
-        "tt1856010",
-        "tt4574334"
+        "Stranger Things",
+        "House of Cards"
       ]
     )
   })
@@ -44,17 +44,17 @@ describe("TitlesRepository list", async () => {
 
     const result1 = await cut.geTitleListDtos('netflix', 1, 2);
 
-    expect(result1.map(value => value.id)).toEqual(
+    expect(result1.map(value => value.name)).toEqual(
       [
-        "tt1856010",
-        "tt4574334"
+        "Stranger Things",
+        "House of Cards"
       ]
     )
     const result2 = await cut.geTitleListDtos('netflix', 2, 2);
 
-    expect(result2.map(value => value.id)).toEqual(
+    expect(result2.map(value => value.name)).toEqual(
       [
-        "tt14852808"
+        "The Watcher"
       ]
     )
   })
@@ -62,8 +62,11 @@ describe("TitlesRepository list", async () => {
 
   async function prepareData() {
     await cut.insert(CDatas.Title_tt1856010)
+    await cut.insertRating(CDatas.TitleRating_tt1856010_imdb)
     await cut.insert(CDatas.Title_tt4574334)
+    await cut.insertRating(CDatas.TitleRating_tt4574334_imdb)
     await cut.insert(CDatas.Title_tt14852808)
+    await cut.insertRating(CDatas.TitleRating_tt14852808_imdb)
   }
 
 });
