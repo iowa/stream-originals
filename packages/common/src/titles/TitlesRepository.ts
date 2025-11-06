@@ -98,7 +98,8 @@ export class TitlesRepository {
     .select({ titleId: titlesTable.id })
     .from(titlesTable)
     .leftJoin(titleRatingsTable, eq(titlesTable.id, titleRatingsTable.titleId))
-    .orderBy(desc(titleRatingsTable.total))
+    .where(eq(titlesTable.streamer, streamer))
+    .orderBy(desc(titleRatingsTable.voteCount))
     .then(results => results.map(t => t.titleId));
 
     const pageTitleIds = allTitleIds.slice((page - 1) * pageSize, page * pageSize);
