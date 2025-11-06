@@ -30,6 +30,36 @@ export class CDatas {
     imageUrl: 'https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_.jpg'
   };
 
+  public static readonly Title_tt4574334: Title = {
+    id: "tt4574334",
+    name: "Stranger Things",
+    streamer: "netflix",
+    premiere: "2016-07-15",
+    finale: null,
+    seasons: 4,
+    episodes: 34,
+    type: "tvSeries",
+    plot: null,
+    updatedAt: null,
+    runtimeSeconds: null,
+    imageUrl: "https://m.media-amazon.com/images/M/MV5BNjRiMTA4NWUtNmE0ZC00NGM0LWJhMDUtZWIzMDM5ZDIzNTg3XkEyXkFqcGc@._V1_.jpg",
+  }
+
+  public static readonly Title_tt14852808: Title = {
+    id: "tt14852808",
+    name: "The Watcher",
+    streamer: "netflix",
+    premiere: "2022-10-13",
+    finale: null,
+    seasons: 1,
+    episodes: 7,
+    type: "tvSeries",
+    plot: null,
+    updatedAt: null,
+    runtimeSeconds: null,
+    imageUrl: "https://m.media-amazon.com/images/M/MV5BOTRhNjhhMTEtY2U4Ni00Mzc4LTkwNzgtYmFmYmUzYWJkNzVmXkEyXkFqcGc@._V1_.jpg",
+  }
+
   public static readonly TitlePatchDto_tt1856010: TitlePatchDto = {
     ...CDatas.Title_tt1856010,
     interests: [],
