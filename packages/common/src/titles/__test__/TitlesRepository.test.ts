@@ -2,11 +2,11 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { getDbMock } from "../../db/dbMock.js";
 import { DbDrizzle } from "../../db/dbDrizzle.js";
 import { PGlite } from "@electric-sql/pglite";
-import { CDatas } from "../../utils/CDatas.js";
 import { CreditsRepository } from "../../credits/CreditsRepository.js";
 import { TitlesRepository } from "../TitlesRepository.js";
 import { InterestsRepository } from "../../interests/InterestsRepository.js";
-import { TestEntities } from "../../utils/TestEntities.js";
+import { TestEntities } from "../../utils/testing/TestEntities.js";
+import { TestData } from "../../utils/testing/TestData.js";
 
 describe("TitlesRepository", async () => {
   let pgClient: PGlite
@@ -31,7 +31,7 @@ describe("TitlesRepository", async () => {
   it("getTitleDto", async () => {
     await prepareData()
 
-    const result = await cut.getTitleDto(CDatas.TestTitle_House_of_Cards.title.id);
+    const result = await cut.getTitleDto(TestData.TestTitle_HouseOfCards.title.id);
 
     expect(result).toMatchInlineSnapshot(`
       {
@@ -56,6 +56,11 @@ describe("TitlesRepository", async () => {
             "id": "in0000076",
             "isSubgenre": null,
             "name": "Drama",
+          },
+          {
+            "id": "in0000186",
+            "isSubgenre": null,
+            "name": "Thriller",
           },
         ],
         "name": "House of Cards",
@@ -102,6 +107,6 @@ describe("TitlesRepository", async () => {
   })
 
   async function prepareData() {
-    await testEntities.insertTitle(CDatas.TestTitle_House_of_Cards)
+    await testEntities.insertTitle(TestData.TestTitle_HouseOfCards)
   }
 });

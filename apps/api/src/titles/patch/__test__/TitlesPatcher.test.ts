@@ -1,9 +1,8 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { getDbMock } from "@repo/common/db/dbMock";
 import {
-  CDatas,
   DbDrizzle,
-  InterestsRepository,
+  InterestsRepository, TestData,
   TestFiles,
   TitlePatchDto,
   TitlesMerger,
@@ -56,7 +55,7 @@ describe("TitlesPatcher", async () => {
   });
 
   it("patch title", async () => {
-    const titleDto: TitlePatchDto = CDatas.TitlePatchDto_House_of_Cards;
+    const titleDto: TitlePatchDto = TestData.TitlePatchDto_HouseOfCards;
     await prepareData(titleDto);
 
     const apiResponse: ImdbapiBatchGetTitlesResponse = TestFiles.loadJson(__dirname, `/data/imdbapidev_tt1856010.json`);

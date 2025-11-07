@@ -4,17 +4,23 @@ import { DbDrizzle } from "../../db/dbDrizzle.js";
 import { PGlite } from "@electric-sql/pglite";
 import { CreditsRepository } from "../CreditsRepository.js";
 import { TitlesRepository } from "../../titles/TitlesRepository.js";
-import { CDatas } from "../../utils/CDatas.js";
+import { TestData } from "../../utils/testing/TestData.js";
+import { TestCredits } from "../../utils/testing/TestCredits.js";
+import { TestEntities } from "../../utils/testing/TestEntities.js";
 
 describe("CreditsRepository", async () => {
   let pgClient: PGlite
   let titlesRepository: TitlesRepository;
+  let creditsRepository: CreditsRepository;
+  let testEntities: TestEntities;
   let cut: CreditsRepository;
 
   beforeEach(async () => {
     let { client, db } = await getDbMock();
     pgClient = client
     titlesRepository = new TitlesRepository(db as unknown as DbDrizzle);
+    creditsRepository = new CreditsRepository(db as unknown as DbDrizzle);
+    testEntities = new TestEntities(titlesRepository, undefined, creditsRepository);
     cut = new CreditsRepository(db as unknown as DbDrizzle);
   });
 
@@ -25,7 +31,7 @@ describe("CreditsRepository", async () => {
   it("getCreditDto", async () => {
     await prepareData()
 
-    const result = await cut.getCreditDto(CDatas.Credit_Kevin_Spacey.id);
+    const result = await cut.getCreditDto(TestCredits.Kevin_Spacey.id);
 
     expect(result).toMatchInlineSnapshot(`
       {
@@ -53,12 +59,6 @@ describe("CreditsRepository", async () => {
   })
 
   async function prepareData() {
-    /*
-    await titlesRepository.insert(CDatas.Title_tt1856010);
-    await cut.insert(CDatas.Credit_Kevin_Spacey)
-    await cut.insertTitle(CDatas.TitleCredit_tt1856010_nm0000228_star)
-
-     */
+    await testEntities.insertTitle(TestData.TestTitle_HouseOfCards)
   }
-
 });

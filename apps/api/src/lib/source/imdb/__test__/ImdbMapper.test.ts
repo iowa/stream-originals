@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { ImdbMapper } from "../ImdbMapper.js";
-import { CDatas } from "@repo/common";
+import { TestData } from "@repo/common";
 import { Datas } from "../../../utils/data/Datas.js";
 
 describe("ImdbMapper", () => {
   it("mapTitle", () => {
-    const result = new ImdbMapper().mapTitle(CDatas.TitleDraft_HouseOfCards, Datas.ImdbTitle_HouseOfCards)
+    const result = new ImdbMapper().mapTitle(TestData.TitleDraft_HouseOfCards, Datas.ImdbTitle_HouseOfCards)
 
     expect(result).toMatchInlineSnapshot(`
       {

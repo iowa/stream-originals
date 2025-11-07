@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { ImdbRestClient } from "../ImdbRestClient.js";
-import { CDatas, TestFiles } from "@repo/common";
+import { TestData, TestFiles } from "@repo/common";
 import { ImdbResponse } from "../ImdbTypes.js";
 
 describe("ImdbRestClient", () => {
   it("findTitle House of Cards", async () => {
-    const result = await new ImdbRestClient().findTitle(CDatas.TitleDraft_HouseOfCards);
+    const result = await new ImdbRestClient().findTitle(TestData.TitleDraft_HouseOfCards);
     expect(result?.l).equals("House of Cards");
     expect(result?.y).equals(2013);
     expect(result?.yr).equals("2013-2018");

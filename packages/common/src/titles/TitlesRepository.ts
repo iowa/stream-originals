@@ -4,17 +4,19 @@ import {
   Title,
   TitleCredit,
   TitleDraft,
-  TitleInsertDraft, TitleInterest,
+  TitleInsertDraft,
+  TitleInterest,
   TitleRating
 } from "../db/dbTypes.js";
 import {
   titleCreditsTable,
-  titleDraftsTable, titleInterestsTable,
+  titleDraftsTable,
+  titleInterestsTable,
   titleRatingsTable,
   titlesTable
 } from "../db/schema.js";
-import { count, desc, eq } from "drizzle-orm";
-import { CreditDto, TitleDto, TitleListDto, TitlePatchDto } from "../dto/dtoTypes.js";
+import { count, eq } from "drizzle-orm";
+import { TitleDto, TitlePatchDto } from "../dto/dtoTypes.js";
 
 export class TitlesRepository {
   private readonly db
@@ -99,46 +101,15 @@ export class TitlesRepository {
     });
   }
 
-  async geTitleListDtos(streamer: Streamer, page: number, pageSize: number): Promise<TitleListDto[]> {
-    const allTitleIds = await this.db
-    .select({ titleId: titlesTable.id })
-    .from(titlesTable)
-    .innerJoin(titleRatingsTable, eq(titlesTable.id, titleRatingsTable.titleId))
-    .where(eq(titlesTable.streamer, streamer))
-    .orderBy(desc(titleRatingsTable.voteCount))
-    .then(results => results.map(t => t.titleId));
-
-    const pageTitleIds = allTitleIds.slice((page - 1) * pageSize, page * pageSize);
-
-    const titles = await this.db.query.titlesTable.findMany({
-      with: {
-        interests: { columns: { id: true, name: true, isSubgenre: true } },
-        stars: { with: { credit: { columns: { id: true, name: true } } } },
-        directors: { with: { credit: { columns: { id: true, name: true } } } },
-        writers: { with: { credit: { columns: { id: true, name: true } } } },
-        ratings: { columns: { type: true, total: true, voteCount: true } }
-      },
-      where: {
-        streamer,
-        id: { in: pageTitleIds },
-      }
-    });
-    const idToTitle = new Map(titles.map(t => [t.id, t]));
-    return pageTitleIds.map(id => idToTitle.get(id)).filter(Boolean) as TitleListDto[];
-  }
-
   deleteDraft(titleDraft: TitleDraft) {
     return this.db.delete(titleDraftsTable).where(eq(titleDraftsTable.id, titleDraft.id));
   }
 
   async insert(title: Title) {
-    const result = await this.db
+    return this.db
     .insert(titlesTable)
     .values(title)
     .onConflictDoNothing()
-    .returning({ insertedId: titlesTable.id });
-
-    return result[0]?.insertedId;
   }
 
   insertDraft(titleDraft: TitleInsertDraft) {

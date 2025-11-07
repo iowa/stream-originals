@@ -9,7 +9,7 @@ import { TitlePatchDto } from "../../dto/dtoTypes.js";
 import { InterestsRepository } from "../../interests/InterestsRepository.js";
 import { CreditsRepository } from "../../credits/CreditsRepository.js";
 import { PGlite } from "@electric-sql/pglite";
-import { CDatas } from "../../utils/CDatas.js";
+import { TestData } from "../../utils/testing/TestData.js";
 
 describe("TitlesMerger", async () => {
   let pgClient: PGlite
@@ -34,7 +34,7 @@ describe("TitlesMerger", async () => {
   });
 
   it("Merge original with updated and inverse", async () => {
-    const original: TitlePatchDto = CDatas.TitlePatchDto_House_of_Cards;
+    const original: TitlePatchDto = TestData.TitlePatchDto_HouseOfCards;
     const updated: TitlePatchDto = TestFiles.loadJson(__dirname, 'data/title_updated_tt1856010.json');
     await prepareData(original)
     await cut.merge(original, updated);

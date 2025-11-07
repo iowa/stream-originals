@@ -37,6 +37,7 @@ export type TitleInterest = InferSelectModel<typeof titleInterestsTable>;
 export const creditRoleValues = ["star", "writer", "director"] as const;
 export type CreditRole = (typeof creditRoleValues)[number];
 export type Credit = InferSelectModel<typeof creditsTable>;
+export type CreditWithRole = Credit & { role: CreditRole };
 export type TitleCredit = InferSelectModel<typeof titleCreditsTable>;
 
 export const titleRatingTypeValues = ['imdb'] as const;

@@ -31,7 +31,7 @@ export class InterestsRepository {
   }
 
   insert(entity: Interest) {
-    return this.db.insert(interestsTable).values(entity)
+    return this.db.insert(interestsTable).values(entity).onConflictDoNothing()
   }
 
 }
