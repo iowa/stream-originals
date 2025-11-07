@@ -48,5 +48,5 @@ export default function TitleTypePieChart({ titleTypes }: { titleTypes: TitleTyp
   }, [data]);
 
 
-  return <div ref={chartRef} style={{ width: "600px", height: "400px" }}/>;
+  return <div ref={chartRef} style={{ width: "600px", height: "800px" }}/>;
 };

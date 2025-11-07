@@ -39,7 +39,7 @@ export type TitleDto = Title & {
 }
 
 export type TitleTypeChart = {
-  type: string,
+  type: string | null,
   typeCount: number,
 }
 

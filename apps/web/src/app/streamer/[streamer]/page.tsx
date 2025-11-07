@@ -18,7 +18,7 @@ export default async function StreamerPage({ params }: {
 async function StreamerPageData({ streamer }: {
   streamer: Streamer,
 }) {
-  const titleTypes: TitleTypeChart[] = await new StreamerRepository().titleTypes(decodeURIComponent(streamer) as Streamer);
+  const titleTypes: TitleTypeChart[] = await new StreamerRepository().titlesGroupedByInterests(decodeURIComponent(streamer) as Streamer);
 
   return (
     <div className="flex items-center flex-col gap-4">

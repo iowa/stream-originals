@@ -6,6 +6,7 @@ import { TitlesRepository } from "../../titles/TitlesRepository.js";
 import { TestData } from "../../utils/testing/TestData.js";
 import { TestEntities } from "../../utils/testing/TestEntities.js";
 import { StreamerRepository } from "../StreamerRepository.js";
+import { InterestsRepository } from "../../interests/InterestsRepository.js";
 
 describe("StreamerRepository", async () => {
   let pgClient: PGlite
@@ -15,7 +16,12 @@ describe("StreamerRepository", async () => {
   beforeEach(async () => {
     let { client, db } = await getDbMock();
     pgClient = client
-    testEntities = new TestEntities(new TitlesRepository(db as unknown as DbDrizzle), undefined, undefined);
+
+    testEntities = new TestEntities(
+      new TitlesRepository(db as unknown as DbDrizzle),
+      new InterestsRepository(db as unknown as DbDrizzle),
+      undefined
+    );
     cut = new StreamerRepository(db as unknown as DbDrizzle);
   });
 
@@ -37,6 +43,41 @@ describe("StreamerRepository", async () => {
         {
           "type": "tvMiniSeries",
           "typeCount": 2,
+        },
+      ]
+    `)
+  })
+
+  it("titlesGroupedByInterests", async () => {
+    await prepareData()
+
+    const result = await cut.titlesGroupedByInterests('netflix');
+
+    expect(result).toMatchInlineSnapshot(`
+      [
+        {
+          "type": "Drama",
+          "typeCount": 5,
+        },
+        {
+          "type": "Fantasy",
+          "typeCount": 2,
+        },
+        {
+          "type": "Horror",
+          "typeCount": 3,
+        },
+        {
+          "type": "Mystery",
+          "typeCount": 3,
+        },
+        {
+          "type": "Sci-Fi",
+          "typeCount": 1,
+        },
+        {
+          "type": "Thriller",
+          "typeCount": 3,
         },
       ]
     `)

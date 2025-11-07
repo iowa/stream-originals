@@ -1,5 +1,5 @@
 import { dbDrizzle } from "../db/dbDrizzle.js";
-import { titlesTable } from "../db/schema.js";
+import { interestsTable, titleInterestsTable, titlesTable } from "../db/schema.js";
 import { eq, sql } from "drizzle-orm";
 import { Streamer } from "../db/dbTypes.js";
 import { TitleTypeChart } from "../dto/dtoTypes.js";
@@ -26,6 +26,21 @@ export class StreamerRepository {
     ${titlesTable.type}
     )
     DESC`)
+  }
+
+  titlesGroupedByInterests(streamer: Streamer): Promise<TitleTypeChart[]> {
+    return this.db
+    .select({
+      type: interestsTable.category,
+      typeCount: sql<number>`count(
+      ${interestsTable.name}
+      )`
+    })
+    .from(titleInterestsTable)
+    .innerJoin(titlesTable, eq(titleInterestsTable.titleId, titlesTable.id))
+    .innerJoin(interestsTable, eq(titleInterestsTable.interestId, interestsTable.id))
+    .where(eq(titlesTable.streamer, streamer))
+    .groupBy(interestsTable.category)
   }
 
 }
