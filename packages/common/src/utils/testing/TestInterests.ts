@@ -51,3 +51,11 @@ export class TestInterests {
   }
 
 }
+
+/*
+SELECT *
+FROM
+	interests
+WHERE
+	ID IN ( SELECT interest_id FROM title_interests WHERE title_id = 'tt1856010' );
+*/

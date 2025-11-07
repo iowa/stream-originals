@@ -38,8 +38,14 @@ export type TitleDto = Title & {
   writers: TitleCreditWithCredit[],
 }
 
+export type TitleTypeChart = {
+  type: string,
+  typeCount: number,
+}
+
 export type CreditTitleDto = Title
 
 export type CreditDto = Credit & {
   titles: CreditTitleDto[]
 }
+

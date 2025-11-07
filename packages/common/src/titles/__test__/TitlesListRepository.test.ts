@@ -69,7 +69,7 @@ describe("TitlesListRepository", async () => {
   async function prepareData() {
     await testEntities.insertTitle(TestData.TestTitle_HouseOfCards)
     await testEntities.insertTitle(TestData.TestTitle_TheWatcher)
-    await testEntities.insertTitle(TestData.TestTitle_StrangerThings)
+    await testEntities.insertTitle(TestData.TestTitle_MidnightMass)
   }
 
 });

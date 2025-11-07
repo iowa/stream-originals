@@ -4,6 +4,8 @@ import { TestTitleHouseOfCards } from "./TestTitleHouseOfCards.js"
 import { TestTitleTheWatcher } from "./TestTitleTheWatcher.js";
 import { TitlePatchDto } from "../../dto/dtoTypes.js";
 import { TestTitleStrangerThings } from "./TestTitleStrangerThings.js";
+import { TestTitleMidnightMass } from "./TestTitleMidnightMass.js";
+import { TestTitlesTheQueensGambit } from "./TestTitlesTheQueensGambit.js";
 
 export class TestData {
 
@@ -14,5 +16,9 @@ export class TestData {
   public static readonly TestTitle_TheWatcher: TestTitle = TestTitleTheWatcher.TestTitle
 
   public static readonly TestTitle_StrangerThings: TestTitle = TestTitleStrangerThings.TestTitle
+
+  public static readonly TestTitle_MidnightMass: TestTitle = TestTitleMidnightMass.TestTitle
+
+  public static readonly TestTitle_TheQueensGambit: TestTitle = TestTitlesTheQueensGambit.TestTitle
 
 }
