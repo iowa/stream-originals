@@ -1,8 +1,20 @@
 import { dbDrizzle } from "../db/dbDrizzle.js";
-import { Streamer, Title, TitleDraft, TitleInsertDraft, TitleRating } from "../db/dbTypes.js";
-import { titleDraftsTable, titleRatingsTable, titlesTable } from "../db/schema.js";
+import {
+  Streamer,
+  Title,
+  TitleCredit,
+  TitleDraft,
+  TitleInsertDraft, TitleInterest,
+  TitleRating
+} from "../db/dbTypes.js";
+import {
+  titleCreditsTable,
+  titleDraftsTable, titleInterestsTable,
+  titleRatingsTable,
+  titlesTable
+} from "../db/schema.js";
 import { count, desc, eq } from "drizzle-orm";
-import { TitleDto, TitleListDto, TitlePatchDto } from "../dto/dtoTypes.js";
+import { CreditDto, TitleDto, TitleListDto, TitlePatchDto } from "../dto/dtoTypes.js";
 
 export class TitlesRepository {
   private readonly db
@@ -135,8 +147,16 @@ export class TitlesRepository {
     .values(titleDraft)
   }
 
-  insertRating(entity: TitleRating) {
+  insertTitleRating(entity: TitleRating) {
     return this.db.insert(titleRatingsTable).values(entity)
+  }
+
+  insertTitleCredit(entity: TitleCredit) {
+    return this.db.insert(titleCreditsTable).values(entity)
+  }
+
+  insertTitleInterest(entity: TitleInterest) {
+    return this.db.insert(titleInterestsTable).values(entity)
   }
 
   updateTitle(entity: Title) {

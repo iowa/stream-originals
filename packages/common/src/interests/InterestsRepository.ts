@@ -34,8 +34,4 @@ export class InterestsRepository {
     return this.db.insert(interestsTable).values(entity)
   }
 
-  insertTitle(entity: TitleInterest) {
-    return this.db.insert(titleInterestsTable).values(entity)
-  }
-
 }

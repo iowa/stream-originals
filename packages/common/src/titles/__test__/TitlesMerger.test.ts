@@ -34,7 +34,7 @@ describe("TitlesMerger", async () => {
   });
 
   it("Merge original with updated and inverse", async () => {
-    const original: TitlePatchDto = CDatas.TitlePatchDto_tt1856010;
+    const original: TitlePatchDto = CDatas.TitlePatchDto_House_of_Cards;
     const updated: TitlePatchDto = TestFiles.loadJson(__dirname, 'data/title_updated_tt1856010.json');
     await prepareData(original)
     await cut.merge(original, updated);

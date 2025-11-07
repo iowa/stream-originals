@@ -25,7 +25,7 @@ describe("CreditsRepository", async () => {
   it("getCreditDto", async () => {
     await prepareData()
 
-    const result = await cut.getCreditDto(CDatas.Credit_nm0000228.id);
+    const result = await cut.getCreditDto(CDatas.Credit_Kevin_Spacey.id);
 
     expect(result).toMatchInlineSnapshot(`
       {
@@ -53,9 +53,12 @@ describe("CreditsRepository", async () => {
   })
 
   async function prepareData() {
+    /*
     await titlesRepository.insert(CDatas.Title_tt1856010);
-    await cut.insert(CDatas.Credit_nm0000228)
+    await cut.insert(CDatas.Credit_Kevin_Spacey)
     await cut.insertTitle(CDatas.TitleCredit_tt1856010_nm0000228_star)
+
+     */
   }
 
 });

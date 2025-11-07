@@ -56,7 +56,7 @@ describe("TitlesPatcher", async () => {
   });
 
   it("patch title", async () => {
-    const titleDto: TitlePatchDto = CDatas.TitlePatchDto_tt1856010;
+    const titleDto: TitlePatchDto = CDatas.TitlePatchDto_House_of_Cards;
     await prepareData(titleDto);
 
     const apiResponse: ImdbapiBatchGetTitlesResponse = TestFiles.loadJson(__dirname, `/data/imdbapidev_tt1856010.json`);

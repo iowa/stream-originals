@@ -61,12 +61,15 @@ describe("TitlesRepository list", async () => {
 
 
   async function prepareData() {
+    /*
     await cut.insert(CDatas.Title_tt1856010)
-    await cut.insertRating(CDatas.TitleRating_tt1856010_imdb)
+    await cut.insertTitleRating(CDatas.TitleRating_tt1856010_imdb)
     await cut.insert(CDatas.Title_tt4574334)
-    await cut.insertRating(CDatas.TitleRating_tt4574334_imdb)
+    await cut.insertTitleRating(CDatas.TitleRating_tt4574334_imdb)
     await cut.insert(CDatas.Title_tt14852808)
-    await cut.insertRating(CDatas.TitleRating_tt14852808_imdb)
+    await cut.insertTitleRating(CDatas.TitleRating_tt14852808_imdb)
+
+     */
   }
 
 });

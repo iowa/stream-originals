@@ -23,10 +23,6 @@ export class CreditsRepository {
     return this.db.insert(creditsTable).values(entity)
   }
 
-  insertTitle(entity: TitleCredit) {
-    return this.db.insert(titleCreditsTable).values(entity)
-  }
-
   async getCreditDto(creditId: string): Promise<CreditDto | undefined> {
     return this.db.query.creditsTable.findFirst({
       with: {

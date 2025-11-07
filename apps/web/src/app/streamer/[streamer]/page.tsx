@@ -1,5 +1,6 @@
 import { Streamer } from "@repo/common";
 import { Suspense } from "react";
+import StreamerView from "@/ui/streamer/StreamerView";
 
 export default async function StreamerPage({ params }: {
   params: Promise<{ streamer: Streamer }>,
@@ -18,7 +19,7 @@ async function StreamerPageData({ streamer }: {
 }) {
   return (
     <div className="flex items-center flex-col gap-4">
-      {streamer}
+      <StreamerView/>
     </div>
   );
 }

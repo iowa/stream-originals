@@ -6,11 +6,13 @@ import { CDatas } from "../../utils/CDatas.js";
 import { CreditsRepository } from "../../credits/CreditsRepository.js";
 import { TitlesRepository } from "../TitlesRepository.js";
 import { InterestsRepository } from "../../interests/InterestsRepository.js";
+import { TestEntities } from "../../utils/TestEntities.js";
 
 describe("TitlesRepository", async () => {
   let pgClient: PGlite
   let creditsRepository: CreditsRepository;
   let interestsRepository: InterestsRepository;
+  let testEntities: TestEntities;
   let cut: TitlesRepository;
 
   beforeEach(async () => {
@@ -19,6 +21,7 @@ describe("TitlesRepository", async () => {
     creditsRepository = new CreditsRepository(db as unknown as DbDrizzle);
     interestsRepository = new InterestsRepository(db as unknown as DbDrizzle);
     cut = new TitlesRepository(db as unknown as DbDrizzle);
+    testEntities = new TestEntities(cut, interestsRepository, creditsRepository)
   });
 
   afterEach(async () => {
@@ -28,7 +31,7 @@ describe("TitlesRepository", async () => {
   it("getTitleDto", async () => {
     await prepareData()
 
-    const result = await cut.getTitleDto(CDatas.Title_tt1856010.id);
+    const result = await cut.getTitleDto(CDatas.TestTitle_House_of_Cards.title.id);
 
     expect(result).toMatchInlineSnapshot(`
       {
@@ -99,16 +102,6 @@ describe("TitlesRepository", async () => {
   })
 
   async function prepareData() {
-    await cut.insert(CDatas.Title_tt1856010)
-    await cut.insertRating(CDatas.TitleRating_tt1856010_imdb)
-    await creditsRepository.insert(CDatas.Credit_nm0000228)
-    await creditsRepository.insertTitle(CDatas.TitleCredit_tt1856010_nm0000228_star)
-    await creditsRepository.insert(CDatas.Credit_nm0001226)
-    await creditsRepository.insertTitle(CDatas.TitleCredit_tt1856010_nm0001226_director)
-    await creditsRepository.insert(CDatas.Credit_nm2802722)
-    await creditsRepository.insertTitle(CDatas.TitleCredit_tt1856010_nm2802722_writer)
-    await interestsRepository.insert(CDatas.Interest_in0000076)
-    await interestsRepository.insertTitle(CDatas.TitleInterest_tt1856010_in0000076)
+    await testEntities.insertTitle(CDatas.TestTitle_House_of_Cards)
   }
-
 });
