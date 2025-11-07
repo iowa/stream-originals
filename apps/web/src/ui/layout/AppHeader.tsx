@@ -16,7 +16,7 @@ export default function AppHeader() {
         <ul className="menu menu-horizontal px-1">
           {streamerValues.map((streamer) => (
             <li key={streamer}>
-              <Link href={Paths.titles(streamer)}>
+              <Link href={Paths.streamer(streamer)}>
                 <StreamerLogo streamer={streamer}/>
               </Link>
             </li>

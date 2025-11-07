@@ -2,16 +2,20 @@ import { Streamer } from "@repo/common";
 
 export class Paths {
 
-  static titles(streamer: Streamer) {
-    return `/titles/${streamer}`
+  static credit(nameId: string) {
+    return `/name/${nameId}`
+  }
+
+  static streamer(streamer: Streamer) {
+    return `/streamer/${streamer}`
   }
 
   static title(titleId: string) {
     return `/title/${titleId}`
   }
 
-  static credit(nameId: string) {
-    return `/name/${nameId}`
+  static titles(streamer: Streamer) {
+    return `/titles/${streamer}`
   }
 
 }

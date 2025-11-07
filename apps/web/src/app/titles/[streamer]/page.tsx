@@ -12,8 +12,8 @@ export default async function Titles({ params, searchParams }: {
   const paging = await searchParams;
 
   return (
-    <Suspense key={streamer} fallback={<div>Loading...</div>}>
-      <TitlesPageData streamer={streamer} paging={paging} />
+    <Suspense key={streamer + JSON.stringify(paging)} fallback={<div>Loading...</div>}>
+      <TitlesPageData streamer={streamer} paging={paging}/>
     </Suspense>
   );
 }
@@ -35,12 +35,12 @@ async function TitlesPageData({ streamer, paging }: {
         <ul className="list bg-base-100 shadow-lg">
           {titles.map((title) => (
             <li key={title.id}>
-              <TitlesCard title={title} />
+              <TitlesCard title={title}/>
             </li>
           ))}
         </ul>
       </div>
-      <AppPaging />
+      <AppPaging/>
     </div>
   );
 }
