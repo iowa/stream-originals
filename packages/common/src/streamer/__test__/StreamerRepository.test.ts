@@ -51,7 +51,7 @@ describe("StreamerRepository", async () => {
   it("titleByCategory", async () => {
     await prepareData()
 
-    const result = await cut.titleByCategory('netflix');
+    const result = await cut.titleByCategoryTopN('netflix', 3);
 
     expect(result).toMatchInlineSnapshot(`
       [
@@ -68,16 +68,8 @@ describe("StreamerRepository", async () => {
           "label": "Mystery",
         },
         {
-          "count": 3,
-          "label": "Thriller",
-        },
-        {
-          "count": 2,
-          "label": "Fantasy",
-        },
-        {
-          "count": 1,
-          "label": "Sci-Fi",
+          "count": 6,
+          "label": "Other",
         },
       ]
     `)

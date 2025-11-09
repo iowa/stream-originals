@@ -31,8 +31,8 @@ export class StreamerRepository {
     )
   }
 
-  titleByCategory(streamer: Streamer): Promise<ChartDataDto[]> {
-    return this.db
+  async titleByCategoryTopN(streamer: Streamer, n: number): Promise<ChartDataDto[]> {
+    const results = await this.db
     .select({
       label: interestsTable.category,
       count: sql<number>`count(
@@ -50,7 +50,17 @@ export class StreamerRepository {
       )
       DESC`,
       asc(interestsTable.category)
-    )
+    );
+
+    const topN = results.slice(0, n);
+    const other = results.slice(n);
+
+    if (other.length > 0) {
+      const otherCount = other.reduce((sum, item) => Number(sum) + Number(item.count), 0);
+      topN.push({ label: "Other", count: otherCount });
+    }
+
+    return topN;
   }
 
 }

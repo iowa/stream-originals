@@ -2,7 +2,7 @@ import { ChartDataDto } from "@repo/common";
 import { useEffect, useRef } from "react";
 import * as echarts from 'echarts';
 
-export default function TitleTypePieChart({ titleTypes }: { titleTypes: ChartDataDto[] }) {
+export default function TitlesByCategoryPieChart({ titleTypes }: { titleTypes: ChartDataDto[] }) {
   const data = titleTypes.map((value) => ({
     name: value.label,
     value: value.count,
@@ -16,15 +16,19 @@ export default function TitleTypePieChart({ titleTypes }: { titleTypes: ChartDat
         trigger: 'item'
       },
       legend: {
-        top: '5%',
-        left: 'center'
+        orient: 'vertical',
+        left: 'right'
       },
       series: [
         {
-          name: 'Access From',
           type: 'pie',
           radius: ['40%', '70%'],
           avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 10,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
           label: {
             show: false,
             position: 'center'
@@ -48,5 +52,5 @@ export default function TitleTypePieChart({ titleTypes }: { titleTypes: ChartDat
   }, [data]);
 
 
-  return <div ref={chartRef} style={{ width: "600px", height: "800px" }}/>;
+  return <div ref={chartRef} style={{ width: "550px", height: "400px" }}/>;
 };

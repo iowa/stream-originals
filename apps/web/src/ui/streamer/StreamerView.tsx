@@ -2,13 +2,13 @@
 
 import React from "react";
 import { ChartDataDto } from "@repo/common";
-import TitleTypePieChart from "@/ui/streamer/TitleTypePieChart";
+import TitlesByCategoryPieChart from "@/ui/streamer/TitlesByCategoryPieChart";
 
 export default function StreamerView({ titleTypes }: { titleTypes: ChartDataDto[] }) {
 
   return (
     <div>
-      <TitleTypePieChart titleTypes={titleTypes}/>
+      <TitlesByCategoryPieChart titleTypes={titleTypes}/>
     </div>
   );
 };
