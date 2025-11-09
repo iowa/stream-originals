@@ -2,7 +2,7 @@ import { TitleCreditWithCredit } from "@repo/common";
 import Image from "next/image"
 import Link from "next/link";
 import { Paths } from "@/lib/Paths";
-import AppImageOff from "@/ui/layout/AppImageOff";
+import { AppCons } from "@/ui/app/AppCons";
 
 export default function CreditAvatar({ credit }: { credit: TitleCreditWithCredit }) {
   return (
@@ -22,7 +22,7 @@ export default function CreditAvatar({ credit }: { credit: TitleCreditWithCredit
           </div>
           :
           <div className="flex  justify-center items-center h-36 w-36">
-            <AppImageOff/>
+            {AppCons.NO_IMAGE}
           </div>
         }
         <div>

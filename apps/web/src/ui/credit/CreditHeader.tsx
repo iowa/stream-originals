@@ -1,5 +1,5 @@
 import { CreditDto } from "@repo/common";
-import AppLine from "@/ui/layout/AppLine";
+import AppLine from "@/ui/app/AppLine";
 import CreditDetails from "@/ui/credit/CreditDetails";
 
 export default function CreditHeader({ credit }: { credit: CreditDto }) {

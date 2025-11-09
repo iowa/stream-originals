@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { TitleUtils } from './TitleUtils';
-import { AppConstants } from "@/lib/AppConstants";
+import { AppCons } from "@/ui/app/AppCons";
 import { Title } from "@repo/common";
 
 describe('TitleUtils', () => {
@@ -12,8 +12,8 @@ describe('TitleUtils', () => {
       expect(TitleUtils.getYearRange('2020-01-01', '2022-01-01')).toBe('2020–2022');
     });
     it('returns NOT_AVAILABLE for invalid premiere', () => {
-      expect(TitleUtils.getYearRange(null)).toBe(AppConstants.NOT_AVAILABLE);
-      expect(TitleUtils.getYearRange('invalid-date')).toBe(AppConstants.NOT_AVAILABLE);
+      expect(TitleUtils.getYearRange(null)).toBe(AppCons.NOT_AVAILABLE);
+      expect(TitleUtils.getYearRange('invalid-date')).toBe(AppCons.NOT_AVAILABLE);
     });
     it('returns one year for same premiere finale', () => {
       expect(TitleUtils.getYearRange('2020-01-01', '2020-01-01')).toBe('2020');
@@ -22,8 +22,8 @@ describe('TitleUtils', () => {
 
   describe('formatVoteCount', () => {
     it('returns NOT_AVAILABLE for null or undefined', () => {
-      expect(TitleUtils.formatVoteCount(null)).toBe(`(${AppConstants.NOT_AVAILABLE})`);
-      expect(TitleUtils.formatVoteCount(undefined)).toBe(`(${AppConstants.NOT_AVAILABLE})`);
+      expect(TitleUtils.formatVoteCount(null)).toBe(`(${AppCons.NOT_AVAILABLE})`);
+      expect(TitleUtils.formatVoteCount(undefined)).toBe(`(${AppCons.NOT_AVAILABLE})`);
     });
     it('returns raw count for < 1000', () => {
       expect(TitleUtils.formatVoteCount(999)).toBe('(999)');
@@ -36,9 +36,9 @@ describe('TitleUtils', () => {
 
   describe('runtime', () => {
     it('returns NOT_AVAILABLE for null, undefined, or <= 0', () => {
-      expect(TitleUtils.runtime(null)).toBe(AppConstants.NOT_AVAILABLE);
-      expect(TitleUtils.runtime(0)).toBe(AppConstants.NOT_AVAILABLE);
-      expect(TitleUtils.runtime(-10)).toBe(AppConstants.NOT_AVAILABLE);
+      expect(TitleUtils.runtime(null)).toBe(AppCons.NOT_AVAILABLE);
+      expect(TitleUtils.runtime(0)).toBe(AppCons.NOT_AVAILABLE);
+      expect(TitleUtils.runtime(-10)).toBe(AppCons.NOT_AVAILABLE);
     });
     it('returns minutes for < 1 hour', () => {
       expect(TitleUtils.runtime(1800)).toBe('30m');

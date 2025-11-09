@@ -2,7 +2,7 @@ import { Streamer } from "@repo/common";
 import { Suspense } from "react";
 import { TitlesCard } from "@/ui/titles/TitlesCard";
 import { Paging } from "@/lib/AppTypes";
-import AppPaging from "@/ui/layout/AppPaging";
+import AppPaging from "@/ui/app/AppPaging";
 import { TitlesListRepository } from "@repo/common/titles/TitlesListRepository";
 
 export default async function Titles({ params, searchParams }: {

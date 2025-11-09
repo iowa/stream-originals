@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import AppHeader from "@/ui/layout/AppHeader";
-import AppFooter from "@/ui/layout/AppFooter";
-import { AppConstants } from "@/lib/AppConstants";
+import AppHeader from "@/ui/app/AppHeader";
+import AppFooter from "@/ui/app/AppFooter";
+import { AppCons } from "@/ui/app/AppCons";
 import React from "react";
 
 const geistSans = Geist({
@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: AppConstants.APP_NAME,
+  title: AppCons.APP_NAME,
   description: "Originals Unite Here.",
 };
 

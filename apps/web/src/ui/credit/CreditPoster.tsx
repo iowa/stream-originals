@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Credit } from "@repo/common";
-import AppImageOff from "@/ui/layout/AppImageOff";
+import { AppCons } from "@/ui/app/AppCons";
 
 export default function CreditPoster({ credit, width, height }: {
   credit: Credit,
@@ -19,7 +19,7 @@ export default function CreditPoster({ credit, width, height }: {
           />
           :
           <div className="flex items-center justify-center w-full h-full">
-            <AppImageOff/>
+            {AppCons.NO_IMAGE}
           </div>
         }
       </div>

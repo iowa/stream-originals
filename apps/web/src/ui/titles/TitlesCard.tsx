@@ -3,7 +3,7 @@
 import { TitleListDto } from "@repo/common";
 import TitlesPoster from "@/ui/titles/TitlesPoster";
 import TitleInterests from "@/ui/titles/TitleInterests";
-import { AppConstants } from "@/lib/AppConstants";
+import { AppCons } from "@/ui/app/AppCons";
 import TitlesCredits from "@/ui/titles/TitlesCredits";
 import { Paths } from "@/lib/Paths";
 import { useRouter } from "next/navigation";
@@ -28,7 +28,7 @@ export function TitlesCard({ title }: { title: TitleListDto }) {
         <TitleHeader title={title} ratings={title.ratings} titleSize={'text-lg'}/>
         <TitleInterests interests={title.interests} withSubgenres={false}/>
         <div>
-          {title.plot || AppConstants.NOT_AVAILABLE}
+          {title.plot || AppCons.NOT_AVAILABLE}
         </div>
         <TitlesCredits title={title}/>
       </div>

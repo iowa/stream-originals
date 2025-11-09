@@ -1,5 +1,5 @@
 import { CreditPatchDto, TitleListDto } from "@repo/common";
-import { AppConstants } from "@/lib/AppConstants";
+import { AppCons } from "@/ui/app/AppCons";
 import Link from "next/link";
 import { Paths } from "@/lib/Paths";
 
@@ -8,7 +8,7 @@ export default function TitlesCredits({ title }: { title: TitleListDto }) {
     <div className="flex items-center gap-2 flex-wrap">
       <span className="font-bold">{label}</span>
       {credits.length === 0
-        ? <span>{AppConstants.NOT_AVAILABLE}</span>
+        ? <span>{AppCons.NOT_AVAILABLE}</span>
         : credits.map(({ credit }) => (
           <Link key={credit.id} href={Paths.credit(credit.id)}
                 className="link link-primary link-hover">

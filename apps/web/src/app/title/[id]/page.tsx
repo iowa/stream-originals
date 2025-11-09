@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { TitlesRepository } from "@repo/common";
 import TitlesPoster from "@/ui/titles/TitlesPoster";
 import TitleInterests from "@/ui/titles/TitleInterests";
-import { AppConstants } from "@/lib/AppConstants";
+import { AppCons } from "@/ui/app/AppCons";
 import TitleHeader from "@/ui/title/TitleHeader";
 import TitleTopCredits from "@/ui/title/TitleTopCredits";
 
@@ -32,7 +32,7 @@ async function TitlePageData({ id }: { id: string }) {
       <div className="card-body">
         <TitleInterests interests={title.interests} withSubgenres={true}/>
         <p className="text-sm text-foreground leading-relaxed">
-          {title.plot || AppConstants.NOT_AVAILABLE}
+          {title.plot || AppCons.NOT_AVAILABLE}
         </p>
       </div>
     </div>

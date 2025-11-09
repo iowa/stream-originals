@@ -1,6 +1,6 @@
 import TitleDetails from "@/ui/titles/TitleDetails";
 import StreamerLogo from "@/lib/streamer/StreamerLogo";
-import AppLine from "@/ui/layout/AppLine";
+import AppLine from "@/ui/app/AppLine";
 import TitleRatings from "@/ui/title/TitleRatings";
 import { Title, TitleRatingPatchDto } from "@repo/common";
 

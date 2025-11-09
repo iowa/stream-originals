@@ -1,7 +1,7 @@
 import { Star } from "lucide-react";
 import { TitleRatingPatchDto } from "@repo/common";
 import { TitleUtils } from "@/lib/title/TitleUtils";
-import { AppConstants } from "@/lib/AppConstants";
+import { AppCons } from "@/ui/app/AppCons";
 
 export default function TitleRatings({ ratings }: { ratings: TitleRatingPatchDto[] }) {
   if (!ratings?.length) {
@@ -32,7 +32,7 @@ export function TitleRatingItem({ type, total, voteCount }: TitleRatingItemProps
   return (
     <div className="flex items-center gap-2" key={type}>
       <Star className="w-5 h-5 fill-yellow-500 text-yellow-500"/>
-      <span className="font-semibold text-foreground">{total || AppConstants.NOT_AVAILABLE}</span>
+      <span className="font-semibold text-foreground">{total || AppCons.NOT_AVAILABLE}</span>
       <span className="text-md text-muted-foreground">
         {TitleUtils.formatVoteCount(voteCount)}
       </span>

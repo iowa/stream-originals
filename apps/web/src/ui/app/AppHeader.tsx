@@ -1,4 +1,4 @@
-import { AppConstants } from "@/lib/AppConstants";
+import { AppCons } from "@/ui/app/AppCons";
 import { streamerValues } from "@repo/common";
 import Link from "next/link";
 import { Paths } from "@/lib/Paths";
@@ -9,7 +9,7 @@ export default function AppHeader() {
     <div className="navbar bg-base-100">
       <div className="navbar-start">
         <Link href={"/"} className="btn btn-ghost text-xl">
-          {AppConstants.APP_NAME}
+          {AppCons.APP_NAME}
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
