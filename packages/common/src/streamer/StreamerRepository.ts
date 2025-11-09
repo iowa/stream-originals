@@ -1,8 +1,8 @@
 import { dbDrizzle } from "../db/dbDrizzle.js";
 import { interestsTable, titleInterestsTable, titlesTable } from "../db/schema.js";
-import { eq, sql } from "drizzle-orm";
+import { asc, desc, eq, sql } from "drizzle-orm";
 import { Streamer } from "../db/dbTypes.js";
-import { TitleTypeChart } from "../dto/dtoTypes.js";
+import { ChartDataDto } from "../dto/dtoTypes.js";
 
 export class StreamerRepository {
   private readonly db
@@ -11,29 +11,32 @@ export class StreamerRepository {
     this.db = dbInstance
   }
 
-  titleTypes(streamer: Streamer): Promise<TitleTypeChart[]> {
+  titlesByType(streamer: Streamer): Promise<ChartDataDto[]> {
     return this.db
     .select({
-      type: titlesTable.type,
-      typeCount: sql<number>`count(
+      label: titlesTable.type,
+      count: sql<number>`count(
       ${titlesTable.type}
       )`
     })
     .from(titlesTable)
     .where(eq(titlesTable.streamer, streamer))
     .groupBy(titlesTable.type)
-    .orderBy(sql`count(
-    ${titlesTable.type}
+    .orderBy(
+      sql`count(
+      ${titlesTable.type}
+      )
+      DESC`,
+      asc(titlesTable.type)
     )
-    DESC`)
   }
 
-  titlesGroupedByInterests(streamer: Streamer): Promise<TitleTypeChart[]> {
+  titleByCategory(streamer: Streamer): Promise<ChartDataDto[]> {
     return this.db
     .select({
-      type: interestsTable.category,
-      typeCount: sql<number>`count(
-      ${interestsTable.name}
+      label: interestsTable.category,
+      count: sql<number>`count(
+      ${interestsTable.category}
       )`
     })
     .from(titleInterestsTable)
@@ -41,6 +44,13 @@ export class StreamerRepository {
     .innerJoin(interestsTable, eq(titleInterestsTable.interestId, interestsTable.id))
     .where(eq(titlesTable.streamer, streamer))
     .groupBy(interestsTable.category)
+    .orderBy(
+      sql`count(
+      ${interestsTable.category}
+      )
+      DESC`,
+      asc(interestsTable.category)
+    )
   }
 
 }

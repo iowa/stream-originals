@@ -1,11 +1,11 @@
-import { TitleTypeChart } from "@repo/common";
+import { ChartDataDto } from "@repo/common";
 import { useEffect, useRef } from "react";
 import * as echarts from 'echarts';
 
-export default function TitleTypePieChart({ titleTypes }: { titleTypes: TitleTypeChart[] }) {
+export default function TitleTypePieChart({ titleTypes }: { titleTypes: ChartDataDto[] }) {
   const data = titleTypes.map((value) => ({
-    name: value.type,
-    value: value.typeCount,
+    name: value.label,
+    value: value.count,
   }));
   const chartRef = useRef<HTMLDivElement>(null);
 

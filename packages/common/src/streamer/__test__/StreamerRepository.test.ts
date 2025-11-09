@@ -29,55 +29,55 @@ describe("StreamerRepository", async () => {
     await pgClient.close();
   });
 
-  it("titleTypes", async () => {
+  it("titlesByType", async () => {
     await prepareData()
 
-    const result = await cut.titleTypes('netflix');
+    const result = await cut.titlesByType('netflix');
 
     expect(result).toMatchInlineSnapshot(`
       [
         {
-          "type": "tvSeries",
-          "typeCount": 3,
+          "count": 3,
+          "label": "tvSeries",
         },
         {
-          "type": "tvMiniSeries",
-          "typeCount": 2,
+          "count": 2,
+          "label": "tvMiniSeries",
         },
       ]
     `)
   })
 
-  it("titlesGroupedByInterests", async () => {
+  it("titleByCategory", async () => {
     await prepareData()
 
-    const result = await cut.titlesGroupedByInterests('netflix');
+    const result = await cut.titleByCategory('netflix');
 
     expect(result).toMatchInlineSnapshot(`
       [
         {
-          "type": "Drama",
-          "typeCount": 5,
+          "count": 5,
+          "label": "Drama",
         },
         {
-          "type": "Fantasy",
-          "typeCount": 2,
+          "count": 3,
+          "label": "Horror",
         },
         {
-          "type": "Horror",
-          "typeCount": 3,
+          "count": 3,
+          "label": "Mystery",
         },
         {
-          "type": "Mystery",
-          "typeCount": 3,
+          "count": 3,
+          "label": "Thriller",
         },
         {
-          "type": "Sci-Fi",
-          "typeCount": 1,
+          "count": 2,
+          "label": "Fantasy",
         },
         {
-          "type": "Thriller",
-          "typeCount": 3,
+          "count": 1,
+          "label": "Sci-Fi",
         },
       ]
     `)

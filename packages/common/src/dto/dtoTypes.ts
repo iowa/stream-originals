@@ -38,9 +38,9 @@ export type TitleDto = Title & {
   writers: TitleCreditWithCredit[],
 }
 
-export type TitleTypeChart = {
-  type: string | null,
-  typeCount: number,
+export type ChartDataDto = {
+  label: string | null,
+  count: number,
 }
 
 export type CreditTitleDto = Title
