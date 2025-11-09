@@ -1,9 +1,15 @@
-import { ChartDataDto } from "@repo/common";
-import { useEffect, useRef } from "react";
+'use client';
+
+import {ChartDataDto} from '@repo/common';
+import {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
 
-export default function TitlesByCategoryPieChart({ titleTypes }: { titleTypes: ChartDataDto[] }) {
-  const data = titleTypes.map((value) => ({
+export default function TitlesByCategoryPieChart({
+  titlesByCategory,
+}: {
+  titlesByCategory: ChartDataDto[];
+}) {
+  const data = titlesByCategory.map(value => ({
     name: value.label,
     value: value.count,
   }));
@@ -13,11 +19,11 @@ export default function TitlesByCategoryPieChart({ titleTypes }: { titleTypes: C
     const chartInstance = echarts.init(chartRef.current!);
     chartInstance.setOption({
       tooltip: {
-        trigger: 'item'
+        trigger: 'item',
       },
       legend: {
         orient: 'vertical',
-        left: 'right'
+        left: 'right',
       },
       series: [
         {
@@ -27,30 +33,29 @@ export default function TitlesByCategoryPieChart({ titleTypes }: { titleTypes: C
           itemStyle: {
             borderRadius: 10,
             borderColor: '#fff',
-            borderWidth: 2
+            borderWidth: 2,
           },
           label: {
             show: false,
-            position: 'center'
+            position: 'center',
           },
           emphasis: {
             label: {
               show: true,
               fontSize: 40,
-              fontWeight: 'bold'
-            }
+              fontWeight: 'bold',
+            },
           },
           labelLine: {
-            show: false
+            show: false,
           },
-          data: data
-        }
-      ]
+          data: data,
+        },
+      ],
     });
 
     return () => chartInstance.dispose();
   }, [data]);
 
-
-  return <div ref={chartRef} style={{ width: "550px", height: "400px" }}/>;
-};
+  return <div ref={chartRef} style={{width: '550px', height: '400px'}} />;
+}

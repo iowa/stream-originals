@@ -29,6 +29,21 @@ describe("StreamerRepository", async () => {
     await pgClient.close();
   });
 
+  it("titlesStats", async () => {
+    await prepareData()
+
+    const result = await cut.titlesStats('netflix');
+
+    expect(result).toMatchInlineSnapshot(`
+      {
+        "avgRating": "8.0",
+        "total": 5,
+        "totalEpisodes": 136,
+      }
+    `)
+  })
+
+
   it("titlesByType", async () => {
     await prepareData()
 
