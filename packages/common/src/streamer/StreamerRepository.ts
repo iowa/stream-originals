@@ -18,29 +18,28 @@ export class StreamerRepository {
 
   async titlesStats(streamer: Streamer): Promise<TitleStats> {
     const avgRatingQuery = this.db
-      .select({
-        avgRating: sql<number>`ROUND(avg(${titleRatingsTable.total}), 1)`,
-      })
-      .from(titleRatingsTable)
-      .innerJoin(titlesTable, eq(titleRatingsTable.titleId, titlesTable.id))
-      .where(
-        and(
-          eq(titlesTable.streamer, streamer),
-          gt(titleRatingsTable.voteCount, 1000),
-        ),
-      );
+    .select({
+      avgRating: sql<number>`ROUND(avg(${titleRatingsTable.total}), 1)`,
+    })
+    .from(titleRatingsTable)
+    .innerJoin(titlesTable, eq(titleRatingsTable.titleId, titlesTable.id))
+    .where(
+      and(
+        eq(titlesTable.streamer, streamer),
+        gt(titleRatingsTable.voteCount, 1000),
+      ),
+    );
 
     const totalQuery = this.db
-      .select({
-        total: sql<number>`count(*)`,
-        totalEpisodes: sql<number>`SUM(${titlesTable.episodes})`,
-      })
-      .from(titleRatingsTable)
-      .innerJoin(titlesTable, eq(titleRatingsTable.titleId, titlesTable.id))
-      .where(eq(titlesTable.streamer, streamer));
+    .select({
+      total: sql<number>`count(*)`,
+      totalEpisodes: sql<number>`SUM(${titlesTable.episodes})`,
+    })
+    .from(titleRatingsTable)
+    .innerJoin(titlesTable, eq(titleRatingsTable.titleId, titlesTable.id))
+    .where(eq(titlesTable.streamer, streamer));
 
-    const [resultAvg] = await avgRatingQuery;
-    const [resultTotal] = await totalQuery;
+    const [[resultAvg], [resultTotal]] = await Promise.all([avgRatingQuery, totalQuery]);
 
     return {
       total: resultTotal.total,

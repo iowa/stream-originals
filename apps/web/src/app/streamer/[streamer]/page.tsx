@@ -4,6 +4,7 @@ import {StreamerRepository} from '@repo/common/streamer/StreamerRepository';
 import StreamerLogo from '@/lib/streamer/StreamerLogo';
 import StreamerStats from '@/ui/streamer/StreamerStats';
 import TitlesByCategoryPieChart from '@/ui/streamer/TitlesByCategoryPieChart';
+import StreamerTopTitles from '@/ui/streamer/StreamerTopTitles';
 
 export default async function StreamerPage({
   params,
@@ -24,9 +25,6 @@ async function StreamerPageData({streamer}: {streamer: Streamer}) {
   const streamerRepository = new StreamerRepository();
   const titlesStats: TitleStats =
     await streamerRepository.titlesStats(streamerPath);
-  const titlesByCategory: ChartDataDto[] =
-    await streamerRepository.titleByCategoryTopN(streamerPath, 10);
-
   return (
     <div className="flex items-center flex-col gap-4">
       <div className="card p-4 card-side bg-base-100 shadow-sm">
@@ -36,10 +34,10 @@ async function StreamerPageData({streamer}: {streamer: Streamer}) {
         <div className="card-body">
           <div>
             <StreamerStats titlesStats={titlesStats} />
-            <TitlesByCategoryPieChart titlesByCategory={titlesByCategory} />
           </div>
         </div>
       </div>
+      <StreamerTopTitles />
     </div>
   );
 }
