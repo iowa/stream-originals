@@ -1,6 +1,5 @@
+import HomeView from '@/ui/home/HomeView';
+
 export default function Home() {
-  return (
-    <div>
-    </div>
-  );
+  return <HomeView />;
 }
