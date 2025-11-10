@@ -8,7 +8,7 @@ export default function StreamerStats({
   titlesStats: TitleStats;
 }) {
   return (
-    <div className="stats stats-vertical lg:stats-horizontal shadow">
+    <div className="stats stats-horizontal shadow">
       <div className="stat">
         <div className="stat-figure ">
           <Video className=" h-8 w-8" />

@@ -1,10 +1,10 @@
-import {ChartDataDto, Streamer, TitleStats} from '@repo/common';
+import {Streamer, TitleStats} from '@repo/common';
 import React, {Suspense} from 'react';
 import {StreamerRepository} from '@repo/common/streamer/StreamerRepository';
 import StreamerLogo from '@/lib/streamer/StreamerLogo';
 import StreamerStats from '@/ui/streamer/StreamerStats';
-import TitlesByCategoryPieChart from '@/ui/streamer/TitlesByCategoryPieChart';
 import StreamerTopTitles from '@/ui/streamer/StreamerTopTitles';
+import {TitlesListRepository} from '@repo/common/titles/TitlesListRepository';
 
 export default async function StreamerPage({
   params,
@@ -25,19 +25,22 @@ async function StreamerPageData({streamer}: {streamer: Streamer}) {
   const streamerRepository = new StreamerRepository();
   const titlesStats: TitleStats =
     await streamerRepository.titlesStats(streamerPath);
+  const titles = await new TitlesListRepository().getTitles(
+    streamerPath,
+    1,
+    10,
+  );
   return (
     <div className="flex items-center flex-col gap-4">
-      <div className="card p-4 card-side bg-base-100 shadow-sm">
-        <div className="flex items-center">
-          <StreamerLogo streamer={streamerPath} multiplier={2} />
-        </div>
-        <div className="card-body">
-          <div>
+      <div className="card p-4  bg-base-100 shadow-sm">
+        <div className="card-body gap-8">
+          <div className="flex items-center gap-4">
+            <StreamerLogo streamer={streamerPath} multiplier={2} />
             <StreamerStats titlesStats={titlesStats} />
           </div>
+          <StreamerTopTitles streamer={streamerPath} titles={titles} />
         </div>
       </div>
-      <StreamerTopTitles />
     </div>
   );
 }
