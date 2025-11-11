@@ -28,10 +28,9 @@ export default function HomeView() {
               your favorite streaming platforms in one place.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <button className="btn btn-primary gap-2">
-                Start Exploring <ArrowRight size={20} />
+              <button className="btn btn-primary gap-2 btn-lg">
+                Explore All Originals <ArrowRight size={20} />
               </button>
-              <button className="btn btn-outline">Learn More</button>
             </div>
           </div>
 
@@ -59,9 +58,6 @@ export default function HomeView() {
             Browse thousands of original shows and movies. Compare streaming
             media services, find your next obsession,
           </p>
-          <button className="btn btn-primary gap-2 btn-lg">
-            Explore All Originals <ArrowRight size={20} />
-          </button>
         </div>
       </section>
     </div>
