@@ -34,6 +34,9 @@ export class TitlesPatcher {
     const creditIds: Set<string> = await this.creditsRepository.getAllIds();
     const batchSize = 5;
     for (let i = 0; i < titles.length; i += batchSize) {
+      if (i % 100 === 0) {
+        console.log(`Processed ${i} of ${titles.length} titles`);
+      }
       const batch = titles.slice(i, i + batchSize);
       const imdbIds = batch.map(t => t.id!).filter(Boolean);
       if (imdbIds.length === 0) continue;

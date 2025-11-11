@@ -49,8 +49,9 @@ export class TitlesCreateCrawler {
     streamer: Streamer,
     url: string,
   ): Promise<TitlesCreate> {
-    console.log(`TitlesCreateCrawler-${streamer}-${url}`);
-    console.time(`TitlesCreateCrawler-${streamer}-${url}`);
+    const consoleLabel = `TitlesCreateCrawler-${streamer}-${url}`;
+    console.log(consoleLabel);
+    console.time(consoleLabel);
     const response = this.buildCreateResponse(url);
     const $ = await this.buildCheerio(url);
     const wikipediaTitles = (
@@ -68,7 +69,7 @@ export class TitlesCreateCrawler {
       await this.titlesRepository.getDraftCount(streamer);
 
     console.log(response);
-    console.timeEnd(`TitlesCreateCrawler-${streamer}-${url}`);
+    console.timeEnd(consoleLabel);
     return response;
   }
 
@@ -77,7 +78,12 @@ export class TitlesCreateCrawler {
     dbTitles: Title[],
     dbTitleDrafts: TitleDraft[],
   ): Promise<void> {
+    let i: number = 0;
     for (const wikipediaTitle of wikipediaTitles) {
+      if (i % 100 === 0) {
+        console.log(`Processed ${i} of ${wikipediaTitles.length} titles`);
+      }
+      i++;
       let dbTitle = this.findInTitles(wikipediaTitle, dbTitles);
       if (dbTitle) {
         if (
