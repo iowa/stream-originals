@@ -45,7 +45,9 @@ export type TitleDto = Title & {
   writers: TitleCreditWithCredit[];
 };
 
-export type CreditTitleDto = Title;
+export type CreditTitleDto = Title & {
+  ratings: TitleRatingPatchDto[];
+};
 
 export type CreditDto = Credit & {
   titles: CreditTitleDto[];

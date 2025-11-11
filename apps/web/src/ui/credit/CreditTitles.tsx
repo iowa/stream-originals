@@ -1,8 +1,8 @@
-import { CreditDto } from "@repo/common";
-import React from "react";
-import TitleAvatar from "@/ui/credit/TitleAvatar";
+import {CreditDto} from '@repo/common';
+import React from 'react';
+import TitleAvatar from '@/ui/credit/TitleAvatar';
 
-export default function CreditTitles({ credit }: { credit: CreditDto }) {
+export default function CreditTitles({credit}: {credit: CreditDto}) {
   return (
     <div>
       <div className="flex items-center mb-6">
@@ -11,13 +11,13 @@ export default function CreditTitles({ credit }: { credit: CreditDto }) {
       </div>
       <div className="grid grid-cols-2 gap-x-8 gap-y-6">
         {credit.titles
-        .filter((title, idx, arr) =>
-          arr.findIndex(t => t.id === title.id) === idx
-        )
-        .map((title) => (
-          <TitleAvatar key={title.id} title={title}/>
-        ))}
+          .filter(
+            (title, idx, arr) => arr.findIndex(t => t.id === title.id) === idx,
+          )
+          .map(title => (
+            <TitleAvatar key={title.id} title={title} />
+          ))}
       </div>
     </div>
   );
-};
+}
