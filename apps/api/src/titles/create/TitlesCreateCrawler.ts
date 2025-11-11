@@ -30,6 +30,9 @@ export class TitlesCreateCrawler {
     this.streamers.set('disney+', [
       'https://en.wikipedia.org/wiki/List_of_Disney%2B_original_programming',
     ]);
+    this.streamers.set('hboMax', [
+      'https://en.wikipedia.org/wiki/List_of_HBO_Max_original_programming',
+    ]);
   }
 
   async upsert(streamer: Streamer): Promise<TitlesCreateResponse> {

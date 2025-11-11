@@ -3,15 +3,14 @@ import {
   Streamer,
   TitlePatchDto,
   TitlesMerger,
-  TitlesRepository
-} from "@repo/common";
-import { ImdbApiDevRestClient } from "../../lib/source/imdbapidev/ImdbApiDevRestClient.js";
-import { ImdbApiDevMapper } from "../../lib/source/imdbapidev/ImdbApiDevMapper.js";
-import { CreditsRepository } from "@repo/common/credits/CreditsRepository";
-import { TitlesPatchResponse } from "../titleTypes.js";
+  TitlesRepository,
+} from '@repo/common';
+import {ImdbApiDevRestClient} from '../../lib/source/imdbapidev/ImdbApiDevRestClient.js';
+import {ImdbApiDevMapper} from '../../lib/source/imdbapidev/ImdbApiDevMapper.js';
+import {CreditsRepository} from '@repo/common/credits/CreditsRepository';
+import {TitlesPatchResponse} from '../titleTypes.js';
 
 export class TitlesPatcher {
-
   constructor(
     private readonly titlesRepository: TitlesRepository = new TitlesRepository(),
     private readonly imdbApiDevRestClient: ImdbApiDevRestClient = new ImdbApiDevRestClient(),
@@ -19,13 +18,19 @@ export class TitlesPatcher {
     private readonly titlesMerger: TitlesMerger = new TitlesMerger(),
     private readonly interestsRepository: InterestsRepository = new InterestsRepository(),
     private readonly creditsRepository: CreditsRepository = new CreditsRepository(),
-  ) {
-  }
+  ) {}
 
-  async patch(streamer: Streamer, timeout: number = 500): Promise<TitlesPatchResponse> {
-    const response: TitlesPatchResponse = { items: [] };
-    const titles: TitlePatchDto[] = await this.titlesRepository.getTitlePatchDtos(streamer);
-    const interestsIds: Set<string> = await this.interestsRepository.getAllIds();
+  async patch(
+    streamer: Streamer,
+    timeout: number = 500,
+  ): Promise<TitlesPatchResponse> {
+    console.log(`TitlesPatcher-started: ${streamer}`);
+    console.time(`TitlesPatcher-${streamer}`);
+    const response: TitlesPatchResponse = {items: []};
+    const titles: TitlePatchDto[] =
+      await this.titlesRepository.getTitlePatchDtos(streamer);
+    const interestsIds: Set<string> =
+      await this.interestsRepository.getAllIds();
     const creditIds: Set<string> = await this.creditsRepository.getAllIds();
     const batchSize = 5;
     for (let i = 0; i < titles.length; i += batchSize) {
@@ -34,17 +39,22 @@ export class TitlesPatcher {
       if (imdbIds.length === 0) continue;
       const apiTitles = await this.imdbApiDevRestClient.getTitles(imdbIds);
       await new Promise(resolve => setTimeout(resolve, timeout));
-      console.log(`Batch ${i}`)
       if (apiTitles.titles) {
         for (const apiTitle of apiTitles.titles) {
           if (apiTitle.id) {
             const title = this.findInTitles(batch, apiTitle.id);
-            const updatedTitleDto = await this.imdbApiDevMapper.mapTitle(title, apiTitle, interestsIds, creditIds);
+            const updatedTitleDto = await this.imdbApiDevMapper.mapTitle(
+              title,
+              apiTitle,
+              interestsIds,
+              creditIds,
+            );
             await this.titlesMerger.merge(title, updatedTitleDto);
           }
         }
       }
     }
+    console.timeEnd(`TitlesPatcher-${streamer}`);
     return response;
   }
 
