@@ -12,8 +12,8 @@ export default function AppHeader() {
           {AppCons.APP_NAME}
         </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+      <div className="navbar-center  lg:flex">
+        <ul className="menu lg:menu-horizontal px-1">
           {streamerValues.map(streamer => (
             <li key={streamer}>
               <Link href={Paths.streamer(streamer)}>

@@ -6,6 +6,7 @@ import StreamerStats from '@/ui/streamer/StreamerStats';
 import StreamerTopTitles from '@/ui/streamer/StreamerTopTitles';
 import {TitlesListRepository} from '@repo/common/titles/TitlesListRepository';
 import TitlesByCategoryPieChart from '@/ui/streamer/TitlesByCategoryPieChart';
+import AppLoading from '@/ui/app/AppLoading';
 
 export default async function StreamerPage({
   params,
@@ -13,9 +14,8 @@ export default async function StreamerPage({
   params: Promise<{streamer: Streamer}>;
 }) {
   const {streamer} = await params;
-
   return (
-    <Suspense key={streamer} fallback={<div>Loading...</div>}>
+    <Suspense key={streamer} fallback={<AppLoading />}>
       <StreamerPageData streamer={streamer} />
     </Suspense>
   );
@@ -24,27 +24,26 @@ export default async function StreamerPage({
 async function StreamerPageData({streamer}: {streamer: Streamer}) {
   const streamerPath = decodeURIComponent(streamer) as Streamer;
   const streamerRepository = new StreamerRepository();
-  const titlesStats: TitleStats =
-    await streamerRepository.titlesStats(streamerPath);
-  const titlesByCategory = await streamerRepository.titleByCategoryTopN(
-    streamerPath,
-    15,
-  );
-  const titles = await new TitlesListRepository().getTitles(
-    streamerPath,
-    1,
-    10,
-  );
+  const titlesListRepository = new TitlesListRepository();
+
+  const [titlesStats, titlesByCategory, titles] = await Promise.all([
+    streamerRepository.titlesStats(streamerPath),
+    streamerRepository.titleByCategoryTopN(streamerPath, 15),
+    titlesListRepository.getTitles(streamerPath, 1, 10),
+  ]);
+
   return (
     <div className="flex items-center flex-col gap-4">
-      <div className="card p-4  bg-base-100 shadow-sm">
+      <div className="card p-4 bg-base-100 shadow-sm">
         <div className="card-body gap-8">
           <div className="flex items-center gap-4">
             <StreamerLogo streamer={streamerPath} multiplier={2} />
             <StreamerStats titlesStats={titlesStats} />
           </div>
           <StreamerTopTitles streamer={streamerPath} titles={titles} />
-          <TitlesByCategoryPieChart titlesByCategory={titlesByCategory} />
+          <div className="flex justify-center">
+            <TitlesByCategoryPieChart titlesByCategory={titlesByCategory} />
+          </div>
         </div>
       </div>
     </div>
