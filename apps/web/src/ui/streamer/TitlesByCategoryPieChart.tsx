@@ -3,6 +3,7 @@
 import {ChartDataDto} from '@repo/common';
 import {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
+import AppLine from '@/ui/app/AppLine';
 
 export default function TitlesByCategoryPieChart({
   titlesByCategory,
@@ -16,19 +17,21 @@ export default function TitlesByCategoryPieChart({
   const chartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const chartInstance = echarts.init(chartRef.current!);
+    const chartInstance = echarts.init(chartRef.current!, null, {
+      renderer: 'svg',
+    });
     chartInstance.setOption({
       tooltip: {
         trigger: 'item',
       },
       legend: {
-        orient: 'vertical',
-        left: 'right',
+        top: '',
+        left: 'center',
       },
       series: [
         {
           type: 'pie',
-          radius: ['40%', '70%'],
+          radius: ['30%', '70%'],
           avoidLabelOverlap: false,
           itemStyle: {
             borderRadius: 10,
@@ -57,5 +60,16 @@ export default function TitlesByCategoryPieChart({
     return () => chartInstance.dispose();
   }, [data]);
 
-  return <div ref={chartRef} style={{width: '550px', height: '400px'}} />;
+  return (
+    <div className="w-[800px]">
+      <div>
+        <AppLine>
+          <h2 className="text-4xl font-bold">Top Categories</h2>
+        </AppLine>
+      </div>
+      <div className="flex justify-center py-4">
+        <div ref={chartRef} style={{width: '800px', height: '350px'}} />
+      </div>
+    </div>
+  );
 }

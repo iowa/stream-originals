@@ -5,6 +5,7 @@ import StreamerLogo from '@/lib/streamer/StreamerLogo';
 import StreamerStats from '@/ui/streamer/StreamerStats';
 import StreamerTopTitles from '@/ui/streamer/StreamerTopTitles';
 import {TitlesListRepository} from '@repo/common/titles/TitlesListRepository';
+import TitlesByCategoryPieChart from '@/ui/streamer/TitlesByCategoryPieChart';
 
 export default async function StreamerPage({
   params,
@@ -25,6 +26,10 @@ async function StreamerPageData({streamer}: {streamer: Streamer}) {
   const streamerRepository = new StreamerRepository();
   const titlesStats: TitleStats =
     await streamerRepository.titlesStats(streamerPath);
+  const titlesByCategory = await streamerRepository.titleByCategoryTopN(
+    streamerPath,
+    15,
+  );
   const titles = await new TitlesListRepository().getTitles(
     streamerPath,
     1,
@@ -39,6 +44,7 @@ async function StreamerPageData({streamer}: {streamer: Streamer}) {
             <StreamerStats titlesStats={titlesStats} />
           </div>
           <StreamerTopTitles streamer={streamerPath} titles={titles} />
+          <TitlesByCategoryPieChart titlesByCategory={titlesByCategory} />
         </div>
       </div>
     </div>
