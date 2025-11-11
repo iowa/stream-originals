@@ -31,6 +31,8 @@ export class TitlesCreateCrawler {
       'https://en.wikipedia.org/wiki/List_of_Disney%2B_original_programming',
     ]);
     this.streamers.set('hboMax', [
+      'https://en.wikipedia.org/wiki/List_of_HBO_original_programming',
+      'https://en.wikipedia.org/wiki/List_of_HBO_Max_original_films',
       'https://en.wikipedia.org/wiki/List_of_HBO_Max_original_programming',
     ]);
   }
@@ -47,7 +49,8 @@ export class TitlesCreateCrawler {
     streamer: Streamer,
     url: string,
   ): Promise<TitlesCreate> {
-    console.time(`upsertTitles-${streamer}-${url}`);
+    console.log(`TitlesCreateCrawler-${streamer}-${url}`);
+    console.time(`TitlesCreateCrawler-${streamer}-${url}`);
     const response = this.buildCreateResponse(url);
     const $ = await this.buildCheerio(url);
     const wikipediaTitles = (
@@ -65,7 +68,7 @@ export class TitlesCreateCrawler {
       await this.titlesRepository.getDraftCount(streamer);
 
     console.log(response);
-    console.timeEnd(`upsertTitles-${streamer}-${url}`);
+    console.timeEnd(`TitlesCreateCrawler-${streamer}-${url}`);
     return response;
   }
 

@@ -5,13 +5,13 @@ import {TestFiles} from '@repo/common';
 import {gotScraping} from 'crawlee';
 
 describe('WikiPageTitlesScraperLive', () => {
-  it.skip('getTitles gotScraping', async () => {
+  it('getTitles gotScraping', async () => {
     const {body} = await gotScraping({
-      url: 'https://en.wikipedia.org/wiki/List_of_Disney%2B_original_programming',
+      url: 'https://en.wikipedia.org/wiki/List_of_HBO_original_programming',
     });
     const $ = cheerio.load(body);
-    const series = await new WikiPageTitlesScraper().getTitles($, 'disney+');
+    const series = await new WikiPageTitlesScraper().getTitles($, 'hboMax');
 
-    expect(series).toMatchSnapshot('disneyPlus_titles.html');
+    expect(series).toMatchSnapshot('original_titles.html');
   });
 });

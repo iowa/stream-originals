@@ -165,4 +165,29 @@ describe('WikiTitlesTable', () => {
       }
     `);
   });
+
+  it('parseRow Ahsoka', () => {
+    const html = TestFiles.load(__dirname, '/data/tr_Game_of_Thrones.html');
+
+    const result = new WikiTitlesTable().parseRow({
+      html: html,
+      streamer: 'hboMax',
+      titleIndex: 0,
+      premiereIndex: 1,
+      finaleIndex: 2,
+      seasonsIndex: 3,
+    });
+    expect(result).toMatchInlineSnapshot(`
+      {
+        "episodes": null,
+        "finale": "2019-01-01",
+        "id": "",
+        "name": "Game of Thrones",
+        "premiere": "2011-01-01",
+        "seasons": null,
+        "streamer": "hboMax",
+      }
+    `);
+  });
+
 });
