@@ -6,7 +6,7 @@ import StreamerLogo from '@/lib/streamer/StreamerLogo';
 
 export default function AppHeader() {
   return (
-    <div className="navbar bg-base-100 border-b border-base-300">
+    <div className="navbar bg-base-100 border-b border-base-300 mb-4">
       <div className="navbar-start">
         <Link href={'/'} className="btn btn-ghost text-xl">
           {AppCons.APP_NAME}
