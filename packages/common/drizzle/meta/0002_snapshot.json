@@ -1,0 +1,477 @@
+{
+  "id": "210eaf81-4764-4c63-9568-213f81f27a7a",
+  "prevId": "22059f90-df9e-4317-aa18-a487445da251",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "stream_originals.credits": {
+      "name": "credits",
+      "schema": "stream_originals",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(20)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "imageUrl": {
+          "name": "imageUrl",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "stream_originals.interests": {
+      "name": "interests",
+      "schema": "stream_originals",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(20)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_subgenre": {
+          "name": "is_subgenre",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "category": {
+          "name": "category",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "stream_originals.title_credits": {
+      "name": "title_credits",
+      "schema": "stream_originals",
+      "columns": {
+        "title_id": {
+          "name": "title_id",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "credit_id": {
+          "name": "credit_id",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "role": {
+          "name": "role",
+          "type": "credit_roles",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "title_credits_title_id_titles_id_fk": {
+          "name": "title_credits_title_id_titles_id_fk",
+          "tableFrom": "title_credits",
+          "tableTo": "titles",
+          "schemaTo": "stream_originals",
+          "columnsFrom": [
+            "title_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "title_credits_credit_id_credits_id_fk": {
+          "name": "title_credits_credit_id_credits_id_fk",
+          "tableFrom": "title_credits",
+          "tableTo": "credits",
+          "schemaTo": "stream_originals",
+          "columnsFrom": [
+            "credit_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "title_credits_title_id_credit_id_role_pk": {
+          "name": "title_credits_title_id_credit_id_role_pk",
+          "columns": [
+            "title_id",
+            "credit_id",
+            "role"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "stream_originals.title_drafts": {
+      "name": "title_drafts",
+      "schema": "stream_originals",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "streamer": {
+          "name": "streamer",
+          "type": "streamers",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "premiere": {
+          "name": "premiere",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "finale": {
+          "name": "finale",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "seasons": {
+          "name": "seasons",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "episodes": {
+          "name": "episodes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "stream_originals.title_interests": {
+      "name": "title_interests",
+      "schema": "stream_originals",
+      "columns": {
+        "title_id": {
+          "name": "title_id",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "interest_id": {
+          "name": "interest_id",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "title_interests_title_id_titles_id_fk": {
+          "name": "title_interests_title_id_titles_id_fk",
+          "tableFrom": "title_interests",
+          "tableTo": "titles",
+          "schemaTo": "stream_originals",
+          "columnsFrom": [
+            "title_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "title_interests_interest_id_interests_id_fk": {
+          "name": "title_interests_interest_id_interests_id_fk",
+          "tableFrom": "title_interests",
+          "tableTo": "interests",
+          "schemaTo": "stream_originals",
+          "columnsFrom": [
+            "interest_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "title_interests_title_id_interest_id_pk": {
+          "name": "title_interests_title_id_interest_id_pk",
+          "columns": [
+            "title_id",
+            "interest_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "stream_originals.title_ratings": {
+      "name": "title_ratings",
+      "schema": "stream_originals",
+      "columns": {
+        "title_id": {
+          "name": "title_id",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "title_rating_types",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "total": {
+          "name": "total",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "vote_count": {
+          "name": "vote_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "title_ratings_title_id_titles_id_fk": {
+          "name": "title_ratings_title_id_titles_id_fk",
+          "tableFrom": "title_ratings",
+          "tableTo": "titles",
+          "schemaTo": "stream_originals",
+          "columnsFrom": [
+            "title_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "title_ratings_title_id_type_pk": {
+          "name": "title_ratings_title_id_type_pk",
+          "columns": [
+            "title_id",
+            "type"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "stream_originals.titles": {
+      "name": "titles",
+      "schema": "stream_originals",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(20)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "title_types",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "streamer": {
+          "name": "streamer",
+          "type": "streamers",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "premiere": {
+          "name": "premiere",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "finale": {
+          "name": "finale",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "plot": {
+          "name": "plot",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "runtime_seconds": {
+          "name": "runtime_seconds",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "seasons": {
+          "name": "seasons",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "episodes": {
+          "name": "episodes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "imageUrl": {
+          "name": "imageUrl",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.credit_roles": {
+      "name": "credit_roles",
+      "schema": "public",
+      "values": [
+        "star",
+        "writer",
+        "director"
+      ]
+    },
+    "public.streamers": {
+      "name": "streamers",
+      "schema": "public",
+      "values": [
+        "appleTV+",
+        "netflix",
+        "primeVideo",
+        "disney+"
+      ]
+    },
+    "public.title_rating_types": {
+      "name": "title_rating_types",
+      "schema": "public",
+      "values": [
+        "imdb"
+      ]
+    },
+    "public.title_types": {
+      "name": "title_types",
+      "schema": "public",
+      "values": [
+        "movie",
+        "tvSeries",
+        "tvMiniSeries",
+        "tvSpecial",
+        "tvMovie",
+        "short",
+        "video",
+        "videoGame",
+        "podcastSeries",
+        "musicVideo",
+        "tvShort"
+      ]
+    }
+  },
+  "schemas": {
+    "stream_originals": "stream_originals"
+  },
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

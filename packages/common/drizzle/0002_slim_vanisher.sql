@@ -1,0 +1,1 @@
+ALTER TYPE "public"."streamers" ADD VALUE 'disney+';

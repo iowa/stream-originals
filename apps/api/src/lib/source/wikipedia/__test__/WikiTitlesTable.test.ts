@@ -1,20 +1,17 @@
-import { describe, expect, it } from "vitest";
-import { WikiTitlesTable } from "../WikiTitlesTable.js";
-import { TestFiles } from "@repo/common";
+import {describe, expect, it} from 'vitest';
+import {WikiTitlesTable} from '../WikiTitlesTable.js';
+import {TestFiles} from '@repo/common';
 
-describe("WikiTitlesTable", () => {
-  it("parseRow For All Mankind", () => {
-    const html = TestFiles.load(
-      __dirname,
-      "/data/tr_For_All_Mankind.html",
-    );
+describe('WikiTitlesTable', () => {
+  it('parseRow For All Mankind', () => {
+    const html = TestFiles.load(__dirname, '/data/tr_For_All_Mankind.html');
 
     const result = new WikiTitlesTable().parseRow({
       html: html,
       streamer: 'appleTV+',
       titleIndex: 0,
       premiereIndex: 2,
-      seasonsIndex: 3
+      seasonsIndex: 3,
     });
     expect(result).toMatchInlineSnapshot(`
       {
@@ -29,18 +26,15 @@ describe("WikiTitlesTable", () => {
     `);
   });
 
-  it("parseRow The Savant", () => {
-    const html = TestFiles.load(
-      __dirname,
-      "/data/tr_The_Savant.html",
-    );
+  it('parseRow The Savant', () => {
+    const html = TestFiles.load(__dirname, '/data/tr_The_Savant.html');
 
     const result = new WikiTitlesTable().parseRow({
       html: html,
       streamer: 'appleTV+',
       titleIndex: 0,
       premiereIndex: 2,
-      seasonsIndex: 3
+      seasonsIndex: 3,
     });
     expect(result).toMatchInlineSnapshot(`
       {
@@ -55,18 +49,15 @@ describe("WikiTitlesTable", () => {
     `);
   });
 
-  it("parseRow Eva the Owlet", () => {
-    const html = TestFiles.load(
-      __dirname,
-      "/data/tr_Eva_the_Owlet.html",
-    );
+  it('parseRow Eva the Owlet', () => {
+    const html = TestFiles.load(__dirname, '/data/tr_Eva_the_Owlet.html');
 
     const result = new WikiTitlesTable().parseRow({
       html: html,
       streamer: 'appleTV+',
       titleIndex: 0,
       premiereIndex: 2,
-      seasonsIndex: 3
+      seasonsIndex: 3,
     });
     expect(result).toMatchInlineSnapshot(`
       {
@@ -81,18 +72,15 @@ describe("WikiTitlesTable", () => {
     `);
   });
 
-  it("parseRow Neuromancer", () => {
-    const html = TestFiles.load(
-      __dirname,
-      "/data/tr_Neuromancer.html",
-    );
+  it('parseRow Neuromancer', () => {
+    const html = TestFiles.load(__dirname, '/data/tr_Neuromancer.html');
 
     const result = new WikiTitlesTable().parseRow({
       html: html,
       streamer: 'appleTV+',
       titleIndex: 0,
       premiereIndex: 2,
-      seasonsIndex: 3
+      seasonsIndex: 3,
     });
     expect(result).toMatchInlineSnapshot(`
       {
@@ -107,11 +95,8 @@ describe("WikiTitlesTable", () => {
     `);
   });
 
-  it("parseEndedRow Defending Jacob", () => {
-    const html = TestFiles.load(
-      __dirname,
-      "/data/tr_Defending_Jacob.html",
-    );
+  it('parseRow Defending Jacob', () => {
+    const html = TestFiles.load(__dirname, '/data/tr_Defending_Jacob.html');
 
     const result = new WikiTitlesTable().parseRow({
       html: html,
@@ -119,7 +104,7 @@ describe("WikiTitlesTable", () => {
       titleIndex: 0,
       premiereIndex: 2,
       finaleIndex: 3,
-      seasonsIndex: 4
+      seasonsIndex: 4,
     });
     expect(result).toMatchInlineSnapshot(`
       {
@@ -134,11 +119,8 @@ describe("WikiTitlesTable", () => {
     `);
   });
 
-  it("parseEndedRow Surfside Girls", () => {
-    const html = TestFiles.load(
-      __dirname,
-      "/data/tr_Surfside_Girls.html",
-    );
+  it('parseRow Surfside Girls', () => {
+    const html = TestFiles.load(__dirname, '/data/tr_Surfside_Girls.html');
 
     const result = new WikiTitlesTable().parseRow({
       html: html,
@@ -146,7 +128,7 @@ describe("WikiTitlesTable", () => {
       titleIndex: 0,
       premiereIndex: 2,
       finaleIndex: 3,
-      seasonsIndex: 4
+      seasonsIndex: 4,
     });
     expect(result).toMatchInlineSnapshot(`
       {
@@ -161,4 +143,26 @@ describe("WikiTitlesTable", () => {
     `);
   });
 
+  it('parseRow Ahsoka', () => {
+    const html = TestFiles.load(__dirname, '/data/tr_Ahsoka.html');
+
+    const result = new WikiTitlesTable().parseRow({
+      html: html,
+      streamer: 'disney+',
+      titleIndex: 0,
+      premiereIndex: 2,
+      seasonsIndex: 3,
+    });
+    expect(result).toMatchInlineSnapshot(`
+      {
+        "episodes": 8,
+        "finale": null,
+        "id": "",
+        "name": "Ahsoka",
+        "premiere": "2023-08-22",
+        "seasons": 1,
+        "streamer": "disney+",
+      }
+    `);
+  });
 });
