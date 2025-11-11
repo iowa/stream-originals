@@ -29,6 +29,13 @@
       "when": 1762862452592,
       "tag": "0003_sticky_hedge_knight",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1762866282632,
+      "tag": "0004_plain_monster_badoon",
+      "breakpoints": true
     }
   ]
 }

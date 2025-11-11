@@ -19,14 +19,6 @@ export class TitlesCreateCrawler {
     this.streamers.set('appleTV+', [
       'https://en.wikipedia.org/wiki/List_of_Apple_TV%2B_original_programming',
     ]);
-    this.streamers.set('netflix', [
-      'https://en.wikipedia.org/wiki/List_of_Netflix_original_programming',
-      'https://en.wikipedia.org/wiki/List_of_ended_Netflix_original_programming',
-    ]);
-    this.streamers.set('primeVideo', [
-      'https://en.wikipedia.org/wiki/List_of_Amazon_Prime_Video_original_programming',
-      'https://en.wikipedia.org/wiki/List_of_ended_Amazon_Prime_Video_original_programming',
-    ]);
     this.streamers.set('disney+', [
       'https://en.wikipedia.org/wiki/List_of_Disney%2B_original_programming',
     ]);
@@ -34,6 +26,18 @@ export class TitlesCreateCrawler {
       'https://en.wikipedia.org/wiki/List_of_HBO_original_programming',
       'https://en.wikipedia.org/wiki/List_of_HBO_Max_original_films',
       'https://en.wikipedia.org/wiki/List_of_HBO_Max_original_programming',
+    ]);
+    this.streamers.set('hulu', [
+      'https://en.wikipedia.org/wiki/List_of_Hulu_original_programming',
+      'https://en.wikipedia.org/wiki/List_of_ended_Hulu_original_programming',
+    ]);
+    this.streamers.set('primeVideo', [
+      'https://en.wikipedia.org/wiki/List_of_Amazon_Prime_Video_original_programming',
+      'https://en.wikipedia.org/wiki/List_of_ended_Amazon_Prime_Video_original_programming',
+    ]);
+    this.streamers.set('netflix', [
+      'https://en.wikipedia.org/wiki/List_of_Netflix_original_programming',
+      'https://en.wikipedia.org/wiki/List_of_ended_Netflix_original_programming',
     ]);
   }
 

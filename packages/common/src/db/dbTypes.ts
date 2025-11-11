@@ -17,6 +17,7 @@ export const streamerValues = [
   'appleTV+',
   'disney+',
   'hboMax',
+  'hulu',
   'primeVideo',
   'netflix',
 ] as const;

@@ -10,6 +10,9 @@ export class StreamerUtils {
       case 'hboMax': {
         return '/hboMax.svg';
       }
+      case 'hulu': {
+        return '/hulu.svg';
+      }
       case 'primeVideo':
         return '/primeVideo.svg';
       case 'netflix':
