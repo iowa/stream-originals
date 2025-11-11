@@ -1,40 +1,32 @@
-import {Streamer} from '@repo/common';
 import {Suspense} from 'react';
 import {TitlesCard} from '@/ui/titles/TitlesCard';
-import {Paging} from '@/lib/AppTypes';
+import {TitlesParams} from '@/lib/AppTypes';
 import AppPaging from '@/ui/app/AppPaging';
 import {TitlesListRepository} from '@repo/common/titles/TitlesListRepository';
 import AppLoading from '@/ui/app/AppLoading';
+import {Streamer} from '@repo/common';
 
 export default async function Titles({
-  params,
   searchParams,
 }: {
-  params: Promise<{streamer: Streamer}>;
-  searchParams: Promise<Paging>;
+  searchParams: Promise<TitlesParams>;
 }) {
-  const {streamer} = await params;
-  const paging = await searchParams;
-
+  const params = await searchParams;
   return (
-    <Suspense key={streamer + JSON.stringify(paging)} fallback={<AppLoading />}>
-      <TitlesPageData streamer={streamer} paging={paging} />
+    <Suspense key={JSON.stringify(params)} fallback={<AppLoading />}>
+      <TitlesPageData params={params} />
     </Suspense>
   );
 }
 
-async function TitlesPageData({
-  streamer,
-  paging,
-}: {
-  streamer: Streamer;
-  paging: Paging;
-}) {
-  const currentPage = paging.page || 1;
+async function TitlesPageData({params}: {params: TitlesParams}) {
+  const currentPage = params.page || 1;
   const titles = await new TitlesListRepository().getTitles(
-    decodeURIComponent(streamer) as Streamer,
     currentPage,
-    paging.pageSize || 10,
+    params.pageSize || 10,
+    params.streamer
+      ? (decodeURIComponent(params.streamer) as Streamer)
+      : undefined,
   );
 
   return (

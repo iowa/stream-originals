@@ -1,4 +1,4 @@
-import {Streamer, TitleStats} from '@repo/common';
+import {Streamer} from '@repo/common';
 import React, {Suspense} from 'react';
 import {StreamerRepository} from '@repo/common/streamer/StreamerRepository';
 import StreamerLogo from '@/lib/streamer/StreamerLogo';
@@ -29,7 +29,7 @@ async function StreamerPageData({streamer}: {streamer: Streamer}) {
   const [titlesStats, titlesByCategory, titles] = await Promise.all([
     streamerRepository.titlesStats(streamerPath),
     streamerRepository.titleByCategoryTopN(streamerPath, 15),
-    titlesListRepository.getTitles(streamerPath, 1, 10),
+    titlesListRepository.getTitles(1, 10, streamerPath),
   ]);
 
   return (

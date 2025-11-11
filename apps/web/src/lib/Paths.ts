@@ -1,21 +1,21 @@
-import { Streamer } from "@repo/common";
+import {Streamer} from '@repo/common';
 
 export class Paths {
-
   static credit(nameId: string) {
-    return `/name/${nameId}`
+    return `/name/${nameId}`;
   }
 
   static streamer(streamer: Streamer) {
-    return `/streamer/${streamer}`
+    return `/streamer/${streamer}`;
   }
 
   static title(titleId: string) {
-    return `/title/${titleId}`
+    return `/title/${titleId}`;
   }
 
-  static titles(streamer: Streamer) {
-    return `/titles/${streamer}`
+  static titles(streamer?: Streamer) {
+    return streamer
+      ? `/titles?streamer=${encodeURIComponent(streamer)}`
+      : `/titles`;
   }
-
 }

@@ -28,31 +28,60 @@ describe('TitlesListRepository', async () => {
   it('pageSize', async () => {
     await prepareData();
 
-    const result1 = await cut.getTitles('netflix', 1, 1);
+    const result1 = await cut.getTitles(1, 1);
 
-    expect(result1.map(value => value.name)).toEqual(['House of Cards']);
-    const result2 = await cut.getTitles('netflix', 1, 2);
+    expect(result1.map(value => value.name)).toMatchInlineSnapshot(`
+      [
+        "Game of Thrones",
+      ]
+    `);
+    const result2 = await cut.getTitles(1, 2);
 
-    expect(result2.map(value => value.name)).toEqual([
-      'House of Cards',
-      'Midnight Mass',
-    ]);
+    expect(result2.map(value => value.name)).toMatchInlineSnapshot(`
+      [
+        "Game of Thrones",
+        "House of Cards",
+      ]
+    `);
   });
 
   it('page', async () => {
     await prepareData();
 
-    const result1 = await cut.getTitles('netflix', 1, 2);
+    const result1 = await cut.getTitles(1, 2);
 
-    expect(result1.map(value => value.name)).toEqual([
-      'House of Cards', 'Midnight Mass'
-    ]);
-    const result2 = await cut.getTitles('netflix', 2, 2);
+    expect(result1.map(value => value.name)).toMatchInlineSnapshot(`
+      [
+        "Game of Thrones",
+        "House of Cards",
+      ]
+    `);
+    const result2 = await cut.getTitles(2, 2);
 
-    expect(result2.map(value => value.name)).toEqual(['The Watcher']);
+    expect(result2.map(value => value.name)).toMatchInlineSnapshot(`
+      [
+        "Midnight Mass",
+        "The Watcher",
+      ]
+    `);
+  });
+
+  it('streamer', async () => {
+    await prepareData();
+
+    const result1 = await cut.getTitles(1, 100, 'netflix');
+
+    expect(result1.map(value => value.name)).toMatchInlineSnapshot(`
+      [
+        "House of Cards",
+        "Midnight Mass",
+        "The Watcher",
+      ]
+    `);
   });
 
   async function prepareData() {
+    await testEntities.insertTitle(TestData.TestTitle_GameOfThrones);
     await testEntities.insertTitle(TestData.TestTitle_HouseOfCards);
     await testEntities.insertTitle(TestData.TestTitle_MidnightMass);
     await testEntities.insertTitle(TestData.TestTitle_TheWatcher);

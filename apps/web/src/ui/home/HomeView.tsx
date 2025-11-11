@@ -28,9 +28,11 @@ export default function HomeView() {
               your favorite streaming platforms in one place.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <button className="btn btn-primary gap-2 btn-lg">
-                Explore All Originals <ArrowRight size={20} />
-              </button>
+              <Link href={Paths.titles()}>
+                <button className="btn btn-primary gap-2 btn-lg">
+                  Explore All Originals <ArrowRight size={20} />
+                </button>
+              </Link>
             </div>
           </div>
 
